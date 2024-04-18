@@ -1,0 +1,8 @@
+.listItem {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  flex-shrink: 0;
+  padding: 32px;
+  box-sizing: border-box;
+}

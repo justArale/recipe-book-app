@@ -2,8 +2,8 @@ import "./Footer.css";
 
 function Footer() {
   return (
-    <footer class="footer">
-      <h5 class="repo">
+    <footer className="footer">
+      <h5 className="repo">
         <a href="https://github.com/justArale/recipe-book-app">
           GitHub Repository
         </a>
