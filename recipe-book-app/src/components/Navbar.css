@@ -1,5 +1,7 @@
 .navbar {
   display: flex;
+  /* position: fixed; */
   justify-content: space-between;
   height: 48px;
+  border: 1px solid black;
 }

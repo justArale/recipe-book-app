@@ -2,12 +2,13 @@
 
 Create a Home Page in your React app that has the following features:
 
-Done:
+Create the following page components and the routes to render them in the app:
 
-- Render your JSON data as a list.
-- Conditionally render content in the list items. Here is how you can do it:
-  Include a condition to conditionally render content on each item in the list. For example, if your list items have a property isCompleted, show :heavy_check_mark: if it is true and :x: if it is false.
-  If objects in your JSON dataset don’t contain any boolean property, make a conditional check that results in true or false. For example, you can check if a value is greater or less than a specified number.
-  - Include a delete button on each list item that allows the user to delete the item from the list.
-  - Make the list a separate component by extracting the code for better code organization (for example, <List />).
-  - Make the list item a separate component and use the new component to render the list items (for example, <ListItem /> or <ItemCard />).
+About Page - A page showing the project description and information about the team members (students) working on the project, including links to your GitHub and LinkedIn profiles.
+The Navbar, Footer, and Sidebar components should be displayed on all the pages.
+
+Done:
+-Install and set up react-router in your React app.
+-Dashboard Page - A page that the user sees first when they open the app. It should show the items list that you created previously.
+-Item Details Page - A page that displays all the details of an item selected from the items list.
+-Not Found Page - A page that renders whenever a user navigates to a URL route that doesn’t exist in the app.

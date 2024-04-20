@@ -7,9 +7,7 @@ function ItemDetailsPage() {
   const [recipeProfile, setRecipeProfile] = useState(null);
 
   useEffect(() => {
-    const recipe = recipesData.find(
-      (recipe, index) => index.toString() === recipeId
-    );
+    const recipe = recipesData.find((recipe) => recipe.Id === recipeId);
     setRecipeProfile(recipe);
   }, [recipeId]);
 
@@ -20,6 +18,9 @@ function ItemDetailsPage() {
         <div>
           <h2>{recipeProfile.Name}</h2>
           <p>{recipeProfile.Description}</p>
+          <p>{recipeProfile.Ingredients}</p>
+          <p>{recipeProfile.Instruction}</p>
+
           <NavLink to="/" className="selected">
             <button>Back</button>
           </NavLink>

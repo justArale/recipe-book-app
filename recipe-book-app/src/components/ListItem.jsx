@@ -1,9 +1,9 @@
 import "./ListItem.css";
 
 export default function ListItem(props) {
-  const { recipe, index, clickToDelete } = props;
+  const { recipe, clickToDelete } = props;
   return (
-    <div className="listItem" key={index}>
+    <div className="listItem" key={recipe.Id}>
       <h2 className="name">{recipe.Name}</h2>
       <img src={recipe.url} alt={recipe.Name} />
       <p className="description">
@@ -14,8 +14,8 @@ export default function ListItem(props) {
       <div className="ingredients">
         <strong>Ingredients: </strong>
         <ul>
-          {recipe.Ingredients.map((ingredient, index) => (
-            <li key={index}>{ingredient}</li>
+          {recipe.Ingredients.map((ingredient) => (
+            <li key={recipe.Id}>{ingredient}</li>
           ))}
         </ul>
       </div>

@@ -1,5 +1,5 @@
 import List from "../components/List";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 import recipesData from "../components/recipes.json";
 import { useState, useEffect } from "react";
 
@@ -9,10 +9,10 @@ function DashboardPage() {
   return (
     <div>
       <h1>Recipe Dashboard</h1>
-      {recipes.map((recipe, index) => (
-        <div key={index}>
-          <Link to={`/recipes/${index}`}>
-            <List {...recipe} />
+      {recipes.map((recipe) => (
+        <div key={recipe.Id}>
+          <Link to={`/recipes/${recipe.Id}`}>
+            <h3>{recipe.Name}</h3>
           </Link>
         </div>
       ))}

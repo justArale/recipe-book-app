@@ -1,6 +1,9 @@
-ul {
-  list-style: none;
+.sidebar {
+  position: fixed;
   text-align: right;
+  height: 100%;
+  border: 1px solid black;
+  z-index: 1;
 }
 
 .sidebar a {

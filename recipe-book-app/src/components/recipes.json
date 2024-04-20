@@ -1,5 +1,6 @@
 [
   {
+    "Id": "1",
     "Name": "Christmas pie",
     "url": "https://www.bbcgoodfood.com/recipes/2793/christmas-pie",
     "Description": "Combine a few key Christmas flavours here to make a pie that both children and adults will adore",
@@ -28,6 +29,7 @@
     ]
   },
   {
+    "Id": "2",
     "Name": "Simmer-&-stir Christmas cake",
     "url": "https://www.bbcgoodfood.com/recipes/1160/simmerandstir-christmas-cake",
     "Description": "An easy-to-make alternative to traditional Christmas cakes which requires no beating",
@@ -58,6 +60,7 @@
     ]
   },
   {
+    "Id": "3",
     "Name": "Christmas cupcakes",
     "url": "https://www.bbcgoodfood.com/recipes/72622/christmas-cupcakes",
     "Description": "These beautiful and classy little cakes make lovely gifts, and kids will enjoy decorating them too",
@@ -94,6 +97,7 @@
     ]
   },
   {
+    "Id": "4",
     "Name": "Christmas buns",
     "url": "https://www.bbcgoodfood.com/recipes/1803633/christmas-buns",
     "Description": "Paul Hollywood's fruit rolls can be made ahead then heated up before adding a glossy glaze and citrus icing",
@@ -125,6 +129,7 @@
     ]
   },
   {
+    "Id": "5",
     "Name": "Christmas cupcakes",
     "url": "https://www.bbcgoodfood.com/recipes/981634/christmas-cupcakes",
     "Description": "Made these for the second time today, and I have to say they turned out great! I've got large muffin tins and the mixture made 15 muffins, will definetely make these again at christmas time and decorate festively.",
@@ -148,6 +153,7 @@
     ]
   },
   {
+    "Id": "6",
     "Name": "Christmas slaw",
     "url": "https://www.bbcgoodfood.com/recipes/890635/christmas-slaw",
     "Description": "A nutty winter salad which is superhealthy, quick to prepare and finished with a light maple syrup dressing",
@@ -165,332 +171,6 @@
     ],
     "Instruction": [
       "Peel strips from the carrots using a vegetable peeler, then mix with the other salad ingredients in a large bowl. Combine all the dressing ingredients in a jam jar, season, then put the lid on and shake well. Toss through the salad when you\u2019re ready to eat it. The salad and dressing will keep separately in the fridge for up to four days."
-    ]
-  },
-  {
-    "Name": "Christmas mess",
-    "url": "https://www.bbcgoodfood.com/recipes/2806664/christmas-mess",
-    "Description": "Delicious and a synch to make! Have made this a couple of times as a dinner party dessert, very pretty as a winter alternative to Eton mess. The fact you use frozen fruits is great, I just used a bog standard pack of frozen mixed berries and added some home made blackberry liqueur. Like other people, I added more cinnamon. Thumbs up!",
-    "Author": "Caroline Hire",
-    "Ingredients": [
-      "600ml double cream",
-      "400g Greek yoghurt",
-      "4 tbsp lemon curd",
-      "1 x 500g bag frozen mixed berries(we used Sainsbury's Black Forest fruits)",
-      "4 tbsp icing sugar",
-      "2 tbsp cassis(optional)",
-      "1 pinch cinnamon",
-      "8 meringuenests"
-    ],
-    "Instruction": [
-      "In a small saucepan gently heat the frozen berries, icing sugar and cinnamon until the sugar has dissolved. Remove from the heat, stir in the cassis, if using, and set aside to cool completely.",
-      "Whip the double cream and Greek yogurt until just holding it\u2019s shape, ripple through the lemon curd. Break the meringue nests into a glass bowl, or 8 individual glasses. Spoon over half the cream, then half the berries. Repeat with the remaining cream and berries. Serve immediately."
-    ]
-  },
-  {
-    "Name": "Christmas brownies",
-    "url": "https://www.bbcgoodfood.com/recipes/christmas-brownies",
-    "Description": "can I made these the day before",
-    "Author": "Miriam Nice",
-    "Ingredients": [
-      "200g unsalted buttercut into cubes, plus extra for greasing",
-      "100g dark chocolate, chopped",
-      "100g milk chocolate, chopped",
-      "3 large eggs",
-      "300g golden caster sugar",
-      "100g plain flour",
-      "50g cocoa powder",
-      "\u00bd tsp mixed spice",
-      "9 sprigs rosemary",
-      "9 glac\u00e9 cherries",
-      "1 egg white",
-      "2 tbsp caster sugar",
-      "4 amaretti biscuits, crushed",
-      "9 chocolate truffles(we used Lindt lindor)",
-      "edible gold lustre spray",
-      "1-2 tsp icing sugarfor dusting",
-      "few chocolate buttons",
-      "edible silver balls"
-    ],
-    "Instruction": [
-      "Grease and line a 20cm x 20cm brownie tin. Heat oven to 180C/160C fan/gas 4. Put the butter and both types of chocolate in a heat proof bowl and either melt in the microwave (in 30 second bursts, stirring after each) or set over a pan of barely simmering water, stirring every now and then until the chocolate has melted.",
-      "Leave the chocolate and butter mixture to cool a little while you whisk the eggs and caster sugar in a large bowl using electric beaters. Once the mixture is pale, fluffy and looks like it\u2019s roughly\u00a0doubled in volume, whisk in the melted chocolate. Fold in the flour, cocoa powder and mixed spice until no pockets of flour remain\u00a0then pour\u00a0into your prepared tin. Level the top\u00a0with a spatula and bake for 20-25 mins. The top should look set and shiny but should be a little wobbly if you gently jostle the tin.",
-      "Leave the brownie to cool completely in the tin then chill in the fridge until set. While the brownie cools brush the rosemary sprigs and glac\u00e9\u00a0cherries with egg white, dab off the excess with kitchen paper then dredge in caster sugar until well coated. Leave to dry on a wire rack. Put the chocolate truffles onto a sheet of baking paper or foil then spray with the edible gold lustre.",
-      "Dust the chilled brownie with icing sugar to create a snowy surface and top with amaretti biscuit pieces then poke the crystalised rosemary sprigs into the surface at random intervals (cut the brownie into pieces and dust on icing sugar first, if you like). Nestle a glac\u00e9 cherry or gold truffle alongside the rosemary sprig then add the buttons and silver balls."
-    ]
-  },
-  {
-    "Name": "Christmas cosmopolitan",
-    "url": "https://www.bbcgoodfood.com/recipes/889643/christmas-cosmopolitan",
-    "Description": "How many servings have you gotten using the above measures?",
-    "Author": "Good Food",
-    "Ingredients": [
-      "500ml vodka",
-      "500ml gingerwine",
-      "1l cranberry juice",
-      "juice 5 limes, keep zest for garnish",
-      "sliced stem ginger"
-    ],
-    "Instruction": [
-      "Mix the vodka and ginger wine in a jug. Stir in the cranberry juice, lime juice and some sliced stem ginger. Garnish with lime zest, if you like."
-    ]
-  },
-  {
-    "Name": "Christmas pizza",
-    "url": "https://www.bbcgoodfood.com/recipes/christmas-pizza",
-    "Description": "Use up leftover roast turkey and sausagemeat stuffing in this new spin on an Italian classic",
-    "Author": "Katy Greenwood",
-    "Ingredients": [
-      "145g pizza basemix",
-      "6 tbsp tomato pasta sauce",
-      "large handful (about 100g) leftover stuffing(a sausage stuffing works well for this)",
-      "large handful (about 100g) leftover cooked turkey, shredded",
-      "100g mozzarella, sliced",
-      "small pack sage, leaves picked",
-      "1 tbsp olive oil"
-    ],
-    "Instruction": [
-      "Heat oven to 220C/200C fan/gas 7. Prepare the pizza base mix following pack instructions. Once rolled out, leave to rest for 10 mins, then top with the pasta sauce.",
-      "Scatter over the stuffing and turkey, then top with the mozzarella. Toss the sage leaves with the oil, then scatter over the pizza, drizzling over any remaining oil. Bake for 10-12 mins until the crust is crisp and the cheese has melted."
-    ]
-  },
-  {
-    "Name": "Christmas poussin",
-    "url": "https://www.bbcgoodfood.com/recipes/5028/christmas-poussin",
-    "Description": "Prepare ahead and pop in the oven when your guests arrive. Perfect if you don't want to be tied to the kitchen",
-    "Author": "Barney Desmazery",
-    "Ingredients": [
-      "50g butter, softened",
-      "4 poussin",
-      "4 rashers smoked streaky bacon, halved",
-      "1 tbsp plain flour",
-      "1 tbsp Worcestershire sauce",
-      "stock from vegetables (see 'goes well with')"
-    ],
-    "Instruction": [
-      "Heat oven to 230C/fan 210C/gas 8. Smear the butter all over the poussins, season inside and out, then criss-cross the bacon over each one. Sit the poussins in a roasting tin and cook for 40 mins until the birds are golden and the bacon is crisp. Remove from the tin, leave to rest and set the tin aside until you\u2019re ready to make the gravy.",
-      "About 5 mins before you sit down to eat, make the gravy. Place the tin on a medium heat, then stir in the flour and splash in the Worcestershire sauce. Bubble together, then drain the veg over the roasting tin and stir in the vegetable stock. Bring the gravy to the boil, taste for seasoning, adding more Worcestershire sauce if needed, then pour into a warm gravy jug."
-    ]
-  },
-  {
-    "Name": "Mary Berry's Christmas chutney",
-    "url": "https://www.bbcgoodfood.com/recipes/1158/mary-berrys-christmas-chutney",
-    "Description": "A perfect match for cheese and cold meats, and delicious in turkey sandwiches",
-    "Author": "Mary Berry",
-    "Ingredients": [
-      "900g tomato",
-      "3 red peppers, 1 large aubergine and 1 green pepper (total weight of about 900g/2lb)",
-      "700g onion, peeled and fairly finely chopped, by hand or in a food processor",
-      "4 fat cloves garlic, crushed",
-      "350g granulated sugar",
-      "300ml/\u00bdpint white wine vinegar or distilled malt vinegar",
-      "1 tbsp salt",
-      "1 tbsp coriander seeds, crushed",
-      "1 tbsp paprika",
-      "2 tsp cayenne pepper"
-    ],
-    "Instruction": [
-      "Peel the tomatoes - prick them with a sharp knife, place in a bowl and cover with boiling water. Leave for a few seconds then drain and cover with cold water. The skins will now come away easily.",
-      "Chop the tomatoes and aubergine and seed and chop the peppers. Put in a large heavy-based pan with the onions and garlic and bring to the boil. Cover with a lid, lower the heat and gently simmer for about one hour, stirring occasionally, until tender.",
-      "Tip the sugar, vinegar, salt, coriander, paprika and cayenne into the pan and bring to the boil over a medium heat, stirring, until the sugar has dissolved. Continue to boil for 30 minutes or so, until the mixture achieves a chunky chutney consistency and the surplus watery liquid has evaporated. Take care towards the end of the cooking time to continue stirring so that the chutney doesn't catch on the bottom of the pan.",
-      "Ladle the chutney into sterilised or dishwasher-clean jars (Kilner jars are ideal) and top with paper jam covers. Seal the jars while still hot. Leave to mature for at least a month in a cool dark place."
-    ]
-  },
-  {
-    "Name": "Make & mature Christmas cake",
-    "url": "https://www.bbcgoodfood.com/recipes/2607642/make-and-mature-christmas-cake",
-    "Description": "25 min prep time? More like an hour.",
-    "Author": "James Martin",
-    "Ingredients": [
-      "1kg mixed dried fruit(use a mix of raisins, sultanas, currants, cherries, cranberries, prunes or figs)",
-      "zest and juice 1 orange",
-      "zest and juice 1 lemon",
-      "150ml brandy, Sherry, whisky or rum, plus extra for feeding",
-      "250g pack butter, softened",
-      "200g light soft brown sugar",
-      "175g plain flour",
-      "100g ground almond",
-      "\u00bd tsp baking powder",
-      "2 tsp mixed spice",
-      "1 tsp ground cinnamon",
-      "\u00bc tsp ground cloves",
-      "100g flaked almond",
-      "4 large eggs",
-      "1 tsp vanilla extract"
-    ],
-    "Instruction": [
-      "Put 1kg mixed dried fruit, the zest\u00a0and juice of 1 orange and 1 lemon, 150ml brandy or other alcohol, 250g softened butter and 200g light, soft brown sugar in a large\u00a0",
-      "\u00a0set over a medium heat.",
-      "Bring to the boil, then lower the heat and simmer for 5 mins. Tip the fruit mixture into a large ",
-      " and leave to cool for 30 mins.",
-      "Heat oven to 150C/130C fan/gas 2. Line a deep 20cm cake tin with a double layer of ",
-      ", then wrap a double layer of newspaper around the outside \u2013 tie with string to secure.",
-      "Add 175g plain flour, 100g ground almonds, \u00bd tsp baking powder, 2 tsp mixed spice, 1 tsp ground cinnamon, \u00bc tsp ground cloves, 100g flaked almonds, 4 large eggs and 1 tsp vanilla extract to the fruit mixture and stir well, making sure there are no pockets of flour.",
-      "Tip into your prepared tin, level the top with a\u00a0",
-      "\u00a0and bake in the centre of the oven for 2 hrs.",
-      "Remove the cake from the oven, poke holes in it with a skewer and spoon over 2 tbsp of your chosen alcohol. Leave the cake to cool completely in the tin.",
-      "To store, peel off the baking parchment, then wrap well in cling film. Feed the cake with 1-2 tbsp alcohol every fortnight, until you ice it.",
-      "Don\u2019t feed the cake for the final week to give the surface a chance to dry before icing."
-    ]
-  },
-  {
-    "Name": "Christmas muffin mix",
-    "url": "https://www.bbcgoodfood.com/recipes/2920/christmas-muffin-mix",
-    "Description": "A festive treat to give or receive",
-    "Author": "Good Food",
-    "Ingredients": [
-      "300g self-raising flour",
-      "2 tsp baking powder",
-      "2 tsp ground cinnamon",
-      "2 tsp ground mixed spice",
-      "100g pecan or walnuts",
-      "140g tropical dried fruit medley",
-      "100g light muscovado sugar"
-    ],
-    "Instruction": [
-      "Layer all the ingredients in a 1 litre glass or plastic preserving jar in the order the ingredients are listed.",
-      "Write the following method on a gift label: \u2018Tip the contents of the jar into a large mixing bowl. Make a well in the centre and add 2 beaten eggs, 300ml/\u00bdpt milk and 100g/4oz melted butter. Mix quickly and lightly to a soft batter. Divide between 12 muffin cases. Bake at 190C/fan 170C/gas 5 for 18-20 mins. Use within 4 weeks.\u2019 Attach the label and a wooden spoon to the top of the jar with some raffia or coloured ribbon."
-    ]
-  },
-  {
-    "Name": "Sparkling vanilla Christmas cookies",
-    "url": "https://www.bbcgoodfood.com/recipes/2798/sparkling-vanilla-christmas-cookies",
-    "Description": "Easy to make. I did add a splash of milk though. Fun way to spend a rainy afternoon with the kids.",
-    "Author": "Lesley Waters",
-    "Ingredients": [
-      "140g icing sugar, sieved",
-      "1 tsp vanilla extract",
-      "1 egg yolk",
-      "250g butter, cut into small cubes",
-      "375g plain flour, sieved",
-      "200g icing sugar, sieved",
-      "edible food colouring, optional",
-      "edible gold and silver balls",
-      "approx 2m thin ribbon cut into 10cm lengths"
-    ],
-    "Instruction": [
-      "Tip the icing sugar, vanilla extract, egg yolk and butter into a mixing bowl, then stir together with a wooden spoon (or pulse in a food processor until well combined). Add the flour and mix to a firm dough. Shape the dough into two flat discs and wrap in clingfilm. Chill for 20-30 mins. Heat oven to 190C/fan 170C/gas 5 and line two baking sheets with non-stick baking paper.",
-      "Roll out the dough on a lightly floured surface to about the thickness of two \u00a31 coins. Cut out Christmassy shapes (use a cutter if you like) and place on the baking sheets. Using the tip of a skewer, cut a small hole in the top of each cookie. Bake for 10-12 mins until lightly golden.",
-      "Lift the biscuits onto a wire rack to cool. Meanwhile, mix the icing sugar with a few drops of cold water to make a thick, but still runny icing. Colour with edible food colouring, if you like. Spread it over the cooled biscuits, decorate with edible balls and thread with ribbon when dry."
-    ]
-  },
-  {
-    "Name": "Christmas pudding with citrus & spice",
-    "url": "https://www.bbcgoodfood.com/recipes/8370/christmas-pudding-with-citrus-and-spice",
-    "Description": "A fruity pud, served with orange custard cream, makes the perfect end to the traditional Christmas meal",
-    "Author": "Sara Buenfeld",
-    "Ingredients": [
-      "175g each raisin, currants and sultanas",
-      "140g whole glac\u00e9 cherry",
-      "50g mixed peel",
-      "50g whole blanched almond",
-      "zest 1 orangeand 1 lemon",
-      "1 medium carrot, peeled and finely grated",
-      "150ml brandy",
-      "50ml/2fl oz orangeliqueur, such as Grand Marnier",
-      "175g light muscovado sugar",
-      "175g fresh white breadcrumb",
-      "125g self-raising flour",
-      "1 tsp mixed spice",
-      "\u00bc tsp grated nutmeg",
-      "175g butter, frozen",
-      "2 eggs, beaten",
-      "butter, for greasing",
-      "hollysprig, to decorate"
-    ],
-    "Instruction": [
-      "Mix the fruit, almonds, citrus zests and the carrot with the brandy and orange liqueur in a large mixing bowl. Cover and leave to soak overnight.",
-      "Mix all the dry ingredients together, then add to the soaked fruit mixture. Grate in the butter, then add the eggs and stir. Don\u2019t forget to make a wish!",
-      "Grease a 1.5-litre pudding basin with butter and line the base with greaseproof paper. Spoon in the mixture, press down well and make a hollow with the back of the spoon in the centre. Cover the surface with a round of greaseproof paper, then cover the bowl with double-thickness greaseproof paper and foil and tie at the rim with string. Lower the pudding into a pan with an upturned saucer in the base, then fill with water until it comes halfway up the sides of the bowl. Steam for 6 hrs, topping up with water as necessary.",
-      "Alternatively, steam in the oven. Stand the pudding basin in a roasting tin filled with water, then cover with a tent of foil and cook for the same length of time at 160C/fan 140C/gas 3. Check roasting tin occasionally as the water may need to be topped up.",
-      "To store, allow to cool, then store in a cool, dry cupboard. The pudding will keep for up to a year.",
-      "On the day, steam for 1 hr before turning out, decorating with holly and serving with extra-thick double cream or vanilla ice cream. Alternatively, try my Orange custard cream (below)."
-    ]
-  },
-  {
-    "Name": "Fig & honey Christmas cake",
-    "url": "https://www.bbcgoodfood.com/recipes/13381/fig-and-honey-christmas-cake",
-    "Description": "This traditional Christmas cake is the perfect combination of fruit, nuts and spices",
-    "Author": "James Martin",
-    "Ingredients": [
-      "750g mixed dried fruit",
-      "100g blanched whole almond, roughly chopped",
-      "100g chopped peel",
-      "200g dried fig, roughly chopped",
-      "100g glac\u00e9 cherry, well rinsed and quartered",
-      "300g plain flour",
-      "1 tsp ground cinnamon",
-      "1 tsp grated nutmeg",
-      "zest 1 lemon",
-      "250g lightly salted butter",
-      "250g light muscovado sugar",
-      "1 tsp vanilla extract",
-      "2 tbsp clear honey",
-      "1 tbsp black treacle",
-      "4 large eggs",
-      "\u00bd tsp bicarbonate of soda",
-      "1 tbsp milk",
-      "3 tbsp brandy, plus extra to feed"
-    ],
-    "Instruction": [
-      "Heat oven to 140C/120C fan/gas 1. Line the base and sides of a 20cm cake tin first with a double layer of brown paper, then with a double layer of baking parchment. In a large bowl, mix the fruit, almonds, peel, figs and cherries. Turn well and add the flour, spices and lemon zest. In a separate bowl, cream the butter and sugar thoroughly, then add the vanilla extract, honey and treacle. Still beating, incorporate the eggs, then stir in the fruit and flour mixture. Dissolve the bicarbonate of soda in the milk and stir in thoroughly. Add the brandy by the spoonful, until you have a soft dropping consistency.",
-      "Turn the batter into the cake tin and make a dip in the middle using the back of a spoon. Bake for 3\u00bd hrs, then insert a skewer \u2013 if it comes out clean, it\u2019s ready. If there is any cake mix on the skewer, give it 10 mins more and test again. When it\u2019s done, remove the cake from the oven and leave to cool in its tin. The next day, remove from the tin, wrap in fresh greaseproof paper, then put it into an airtight tin or wrap tightly in foil. The usual thing is to keep the cake for at least a month before icing it, and to unwrap and sprinkle it occasionally with more brandy."
-    ]
-  },
-  {
-    "Name": "Angela Nilsen's Christmas cake",
-    "url": "https://www.bbcgoodfood.com/recipes/1004/angela-nilsens-christmas-cake",
-    "Description": "A long-life Christmas cake that's bursting with flavours of spices and vanilla",
-    "Author": "Angela Nilsen",
-    "Ingredients": [
-      "200g butter, softened to room temperature",
-      "200g dark muscovado sugar",
-      "200g plain flour",
-      "4 eggs, beaten",
-      "50g ground almond",
-      "100ml sherry, sweet or dry, whatever you have in the cupboard",
-      "85g candied peel, roughly chopped (we used Sundora)",
-      "85g glac\u00e9 cherry, roughly chopped",
-      "250g raisin",
-      "250g currant",
-      "100g pack pecan nuts, broken into big pieces",
-      "finely grated zest 1 lemon",
-      "1\u00bd tsp mixed spice",
-      "1\u00bd tsp rosewater",
-      "\u00bd tsp vanilla extract",
-      "\u00bd tsp baking powder"
-    ],
-    "Instruction": [
-      "Heat oven to 160C/fan 140C/gas 3. Line the base and sides of a 20 cm round, 7.5 cm deep cake tin. Beat the butter and sugar with an electric hand mixer for 1-2 mins until very creamy and pale in colour, scraping down the sides of the bowl half way through. Stir in a spoonful of the flour, then stir in the beaten egg and the rest of the flour alternately, a quarter at a time, beating well each time with a wooden spoon. Stir in the almonds.",
-      "Mix in the sherry (the mix will look curdled), then add the peel, cherries, raisins, cherries, nuts, lemon zest, spice, rosewater and vanilla. Beat together to mix, then stir in the baking powder.",
-      "Spoon mixture into the tin and smooth the top, making a slight dip in the centre. Bake for 30 mins, then lower temperature to 150C/fan 130C/gas 2 and bake a further 2-2\u00bc hrs, until a skewer insterted in the middle comes out clean. Leave to cool in the tin, then take out of the tin and peel off the lining paper. When completely cold, wrap well in cling film and foil to store until ready to decorate. The cake will keep for several months."
-    ]
-  },
-  {
-    "Name": "Gingery Christmas cake",
-    "url": "https://www.bbcgoodfood.com/recipes/4825/gingery-christmas-cake",
-    "Description": "A good glug of ginger wine makes this cake a little different from the norm. It's also lighter than its predecessors, so you can have two pieces!",
-    "Author": "Emma Lewis",
-    "Ingredients": [
-      "350g raisin",
-      "125g currant",
-      "125g sultana",
-      "200ml ginger wine, plus 4tbsp",
-      "200g butter, softened, plus extra for greasing",
-      "200g dark muscovado sugar",
-      "4 eggs",
-      "200g plain flour",
-      "50g ground almond",
-      "\u00bd tsp mixed spice",
-      "1 tsp ground ginger",
-      "1 tsp freshly grated root ginger",
-      "1 tbsp treacle"
-    ],
-    "Instruction": [
-      "Tip the raisins, currants and sultanas into a bowl. Pour over 200ml ginger wine, then cover and leave to sit at room temperature overnight so that the fruit plumps up.",
-      "Heat oven to 160C/fan 140C/gas 3. Using the bottom of a 20cm, loose-bottomed cake tin as a template, cut out 2 circles of baking parchment. Then cut 2 thick strips (about 2cm deeper than the tin) that will fit around the inside of the tin. Make small cuts along one of the edges, about 2cm apart. Grease the tin, then place one parchment circle at the bottom. Place one strip inside the tin, making sure the cut side is at the bottom, as this will help you to fit it inside. Do the same with the remaining strip, then place the second circle on top (see step-by-step).",
-      "Put the butter and sugar into a mixing bowl and whisk with an electric beater until creamy and light, about 5 mins. Add the eggs, one at a time, making sure you stir well after each addition, then mix through the flour, ground almonds and spices. Stir in the soaked fruits, and any liquid left over, with the fresh root ginger and treacle until everything is well combined.",
-      "Spoon in the mixture and smooth the top, then use a spoon to make a slight dip in the centre. This will ensure the cake has an even surface when finished. Bake for 30 mins, then lower the oven to 150C/fan 130C/gas 2 and bake for another 2 hrs until a skewer inserted in the middle comes out clean. Skewer the cake all over, then drizzle over the remaining 4 tbsp ginger wine. Leave the cake to cool in the tin, then peel off the lining paper. To store, wrap first in baking parchment and then in tin foil. The cake will keep in a cupboard for up to 3 months or can be frozen for up to 6 months."
     ]
   }
 ]

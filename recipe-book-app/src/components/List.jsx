@@ -17,10 +17,10 @@ export default function List() {
     <div className="listContainer">
       <h1 className="title">Recipe List</h1>
       <div className="recipeContainer">
-        {recipes.map((recipe, index) => {
+        {recipes.map((recipe) => {
           return (
             <ListItem
-              key={index}
+              key={recipe.Id}
               recipe={recipe}
               clickToDelete={deleteRecipe}
             />
