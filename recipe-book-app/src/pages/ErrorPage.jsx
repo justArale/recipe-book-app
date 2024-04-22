@@ -1,5 +1,5 @@
 const imgURL =
-  "https://education-team-2020.s3.eu-west-1.amazonaws.com/web-dev/m3/react-routing/404.gif";
+  "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbno3cmxtYWQyeXU0MWlvcThpdndiMnh3MXY0am83emx1NzcwdWE3OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/C21GGDOpKT6Z4VuXyn/giphy.gif";
 
 function ErrorPage() {
   return (

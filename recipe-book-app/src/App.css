@@ -3,9 +3,24 @@
   margin: 0;
   padding: 0;
   text-align: center;
+  background-color: #d6c9bc;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 150%;
 }
 
 body {
   margin: 0;
   padding: 0;
+}
+
+button {
+  font-size: 16px;
+  padding: 8px 16px;
+  border-color: #a39689;
+  border-radius: 50px;
+  background-color: #d6c9bc;
+}
+
+li {
+  list-style: none;
 }

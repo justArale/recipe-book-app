@@ -8,14 +8,15 @@ function DashboardPage() {
 
   return (
     <div>
-      <h1>Recipe Dashboard</h1>
-      {recipes.map((recipe) => (
-        <div key={recipe.Id}>
-          <Link to={`/recipes/${recipe.Id}`}>
-            <h3>{recipe.Name}</h3>
-          </Link>
-        </div>
-      ))}
+      <h1>Recipe List</h1>
+      {recipes &&
+        recipes.map((recipe) => (
+          <div key={recipe.Id}>
+            <Link to={`/recipes/${recipe.Id}`}>
+              <List recipe={recipe} />
+            </Link>
+          </div>
+        ))}
     </div>
   );
 }

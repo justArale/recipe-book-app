@@ -1,7 +1,18 @@
 import "./ListItem.css";
+import recipesDB from "./recipes.json";
+import { useState, useEffect } from "react";
 
 export default function ListItem(props) {
-  const { recipe, clickToDelete } = props;
+  const { recipe } = props;
+  const [recipes, setRecipes] = useState(recipesDB);
+
+  const deleteRecipe = (recipeId) => {
+    const filteredRecipes = recipes.filter((recipe) => {
+      return recipe.Id !== recipeId;
+    });
+    setRecipes(filteredRecipes);
+  };
+
   return (
     <div className="listItem" key={recipe.Id}>
       <h2 className="name">{recipe.Name}</h2>
@@ -23,9 +34,8 @@ export default function ListItem(props) {
         <strong>Instruction: </strong>
         {recipe.Instruction}
       </p>
-
-      <button onClick={() => clickToDelete(recipe.Name)} className="btn-delete">
-        Delete
+      <button onClick={() => deleteRecipe(recipe.Id)} className="btn-delete">
+        🗑️ Delete
       </button>
     </div>
   );

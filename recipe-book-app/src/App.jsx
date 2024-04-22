@@ -6,6 +6,7 @@ import DashboardPage from "./pages/DashboardPage";
 import ItemDetailsPage from "./pages/ItemDetailsPage";
 import AboutPage from "./pages/AboutPage";
 import ErrorPage from "./pages/ErrorPage";
+import NewRecipePage from "./pages/NewRecipePage";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<DashboardPage />} />
         <Route path="/recipes/:recipeId" element={<ItemDetailsPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/newrecipe" element={<NewRecipePage />} />
 
         <Route path="*" element={<ErrorPage />} />
       </Routes>

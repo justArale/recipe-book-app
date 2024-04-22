@@ -1,4 +1,4 @@
-.listItem {
+/* .listItem {
   display: flex;
   flex-direction: column;
   width: 25%;
@@ -6,4 +6,11 @@
   padding: 16px 32px;
   box-sizing: border-box;
   border: 1px solid black;
+} */
+
+.action {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Zentriert die Elemente vertikal */
+  gap: 16px; /* Horizontaler Abstand zwischen den Elementen */
 }
