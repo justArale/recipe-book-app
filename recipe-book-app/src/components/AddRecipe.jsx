@@ -6,18 +6,32 @@ function AddRecipe(props) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [file, setFile] = useState("");
-  const [ingredientAmount, setIngredientAmount] = useState("");
-  const [ingredient, setIngredient] = useState("");
-  const [instruction, setInstruction] = useState("");
+  const [ingredientAmount, setIngredientAmount] = useState([""]);
+  const [ingredient, setIngredient] = useState([""]);
+  const [instruction, setInstruction] = useState([""]);
 
   const handleNameInput = (e) => setName(e.target.value);
   const handleDescriptionInput = (e) => setDescription(e.target.value);
   const handleFileUpload = (e) =>
     setFile(URL.createObjectURL(e.target.files[0]));
-  const handleIngredientAmountInput = (e) =>
-    setIngredientAmount(e.target.value);
-  const handleIngredientInput = (e) => setIngredient(e.target.value);
-  const handleInstructionInput = (e) => setInstruction(e.target.value);
+
+  const handleIngredientAmountInput = (e, index) => {
+    const updatedIngredientAmount = [...ingredientAmount];
+    updatedIngredientAmount[index] = e.target.value;
+    setIngredientAmount(updatedIngredientAmount);
+  };
+  const handleIngredientInput = (e, index) => {
+    const updatedIngredient = [...ingredient];
+    updatedIngredient[index] = e.target.value;
+    setIngredient(updatedIngredient);
+  };
+  const handleInstructionInput = (e, index) => {
+    const updatedInstructions = [...instruction];
+    updatedInstructions[index] = e.target.value;
+    setInstruction(updatedInstructions);
+  };
+
+  //check
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,9 +50,18 @@ function AddRecipe(props) {
     setName("");
     setDescription("");
     setFile("");
-    setIngredientAmount("");
-    setIngredient("");
-    setInstruction("");
+    setIngredientAmount([""]);
+    setIngredient([""]);
+    setInstruction([""]);
+  };
+
+  const addNewField = () => {
+    setInstruction([...instruction, ""]);
+  };
+
+  const addNewIngredient = () => {
+    setIngredientAmount([...ingredientAmount, ""]);
+    setIngredient([...ingredient, ""]);
   };
 
   return (
@@ -81,39 +104,48 @@ function AddRecipe(props) {
         </div>
         <div className="addRecipe-ingredient">
           <label className="ingredient-header">Ingredients</label>
-          <div className="ingredient-input">
-            <input
-              type="text"
-              name="ingredient-amount"
-              placeholder="1..."
-              value={ingredientAmount}
-              onChange={handleIngredientAmountInput}
-            />
-            <input
-              type="text"
-              name="ingredient"
-              placeholder="Ingredient..."
-              value={ingredient}
-              onChange={handleIngredientInput}
-            />
-          </div>
+          {ingredientAmount.map((amount, index) => (
+            <div className="ingredient-input" key={index}>
+              <input
+                type="text"
+                name="ingredient-amount"
+                placeholder="1..."
+                value={ingredientAmount[index]}
+                onChange={(e) => handleIngredientAmountInput(e, index)}
+              />
+              <input
+                type="text"
+                name="ingredient"
+                placeholder="Ingredient..."
+                value={ingredient[index]}
+                onChange={(e) => handleIngredientInput(e, index)}
+                onClick={
+                  index === ingredient.length - 1 ? addNewIngredient : null
+                }
+              />
+            </div>
+          ))}
         </div>
         <div className="addRecipe-instruction">
-          <label className="instruction-header">Instruction: </label>
-          <input
-            className="instuction-input"
-            type="text"
-            name="instruction"
-            placeholder="Instruction..."
-            value={instruction}
-            onChange={handleInstructionInput}
-          />
+          <label className="instruction-header">Instruction</label>
+          {instruction.map((instructionText, index) => (
+            <input
+              key={index}
+              className="instuction-input"
+              type="text"
+              name="instruction"
+              placeholder={`${index + 1} Instruction...`}
+              value={instructionText}
+              onChange={(e) => handleInstructionInput(e, index)}
+              onClick={index === instruction.length - 1 ? addNewField : null}
+            />
+          ))}
         </div>
         <div className="action">
           <Link to="/">
             <button type="delete">❌ Cancel</button>
-            <button type="submit">✅ Save</button>
           </Link>
+          <button type="submit">✅ Save</button>
         </div>
       </form>
     </div>
