@@ -4,6 +4,7 @@
   height: 100%;
   border: 1px solid black;
   z-index: 1;
+  align-self: flex-start;
 }
 
 .sidebar a {

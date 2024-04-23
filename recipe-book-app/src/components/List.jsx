@@ -15,7 +15,7 @@ export default function List({ recipe }) {
   // };
 
   return (
-    <div>
+    <div className="recipe-list">
       <img src={recipe.img} alt={recipe.Name} />
       <h3>{recipe.Name}</h3>
       <p>{recipe.Description}</p>
