@@ -4,7 +4,7 @@ import AddRecipe from "./AddRecipe";
 
 function Navbar() {
   return (
-    <nav className="header">
+    <div className="header">
       <div className="inner">
         <div className="nav-title">
           <h1 className="nav-header">Recipe Book</h1>
@@ -16,7 +16,7 @@ function Navbar() {
           </Link>
         </div>
       </div>
-    </nav>
+    </div>
   );
 }
 

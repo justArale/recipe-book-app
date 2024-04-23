@@ -3,9 +3,12 @@
   margin: 0;
   padding: 0;
   text-align: center;
-  background-color: #d6c9bc;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: #f5f0eb;
+  font-family: Arial, sans-serif;
   line-height: 150%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 body {
@@ -16,9 +19,10 @@ body {
 button {
   font-size: 16px;
   padding: 8px 16px;
-  border-color: #a39689;
   border-radius: 50px;
-  background-color: #d6c9bc;
+  background-color: #f5f0eb;
+  font-weight: normal;
+  border: 1px solid #a39689;
 }
 
 li {

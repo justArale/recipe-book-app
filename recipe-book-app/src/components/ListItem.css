@@ -8,9 +8,113 @@
   border: 1px solid black;
 } */
 
+.itemDetail-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  text-align: left;
+}
+
+.recipe-main {
+  background-color: #f2d4bf;
+  padding: 16px;
+  display: flex;
+  gap: 16px;
+  width: 768px;
+  height: 300px;
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  text-align: left;
+  width: 360px;
+  height: 268px;
+  box-sizing: border-box;
+}
+
+.content-title {
+  font-size: 40px;
+  font-weight: normal;
+  line-height: 150%;
+  margin: 0;
+}
+
+.content-description {
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.recipe-main > img {
+  width: 360px;
+  border-radius: 8px;
+}
+
+.ingredient-header,
+.instruction-header {
+  font-size: 24px;
+  height: 36px;
+  font-weight: normal;
+}
+
+.detailPage-ingredients,
+.detailPage-instruction {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  border-radius: 16px;
+  padding: 32px;
+  width: 768px;
+  box-sizing: border-box;
+}
+
+.detailPage-ingredients > ul {
+  padding: 0;
+}
+
+div.instuction-list {
+  counter-reset: list-number;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+div.instuction-list div:before {
+  counter-increment: list-number;
+  content: counter(list-number);
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  color: #665c52;
+  border: 1px solid #d6c9bc;
+}
+
+.instuction-item {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 32px 1fr;
+}
+
 .action {
   display: flex;
   justify-content: center;
-  align-items: center; /* Zentriert die Elemente vertikal */
-  gap: 16px; /* Horizontaler Abstand zwischen den Elementen */
+  align-items: center;
+  gap: 16px;
 }

@@ -1,16 +1,21 @@
 .header {
-  height: 48px;
+  height: 160px;
+  box-sizing: border-box;
   margin: 0 auto;
-  padding-top: 64px;
-  padding-bottom: 32px;
+  padding: 64px 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   /* border: 1px solid black; */
 }
 .inner {
-  padding: 0 16px;
   display: flex;
+  padding: 0 16px;
   justify-content: space-between;
   align-items: center;
-  gap: auto;
+  width: 800px;
+  height: 64px;
+  /* gap: auto; */
 }
 
 .nav-title {

@@ -21,8 +21,8 @@ function ItemDetailsPage() {
     <article>
       {/* <ListItem recipe={recipeProfile} /> */}
       {recipeProfile && (
-        <div>
-          <div className="recipe">
+        <div className="itemDetail-page">
+          <div className="recipe-main">
             <div className="content">
               <h1 className="content-title">{recipeProfile.Name}</h1>
               <p className="content-description">{recipeProfile.Description}</p>
@@ -30,16 +30,27 @@ function ItemDetailsPage() {
             <img src={recipeProfile.img} />
           </div>
           {recipeProfile.Ingredients && (
-            <div>
-              <strong>Ingredients:</strong>
+            <div className="detailPage-ingredients">
+              <strong className="ingredient-header">Ingredients:</strong>
               <ul>
                 {recipeProfile.Ingredients.map((ingredient, index) => (
-                  <li key={index}>{ingredient}</li>
+                  <li key={index} className="ingredient-item">
+                    {ingredient}
+                  </li>
                 ))}
               </ul>
             </div>
           )}
-          <p>{recipeProfile.Instruction}</p>
+          <div className="detailPage-instruction">
+            <strong className="instruction-header">Instruction:</strong>
+            <div className="instuction-list">
+              {recipeProfile.Instruction.map((instruction, index) => (
+                <div key={index} className="instuction-item">
+                  {instruction}
+                </div>
+              ))}
+            </div>
+          </div>
           <div className="action">
             <NavLink to="/" className="selected">
               <button> ↩️ Back</button>
