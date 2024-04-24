@@ -2,13 +2,21 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./AddRecipe.css";
 
-function AddRecipe(props) {
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [file, setFile] = useState("");
-  const [ingredientAmount, setIngredientAmount] = useState([""]);
-  const [ingredient, setIngredient] = useState([""]);
-  const [instruction, setInstruction] = useState([""]);
+function AddRecipe({ addRecipe, existingRecipe }) {
+  const [name, setName] = useState(existingRecipe.Name || "");
+  const [description, setDescription] = useState(
+    existingRecipe.Description || ""
+  );
+  const [file, setFile] = useState(existingRecipe.img || "");
+  const [ingredientAmount, setIngredientAmount] = useState(
+    existingRecipe.Ingredients.amount || [""]
+  );
+  const [ingredient, setIngredient] = useState(
+    existingRecipe.Ingredients.name || [""]
+  );
+  const [instruction, setInstruction] = useState(
+    existingRecipe.Instruction || [""]
+  );
 
   const handleNameInput = (e) => setName(e.target.value);
   const handleDescriptionInput = (e) => setDescription(e.target.value);
@@ -31,8 +39,6 @@ function AddRecipe(props) {
     setInstruction(updatedInstructions);
   };
 
-  //check
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const newRecipe = {
@@ -45,6 +51,7 @@ function AddRecipe(props) {
     };
 
     props.addRecipe(newRecipe);
+    //     props.updateRecipe(updatedRecipe);
 
     // Reset the state
     setName("");
@@ -104,7 +111,7 @@ function AddRecipe(props) {
         </div>
         <div className="addRecipe-ingredient">
           <label className="ingredient-header">Ingredients</label>
-          {ingredientAmount.map((amount, index) => (
+          {ingredientAmount.map((ingredientAmount, index) => (
             <div className="ingredient-input" key={index}>
               <input
                 type="text"
@@ -134,7 +141,7 @@ function AddRecipe(props) {
               className="instuction-input"
               type="text"
               name="instruction"
-              placeholder={`${index + 1} Instruction...`}
+              placeholder={`${index + 1}. Instruction...`}
               value={instructionText}
               onChange={(e) => handleInstructionInput(e, index)}
               onClick={index === instruction.length - 1 ? addNewField : null}
@@ -145,7 +152,9 @@ function AddRecipe(props) {
           <Link to="/">
             <button type="delete">❌ Cancel</button>
           </Link>
-          <button type="submit">✅ Save</button>
+          <Link to="/">
+            <button type="submit">✅ Save</button>
+          </Link>
         </div>
       </form>
     </div>
@@ -153,3 +162,5 @@ function AddRecipe(props) {
 }
 
 export default AddRecipe;
+
+//////// ///

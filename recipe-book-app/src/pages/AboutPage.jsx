@@ -14,7 +14,7 @@ export default function AboutPage() {
           <a href="https://github.com/justArale">
             <button>GitHub</button>
           </a>
-          <a href="https://www.linkedin.com/in/s-kuechler-future-jr-dev/">
+          <a href="https://linkedin.com/in/s-kuechler-future-jr-dev">
             <button>LinkedIn</button>
           </a>
         </div>

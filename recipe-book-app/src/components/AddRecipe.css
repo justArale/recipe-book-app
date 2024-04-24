@@ -64,7 +64,6 @@ input[type="file"] {
 
 .title,
 .description {
-  color: #a39689;
   border: 1px solid #a39689;
   border-radius: 8px;
   margin: 0;
@@ -154,6 +153,7 @@ input[name="ingredient"] {
   border-top-right-radius: 8px;
   padding: 8px 12px;
   box-sizing: border-box;
+  width: 100%;
 }
 
 input[name="instruction"] {

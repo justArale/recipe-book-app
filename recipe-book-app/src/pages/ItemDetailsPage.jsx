@@ -3,6 +3,8 @@ import recipesData from "../components/recipes.json";
 import ListItem from "../components/ListItem";
 import { useState, useEffect } from "react";
 import "../components/ListItem.css";
+/////
+import EditPage from "./EditPage";
 
 function ItemDetailsPage() {
   const { recipeId } = useParams();
@@ -34,8 +36,11 @@ function ItemDetailsPage() {
               <strong className="ingredient-header">Ingredients:</strong>
               <ul>
                 {recipeProfile.Ingredients.map((ingredient, index) => (
-                  <li key={index} className="ingredient-item">
-                    {ingredient}
+                  <li key={index}>
+                    <span className="ingredient-amount">
+                      {ingredient.amount}
+                    </span>
+                    <span className="ingredient-name">{ingredient.name}</span>
                   </li>
                 ))}
               </ul>
@@ -55,8 +60,9 @@ function ItemDetailsPage() {
             <NavLink to="/" className="selected">
               <button> ↩️ Back</button>
             </NavLink>
-            <NavLink to="/" className="selected">
+            <NavLink to={`/editrecipe/${recipeId}`} className="selected">
               <button>✏️ Edit</button>
+              {/* <EditPage recipeId={recipeId} /> */}
             </NavLink>
             <NavLink to="/" className="selected">
               <button
@@ -72,5 +78,5 @@ function ItemDetailsPage() {
     </article>
   );
 }
-
+/////////
 export default ItemDetailsPage;
