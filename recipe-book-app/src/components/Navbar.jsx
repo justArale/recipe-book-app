@@ -1,6 +1,5 @@
 import "./Navbar.css";
-import { Link, NavLink, useParams } from "react-router-dom";
-import AddRecipe from "./AddRecipe";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -11,9 +10,9 @@ function Navbar() {
           <p className="nav-description">This is my awesome list of recipes.</p>
         </div>
         <div className="newRecipeNavigation">
-          <Link to={`/newrecipe`}>
-            <button>New recipe</button>
-          </Link>
+          <button className="addRecipe-button">
+            <a href="/newrecipe">New recipe</a>
+          </button>
         </div>
       </div>
     </div>

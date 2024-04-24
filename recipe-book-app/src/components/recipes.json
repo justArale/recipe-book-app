@@ -44,14 +44,14 @@
       { "amount": "1", "name": "finely grated zest and juice of an orange" },
       { "amount": "1", "name": "grated zest of a lemon" },
       {
-        "amount": "100ml/3\u00bd fl oz",
+        "amount": "100ml",
         "name": "cherry brandy or brandy plus 4tbsp more"
       },
       { "amount": "85g", "name": "macadamia nut" },
       { "amount": "3", "name": "large eggs, lightly beaten" },
       { "amount": "85g", "name": "ground almond" },
       { "amount": "200g", "name": "plain flour" },
-      { "amount": "\u00bd tsp", "name": "baking powder" },
+      { "amount": "1/2 tsp", "name": "baking powder" },
       { "amount": "500g", "name": "pack ready-made shortcrust pastry" },
       { "amount": "1", "name": "beaten egg, to glaze" }
     ],
@@ -109,14 +109,14 @@
       { "amount": "1", "name": "finely grated zest and juice of an orange" },
       { "amount": "1", "name": "grated zest of a lemon" },
       {
-        "amount": "100ml/3\u00bd fl oz",
+        "amount": "100ml",
         "name": "cherry brandy or brandy plus 4tbsp more"
       },
       { "amount": "85g", "name": "macadamia nut" },
       { "amount": "3", "name": "large eggs, lightly beaten" },
       { "amount": "85g", "name": "ground almond" },
       { "amount": "200g", "name": "plain flour" },
-      { "amount": "\u00bd tsp", "name": "baking powder" },
+      { "amount": "1/2 tsp", "name": "baking powder" },
       { "amount": "500g", "name": "pack ready-made shortcrust pastry" },
       { "amount": "1", "name": "beaten egg, to glaze" }
     ],
@@ -172,14 +172,14 @@
       { "amount": "1", "name": "finely grated zest and juice of an orange" },
       { "amount": "1", "name": "grated zest of a lemon" },
       {
-        "amount": "100ml/3\u00bd fl oz",
+        "amount": "100ml",
         "name": "cherry brandy or brandy plus 4tbsp more"
       },
       { "amount": "85g", "name": "macadamia nut" },
       { "amount": "3", "name": "large eggs, lightly beaten" },
       { "amount": "85g", "name": "ground almond" },
       { "amount": "200g", "name": "plain flour" },
-      { "amount": "\u00bd tsp", "name": "baking powder" },
+      { "amount": "1/2 tsp", "name": "baking powder" },
       { "amount": "500g", "name": "pack ready-made shortcrust pastry" },
       { "amount": "1", "name": "beaten egg, to glaze" }
     ],

@@ -2,20 +2,25 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./AddRecipe.css";
 
+//// /// 7//
+// Pass nothing for add recipe or the values of the current recipe based on its ID
 function AddRecipe({ addRecipe, existingRecipe }) {
-  const [name, setName] = useState(existingRecipe.Name || "");
+  const [name, setName] = useState(existingRecipe?.Name || "");
+
   const [description, setDescription] = useState(
-    existingRecipe.Description || ""
+    existingRecipe?.Description || ""
   );
-  const [file, setFile] = useState(existingRecipe.img || "");
+  const [file, setFile] = useState(existingRecipe?.img || "");
+
+  // Map over Ingredient to get the value of amount and name because there are nested Objects in an Array
   const [ingredientAmount, setIngredientAmount] = useState(
-    existingRecipe.Ingredients.amount || [""]
+    existingRecipe?.Ingredients.map((ingredient) => ingredient.amount) || [""]
   );
   const [ingredient, setIngredient] = useState(
-    existingRecipe.Ingredients.name || [""]
+    existingRecipe?.Ingredients.map((ingredient) => ingredient.name) || [""]
   );
   const [instruction, setInstruction] = useState(
-    existingRecipe.Instruction || [""]
+    existingRecipe?.Instruction || [""]
   );
 
   const handleNameInput = (e) => setName(e.target.value);
@@ -39,6 +44,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
     setInstruction(updatedInstructions);
   };
 
+  // preventDefault is build in and prevents the default behavior of submit
   const handleSubmit = (e) => {
     e.preventDefault();
     const newRecipe = {
@@ -126,6 +132,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                 placeholder="Ingredient..."
                 value={ingredient[index]}
                 onChange={(e) => handleIngredientInput(e, index)}
+                // Add a new line if the last line is clicked
                 onClick={
                   index === ingredient.length - 1 ? addNewIngredient : null
                 }
@@ -149,12 +156,13 @@ function AddRecipe({ addRecipe, existingRecipe }) {
           ))}
         </div>
         <div className="action">
-          <Link to="/">
-            <button type="delete">❌ Cancel</button>
-          </Link>
-          <Link to="/">
-            <button type="submit">✅ Save</button>
-          </Link>
+          <button type="delete">
+            <a href="/">❌ Cancel</a>
+          </button>
+
+          <button type="submit">
+            <a href="/">✅ Save</a>
+          </button>
         </div>
       </form>
     </div>
@@ -162,5 +170,3 @@ function AddRecipe({ addRecipe, existingRecipe }) {
 }
 
 export default AddRecipe;
-
-//////// ///

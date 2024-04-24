@@ -24,6 +24,17 @@ button {
   background-color: #f5f0eb;
   font-weight: normal;
   border: 1px solid #a39689;
+  box-sizing: border-box;
+  height: 40px;
+}
+
+button a {
+  text-decoration: none;
+  color: #000;
+}
+
+button a:active {
+  font-weight: bold;
 }
 
 li {

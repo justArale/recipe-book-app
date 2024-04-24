@@ -7,8 +7,8 @@ function DashboardPage() {
   const [recipes] = useState(recipesData);
 
   return (
-    <div>
-      <h1>Recipe List</h1>
+    <div className="recipe-list-wrapper">
+      {/* <h1>Recipe List</h1> */}
       {recipes &&
         recipes.map((recipe) => (
           <div key={recipe.Id}>

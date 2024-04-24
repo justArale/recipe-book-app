@@ -1,10 +1,7 @@
 import { NavLink, useParams } from "react-router-dom";
 import recipesData from "../components/recipes.json";
-import ListItem from "../components/ListItem";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "../components/ListItem.css";
-/////
-import EditPage from "./EditPage";
 
 function ItemDetailsPage() {
   const { recipeId } = useParams();
@@ -57,21 +54,20 @@ function ItemDetailsPage() {
             </div>
           </div>
           <div className="action">
-            <NavLink to="/" className="selected">
-              <button> ↩️ Back</button>
-            </NavLink>
-            <NavLink to={`/editrecipe/${recipeId}`} className="selected">
-              <button>✏️ Edit</button>
-              {/* <EditPage recipeId={recipeId} /> */}
-            </NavLink>
-            <NavLink to="/" className="selected">
-              <button
-                onClick={() => deleteRecipe(recipeProfile.Id)}
-                className="btn-delete"
-              >
-                🗑️ Delete
-              </button>
-            </NavLink>
+            <button>
+              <a href="/">↩️ Back</a>
+            </button>
+
+            <button>
+              <a href="/">✏️ Edit</a>
+            </button>
+
+            <button
+              onClick={() => deleteRecipe(recipeProfile.Id)}
+              className="btn-delete"
+            >
+              <a href="/">🗑️ Delete</a>
+            </button>
           </div>
         </div>
       )}
