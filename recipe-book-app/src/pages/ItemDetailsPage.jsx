@@ -57,9 +57,8 @@ function ItemDetailsPage() {
             <button>
               <a href="/">↩️ Back</a>
             </button>
-
             <button>
-              <a href="/">✏️ Edit</a>
+              <a href={`/editrecipe/${recipeId}`}>✏️ Edit</a>
             </button>
 
             <button
