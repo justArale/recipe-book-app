@@ -2,10 +2,30 @@
 import AddRecipe from "../components/AddRecipe";
 import recipesData from "../components/recipes.json";
 import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 function EditPage() {
   const { recipeId } = useParams();
-  const recipe = recipesData.find((rec) => rec.Id === recipeId);
+  // const recipe = recipesData.find((rec) => rec.Id === recipeId);
+  // const [recipes, setRecipes] = useState(
+  //   JSON.parse(localStorage.getItem("recipes"))
+  // );
+
+  const localRecipes = JSON.parse(localStorage.getItem("recipes"));
+  const allRecipes = [...recipesData, ...localRecipes];
+  const recipe = allRecipes.find((rec) => rec.Id === recipeId);
+  const [recipes, setRecipes] = useState(localRecipes);
+
+  // const handleAddRecipe = (newRecipe) => {
+  //   const updatedRecipes = [...localRecipes, newRecipe];
+  //   localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
+  //   setRecipes(updatedRecipes);
+  // };
+
+  useEffect(() => {
+    // Update local storage whenever recipes state changes
+    localStorage.setItem("recipes", JSON.stringify(recipes));
+  }, [recipes]);
 
   return (
     <>

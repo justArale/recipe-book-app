@@ -1,38 +1,58 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import "./AddRecipe.css";
+import { useNavigate } from "react-router-dom";
 
-//// /// 7//
 // Pass nothing for add recipe or the values of the current recipe based on its ID
 function AddRecipe({ addRecipe, existingRecipe }) {
-  const [name, setName] = useState(existingRecipe?.Name || "");
+  let navigate = useNavigate();
+  const [recipes, setRecipes] = useState(
+    JSON.parse(localStorage.getItem("recipes"))
+  );
 
-  const [description, setDescription] = useState(
+  const generateId = () => {
+    // Random ID with 8 Stellen
+    return Math.random().toString(36).substr(2, 8);
+  };
+
+  useEffect(() => {
+    const storedRecipes = localStorage.getItem("recipes");
+    if (storedRecipes) {
+      try {
+        setRecipes(JSON.parse(storedRecipes));
+      } catch (error) {
+        console.error("Error parsing recipes from localStorage:", error);
+      }
+    } else {
+      console.log("No recipes found in localStorage.");
+    }
+  }, []);
+  const [Id, setId] = useState(existingRecipe?.Id || generateId());
+  const [Name, setName] = useState(existingRecipe?.Name || "");
+
+  const [Description, setDescription] = useState(
     existingRecipe?.Description || ""
   );
-  const [file, setFile] = useState(existingRecipe?.img || "");
-
+  const [img, setImg] = useState(existingRecipe?.img || "");
+  /////
   // Map over Ingredient to get the value of amount and name because there are nested Objects in an Array
-  const [ingredientAmount, setIngredientAmount] = useState(
-    existingRecipe?.Ingredients.map((ingredient) => ingredient.amount) || [""]
+  const [amount, setAmount] = useState(
+    existingRecipe?.Ingredients.map((ingre) => ingre.amount) || [""]
   );
-  console.log("zzzzzz", ingredientAmount);
+
   const [ingredient, setIngredient] = useState(
-    existingRecipe?.Ingredients.map((ingredient) => ingredient.name) || [""]
+    existingRecipe?.Ingredients.map((ingre) => ingre.name) || [""]
   );
-  const [instruction, setInstruction] = useState(
+  const [Instruction, setInstruction] = useState(
     existingRecipe?.Instruction || [""]
   );
-
   const handleNameInput = (e) => setName(e.target.value);
   const handleDescriptionInput = (e) => setDescription(e.target.value);
-  const handleFileUpload = (e) =>
-    setFile(URL.createObjectURL(e.target.files[0]));
+  const handleFileUpload = (e) => setImg(URL.createObjectURL(e.target.file[0]));
 
   const handleIngredientAmountInput = (e, index) => {
-    const updatedIngredientAmount = [...ingredientAmount];
+    const updatedIngredientAmount = [...amount];
     updatedIngredientAmount[index] = e.target.value;
-    setIngredientAmount(updatedIngredientAmount);
+    setAmount(updatedIngredientAmount);
   };
   const handleIngredientInput = (e, index) => {
     const updatedIngredient = [...ingredient];
@@ -40,7 +60,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
     setIngredient(updatedIngredient);
   };
   const handleInstructionInput = (e, index) => {
-    const updatedInstructions = [...instruction];
+    const updatedInstructions = [...Instruction];
     updatedInstructions[index] = e.target.value;
     setInstruction(updatedInstructions);
   };
@@ -48,35 +68,47 @@ function AddRecipe({ addRecipe, existingRecipe }) {
   // preventDefault is build in and prevents the default behavior of submit
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const newRecipe = {
-      name,
-      description,
-      file,
-      ingredientAmount,
+      Id,
+      Name,
+      Description,
+      img,
+      amount,
       ingredient,
-      instruction,
+      Instruction,
     };
 
-    props.addRecipe(newRecipe);
-    //     props.updateRecipe(updatedRecipe);
+    const updatedRecipeList = [...recipes, newRecipe];
+    setRecipes(updatedRecipeList);
+    localStorage.setItem("recipes", JSON.stringify(updatedRecipeList));
+    console.log("recipe added");
 
     // Reset the state
+    setId("");
     setName("");
     setDescription("");
-    setFile("");
-    setIngredientAmount([""]);
+    setImg("");
+    setAmount([""]);
     setIngredient([""]);
     setInstruction([""]);
+
+    navigate("/");
   };
 
   const addNewField = () => {
-    setInstruction([...instruction, ""]);
+    setInstruction([...Instruction, ""]);
   };
 
   const addNewIngredient = () => {
-    setIngredientAmount([...ingredientAmount, ""]);
+    setAmount([...amount, ""]);
     setIngredient([...ingredient, ""]);
   };
+
+  // useEffect(() => {
+  //   // Update local storage whenever recipes state changes
+  //   localStorage.setItem("recipes", JSON.stringify(recipes));
+  // }, [recipes]);
 
   return (
     <div>
@@ -86,20 +118,22 @@ function AddRecipe({ addRecipe, existingRecipe }) {
           <div className="addRecipe-headerRow">
             <div className="addRecipe-headerContent">
               <input
+                required
                 type="text"
-                name="name"
+                name="Name"
                 className="title"
                 placeholder="Title..."
-                value={name}
+                value={Name}
                 onChange={handleNameInput}
               />
 
               <textarea
+                required
                 type="text"
-                name="description"
+                name="Description"
                 className="description"
                 placeholder="Description..."
-                value={description}
+                value={Description}
                 onChange={handleDescriptionInput}
               />
             </div>
@@ -107,8 +141,9 @@ function AddRecipe({ addRecipe, existingRecipe }) {
               <label className="uploadButton">
                 <input
                   type="file"
-                  src={file}
-                  alt={`${name}+Img`}
+                  name="img"
+                  src={img}
+                  alt={`${Name}+Img`}
                   onChange={handleFileUpload}
                 />{" "}
                 🖼️ Choose Image
@@ -118,16 +153,18 @@ function AddRecipe({ addRecipe, existingRecipe }) {
         </div>
         <div className="addRecipe-ingredient">
           <label className="ingredient-header">Ingredients</label>
-          {ingredientAmount.map((ingredientAmount, index) => (
+          {amount.map((amount, index) => (
             <div className="ingredient-input" key={index}>
               <input
+                required
                 type="text"
                 name="ingredient-amount"
                 placeholder="1..."
-                value={ingredientAmount}
+                value={amount}
                 onChange={(e) => handleIngredientAmountInput(e, index)}
               />
               <input
+                required
                 type="text"
                 name="ingredient"
                 placeholder="Ingredient..."
@@ -143,16 +180,17 @@ function AddRecipe({ addRecipe, existingRecipe }) {
         </div>
         <div className="addRecipe-instruction">
           <label className="instruction-header">Instruction</label>
-          {instruction.map((instructionText, index) => (
+          {Instruction.map((instructionText, index) => (
             <input
               key={index}
+              required
               className="instuction-input"
               type="text"
               name="instruction"
               placeholder={`${index + 1}. Instruction...`}
               value={instructionText}
               onChange={(e) => handleInstructionInput(e, index)}
-              onClick={index === instruction.length - 1 ? addNewField : null}
+              onClick={index === Instruction.length - 1 ? addNewField : null}
             />
           ))}
         </div>
@@ -161,17 +199,11 @@ function AddRecipe({ addRecipe, existingRecipe }) {
             <a href="/">❌ Cancel</a>
           </button>
 
-          <button type="submit">
+          <button type="submit" onClick={handleSubmit}>
             <a href="/">✅ Save</a>
           </button>
           {/* <button type="submit">
-            <a
-              {...(existingRecipe
-                ? (href = `/recipes/${recipeId}`)
-                : (href = "/"))}
-            >
-              ✅ Save
-            </a>
+            ✅ Save
           </button> */}
         </div>
       </form>

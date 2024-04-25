@@ -11,13 +11,9 @@
 .grid-container {
   display: flex;
   flex-wrap: wrap;
-  /* gap: 32px; */
+  justify-content: center;
+  width: 800px;
   gap: 32px;
-  padding: 0;
-  margin: 0;
-}
-
-.findTheChild {
   padding: 0;
   margin: 0;
 }
@@ -40,8 +36,46 @@
   box-sizing: border-box;
 }
 
-.findTheChild:first-of-type .list-recipe {
+.findTheChild:nth-of-type(1n) .list-recipe {
+  background-color: #eacdad;
+}
+
+.findTheChild:nth-of-type(2n) .list-recipe {
+  background-color: #ebc8cf;
+}
+
+.findTheChild:nth-of-type(3n) .list-recipe {
   background-color: #bcc4d5;
+}
+
+.findTheChild:nth-of-type(4n) .list-recipe {
+  background-color: #f2d4bf;
+}
+
+.findTheChild:nth-of-type(5n) .list-recipe {
+  background-color: #dfd1dd;
+}
+
+.findTheChild:nth-of-type(6n) .list-recipe {
+  background-color: #b6d2ce;
+}
+
+.findTheChild:nth-of-type(7n) .list-recipe {
+  background-color: #f4eab4;
+}
+
+.findTheChild:nth-of-type(8n) .list-recipe {
+  background-color: #c8c9d9;
+}
+
+.grid-row:nth-of-type(1n),
+.grid-row:nth-of-type(2n) {
+  align-self: flex-start;
+}
+
+.findTheChild:nth-of-type(3n) .list-recipe,
+.findTheChild:nth-of-type(4n) .list-recipe {
+  align-self: flex-end;
 }
 
 .list-recipe {
@@ -53,7 +87,6 @@
   box-sizing: border-box;
   border-radius: 16px;
   width: 320px;
-  background-color: #eacdad;
 }
 
 .image-wrapper {
@@ -88,7 +121,7 @@
 }
 
 .list-title {
-  height: 48px;
+  height: 38px;
   box-sizing: border-box;
   display: flex;
   align-items: center;

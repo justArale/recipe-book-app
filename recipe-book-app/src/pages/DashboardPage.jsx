@@ -1,12 +1,14 @@
 import List from "../components/List";
 import { Link } from "react-router-dom";
 import recipesData from "../components/recipes.json";
-import { useState } from "react";
-import { Fragment } from "react";
+import { useState, useEffect } from "react";
 
 function DashboardPage() {
-  const [recipes] = useState(recipesData);
-
+  // const [recipes] = useState(recipesData);
+  // Initialize state from local storage if available, otherwise use recipesData
+  const [recipes, setRecipes] = useState(
+    JSON.parse(localStorage.getItem("recipes")) || recipesData
+  );
   return (
     <div className="grid-container">
       {recipes &&
@@ -26,5 +28,5 @@ function DashboardPage() {
     </div>
   );
 }
-///7///7777/   /7
+
 export default DashboardPage;

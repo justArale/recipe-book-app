@@ -1,11 +1,13 @@
 import { useParams } from "react-router-dom";
 import recipesData from "../components/recipes.json";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../components/ListItem.css";
-
+///
 function ItemDetailsPage() {
   const { recipeId } = useParams();
-  const [recipes, setRecipes] = useState(recipesData);
+  const [recipes, setRecipes] = useState(
+    JSON.parse(localStorage.getItem("recipes")) || recipesData
+  );
 
   const recipeProfile = recipesData.find((recipe) => recipe.Id === recipeId);
 
@@ -15,6 +17,11 @@ function ItemDetailsPage() {
     });
     setRecipes(filteredRecipes);
   };
+
+  useEffect(() => {
+    // Update local storage whenever recipes state changes
+    localStorage.setItem("recipes", JSON.stringify(recipes));
+  }, [recipes]);
 
   return (
     <article>
@@ -30,16 +37,16 @@ function ItemDetailsPage() {
           {recipeProfile.Ingredients && (
             <div className="detailPage-ingredients">
               <strong className="ingredient-header">Ingredients:</strong>
-              <ul>
+              <div className="ingredient-list">
                 {recipeProfile.Ingredients.map((ingredient, index) => (
-                  <li key={index}>
+                  <div key={index} className="ingredient-item">
                     <span className="ingredient-amount">
                       {ingredient.amount}
                     </span>
                     <span className="ingredient-name">{ingredient.name}</span>
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           )}
           <div className="detailPage-instruction">
@@ -72,5 +79,5 @@ function ItemDetailsPage() {
     </article>
   );
 }
-
+/////////
 export default ItemDetailsPage;
