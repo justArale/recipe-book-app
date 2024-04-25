@@ -1,4 +1,4 @@
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import recipesData from "../components/recipes.json";
 import { useState } from "react";
 import "../components/ListItem.css";
@@ -18,7 +18,6 @@ function ItemDetailsPage() {
 
   return (
     <article>
-      {/* <ListItem recipe={recipeProfile} /> */}
       {recipeProfile && (
         <div className="itemDetail-page">
           <div className="recipe-main">
@@ -73,5 +72,5 @@ function ItemDetailsPage() {
     </article>
   );
 }
-/////////
+
 export default ItemDetailsPage;

@@ -16,6 +16,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
   const [ingredientAmount, setIngredientAmount] = useState(
     existingRecipe?.Ingredients.map((ingredient) => ingredient.amount) || [""]
   );
+  console.log("zzzzzz", ingredientAmount);
   const [ingredient, setIngredient] = useState(
     existingRecipe?.Ingredients.map((ingredient) => ingredient.name) || [""]
   );
@@ -123,7 +124,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                 type="text"
                 name="ingredient-amount"
                 placeholder="1..."
-                value={ingredientAmount[index]}
+                value={ingredientAmount}
                 onChange={(e) => handleIngredientAmountInput(e, index)}
               />
               <input
@@ -163,6 +164,15 @@ function AddRecipe({ addRecipe, existingRecipe }) {
           <button type="submit">
             <a href="/">✅ Save</a>
           </button>
+          {/* <button type="submit">
+            <a
+              {...(existingRecipe
+                ? (href = `/recipes/${recipeId}`)
+                : (href = "/"))}
+            >
+              ✅ Save
+            </a>
+          </button> */}
         </div>
       </form>
     </div>

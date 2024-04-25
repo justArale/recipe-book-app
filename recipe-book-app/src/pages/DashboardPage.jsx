@@ -1,24 +1,30 @@
 import List from "../components/List";
-import { Link, NavLink, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import recipesData from "../components/recipes.json";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { Fragment } from "react";
 
 function DashboardPage() {
   const [recipes] = useState(recipesData);
 
   return (
-    <div className="recipe-list-wrapper">
-      {/* <h1>Recipe List</h1> */}
+    <div className="grid-container">
       {recipes &&
-        recipes.map((recipe) => (
-          <div key={recipe.Id}>
-            <Link to={`/recipes/${recipe.Id}`}>
-              <List recipe={recipe} />
-            </Link>
+        recipes.map((recipe, index) => (
+          <div key={recipe.Id} className="findTheChild">
+            {index % 2 === 0 && <div className="grid-row" />}
+            <div className="grid-item">
+              <Link to={`/recipes/${recipe.Id}`} className="listItem-link">
+                <List recipe={recipe} className="listItem-container" />
+              </Link>
+            </div>
+            {index % 2 === 1 || index === recipes.length - 1 ? (
+              <div className="grid-row" />
+            ) : null}
           </div>
         ))}
     </div>
   );
 }
-
+///7///7777/   /7
 export default DashboardPage;
