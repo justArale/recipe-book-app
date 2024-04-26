@@ -1,17 +1,22 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./AddRecipe.css";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 // Pass nothing for add recipe or the values of the current recipe based on its ID
 function AddRecipe({ addRecipe, existingRecipe }) {
+  const { recipeId } = useParams();
   let navigate = useNavigate();
   const [recipes, setRecipes] = useState(
     JSON.parse(localStorage.getItem("recipes"))
   );
 
   const generateId = () => {
-    // Random ID with 8 Stellen
-    return Math.random().toString(36).substr(2, 8);
+    // Random ID
+    const dateString = Date.now().toString(36);
+    const randomness = Math.random().toString(36).substr(2);
+    return dateString + randomness;
   };
 
   useEffect(() => {
@@ -74,8 +79,10 @@ function AddRecipe({ addRecipe, existingRecipe }) {
       Name,
       Description,
       img,
-      amount,
-      ingredient,
+      Ingredients: ingredient.map((name, index) => ({
+        amount: amount[index],
+        name: name,
+      })),
       Instruction,
     };
 
@@ -83,6 +90,12 @@ function AddRecipe({ addRecipe, existingRecipe }) {
     setRecipes(updatedRecipeList);
     localStorage.setItem("recipes", JSON.stringify(updatedRecipeList));
     console.log("recipe added");
+
+    // const existingRecipe = JSON.parse(localStorage.getItem("recipe")) || [];
+    // const updatedRecipes = existingRecipe.map((recipe) =>
+    //   recipe.Id === recipeId ? updatedRecipes : recipe
+    // );
+    // localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
 
     // Reset the state
     setId("");
@@ -96,6 +109,30 @@ function AddRecipe({ addRecipe, existingRecipe }) {
     navigate("/");
   };
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const updatedRecipe = {
+  //     Id,
+  //     Name,
+  //     Description,
+  //     img,
+  //     Ingredients: ingredient.map((name, index) => ({
+  //       amount: amount[index],
+  //       name: name,
+  //     })),
+  //     Instruction,
+  //   };
+
+  //   const updatedRecipeList = [...recipes, updatedRecipe];
+  //   setRecipes(updatedRecipeList);
+  //   const existingRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
+  //   const updatedRecipes = existingRecipes.map((rec) =>
+  //     rec.Id === recipeId ? updatedRecipe : rec
+  //   );
+  //   localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
+  //   navigate("/");
+  // };
+
   const addNewField = () => {
     setInstruction([...Instruction, ""]);
   };
@@ -105,10 +142,10 @@ function AddRecipe({ addRecipe, existingRecipe }) {
     setIngredient([...ingredient, ""]);
   };
 
-  // useEffect(() => {
-  //   // Update local storage whenever recipes state changes
-  //   localStorage.setItem("recipes", JSON.stringify(recipes));
-  // }, [recipes]);
+  useEffect(() => {
+    // Update local storage whenever recipes state changes
+    localStorage.setItem("recipes", JSON.stringify(recipes));
+  }, [recipes]);
 
   return (
     <div>

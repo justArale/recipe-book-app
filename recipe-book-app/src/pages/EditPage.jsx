@@ -14,13 +14,9 @@ function EditPage() {
   const localRecipes = JSON.parse(localStorage.getItem("recipes"));
   const allRecipes = [...recipesData, ...localRecipes];
   const recipe = allRecipes.find((rec) => rec.Id === recipeId);
-  const [recipes, setRecipes] = useState(localRecipes);
-
-  // const handleAddRecipe = (newRecipe) => {
-  //   const updatedRecipes = [...localRecipes, newRecipe];
-  //   localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
-  //   setRecipes(updatedRecipes);
-  // };
+  const [recipes, setRecipes] = useState(
+    JSON.parse(localStorage.getItem("recipes"))
+  );
 
   useEffect(() => {
     // Update local storage whenever recipes state changes

@@ -4,24 +4,42 @@ import { useState, useEffect } from "react";
 import "../components/ListItem.css";
 ///
 function ItemDetailsPage() {
+  // const { recipeId } = useParams();
+  // const [recipes, setRecipes] = useState(
+  //   JSON.parse(localStorage.getItem("recipes")) || recipesData
+  // );
+
+  // const recipeProfile = recipesData.find((recipe) => recipe.Id === recipeId);
+
+  // const deleteRecipe = (recipeId) => {
+  //   const filteredRecipes = recipes.filter((recipe) => {
+  //     return recipe.Id !== recipeId;
+  //   });
+  //   setRecipes(filteredRecipes);
+  // };
+
+  // useEffect(() => {
+  //   // Update local storage whenever recipes state changes
+  //   localStorage.setItem("recipes", JSON.stringify(recipes));
+  // }, [recipes]);
+
   const { recipeId } = useParams();
   const [recipes, setRecipes] = useState(
     JSON.parse(localStorage.getItem("recipes")) || recipesData
   );
 
-  const recipeProfile = recipesData.find((recipe) => recipe.Id === recipeId);
-
-  const deleteRecipe = (recipeId) => {
-    const filteredRecipes = recipes.filter((recipe) => {
-      return recipe.Id !== recipeId;
-    });
-    setRecipes(filteredRecipes);
-  };
-
   useEffect(() => {
     // Update local storage whenever recipes state changes
     localStorage.setItem("recipes", JSON.stringify(recipes));
   }, [recipes]);
+
+  // Suchen des Rezepts in den gespeicherten Rezepten aus dem Local Storage
+  const recipeProfile = recipes.find((recipe) => recipe.Id === recipeId);
+
+  const deleteRecipe = (recipeId) => {
+    const filteredRecipes = recipes.filter((recipe) => recipe.Id !== recipeId);
+    setRecipes(filteredRecipes);
+  };
 
   return (
     <article>

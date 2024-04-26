@@ -3,8 +3,12 @@ import recipesData from "../components/recipes.json";
 import { useState, useEffect } from "react";
 
 function NewRecipePage() {
-  const [recipes, setRecipes] = useState(recipesData);
-  const [recipesDataCopy, setRecipesDataCopy] = useState(recipesData);
+  const [recipes, setRecipes] = useState(
+    JSON.parse(localStorage.getItem("recipes"))
+  );
+  const [recipesDataCopy, setRecipesDataCopy] = useState(
+    JSON.parse(localStorage.getItem("recipes"))
+  );
 
   const addNewRecipe = (newRecipe) => {
     const updatedRecipes = [...recipes, newRecipe];
@@ -18,6 +22,7 @@ function NewRecipePage() {
     // Update local storage whenever recipes state changes
     localStorage.setItem("recipes", JSON.stringify(recipes));
   }, [recipes]);
+
   return <AddRecipe addRecipe={addNewRecipe} />;
 }
 
