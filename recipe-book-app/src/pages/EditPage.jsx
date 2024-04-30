@@ -6,22 +6,19 @@ import { useState, useEffect } from "react";
 
 function EditPage() {
   const { recipeId } = useParams();
-  // const recipe = recipesData.find((rec) => rec.Id === recipeId);
-  // const [recipes, setRecipes] = useState(
-  //   JSON.parse(localStorage.getItem("recipes"))
-  // );
-
-  const localRecipes = JSON.parse(localStorage.getItem("recipes"));
-  const allRecipes = [...recipesData, ...localRecipes];
-  const recipe = allRecipes.find((rec) => rec.Id === recipeId);
   const [recipes, setRecipes] = useState(
-    JSON.parse(localStorage.getItem("recipes"))
+    JSON.parse(localStorage.getItem("recipes")) || recipesData
   );
 
-  useEffect(() => {
-    // Update local storage whenever recipes state changes
-    localStorage.setItem("recipes", JSON.stringify(recipes));
-  }, [recipes]);
+  const localRecipes = JSON.parse(localStorage.getItem("recipes"));
+  const allRecipes = [...localRecipes, ...recipesData];
+  const recipe = allRecipes.find((rec) => rec.Id === recipeId);
+
+  // unnötig, eventuell aber für outsourcen AddRecipe
+  // useEffect(() => {
+  //   // Update local storage whenever recipes state changes
+  //   localStorage.setItem("recipes", JSON.stringify(recipes));
+  // }, [recipes]);
 
   return (
     <>

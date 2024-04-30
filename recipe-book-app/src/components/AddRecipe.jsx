@@ -71,47 +71,10 @@ function AddRecipe({ addRecipe, existingRecipe }) {
   };
 
   // preventDefault is build in and prevents the default behavior of submit
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const newRecipe = {
-      Id,
-      Name,
-      Description,
-      img,
-      Ingredients: ingredient.map((name, index) => ({
-        amount: amount[index],
-        name: name,
-      })),
-      Instruction,
-    };
-
-    const updatedRecipeList = [...recipes, newRecipe];
-    setRecipes(updatedRecipeList);
-    localStorage.setItem("recipes", JSON.stringify(updatedRecipeList));
-    console.log("recipe added");
-
-    // const existingRecipe = JSON.parse(localStorage.getItem("recipe")) || [];
-    // const updatedRecipes = existingRecipe.map((recipe) =>
-    //   recipe.Id === recipeId ? updatedRecipes : recipe
-    // );
-    // localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
-
-    // Reset the state
-    setId("");
-    setName("");
-    setDescription("");
-    setImg("");
-    setAmount([""]);
-    setIngredient([""]);
-    setInstruction([""]);
-
-    navigate("/");
-  };
-
   // const handleSubmit = (e) => {
   //   e.preventDefault();
-  //   const updatedRecipe = {
+
+  //   const newRecipe = {
   //     Id,
   //     Name,
   //     Description,
@@ -123,15 +86,55 @@ function AddRecipe({ addRecipe, existingRecipe }) {
   //     Instruction,
   //   };
 
-  //   const updatedRecipeList = [...recipes, updatedRecipe];
+  //   const updatedRecipeList = [...recipes, newRecipe];
   //   setRecipes(updatedRecipeList);
-  //   const existingRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
-  //   const updatedRecipes = existingRecipes.map((rec) =>
-  //     rec.Id === recipeId ? updatedRecipe : rec
-  //   );
-  //   localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
+
+  //   localStorage.setItem("recipes", JSON.stringify(updatedRecipeList));
+  //   console.log("recipe added");
+
+  //   // const existingRecipe = JSON.parse(localStorage.getItem("recipe")) || [];
+  //   // const updatedRecipes = existingRecipe.map((recipe) =>
+  //   //   recipe.Id === recipeId ? updatedRecipes : recipe
+  //   // );
+  //   // localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
+
+  //   // Reset the state
+  //   setId("");
+  //   setName("");
+  //   setDescription("");
+  //   setImg("");
+  //   setAmount([""]);
+  //   setIngredient([""]);
+  //   setInstruction([""]);
+
   //   navigate("/");
   // };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const updatedRecipe = {
+      Id,
+      Name,
+      Description,
+      img,
+      Ingredients: ingredient.map((name, index) => ({
+        amount: amount[index],
+        name: name,
+      })),
+      Instruction,
+    };
+
+    const updatedRecipeList = [...recipes, updatedRecipe];
+    setRecipes(updatedRecipeList);
+
+    const existingRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
+    const updatedRecipes = existingRecipes.map((rec) =>
+      rec.Id === recipeId ? updatedRecipe : rec
+    );
+    localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
+    navigate("/");
+  };
 
   const addNewField = () => {
     setInstruction([...Instruction, ""]);
