@@ -33,6 +33,11 @@ function ItemDetailsPage() {
     localStorage.setItem("recipes", JSON.stringify(recipes));
   }, [recipes]);
 
+  useEffect(() => {
+    // jump to the top
+    window.scrollTo(0, 0);
+  }, []);
+
   // Suchen des Rezepts in den gespeicherten Rezepten aus dem Local Storage
   const recipeProfile = recipes.find((recipe) => recipe.Id === recipeId);
 
