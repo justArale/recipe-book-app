@@ -1,67 +1,71 @@
 [
   {
     "Id": "1fefs",
-    "Name": "Christmas pie",
-    "img": "https://images.immediate.co.uk/production/volatile/sites/30/2008/01/Christmas-pie-2ed9223.jpg?quality=90&webp=true&resize=600,545",
-    "Description": "Combine a few key Christmas flavours here to make a pie that both children and adults will adore",
+    "Name": "Taiyaki",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrrpC_VNxU9KXbw7fpRFXlQtLkNLqftCJwOWjG_z7ZIw&s",
+    "Description": "Taiyaki (Japanese: 鯛焼き, 'sea bream pastry') is a fish-shaped filled waffles. Traditionally filled with Anko (sweet red bean paste), other popular fillings are vanilla cream, matcha cream, chestnut paste, or Nutella",
     "Author": "Mary Cadogan",
     "Ingredients": [
-      { "amount": "2 tbsp", "name": "olive oil" },
-      { "amount": "indv.", "name": "knob butter" },
-      { "amount": "1", "name": "onion, finely chopped" },
-      { "amount": "500g", "name": "sausagemeat or skinned sausages" },
-      { "amount": "1", "name": "grated zest of a lemon" },
-      { "amount": "100g", "name": "fresh white breadcrumbs" },
-      { "amount": "85g", "name": "ready-to-eat dried apricots, chopped" },
-      { "amount": "50g", "name": "chestnut, canned or vacuum-packed, chopped" },
-      { "amount": "2 tsp", "name": "chopped fresh or 1tsp dried thyme" },
-      { "amount": "100g", "name": "cranberries, fresh or frozen" },
-      { "amount": "500g", "name": "boneless, skinless chicken breasts" },
-      { "amount": "500g", "name": "pack ready-made shortcrust pastry" },
-      { "amount": "1", "name": "beaten egg, to glaze" }
+      { "amount": "150g", "name": "Flour" },
+      { "amount": "1 TL", "name": "Bakingpowder" },
+      { "amount": "2", "name": "Eggs" },
+      { "amount": "200ml", "name": "Milk" },
+      { "amount": "50g", "name": "Sugar" },
+      { "amount": "2 TL", "name": "Oil" },
+      { "amount": "25g", "name": "Honey" },
+      { "amount": "a bit", "name": "Salt" },
+      { "amount": "indv.", "name": "Filling, like anko or chocolate" },
+      { "amount": "", "name": "Oil for the pan" }
     ],
     "Instruction": [
-      "Heat oven to 190C/fan 170C/gas 5. Heat 1 tbsp oil and the butter in a frying pan, then add the onion and fry for 5 mins until softened. Cool slightly. Tip the sausagemeat, lemon zest, breadcrumbs, apricots, chestnuts and thyme into a bowl. Add the onion and cranberries, and mix everything together with your hands, adding plenty of pepper and a little salt.",
-      "Cut each chicken breast into three fillets lengthwise and season all over with salt and pepper. Heat the remaining oil in the frying pan, and fry the chicken fillets quickly until browned, about 6-8 mins.",
-      "Roll out two-thirds of the pastry to line a 20-23cm springform or deep loose-based tart tin. Press in half the sausage mix and spread to level. Then add the chicken pieces in one layer and cover with the rest of the sausage. Press down lightly.",
-      "Roll out the remaining pastry. Brush the edges of the pastry with beaten egg and cover with the pastry lid. Pinch the edges to seal, then trim. Brush the top of the pie with egg, then roll out the trimmings to make holly leaf shapes and berries. Decorate the pie and brush again with egg.",
-      "Set the tin on a baking sheet and bake for 50-60 mins, then cool in the tin for 15 mins. Remove and leave to cool completely. Serve with a winter salad and pickles."
+      "First, crack the eggs into a mixing bowl and add the honey, sugar, and milk. If you prefer your Taiyaki filled with savory ingredients, you can omit the sugar from the batter.",
+      "Gradually add the sifted flour and baking powder to the mixing bowl until a smooth batter forms.",
+      "Preheat either a stovetop Taiyaki waffle iron or an electric Taiyaki maker to bake the batter.",
+      "Before pouring the batter into the fish-shaped mold, brush the surfaces with some oil to prevent sticking. Fill the waffle iron halfway with batter to leave enough space for the filling. Using a spoon, spread Anko onto the batter. Alternatively, you can use other ingredients as fillings. Pour the remaining batter into the mold until it's full.",
+      "After approximately 3-4 minutes, the Taiyaki will be ready! It's best to enjoy the fish-shaped pastries while they're still warm."
     ]
   },
   {
     "Id": "2sd",
-    "Name": "Simmer-&-stir Christmas cake",
-    "img": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe-image-legacy-id-559480_11-ec53335.jpg?quality=90&webp=true&resize=440,400",
-    "Description": "An easy-to-make alternative to traditional Christmas cakes which requires no beating",
+    "Name": "Miso Ramen",
+    "img": "https://oryoki.de/media/image/news/55/md/miso-ramen,-japanisches-rezept.webp",
+    "Description": " Translated, Miso roughly means 'source of flavor', and its taste is referred to as Umami. This term describes a savory, salty, spicy, and at the same time, meaty flavor. In Japanese cuisine, Miso paste is used in many dishes, such as miso soup.",
     "Author": "Mary Cadogan",
     "Ingredients": [
-      { "amount": "175g", "name": "butter, chopped" },
-      { "amount": "200g.", "name": "dark muscovado sugar" },
+      { "amount": "4", "name": "garlic cloves" },
+      { "amount": "50g.", "name": "ginger" },
       {
-        "amount": "750g",
-        "name": "luxury mixed dried fruit (one that includes mixed peel and glac\u00e9 cherries)"
+        "amount": "2",
+        "name": "shells"
       },
-      { "amount": "1", "name": "finely grated zest and juice of an orange" },
-      { "amount": "1", "name": "grated zest of a lemon" },
       {
-        "amount": "100ml",
-        "name": "cherry brandy or brandy plus 4tbsp more"
+        "amount": "2 tbsp",
+        "name": "sesame seeds"
       },
-      { "amount": "85g", "name": "macadamia nut" },
-      { "amount": "3", "name": "large eggs, lightly beaten" },
-      { "amount": "85g", "name": "ground almond" },
-      { "amount": "200g", "name": "plain flour" },
-      { "amount": "1/2 tsp", "name": "baking powder" },
-      { "amount": "500g", "name": "pack ready-made shortcrust pastry" },
-      { "amount": "1", "name": "beaten egg, to glaze" }
+      { "amount": "1 tsp", "name": "chili sauce" },
+      {
+        "amount": "6 tbsp",
+        "name": "Miso paste"
+      },
+      { "amount": "1 tbsp", "name": "sugar" },
+      { "amount": "2 tbsp", "name": "sake" },
+      { "amount": "2L", "name": "stock (chicken or vegetable stock)" },
+      { "amount": "2 tsp", "name": "salt" },
+      { "amount": "1/2 tsp", "name": "white pepper" },
+      { "amount": "200g", "name": "Ramen noodles" },
+      { "amount": "4", "name": "eggs" },
+      { "amount": "indv.", "name": "soy sauce" },
+      {
+        "amount": "indv",
+        "name": "Chaucu (thin strips of pork), tofu, carrots, corn, pak choi, zucchini, mushrooms, spring onions, nori leaves, pickled red ginger, edamame, shiitake mushrooms, etc. as desired."
+      }
     ],
     "Instruction": [
-      "Put the butter, sugar, fruit, zests, juice and 100ml/3\u00bdfl oz brandy in a large pan. Bring slowly to the boil, stirring until the butter has melted. Reduce the heat and bubble for 10 minutes, stirring occasionally.",
-      "Remove the pan from the heat and leave to cool for 30 minutes.",
-      "Meanwhile, preheat the oven to 150C/gas 2/ fan 130C and line a 20cm round cake tin. Toast the nuts in a dry frying pan, tossing them until evenly browned, or in the oven for 8-10 minutes - keep an eye on them as they burn easily. When they are cool, chop roughly. Stir the eggs, nuts and ground almonds into the fruit mixture and mix well. Sift the flour, baking powder and spices into the pan. Stir in gently, until there are no traces of flour left.",
-      "Spoon the mixture into the tin and smooth it down evenly - you will find this is easiest with the back of a metal spoon which has been dipped into boiling water.",
-      "Bake for 45 minutes, then turn down the heat to 140C/gas 1/ fan120C and cook for a further 1-1\u00bc hours (about a further 1\u00be hours if you have a gas oven) until the cake is dark golden in appearance and firm to the touch. Cover the top of the cake with foil if it starts to darken too much. To check the cake is done, insert a fine skewer into the centre - if it comes out clean, the cake is cooked.",
-      "Make holes all over the warm cake with a fine skewer and spoon the extra 4tbsp brandy over the holes until it has all soaked in. Leave the cake to cool in the tin. When it's cold, remove it from the tin, peel off the lining paper, then wrap first in baking parchment and then in foil. The cake will keep in a cupboard for up to three months or you can freeze it for six months."
+      "First peel and finely chop the garlic, ginger and shallots. Then heat the sesame oil in a large pan. Sauté the garlic, ginger and shallots in it. Add the miso paste and sauté together. Then deglaze with two liters of stock.",
+      "Now season with sugar, sesame seeds (preferably crushed with a mortar beforehand), sake, salt and pepper and simmer for about ten minutes. Meanwhile, the vegetables can be washed and cut into bite-sized pieces.",
+      "Boil the eggs for about 5 - 7 minutes, depending on how you like them, and quench when cold. This can be prepared a day in advance if the eggs are to be marinated in the typical Japanese way. Make a marinade from 4 tbsp soy sauce, 4 tbsp mirin (sweet rice wine) and 12 tbsp water. Peel the boiled eggs and place them in the marinade so that they are completely covered. It is best to leave them in the fridge overnight, but for at least 3 hours.",
+      "Cook the ramen noodles according to the packet instructions and drain well. Add them to the stock together with the vegetables and season with soy sauce.",
+      "Pour the soup into bowls and top each bowl with an egg (halved) and the remaining toppings (chachu, nori, tofu, pickled ginger)."
     ]
   },
   {

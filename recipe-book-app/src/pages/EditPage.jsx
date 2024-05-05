@@ -11,6 +11,7 @@ function EditPage() {
   );
 
   const localRecipes = JSON.parse(localStorage.getItem("recipes"));
+  // first spread the localRecipes, because .find takes the first matching id it finds
   const allRecipes = [...localRecipes, ...recipesData];
   const recipe = allRecipes.find((rec) => rec.Id === recipeId);
 

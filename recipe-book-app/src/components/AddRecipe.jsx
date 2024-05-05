@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./AddRecipe.css";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import placeholderImage from "../assets/placeholder.svg";
 
 // Pass nothing for add recipe or the values of the current recipe based on its ID
 function AddRecipe({ addRecipe, existingRecipe }) {
@@ -11,13 +12,6 @@ function AddRecipe({ addRecipe, existingRecipe }) {
   const [recipes, setRecipes] = useState(
     JSON.parse(localStorage.getItem("recipes"))
   );
-
-  const generateId = () => {
-    // Random ID
-    const dateString = Date.now().toString(36);
-    const randomness = Math.random().toString(36).substr(2);
-    return dateString + randomness;
-  };
 
   useEffect(() => {
     const storedRecipes = localStorage.getItem("recipes");
@@ -31,14 +25,14 @@ function AddRecipe({ addRecipe, existingRecipe }) {
       console.log("No recipes found in localStorage.");
     }
   }, []);
-  const [Id, setId] = useState(existingRecipe?.Id || generateId());
+
   const [Name, setName] = useState(existingRecipe?.Name || "");
 
   const [Description, setDescription] = useState(
     existingRecipe?.Description || ""
   );
   const [img, setImg] = useState(existingRecipe?.img || "");
-  /////
+
   // Map over Ingredient to get the value of amount and name because there are nested Objects in an Array
   const [amount, setAmount] = useState(
     existingRecipe?.Ingredients.map((ingre) => ingre.amount) || [""]
@@ -70,70 +64,45 @@ function AddRecipe({ addRecipe, existingRecipe }) {
     setInstruction(updatedInstructions);
   };
 
-  // preventDefault is build in and prevents the default behavior of submit
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
+  function updateRecipe(updatedRecipe) {
+    const existingRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
+    const updatedRecipes = existingRecipes.map((rec) =>
+      rec.Id === updatedRecipe.Id ? updatedRecipe : rec
+    );
+    localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
+  }
 
-  //   const newRecipe = {
-  //     Id,
-  //     Name,
-  //     Description,
-  //     img,
-  //     Ingredients: ingredient.map((name, index) => ({
-  //       amount: amount[index],
-  //       name: name,
-  //     })),
-  //     Instruction,
-  //   };
-
-  //   const updatedRecipeList = [...recipes, newRecipe];
-  //   setRecipes(updatedRecipeList);
-
-  //   localStorage.setItem("recipes", JSON.stringify(updatedRecipeList));
-  //   console.log("recipe added");
-
-  //   // const existingRecipe = JSON.parse(localStorage.getItem("recipe")) || [];
-  //   // const updatedRecipes = existingRecipe.map((recipe) =>
-  //   //   recipe.Id === recipeId ? updatedRecipes : recipe
-  //   // );
-  //   // localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
-
-  //   // Reset the state
-  //   setId("");
-  //   setName("");
-  //   setDescription("");
-  //   setImg("");
-  //   setAmount([""]);
-  //   setIngredient([""]);
-  //   setInstruction([""]);
-
-  //   navigate("/");
-  // };
+  function addNewRecipe(newRecipe) {
+    const updatedRecipeList = [...recipes, newRecipe];
+    setRecipes(updatedRecipeList);
+    localStorage.setItem("recipes", JSON.stringify(updatedRecipeList));
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const updatedRecipe = {
-      Id,
+      Id: recipeId || Date.now().toString(), // Use timestamp if no recipeId provided
       Name,
       Description,
-      img,
-      Ingredients: ingredient.map((name, index) => ({
-        amount: amount[index],
-        name: name,
-      })),
-      Instruction,
+      img: img || placeholderImage, // Use selected image or placeholder image
+      Ingredients: ingredient
+        .map((name, index) => ({ amount: amount[index], name: name }))
+        .filter((ing) => ing.name.trim() !== ""), // Remove empty ingredient row
+      Instruction: Instruction.filter((instr) => instr.trim() !== ""), // Remove empty instruction row
     };
 
-    const updatedRecipeList = [...recipes, updatedRecipe];
-    setRecipes(updatedRecipeList);
+    // check if recipeId is true
+    if (recipeId) {
+      updateRecipe(updatedRecipe);
+    } else {
+      addNewRecipe(updatedRecipe);
+    }
 
-    const existingRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
-    const updatedRecipes = existingRecipes.map((rec) =>
-      rec.Id === recipeId ? updatedRecipe : rec
-    );
-    localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
+    // back to homepage
     navigate("/");
+    // jump to the top
+    window.scrollTo(0, 0);
   };
 
   const addNewField = () => {
@@ -238,13 +207,11 @@ function AddRecipe({ addRecipe, existingRecipe }) {
           <button type="delete">
             <a href="/">❌ Cancel</a>
           </button>
-
-          <button type="submit" onClick={handleSubmit}>
-            <a href="/">✅ Save</a>
-          </button>
-          {/* <button type="submit">
-            ✅ Save
-          </button> */}
+          <Link to={"/"}>
+            <button type="submit" onClick={handleSubmit}>
+              ✅ Save
+            </button>
+          </Link>
         </div>
       </form>
     </div>
