@@ -1,6 +1,6 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
+// import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 import DashboardPage from "./pages/DashboardPage";
 import ItemDetailsPage from "./pages/ItemDetailsPage";
@@ -26,7 +26,7 @@ function App() {
         <Route path="*" element={<ErrorPage />} />
       </Routes>
 
-      <Sidebar />
+      {/* <Sidebar /> */}
       <Footer />
     </>
   );

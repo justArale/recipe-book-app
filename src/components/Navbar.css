@@ -44,3 +44,20 @@
   padding: 0;
   font-size: 16px;
 }
+
+.navigation {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.home,
+.about {
+  text-decoration: none;
+  color: #000;
+}
+
+.home:hover,
+.about:hover {
+  font-weight: bold;
+}

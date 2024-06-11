@@ -11,10 +11,22 @@ function Navbar() {
           </Link>
           <p className="nav-description">This is my awesome list of recipes.</p>
         </div>
-        <div className="newRecipeNavigation">
-          <Link to={`/newrecipe`}>
-            <button className="addRecipe-button">New recipe</button>
-          </Link>
+        <div className="navigation">
+          <div className="sidebar-path">
+            <Link to={`/`} className="home">
+              <p className="home">Home</p>
+            </Link>
+          </div>
+          <div className="sidebar-path">
+            <Link to={`/about`} className="about">
+              <p>About</p>
+            </Link>
+          </div>
+          <div className="newRecipeNavigation">
+            <Link to={`/newrecipe`}>
+              <button className="addRecipe-button">New recipe</button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
