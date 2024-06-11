@@ -1,7 +1,9 @@
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Navbar() {
+  const location = useLocation();
+
   return (
     <div className="header">
       <div className="inner">
@@ -13,12 +15,20 @@ function Navbar() {
         </div>
         <div className="navigation">
           <div className="sidebar-path">
-            <Link to={`/`} className="home">
-              <p className="home">Home</p>
+            <Link
+              className={`home ${location.pathname === "/" ? "active" : ""}`}
+              to={`/`}
+            >
+              <p>Home</p>
             </Link>
           </div>
           <div className="sidebar-path">
-            <Link to={`/about`} className="about">
+            <Link
+              className={`about ${
+                location.pathname === "/about" ? "active" : ""
+              }`}
+              to={`/about`}
+            >
               <p>About</p>
             </Link>
           </div>

@@ -59,5 +59,10 @@
 
 .home:hover,
 .about:hover {
+  text-decoration: underline;
+}
+
+.home.active,
+.about.active {
   font-weight: bold;
 }
