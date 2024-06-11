@@ -25,6 +25,11 @@ button {
   border: 1px solid #a39689;
   box-sizing: border-box;
   height: 40px;
+  cursor: pointer;
+}
+
+button:hover {
+  border: 2px solid #a39689;
 }
 
 button a {
