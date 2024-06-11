@@ -16,10 +16,10 @@ function EditPage() {
   const recipe = allRecipes.find((rec) => rec.Id === recipeId);
 
   // unnötig, eventuell aber für outsourcen AddRecipe
-  // useEffect(() => {
-  //   // Update local storage whenever recipes state changes
-  //   localStorage.setItem("recipes", JSON.stringify(recipes));
-  // }, [recipes]);
+  useEffect(() => {
+    // Update local storage whenever recipes state changes
+    localStorage.setItem("recipes", JSON.stringify(recipes));
+  }, [recipes]);
 
   return (
     <>

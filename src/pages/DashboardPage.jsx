@@ -9,6 +9,12 @@ function DashboardPage() {
   const [recipes, setRecipes] = useState(
     JSON.parse(localStorage.getItem("recipes")) || recipesData
   );
+
+  useEffect(() => {
+    // Update local storage whenever recipes state changes
+    localStorage.setItem("recipes", JSON.stringify(recipes));
+  }, []);
+
   return (
     <div className="grid-container">
       {recipes &&
