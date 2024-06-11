@@ -123,7 +123,12 @@ function AddRecipe({ addRecipe, existingRecipe }) {
     <div>
       <form className="addRecipe" onSubmit={handleSubmit}>
         <div className="addRecipe-main">
-          <h4 className="addRecipe-header">Add your Recipe</h4>
+          {existingRecipe ? (
+            <h4 className="addRecipe-header">Edit your Recipe</h4>
+          ) : (
+            <h4 className="addRecipe-header">Add your Recipe</h4>
+          )}
+
           <div className="addRecipe-headerRow">
             <div className="addRecipe-headerContent">
               <input
@@ -190,11 +195,11 @@ function AddRecipe({ addRecipe, existingRecipe }) {
         <div className="addRecipe-instruction">
           <label className="instruction-header">Instruction</label>
           {Instruction.map((instructionText, index) => (
-            <input
+            <textarea
               key={index}
               required
               className="instuction-input"
-              type="text"
+              rows="auto"
               name="instruction"
               placeholder={`${index + 1}. Instruction...`}
               value={instructionText}
