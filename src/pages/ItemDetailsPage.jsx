@@ -23,6 +23,7 @@ function ItemDetailsPage() {
     setRecipes(filteredRecipes);
     localStorage.setItem("recipes", JSON.stringify(filteredRecipes));
     navigate("/");
+    window.scrollTo(0, 0);
   };
 
   return (
