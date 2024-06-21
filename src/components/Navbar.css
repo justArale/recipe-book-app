@@ -66,3 +66,9 @@
 .about.active {
   font-weight: bold;
 }
+
+@media (max-width: 867) {
+  .header {
+    width: 100%;
+  }
+}
