@@ -142,7 +142,7 @@
   margin: 0;
 }
 
-@media (max-width: 867) {
+@media (max-width: 867px) {
   .grid-container {
     width: 100%;
   }

@@ -67,7 +67,7 @@
   font-weight: bold;
 }
 
-@media (max-width: 867) {
+@media (max-width: 867px) {
   .header {
     width: 100%;
   }
