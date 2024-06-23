@@ -14,10 +14,10 @@ export default function List({ recipe }) {
         </div>
         <div className="list-content">
           <div className="list-title">
-            <h3>{recipe.Name}</h3>
+            <h3 className="headline">{recipe.Name}</h3>
           </div>
           <div className="list-description">
-            <p>{recipe.Description}</p>
+            <p className="body">{recipe.Description}</p>
           </div>
         </div>
       </div>

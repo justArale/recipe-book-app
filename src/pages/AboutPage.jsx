@@ -4,8 +4,8 @@ export default function AboutPage() {
   return (
     <>
       <div className="about-content">
-        <h1 className="content-title">About</h1>
-        <p className="content-description">
+        <h1 className="pageTitle">About</h1>
+        <p className="body">
           Hey, this is Arale and you just stumbled upon my recipe book. Here I
           collect all my favourites dishes and some other rare finds. Mainly
           asian cousin as you might already figured.
@@ -21,7 +21,6 @@ export default function AboutPage() {
             <button>LinkedIn</button>
           </a>
         </div>
-        <div className="space"></div>
       </div>
     </>
   );

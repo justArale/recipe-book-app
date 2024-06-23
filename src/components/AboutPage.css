@@ -4,12 +4,8 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 800px;
+  max-width: 800px;
   box-sizing: border-box;
-}
-
-.space {
-  height: 250px;
 }
 
 .social-pages {

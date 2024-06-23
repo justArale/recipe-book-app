@@ -8,15 +8,17 @@ function Navbar() {
     <div className="header">
       <div className="inner">
         <div className="nav-title">
-          <Link to={`/`} className="navbar-header-link">
-            <h1 className="nav-header">Recipe Book</h1>
+          <Link to={`/`} className="noUnderline">
+            <h1 className="headline boldWeight primaryColor">Recipe Book</h1>
           </Link>
-          <p className="nav-description">This is my awesome list of recipes.</p>
+          <p className="body">This is my awesome list of recipes.</p>
         </div>
         <div className="navigation">
           <div className="sidebar-path">
             <Link
-              className={`home ${location.pathname === "/" ? "active" : ""}`}
+              className={`primaryColor noUnderline home ${
+                location.pathname === "/" ? "active" : ""
+              }`}
               to={`/`}
             >
               <p>Home</p>
@@ -24,7 +26,7 @@ function Navbar() {
           </div>
           <div className="sidebar-path">
             <Link
-              className={`about ${
+              className={`primaryColor noUnderline about ${
                 location.pathname === "/about" ? "active" : ""
               }`}
               to={`/about`}
@@ -34,7 +36,9 @@ function Navbar() {
           </div>
           <div className="newRecipeNavigation">
             <Link to={`/newrecipe`}>
-              <button className="addRecipe-button">New recipe</button>
+              <button className="body noUnderline primaryColor">
+                New recipe
+              </button>
             </Link>
           </div>
         </div>
