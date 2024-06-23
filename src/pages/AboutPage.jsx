@@ -21,7 +21,6 @@ export default function AboutPage() {
             <button>LinkedIn</button>
           </a>
         </div>
-        <div className="space"></div>
       </div>
     </>
   );

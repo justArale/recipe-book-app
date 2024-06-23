@@ -1,12 +1,11 @@
 .header {
   /* height: 160px; */
   box-sizing: border-box;
-  margin: 0 auto;
+  margin: 0;
   padding: 64px 0 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* border: 1px solid black; */
 }
 .inner {
   display: flex;
@@ -15,7 +14,6 @@
   align-items: center;
   width: 800px;
   height: 64px;
-  /* gap: auto; */
 }
 
 .nav-title {
