@@ -70,68 +70,58 @@
   },
   {
     "Id": "3ccdace",
-    "Name": "Christmas cupcakes",
-    "img": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe-image-legacy-id-444572_12-4487e3a.jpg?quality=90&webp=true&resize=440,400",
-    "Description": "These beautiful and classy little cakes make lovely gifts, and kids will enjoy decorating them too",
+    "Name": "Mochi",
+    "img": "https://tse3.mm.bing.net/th?id=OIP.aSyGplsshADZDEvsjwKEeAHaHa&pid=Api",
+    "Description": "Mochi is a traditional Japanese rice cake made from glutinous rice flour. This chewy and soft delicacy is often filled with sweet fillings like red bean paste, matcha cream or ice cream. Mochi makes an excellent dessert or snack, offering a unique texture and flavor experience.",
     "Author": "Sara Buenfeld",
     "Ingredients": [
-      { "amount": "2 tbsp", "name": "olive oil" },
-      { "amount": "indv.", "name": "knob butter" },
-      { "amount": "1", "name": "onion, finely chopped" },
-      { "amount": "500g", "name": "sausagemeat or skinned sausages" },
-      { "amount": "1", "name": "grated zest of a lemon" },
-      { "amount": "100g", "name": "fresh white breadcrumbs" },
-      { "amount": "85g", "name": "ready-to-eat dried apricots, chopped" },
-      { "amount": "50g", "name": "chestnut, canned or vacuum-packed, chopped" },
-      { "amount": "2 tsp", "name": "chopped fresh or 1tsp dried thyme" },
-      { "amount": "100g", "name": "cranberries, fresh or frozen" },
-      { "amount": "500g", "name": "boneless, skinless chicken breasts" },
-      { "amount": "500g", "name": "pack ready-made shortcrust pastry" },
-      { "amount": "1", "name": "beaten egg, to glaze" }
+      { "amount": "1 cup", "name": "glutinous rice flour" },
+      { "amount": "1/4 cup", "name": "sugar" },
+      { "amount": "3/4 cup", "name": "water" },
+      { "amount": "1/2 cup", "name": "potato starch (for dusting)" },
+      { "amount": "1 cup", "name": "azuki bean paste" }
     ],
     "Instruction": [
-      "Tip the sugar, butter, dried fruit, whole cherries, ginger, orange zest and juice into a large pan. Pour over the rum, brandy or juice, then put on the heat and slowly bring to the boil, stirring frequently to melt the butter. Reduce the heat and bubble gently, uncovered for 10 mins, stirring every now and again to make sure the mixture doesn\u2019t catch on the bottom of the pan. Set aside for 30 mins to cool.",
-      "Stir the nuts, eggs and ground almonds into the fruit, then sift in the flour, baking powder and spices. Stir everything together gently but thoroughly. Your batter is ready.",
-      "Heat oven to 150C/130C fan/gas 2. Scoop the cake mix into 12 deep muffin cases (an ice-cream scoop works well), then level tops with a spoon dipped in hot water. Bake for 35-45 mins until golden and just firm to touch. A skewer inserted should come out clean. Cool on a wire rack.",
-      "Unravel the marzipan onto a work surface lightly dusted with icing sugar. Stamp out 12 rounds, 6cm across. Brush the cake tops with apricot jam, top with a marzipan round and press down lightly.",
-      "Make up the fondant icing to a spreading consistency, then swirl on top of each cupcake. Decorate with sugared almonds and snowflakes, then leave to set. Will keep in a tin for 3 weeks."
+      "In a large bowl, mix the glutinous rice flour and sugar.",
+      "Gradually add water, stirring until the mixture is smooth and no lumps remain.",
+      "Pour the mixture into a non-stick pan and cook over medium heat, stirring constantly.",
+      "Continue to stir until the dough thickens and becomes translucent, about 10-15 minutes.",
+      "Dust a clean surface with potato starch and turn the dough onto it.",
+      "Sprinkle more potato starch on top and knead the dough gently to remove stickiness.",
+      "Divide the dough into 8-10 equal pieces and flatten each piece into a small disc.",
+      "Place a spoonful of azuki bean paste in the center of each disc and fold the edges over to seal.",
+      "Shape the filled mochi into balls and dust with more potato starch if needed.",
+      "Serve immediately or store in an airtight container."
     ]
   },
   {
     "Id": "4sfd",
-    "Name": "Christmas buns",
-    "img": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe-image-legacy-id-836565_11-719faac.jpg?quality=90&webp=true&resize=440,400",
-    "Description": "Paul Hollywood's fruit rolls can be made ahead then heated up before adding a glossy glaze and citrus icing",
+    "Name": "Okonomiyaki",
+    "img": "https://tse1.mm.bing.net/th?id=OIP.sZFpREaI3DkEoLrK8QRf-AHaE8&pid=Api",
+    "Description": "Okonomiyaki, a beloved Japanese dish, is a savory pancake combining flour, dashi, eggs, shredded cabbage, and various toppings like pork, seafood, or cheese. Cooked on a griddle, it's finished with okonomiyaki sauce, mayo, bonito flakes, and seaweed, offering a delightful blend of textures and flavors.",
     "Author": "Paul Hollywood",
     "Ingredients": [
-      { "amount": "175g", "name": "butter, chopped" },
-      { "amount": "200g.", "name": "dark muscovado sugar" },
-      {
-        "amount": "750g",
-        "name": "luxury mixed dried fruit (one that includes mixed peel and glac\u00e9 cherries)"
-      },
-      { "amount": "1", "name": "finely grated zest and juice of an orange" },
-      { "amount": "1", "name": "grated zest of a lemon" },
-      {
-        "amount": "100ml",
-        "name": "cherry brandy or brandy plus 4tbsp more"
-      },
-      { "amount": "85g", "name": "macadamia nut" },
-      { "amount": "3", "name": "large eggs, lightly beaten" },
-      { "amount": "85g", "name": "ground almond" },
-      { "amount": "200g", "name": "plain flour" },
-      { "amount": "1/2 tsp", "name": "baking powder" },
-      { "amount": "500g", "name": "pack ready-made shortcrust pastry" },
-      { "amount": "1", "name": "beaten egg, to glaze" }
+      { "amount": "1 cup", "name": "all-purpose flour" },
+      { "amount": "2/3 cup", "name": "dashi stock or water" },
+      { "amount": "2", "name": "eggs" },
+      { "amount": "2 cups", "name": "shredded cabbage" },
+      { "amount": "1/4 cup", "name": "sliced green onions" },
+      { "amount": "1/4 cup", "name": "tencasu (tempura scraps)" },
+      { "amount": "to taste", "name": "okonomiyaki sauce" },
+      { "amount": "to taste", "name": "Kewpie mayonnaise" },
+      { "amount": "to taste", "name": "aonori (seaweed flakes)" },
+      { "amount": "to taste", "name": "katsuobushi (bonito flakes)" },
+      { "amount": "1/2 cup", "name": "vegetable oil" }
     ],
     "Instruction": [
-      "Put the flour and 1 tsp salt into a large bowl. Make a well in the centre and add the yeast. Meanwhile, warm the milk and butter in a pan until the butter melts and the mixture is lukewarm. Add the milk mixture and egg to the flour mixture and stir until the contents come together as a soft dough (add extra flour if you need to).",
-      "Tip the dough onto a well-floured surface. Knead for 5 mins, adding more flour if necessary, until the dough is smooth, elastic and no longer sticky.",
-      "Lightly oil a bowl with the vegetable oil. Place the dough in the bowl and turn until covered in oil. Cover the bowl with cling film and set aside in a warm place for 1 hr or until doubled in size. Lightly grease a baking sheet and set aside.",
-      "For the filling, knock the dough back to its original size and turn out onto a lightly floured surface. Roll it into a 1cm-thick rectangle. Brush all over with the melted butter, then sprinkle over the sugar, cinnamon and fruit.",
-      "Roll up the dough into a tight cylinder, cut into 9 x 4cm slices and position on the prepared baking sheet, leaving a little space between. Cover with a tea towel and set aside to rise for 30 mins.",
-      "Heat oven to 190C/170C fan/gas 5. Bake the buns for 20-25 mins or until risen and golden brown. Meanwhile, melt the glaze sugar with 4 tbsp water until syrupy.",
-      "Remove from oven and glaze. Set aside to cool on a wire rack. Once cool, mix the zest and icing sugar with about 2 tbsp water to drizzle over the buns. Serve."
+      "In a large bowl, mix the flour and dashi stock (or water) until smooth.",
+      "Add the eggs, shredded cabbage, green onions, and tencasu. Mix until well combined.",
+      "Heat a non-stick pan over medium heat and add a little vegetable oil.",
+      "Pour a portion of the batter into the pan, spreading it out to form a round pancake.",
+      "Place 2-3 slices of pork belly or bacon on top of the pancake.",
+      "Cook for about 4-5 minutes until the bottom is golden brown, then flip and cook for another 4-5 minutes until the pork is cooked and the pancake is golden brown.",
+      "Transfer the okonomiyaki to a plate and drizzle with okonomiyaki sauce and Kewpie mayonnaise.",
+      "Sprinkle with aonori and katsuobushi. Serve immediately."
     ]
   },
   {
@@ -306,67 +296,6 @@
     "Instruction": [
       "Heat oven to 220C/200C fan/gas 7. Prepare the pizza base mix following pack instructions. Once rolled out, leave to rest for 10 mins, then top with the pasta sauce.",
       "Scatter over the stuffing and turkey, then top with the mozzarella. Toss the sage leaves with the oil, then scatter over the pizza, drizzling over any remaining oil. Bake for 10-12 mins until the crust is crisp and the cheese has melted."
-    ]
-  },
-  {
-    "Id": "1cs1",
-    "Name": "Christmas poussin",
-    "img": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe-image-legacy-id-8489_12-7aa0eb5.jpg?quality=90&webp=true&resize=440,400",
-    "Description": "Prepare ahead and pop in the oven when your guests arrive. Perfect if you don't want to be tied to the kitchen",
-    "Author": "Barney Desmazery",
-    "Ingredients": [
-      { "amount": "2 tbsp", "name": "olive oil" },
-      { "amount": "indv.", "name": "knob butter" },
-      { "amount": "1", "name": "onion, finely chopped" },
-      { "amount": "500g", "name": "sausagemeat or skinned sausages" },
-      { "amount": "1", "name": "grated zest of a lemon" },
-      { "amount": "100g", "name": "fresh white breadcrumbs" },
-      { "amount": "85g", "name": "ready-to-eat dried apricots, chopped" },
-      { "amount": "50g", "name": "chestnut, canned or vacuum-packed, chopped" },
-      { "amount": "2 tsp", "name": "chopped fresh or 1tsp dried thyme" },
-      { "amount": "100g", "name": "cranberries, fresh or frozen" },
-      { "amount": "500g", "name": "boneless, skinless chicken breasts" },
-      { "amount": "500g", "name": "pack ready-made shortcrust pastry" },
-      { "amount": "1", "name": "beaten egg, to glaze" }
-    ],
-    "Instruction": [
-      "Heat oven to 230C/fan 210C/gas 8. Smear the butter all over the poussins, season inside and out, then criss-cross the bacon over each one. Sit the poussins in a roasting tin and cook for 40 mins until the birds are golden and the bacon is crisp. Remove from the tin, leave to rest and set the tin aside until you\u2019re ready to make the gravy.",
-      "About 5 mins before you sit down to eat, make the gravy. Place the tin on a medium heat, then stir in the flour and splash in the Worcestershire sauce. Bubble together, then drain the veg over the roasting tin and stir in the vegetable stock. Bring the gravy to the boil, taste for seasoning, adding more Worcestershire sauce if needed, then pour into a warm gravy jug."
-    ]
-  },
-  {
-    "Id": "1fdv2",
-    "Name": "Christmas pudding",
-    "img": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe-image-legacy-id-1259656_8-8cbced3.jpg?quality=90&webp=true&resize=440,400",
-    "Description": "Wow. A definite crowd pleaser - chocolate mousse hidden by a layer of chocolate sponge, covered with the best chocolate topping we've ever tasted",
-    "Author": "Jane Hornby",
-    "Ingredients": [
-      { "amount": "175g", "name": "butter, chopped" },
-      { "amount": "200g.", "name": "dark muscovado sugar" },
-      {
-        "amount": "750g",
-        "name": "luxury mixed dried fruit (one that includes mixed peel and glac\u00e9 cherries)"
-      },
-      { "amount": "1", "name": "finely grated zest and juice of an orange" },
-      { "amount": "1", "name": "grated zest of a lemon" },
-      {
-        "amount": "100ml",
-        "name": "cherry brandy or brandy plus 4tbsp more"
-      },
-      { "amount": "85g", "name": "macadamia nut" },
-      { "amount": "3", "name": "large eggs, lightly beaten" },
-      { "amount": "85g", "name": "ground almond" },
-      { "amount": "200g", "name": "plain flour" },
-      { "amount": "1/2 tsp", "name": "baking powder" },
-      { "amount": "500g", "name": "pack ready-made shortcrust pastry" },
-      { "amount": "1", "name": "beaten egg, to glaze" }
-    ],
-    "Instruction": [
-      "Heat oven to 200C/fan 180C/gas 6. Butter a 22 x 31cm or similar Swiss roll tin, then line with buttered baking paper. Tip in 1 tbsp cocoa, turn the tin until it\u2019s evenly coated, then tap out any excess.",
-      "For the sponge, beat the eggs and sugar with electric beaters for 7 mins, or until thick enough to hold a trail. Fold in flour and cocoa, then swirl in butter and fold through. Tip into the tin, bake for 10 mins until just firm, then cool under a clean tea towel.",
-      "For the mousse, beat the egg yolks with the sugar until thick and pale. Melt the chocolate and loosely whip the cream until it just holds its shape. Quickly beat half the cream and all of the chocolate into the egg mix, then gently fold in the rest of the cream. Whisk the egg whites until softly peaked, then fold in.",
-      "Grease a 1.4 litre/2\u00bd pint basin with a little oil. Line with cling film, letting it overhang. To build the pudding, cut a circle of sponge to fit the bottom of the basin and put it in. Cut seven sloping rectangles about 10cm long from the sponge and fit them tightly together around the bowl. Sprinkle with most of the coffee and Tia Maria mix. Fill the bowl halfway with the mousse then, using what\u2019s left of the sponge, top the mousse with a snug-fitting circle of cake. Sprinkle with remaining coffee mix. Spoon in the rest of the mousse, then cover with the overhanging cling film. Chill for at least 4 hrs until firm (ideally overnight), then turn onto a plate.",
-      "For the topping, heat all the ingredients gently in a bowl over a pan of simmering water until the chocolate melts. Leave to cool, stirring occasionally, until thick and glossy. Spread all over the turned-out pudding, then top with the chocolate-coated cocoa beans and chocolate curls."
     ]
   }
 ]

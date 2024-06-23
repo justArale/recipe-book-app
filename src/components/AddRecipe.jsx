@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./AddRecipe.css";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import placeholderImage from "../assets/placeholder.svg";
+// import placeholderImage from "../assets/placeholder.svg";
 
 // Pass nothing for add recipe or the values of the current recipe based on its ID
 function AddRecipe({ addRecipe, existingRecipe }) {
@@ -85,7 +85,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
       Id: recipeId || Date.now().toString(), // Use timestamp if no recipeId provided
       Name,
       Description,
-      img: img || placeholderImage, // Use selected image or placeholder image
+      img: img, // Use selected image or placeholder image
       Ingredients: ingredient
         .map((name, index) => ({ amount: amount[index], name: name }))
         .filter((ing) => ing.name.trim() !== ""), // Remove empty ingredient row
