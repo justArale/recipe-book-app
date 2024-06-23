@@ -124,9 +124,9 @@ function AddRecipe({ addRecipe, existingRecipe }) {
       <form className="addRecipe" onSubmit={handleSubmit}>
         <div className="addRecipe-main">
           {existingRecipe ? (
-            <h4 className="addRecipe-header">Edit your Recipe</h4>
+            <h4 className="bodyLarge addRecipe-header">Edit your Recipe</h4>
           ) : (
-            <h4 className="addRecipe-header">Add your Recipe</h4>
+            <h4 className="bodyLarge addRecipe-header">Add your Recipe</h4>
           )}
 
           <div className="addRecipe-headerRow">
@@ -135,7 +135,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                 required
                 type="text"
                 name="Name"
-                className="title"
+                className="body title"
                 placeholder="Title..."
                 value={Name}
                 onChange={handleNameInput}
@@ -145,7 +145,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                 required
                 type="text"
                 name="Description"
-                className="description"
+                className="body description"
                 placeholder="Description..."
                 value={Description}
                 onChange={handleDescriptionInput}
@@ -166,13 +166,14 @@ function AddRecipe({ addRecipe, existingRecipe }) {
           </div>
         </div>
         <div className="addRecipe-ingredient">
-          <label className="ingredient-header">Ingredients</label>
+          <label className="bodyLarge">Ingredients</label>
           {amount.map((amount, index) => (
             <div className="ingredient-input" key={index}>
               <input
                 required
                 type="text"
                 name="ingredient-amount"
+                className="body"
                 placeholder="1..."
                 value={amount}
                 onChange={(e) => handleIngredientAmountInput(e, index)}
@@ -181,6 +182,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                 required
                 type="text"
                 name="ingredient"
+                className="body"
                 placeholder="Ingredient..."
                 value={ingredient[index]}
                 onChange={(e) => handleIngredientInput(e, index)}
@@ -193,12 +195,12 @@ function AddRecipe({ addRecipe, existingRecipe }) {
           ))}
         </div>
         <div className="addRecipe-instruction">
-          <label className="instruction-header">Instruction</label>
+          <label className="bodyLarge">Instruction</label>
           {Instruction.map((instructionText, index) => (
             <textarea
               key={index}
               required
-              className="instuction-input"
+              className="body instuction-input"
               rows="auto"
               name="instruction"
               placeholder={`${index + 1}. Instruction...`}
@@ -210,10 +212,16 @@ function AddRecipe({ addRecipe, existingRecipe }) {
         </div>
         <div className="action">
           <button type="delete">
-            <a href="/">❌ Cancel</a>
+            <a href="/" className="body noUnderline primaryColor boldWeight">
+              ❌ Cancel
+            </a>
           </button>
           <Link to={"/"}>
-            <button type="submit" onClick={handleSubmit}>
+            <button
+              type="submit"
+              onClick={handleSubmit}
+              className="body boldWeight"
+            >
               ✅ Save
             </button>
           </Link>

@@ -1,7 +1,7 @@
 html {
   width: 100vw;
   height: 100%;
-  background-color: #f5f0eb;
+  background-color: var(--background-color);
 }
 
 body {
@@ -10,7 +10,7 @@ body {
   height: 100%;
   margin: 0 auto;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: var(--font-family-arial);
   line-height: 1.5em;
 }
 
@@ -40,11 +40,6 @@ button {
 
 button:hover {
   border: 2px solid #a39689;
-}
-
-button a {
-  text-decoration: none;
-  color: #000;
 }
 
 button a:active {

@@ -40,29 +40,9 @@
   box-sizing: border-box;
 }
 
-.content-title {
-  font-size: 40px;
-  font-weight: normal;
-  line-height: 150%;
-  margin: 0;
-}
-
-.content-description {
-  font-size: 16px;
-  font-weight: normal;
-  margin: 0;
-}
-
 .recipe-main > img {
   width: 360px;
   border-radius: 8px;
-}
-
-.ingredient-header,
-.instruction-header {
-  font-size: 24px;
-  height: 36px;
-  font-weight: normal;
 }
 
 .detailPage-ingredients,
@@ -88,13 +68,13 @@
 .ingredient-item {
   display: grid;
   grid-template-columns: 72px 1fr;
-  font-size: 16px;
+  /* font-size: 16px; */
 }
 
-.ingredient-amount {
+/* .ingredient-amount {
   font-weight: bold;
   width: 72px;
-}
+} */
 
 div.instuction-list {
   counter-reset: list-number;
@@ -116,7 +96,7 @@ div.instuction-list div:before {
   font-size: 12px;
   font-weight: bold;
   border-radius: 50%;
-  color: #665c52;
+  color: var(--secondary-fontcolor);
   border: 1px solid #d6c9bc;
 }
 

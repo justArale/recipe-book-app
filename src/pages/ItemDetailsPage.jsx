@@ -32,31 +32,31 @@ function ItemDetailsPage() {
         <div className="itemDetail-page">
           <div className="recipe-main">
             <div className="content">
-              <h1 className="content-title">{recipeProfile.Name}</h1>
-              <p className="content-description">{recipeProfile.Description}</p>
+              <h1 className="pageTitle">{recipeProfile.Name}</h1>
+              <p className="body">{recipeProfile.Description}</p>
             </div>
             <img src={recipeProfile.img} alt={recipeProfile.Name} />
           </div>
           {recipeProfile.Ingredients && (
             <div className="detailPage-ingredients">
-              <strong className="ingredient-header">Ingredients:</strong>
+              <h3 className="bodyLarge">Ingredients:</h3>
               <div className="ingredient-list">
                 {recipeProfile.Ingredients.map((ingredient, index) => (
                   <div key={index} className="ingredient-item">
-                    <span className="ingredient-amount">
+                    <span className="body boldWeight thirdColor">
                       {ingredient.amount}
                     </span>
-                    <span className="ingredient-name">{ingredient.name}</span>
+                    <span className="body">{ingredient.name}</span>
                   </div>
                 ))}
               </div>
             </div>
           )}
           <div className="detailPage-instruction">
-            <strong className="instruction-header">Instruction:</strong>
+            <strong className="bodyLarge">Instruction:</strong>
             <div className="instuction-list">
               {recipeProfile.Instruction.map((instruction, index) => (
-                <div key={index} className="instuction-item">
+                <div key={index} className="body instuction-item">
                   {instruction}
                 </div>
               ))}
@@ -64,14 +64,21 @@ function ItemDetailsPage() {
           </div>
           <div className="action">
             <button>
-              <a href="/">↩️ Back</a>
+              <a href="/" className="body noUnderline primaryColor boldWeight">
+                ↩️ Back
+              </a>
             </button>
             <button>
-              <a href={`/editrecipe/${recipeId}`}>✏️ Edit</a>
+              <a
+                href={`/editrecipe/${recipeId}`}
+                className="body noUnderline primaryColor boldWeight"
+              >
+                ✏️ Edit
+              </a>
             </button>
             <button
               onClick={() => deleteRecipe(recipeProfile.Id)}
-              className="btn-delete"
+              className="btn-delete boldWeight"
             >
               🗑️ Delete
             </button>

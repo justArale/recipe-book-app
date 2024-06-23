@@ -26,45 +26,15 @@
   align-self: flex-start;
 }
 
-.nav-header {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  font-size: 32px;
-  font-weight: bold;
-  color: #000;
-}
-
-.navbar-header-link {
-  text-decoration: none;
-}
-
-.nav-description {
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-}
-
 .navigation {
   display: flex;
   gap: 24px;
   align-items: center;
 }
 
-.home,
-.about {
-  text-decoration: none;
-  color: #000;
-}
-
-.home:hover,
-.about:hover {
-  text-decoration: underline;
-}
-
 .home.active,
 .about.active {
-  font-weight: bold;
+  font-weight: var(--font-weight-bold);
 }
 
 @media (max-width: 867px) {
