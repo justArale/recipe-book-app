@@ -1,25 +1,24 @@
 #root {
-  max-width: 100%;
-  margin: 0;
+  width: 100%;
+  margin: 0 auto;
   padding: 0;
   background-color: #f5f0eb;
   font-family: Arial, sans-serif;
-  line-height: 150%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
   min-height: 100%;
 }
 
 html {
+  width: 100vw;
   height: 100%;
 }
 
 body {
+  box-sizing: border-box;
+  width: 73vw;
+  height: 100%;
   margin: 0;
   padding: 0;
-  height: 100%;
+  line-height: 1.5em;
 }
 
 .page {
