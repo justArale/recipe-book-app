@@ -11,19 +11,14 @@ export default function AboutPage() {
           asian cousin as you might already figured.
         </p>
         <div className="social-pages">
-          <a
-            target="_blank"
-            href="https://github.com/justArale"
-            className="primaryColor"
-          >
-            <button>GitHub</button>
+          <a target="_blank" href="https://github.com/justArale">
+            <button className="body noUnderline primaryColor">GitHub</button>
           </a>
           <a
             target="_blank"
             href="https://www.linkedin.com/in/s-kuechler-jr-fullstack-dev"
-            className="primaryColor"
           >
-            <button>LinkedIn</button>
+            <button className="body noUnderline primaryColor">LinkedIn</button>
           </a>
         </div>
       </div>
