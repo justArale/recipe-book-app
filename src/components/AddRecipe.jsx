@@ -1,16 +1,13 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "./AddRecipe.css";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
-// import placeholderImage from "../assets/placeholder.svg";
 
 // Pass nothing for add recipe or the values of the current recipe based on its ID
 function AddRecipe({ addRecipe, existingRecipe }) {
   const { recipeId } = useParams();
   let navigate = useNavigate();
   const [recipes, setRecipes] = useState(
-    JSON.parse(localStorage.getItem("recipes"))
+    JSON.parse(localStorage.getItem("recipes")) || []
   );
 
   useEffect(() => {
@@ -27,7 +24,6 @@ function AddRecipe({ addRecipe, existingRecipe }) {
   }, []);
 
   const [Name, setName] = useState(existingRecipe?.Name || "");
-
   const [Description, setDescription] = useState(
     existingRecipe?.Description || ""
   );
@@ -44,20 +40,35 @@ function AddRecipe({ addRecipe, existingRecipe }) {
   const [Instruction, setInstruction] = useState(
     existingRecipe?.Instruction || [""]
   );
+
   const handleNameInput = (e) => setName(e.target.value);
   const handleDescriptionInput = (e) => setDescription(e.target.value);
-  const handleFileUpload = (e) => setImg(URL.createObjectURL(e.target.file[0]));
+
+  const handleFileUpload = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setImg(reader.result);
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
 
   const handleIngredientAmountInput = (e, index) => {
     const updatedIngredientAmount = [...amount];
     updatedIngredientAmount[index] = e.target.value;
     setAmount(updatedIngredientAmount);
   };
+
   const handleIngredientInput = (e, index) => {
     const updatedIngredient = [...ingredient];
     updatedIngredient[index] = e.target.value;
     setIngredient(updatedIngredient);
   };
+
   const handleInstructionInput = (e, index) => {
     const updatedInstructions = [...Instruction];
     updatedInstructions[index] = e.target.value;
@@ -65,10 +76,10 @@ function AddRecipe({ addRecipe, existingRecipe }) {
   };
 
   function updateRecipe(updatedRecipe) {
-    const existingRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
-    const updatedRecipes = existingRecipes.map((rec) =>
+    const updatedRecipes = recipes.map((rec) =>
       rec.Id === updatedRecipe.Id ? updatedRecipe : rec
     );
+    setRecipes(updatedRecipes);
     localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
   }
 
@@ -85,20 +96,18 @@ function AddRecipe({ addRecipe, existingRecipe }) {
       Id: recipeId || Date.now().toString(), // Use timestamp if no recipeId provided
       Name,
       Description,
-      img: img, // Use selected image or placeholder image
+      img,
       Ingredients: ingredient
         .map((name, index) => ({ amount: amount[index], name: name }))
         .filter((ing) => ing.name.trim() !== ""), // Remove empty ingredient row
       Instruction: Instruction.filter((instr) => instr.trim() !== ""), // Remove empty instruction row
     };
 
-    // check if recipeId is true
     if (recipeId) {
       updateRecipe(updatedRecipe);
     } else {
       addNewRecipe(updatedRecipe);
     }
-
     // back to homepage
     navigate("/");
     // jump to the top
@@ -152,16 +161,24 @@ function AddRecipe({ addRecipe, existingRecipe }) {
               />
             </div>
             <div className="uploadButtonWrapper">
-              <label className="uploadButton">
-                <input
-                  type="file"
-                  name="img"
+              {img && (
+                <img
                   src={img}
-                  alt={`${Name}+Img`}
-                  onChange={handleFileUpload}
-                />{" "}
-                🖼️ Choose Image
-              </label>
+                  alt={`${Name} preview`}
+                  className="image-preview"
+                />
+              )}
+              {img ? (
+                <label className="uploadButton">
+                  <input type="file" name="img" onChange={handleFileUpload} />{" "}
+                  🖼️ Change Image
+                </label>
+              ) : (
+                <label className="uploadButton">
+                  <input type="file" name="img" onChange={handleFileUpload} />{" "}
+                  🖼️ Choose Image
+                </label>
+              )}
             </div>
           </div>
         </div>
@@ -186,7 +203,6 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                 placeholder="Ingredient..."
                 value={ingredient[index]}
                 onChange={(e) => handleIngredientInput(e, index)}
-                // Add a new line if the last line is clicked
                 onClick={
                   index === ingredient.length - 1 ? addNewIngredient : null
                 }

@@ -56,7 +56,14 @@ input[type="file"] {
   align-items: center;
   background-color: var(--background-color);
   border-radius: 8px;
-  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.image-preview {
+  position: absolute;
+  width: 100%;
+  height: auto;
 }
 
 .uploadButton {
@@ -66,6 +73,8 @@ input[type="file"] {
   background-color: var(--background-color);
   font-weight: bold;
   border: 1px solid #a39689;
+  cursor: pointer;
+  z-index: 99;
 }
 
 .title,
@@ -141,18 +150,15 @@ textarea[name="instruction"] {
     width: 100%;
     padding: 0;
   }
-
-  .addRecipe-main {
-    width: 100%;
-  }
-
   .addRecipe-headerRow {
     display: flex;
     flex-direction: column-reverse;
+    height: auto;
   }
 
   .uploadButtonWrapper {
     max-width: 100%;
     object-fit: cover;
+    min-height: 112px;
   }
 }
