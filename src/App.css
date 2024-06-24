@@ -5,13 +5,13 @@ html {
 }
 
 body {
-  box-sizing: border-box;
   width: 71vw;
   height: 100%;
   margin: 0 auto;
   /* padding: 0 48px; */
   font-family: var(--font-family-arial);
   line-height: 1.5em;
+  box-sizing: border-box;
 }
 
 #root {
