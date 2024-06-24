@@ -1,11 +1,18 @@
+.addRecipe-page {
+  width: 800px;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
 .addRecipe {
   display: flex;
   flex-direction: column;
   gap: 16px;
   align-items: center;
   justify-content: center;
-  padding: 0 16px;
+
   text-align: left;
+  max-width: 800px;
 }
 
 .addRecipe-main {
@@ -14,8 +21,7 @@
   display: grid;
   grid-template-rows: 36px 1fr;
   gap: 32px;
-  width: 768px;
-  height: 300px;
+  width: 100%;
   border-radius: 16px;
   box-sizing: border-box;
 }
@@ -29,10 +35,12 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
+  height: 168px;
 }
 
 .addRecipe-headerContent {
   display: grid;
+  flex-direction: column;
   grid-template-rows: 40px 1fr;
   gap: 16px;
 }
@@ -43,6 +51,7 @@ input[type="file"] {
 
 .uploadButtonWrapper {
   display: flex;
+  flex-grow: 1;
   justify-content: center;
   align-items: center;
   background-color: var(--background-color);
@@ -67,48 +76,14 @@ input[type="file"] {
   font-family: inherit;
 }
 
+.description {
+  height: auto;
+}
+
 .title {
   height: 40px;
   box-sizing: border-box;
 }
-
-/* .description {
-  height: 112px;
-} */
-
-/* .content {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 16px;
-  text-align: left;
-  width: 360px;
-  height: 268px;
-  box-sizing: border-box;
-} */
-
-/* .content-title {
-  font-size: 40px;
-  font-weight: normal;
-  line-height: 150%;
-  margin: 0;
-}
-
-.content-description {
-  font-size: 16px;
-  font-weight: normal;
-  margin: 0;
-} */
-
-.recipe-main > img {
-  width: 360px;
-  border-radius: 8px;
-}
-
-/* .ingredient-header,
-.instruction-header {
-  height: 36px;
-} */
 
 .addRecipe-ingredient,
 .addRecipe-instruction {
@@ -119,7 +94,7 @@ input[type="file"] {
   justify-content: center;
   border-radius: 16px;
   padding: 32px;
-  width: 768px;
+  width: 100%;
   box-sizing: border-box;
 }
 
@@ -158,15 +133,26 @@ textarea[name="instruction"] {
   font-family: inherit;
 }
 
-/* div.instuction-list {
-  counter-reset: list-number;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
+@media (max-width: 867px) {
+  .addRecipe-page {
+    width: 100%;
+  }
+  .addRecipe {
+    width: 100%;
+    padding: 0;
+  }
 
-.instuction-input {
-  display: grid;
-  gap: 24px;
-  grid-template-columns: 32px 1fr;
-} */
+  .addRecipe-main {
+    width: 100%;
+  }
+
+  .addRecipe-headerRow {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .uploadButtonWrapper {
+    max-width: 100%;
+    object-fit: cover;
+  }
+}

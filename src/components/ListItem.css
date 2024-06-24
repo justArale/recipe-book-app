@@ -101,6 +101,7 @@ div.instuction-list div:before {
 @media (max-width: 867px) {
   .itemDetail-page {
     width: 100%;
+    padding: 0;
   }
 
   .recipe-main {

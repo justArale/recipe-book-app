@@ -120,7 +120,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
   }, [recipes]);
 
   return (
-    <div>
+    <div className="addRecipe-page">
       <form className="addRecipe" onSubmit={handleSubmit}>
         <div className="addRecipe-main">
           {existingRecipe ? (
@@ -220,7 +220,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
             <button
               type="submit"
               onClick={handleSubmit}
-              className="body boldWeight"
+              className="body primaryColor boldWeight"
             >
               ✅ Save
             </button>
