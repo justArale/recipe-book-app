@@ -126,85 +126,106 @@
   },
   {
     "Id": "sdc5",
-    "Name": "Christmas cupcakes",
-    "img": "",
-    "Description": "Made these for the second time today, and I have to say they turned out great! I've got large muffin tins and the mixture made 15 muffins, will definetely make these again at christmas time and decorate festively.",
+    "Name": "Shakshuka",
+    "img": "https://arale.uber.space/wordpress-two/wp-content/uploads/2024/02/shakshuka-rezept-schnell-und-einfach.jpeg-edited.webp",
+    "Description": "Shakshuka is a vibrant, flavorful dish featuring poached eggs in a spicy tomato and vegetable sauce. Originating from North Africa, it’s perfect for breakfast or brunch. Enjoy this hearty, aromatic meal with fresh coriander and crusty bread.",
     "Author": "Barney Desmazery",
     "Ingredients": [
-      { "amount": "2 tbsp", "name": "olive oil" },
-      { "amount": "indv.", "name": "knob butter" },
-      { "amount": "1", "name": "onion, finely chopped" },
-      { "amount": "500g", "name": "sausagemeat or skinned sausages" },
-      { "amount": "1", "name": "grated zest of a lemon" },
-      { "amount": "100g", "name": "fresh white breadcrumbs" },
-      { "amount": "85g", "name": "ready-to-eat dried apricots, chopped" },
-      { "amount": "50g", "name": "chestnut, canned or vacuum-packed, chopped" },
-      { "amount": "2 tsp", "name": "chopped fresh or 1tsp dried thyme" },
-      { "amount": "100g", "name": "cranberries, fresh or frozen" },
-      { "amount": "500g", "name": "boneless, skinless chicken breasts" },
-      { "amount": "500g", "name": "pack ready-made shortcrust pastry" },
-      { "amount": "1", "name": "beaten egg, to glaze" }
+      {
+        "amount": "150 g",
+        "name": "vegetables (e.g., bell pepper, zucchini, or eggplant)"
+      },
+      { "amount": "1 tsp", "name": "oil" },
+      { "amount": "250 g", "name": "tomato passata" },
+      { "amount": "1/2 tsp", "name": "salt" },
+      { "amount": "12 tsp", "name": "sweet paprika powder" },
+      { "amount": "pinch", "name": "black pepper" },
+      { "amount": "pinch", "name": "cayenne pepper" },
+      { "amount": "2", "name": "eggs" },
+      { "amount": "as desired", "name": "coriander" }
     ],
     "Instruction": [
-      "Heat oven to 190C/170 fan/gas 5 and line a 12-hole muffin tin with cake cases. Put all the cake ingredients into a bowl and mix with a whisk until smooth. Spoon the mix into the cases, bake for 25 mins until golden and risen and a skewer comes out clean. Cool on a wire rack.",
-      "For the frosting, beat the butter, vanilla extract and icing sugar until pale and creamy and completely combined. To make snowmen, reindeer and Christmas puddings, first spread the icing over the top of each cake. Then lay the chocolate buttons on top, slicing some buttons into quarters to make ears and hats. Finally, use icing pens for the details. For the Christmas tree, colour the icing with green food colouring and pipe onto the cakes using a star-shaped nozzle, decorate with sweets, sprinkles and white chocolate stars."
+      "Wash, clean, and chop the vegetables. Heat the oil in a pan and sauté the vegetables. (If you have a pan with a metal handle and no plastic parts, you can continue using it. Otherwise, use a small casserole dish as it will go into the oven shortly.)",
+      "Preheat the oven to 180°C (convection).",
+      "Place the vegetables in the casserole dish and add the tomato passata. Add 1/2 tsp salt, the paprika powder, and a pinch of black pepper and cayenne pepper. Stir everything together.",
+      "Use a spoon to make 2 small wells in the sauce and crack the eggs into them. The yolks should remain intact. Bake in the hot oven (middle rack) for about 12 minutes, until the eggs are set.",
+      "Meanwhile, wash, shake dry, and chop the coriander. Remove the Shakshuka from the oven, sprinkle with coriander, and enjoy!"
     ]
   },
   {
     "Id": "ddc6",
-    "Name": "Christmas slaw",
-    "img": "https://images.immediate.co.uk/production/volatile/sites/30/2010/11/Winter-slaw-e23d82a.jpg?quality=90&webp=true&resize=600,545",
-    "Description": "A nutty winter salad which is superhealthy, quick to prepare and finished with a light maple syrup dressing",
+    "Name": "Vanille Kipferl",
+    "img": "https://arale.uber.space/wordpress-two/wp-content/uploads/2024/02/IMG_3778-scaled.jpg",
+    "Description": "Vanille Kipferl are delicate, crescent-shaped cookies made with finely ground nuts and a hint of vanilla, dusted with powdered sugar. Perfect for festive occasions, these traditional European treats are buttery, nutty, and melt in your mouth.",
     "Author": "Good Food",
     "Ingredients": [
-      { "amount": "175g", "name": "butter, chopped" },
-      { "amount": "200g.", "name": "dark muscovado sugar" },
       {
-        "amount": "750g",
-        "name": "luxury mixed dried fruit (one that includes mixed peel and glac\u00e9 cherries)"
+        "amount": "250 g / 2 cups",
+        "name": "all-purpose flour, spoon and level"
       },
-      { "amount": "1", "name": "finely grated zest and juice of an orange" },
-      { "amount": "1", "name": "grated zest of a lemon" },
+      { "amount": "1 pinch", "name": "salt" },
       {
-        "amount": "100ml",
-        "name": "cherry brandy or brandy plus 4tbsp more"
+        "amount": "230 g / 1 cup",
+        "name": "unsalted butter, cold, cut into small cubes"
       },
-      { "amount": "85g", "name": "macadamia nut" },
-      { "amount": "3", "name": "large eggs, lightly beaten" },
-      { "amount": "85g", "name": "ground almond" },
-      { "amount": "200g", "name": "plain flour" },
-      { "amount": "1/2 tsp", "name": "baking powder" },
-      { "amount": "500g", "name": "pack ready-made shortcrust pastry" },
-      { "amount": "1", "name": "beaten egg, to glaze" }
+      { "amount": "90 g / 3/4 cup", "name": "powdered sugar" },
+      {
+        "amount": "100 g / 3/4 cup",
+        "name": "finely ground almonds, or hazelnuts or walnuts"
+      },
+      {
+        "amount": "1/2",
+        "name": "vanilla pod, seeds scraped out or 2 tsp vanilla extract"
+      },
+      { "amount": "85 g / 3/4 cup", "name": "powdered sugar for coating" },
+      { "amount": "1/2", "name": "vanilla pod for coating" }
     ],
     "Instruction": [
-      "Peel strips from the carrots using a vegetable peeler, then mix with the other salad ingredients in a large bowl. Combine all the dressing ingredients in a jam jar, season, then put the lid on and shake well. Toss through the salad when you\u2019re ready to eat it. The salad and dressing will keep separately in the fridge for up to four days."
+      "In the bowl of a stand mixer fitted with the paddle attachment, combine flour, salt, cubed butter, powdered sugar, nuts, and vanilla seeds. Mix at medium speed until a crumbly dough forms, about 1-2 minutes. If the dough is too crumbly, add 1-2 Tbsp milk.",
+      "Use your hands to press the dough together and wrap it in plastic wrap. Chill the dough for one hour in the fridge.",
+      "Preheat the oven to 350°F (177°C) and line one or two baking sheets with parchment paper.",
+      "Roll the chilled dough into a log approximately 1/2 inch thick. Cut the log into 1 1/2-inch pieces, form the pieces into small cylinders, and taper the ends into dull points. Bend each one into a crescent shape. Place the Vanillekipferl on the baking sheet about 1 inch apart.",
+      "Bake the Vanillekipferl one cookie sheet at a time for 12 to 15 minutes (depending on the size of the cookies) until the edges are golden. They should not brown.",
+      "Scrape out the vanilla pod and combine it with powdered sugar. This works great in a small food processor. Sift the mixture over the hot Vanillekipferl. Let them cool completely, then give them a second dusting.",
+      "These cookies keep fresh for about 3 weeks in an airtight container stored in a cool place."
     ]
   },
   {
     "Id": "df7",
     "Name": "Christmas mess",
-    "img": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe-image-legacy-id-1163480_10-f4113c0.jpg?quality=90&webp=true&resize=440,400",
+    "img": "",
     "Description": "Delicious and a synch to make! Have made this a couple of times as a dinner party dessert, very pretty as a winter alternative to Eton mess. The fact you use frozen fruits is great, I just used a bog standard pack of frozen mixed berries and added some home made blackberry liqueur. Like other people, I added more cinnamon. Thumbs up!",
     "Author": "Caroline Hire",
     "Ingredients": [
-      { "amount": "2 tbsp", "name": "olive oil" },
-      { "amount": "indv.", "name": "knob butter" },
-      { "amount": "1", "name": "onion, finely chopped" },
-      { "amount": "500g", "name": "sausagemeat or skinned sausages" },
-      { "amount": "1", "name": "grated zest of a lemon" },
-      { "amount": "100g", "name": "fresh white breadcrumbs" },
-      { "amount": "85g", "name": "ready-to-eat dried apricots, chopped" },
-      { "amount": "50g", "name": "chestnut, canned or vacuum-packed, chopped" },
-      { "amount": "2 tsp", "name": "chopped fresh or 1tsp dried thyme" },
-      { "amount": "100g", "name": "cranberries, fresh or frozen" },
-      { "amount": "500g", "name": "boneless, skinless chicken breasts" },
-      { "amount": "500g", "name": "pack ready-made shortcrust pastry" },
-      { "amount": "1", "name": "beaten egg, to glaze" }
+      {
+        "amount": "250 g / 2 cups",
+        "name": "all-purpose flour, spoon and level"
+      },
+      { "amount": "1 pinch", "name": "salt" },
+      {
+        "amount": "230 g / 1 cup",
+        "name": "unsalted butter, cold, cut into small cubes"
+      },
+      { "amount": "90 g / 3/4 cup", "name": "powdered sugar" },
+      {
+        "amount": "100 g / 3/4 cup",
+        "name": "finely ground almonds, or hazelnuts or walnuts"
+      },
+      {
+        "amount": "1/2",
+        "name": "vanilla pod, seeds scraped out or 2 tsp vanilla extract"
+      },
+      { "amount": "85 g / 3/4 cup", "name": "powdered sugar for coating" },
+      { "amount": "1/2", "name": "vanilla pod for coating" }
     ],
     "Instruction": [
-      "In a small saucepan gently heat the frozen berries, icing sugar and cinnamon until the sugar has dissolved. Remove from the heat, stir in the cassis, if using, and set aside to cool completely.",
-      "Whip the double cream and Greek yogurt until just holding it\u2019s shape, ripple through the lemon curd. Break the meringue nests into a glass bowl, or 8 individual glasses. Spoon over half the cream, then half the berries. Repeat with the remaining cream and berries. Serve immediately."
+      "In the bowl of a stand mixer fitted with the paddle attachment, combine flour, salt, cubed butter, powdered sugar, nuts, and vanilla seeds. Mix at medium speed until a crumbly dough forms, about 1-2 minutes. If the dough is too crumbly, add 1-2 Tbsp milk.",
+      "Use your hands to press the dough together and wrap it in plastic wrap. Chill the dough for one hour in the fridge.",
+      "Preheat the oven to 350°F (177°C) and line one or two baking sheets with parchment paper.",
+      "Roll the chilled dough into a log approximately 1/2 inch thick. Cut the log into 1 1/2-inch pieces, form the pieces into small cylinders, and taper the ends into dull points. Bend each one into a crescent shape. Place the Vanillekipferl on the baking sheet about 1 inch apart.",
+      "Bake the Vanillekipferl one cookie sheet at a time for 12 to 15 minutes (depending on the size of the cookies) until the edges are golden. They should not brown.",
+      "Scrape out the vanilla pod and combine it with powdered sugar. This works great in a small food processor. Sift the mixture over the hot Vanillekipferl. Let them cool completely, then give them a second dusting.",
+      "These cookies keep fresh for about 3 weeks in an airtight container stored in a cool place."
     ]
   },
   {

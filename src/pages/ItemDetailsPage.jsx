@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import recipesData from "../components/recipes.json";
 import { useState, useEffect } from "react";
 import "../components/ListItem.css";
+import placeholderImage from "../assets/placeholder.svg";
 
 function ItemDetailsPage() {
   const { recipeId } = useParams();
@@ -35,7 +36,12 @@ function ItemDetailsPage() {
               <h1 className="pageTitle">{recipeProfile.Name}</h1>
               <p className="body">{recipeProfile.Description}</p>
             </div>
-            <img src={recipeProfile.img} alt={recipeProfile.Name} />
+
+            <img
+              src={recipeProfile.img ? recipeProfile.img : placeholderImage}
+              alt={recipeProfile.Name}
+              className={`${recipeProfile.img ? "" : ""}`}
+            />
           </div>
           {recipeProfile.Ingredients && (
             <div className="detailPage-ingredients">
@@ -53,7 +59,7 @@ function ItemDetailsPage() {
             </div>
           )}
           <div className="detailPage-instruction">
-            <strong className="bodyLarge">Instruction:</strong>
+            <h3 className="bodyLarge">Instruction:</h3>
             <div className="instuction-list">
               {recipeProfile.Instruction.map((instruction, index) => (
                 <div key={index} className="body instuction-item">
