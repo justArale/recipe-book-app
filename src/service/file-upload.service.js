@@ -17,12 +17,12 @@ const uploadAvatar = async (file) => {
   }
 };
 
-// Function to upload option-image
-const uploadPollOptionImage = async (file) => {
+// Function to upload recipe-image
+const uploadRecipeImage = async (file) => {
   try {
     const fileData = new FormData();
     fileData.append("file", file);
-    const res = await api.post("/api/upload-option-image", fileData);
+    const res = await api.post("/api/upload-recipe-image", fileData);
     return res.data.fileUrl;
   } catch (error) {
     console.error(error);
@@ -32,5 +32,5 @@ const uploadPollOptionImage = async (file) => {
 
 export default {
   uploadAvatar,
-  uploadPollOptionImage,
+  uploadRecipeImage,
 };
