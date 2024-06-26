@@ -1,10 +1,13 @@
 import { useParams, useNavigate } from "react-router-dom";
 import recipesData from "../components/recipes.json";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "../components/ListItem.css";
 import placeholderImage from "../assets/placeholder.svg";
+import { AuthContext } from "../context/auth.context";
 
 function ItemDetailsPage() {
+  const { isLoggedIn, logOutUser } = useContext(AuthContext);
+
   const { recipeId } = useParams();
   const navigate = useNavigate();
   const [recipes, setRecipes] = useState(
@@ -66,27 +69,31 @@ function ItemDetailsPage() {
           ))}
         </div>
       </div>
-      <div className="action">
-        {/* <button>
+      {isLoggedIn && (
+        <div className="action">
+          {/* <button>
           <a href="/" className="body noUnderline primaryColor boldWeight">
             ↩️ Back
           </a>
         </button> */}
-        <button>
-          <a
-            href={`/recipes/edit/${recipeId}`}
+
+          <button>
+            <a
+              href={`/recipes/edit/${recipeId}`}
+              className="body noUnderline primaryColor boldWeight"
+            >
+              ✏️ Edit
+            </a>
+          </button>
+
+          <button
+            onClick={() => deleteRecipe(recipeProfile.Id)}
             className="body noUnderline primaryColor boldWeight"
           >
-            ✏️ Edit
-          </a>
-        </button>
-        <button
-          onClick={() => deleteRecipe(recipeProfile.Id)}
-          className="body noUnderline primaryColor boldWeight"
-        >
-          🗑️ Delete
-        </button>
-      </div>
+            🗑️ Delete
+          </button>
+        </div>
+      )}
     </div>
   );
 }

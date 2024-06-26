@@ -48,21 +48,24 @@ function Navbar({
               <p>About</p>
             </Link>
           </div>
-          <div className="newRecipeNavigation">
-            <Link to={`/recipes/new`}>
-              <button className="body noUnderline primaryColor">
-                New recipe
-              </button>
-            </Link>
-          </div>
+
           <div>
             {isLoggedIn ? (
-              <button
-                onClick={logOutUser}
-                className="body noUnderline primaryColor"
-              >
-                Log Out
-              </button>
+              <div>
+                <button
+                  onClick={logOutUser}
+                  className="body noUnderline primaryColor"
+                >
+                  Log Out
+                </button>
+                <div className="newRecipeNavigation">
+                  <Link to={`/recipes/new`}>
+                    <button className="body noUnderline primaryColor">
+                      New recipe
+                    </button>
+                  </Link>
+                </div>
+              </div>
             ) : (
               <>
                 {location.pathname !== "/login" &&
