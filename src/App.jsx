@@ -8,14 +8,35 @@ import AboutPage from "./pages/AboutPage";
 import ErrorPage from "./pages/ErrorPage";
 import NewRecipePage from "./pages/NewRecipePage";
 import EditPage from "./pages/EditPage";
+
 import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
+
 import IsPrivate from "./components/IsPrivate";
 import IsAnon from "./components/IsAnon";
 
 function App() {
+  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
+
+  const handleLoginClick = () => {
+    setIsLogin(true);
+    setIsOverlayOpen(true);
+  };
+
+  const handleCloseOverlay = () => {
+    setIsOverlayOpen(false);
+  };
+
   return (
     <div className="page">
-      <Navbar />
+      <Navbar
+        isOverlayOpen={isOverlayOpen}
+        handleLoginClick={handleLoginClick}
+        handleCloseOverlay={handleCloseOverlay}
+        isLogin={isLogin}
+        setIsLogin={setIsLogin}
+      />
 
       <Routes>
         <Route path="/" element={<DashboardPage />} />
