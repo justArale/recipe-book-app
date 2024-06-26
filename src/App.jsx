@@ -40,10 +40,13 @@ function App() {
 
       <Routes>
         <Route path="/" element={<DashboardPage />} />
-        <Route path="/recipes/:recipeId" element={<ItemDetailsPage />} />
+        <Route
+          path="/user/:authorId/recipes/:recipeId"
+          element={<ItemDetailsPage />}
+        />
         <Route path="/about" element={<AboutPage />} />
         <Route
-          path="/recipes/new"
+          path="/user/:authorId/recipes/new"
           element={
             <IsPrivate>
               <NewRecipePage />
@@ -51,7 +54,7 @@ function App() {
           }
         />
         <Route
-          path="/recipes/edit/:recipeId"
+          path="/user/recipes/edit/:recipeId"
           element={
             <IsPrivate>
               <EditPage />
