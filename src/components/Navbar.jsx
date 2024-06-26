@@ -35,7 +35,7 @@ function Navbar() {
             </Link>
           </div>
           <div className="newRecipeNavigation">
-            <Link to={`/newrecipe`}>
+            <Link to={`/recipes/new`}>
               <button className="body noUnderline primaryColor">
                 New recipe
               </button>

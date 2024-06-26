@@ -9,6 +9,8 @@ import ErrorPage from "./pages/ErrorPage";
 import NewRecipePage from "./pages/NewRecipePage";
 import EditPage from "./pages/EditPage";
 import { Routes, Route } from "react-router-dom";
+import IsPrivate from "./components/IsPrivate";
+import IsAnon from "./components/IsAnon";
 
 function App() {
   return (
@@ -19,10 +21,22 @@ function App() {
         <Route path="/" element={<DashboardPage />} />
         <Route path="/recipes/:recipeId" element={<ItemDetailsPage />} />
         <Route path="/about" element={<AboutPage />} />
-        {/* <Route path="/new-recipe" element={<NewRecipePage />} /> */}
-        <Route path="/newrecipe" element={<NewRecipePage />} />
-        {/* <Route path="/edit-recipe/:recipeId" element={<EditPage />} /> */}
-        <Route path="/editrecipe/:recipeId" element={<EditPage />} />
+        <Route
+          path="/recipes/new"
+          element={
+            <IsPrivate>
+              <NewRecipePage />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/recipes/edit/:recipeId"
+          element={
+            <IsPrivate>
+              <EditPage />
+            </IsPrivate>
+          }
+        />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
 
