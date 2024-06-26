@@ -17,6 +17,7 @@ function DashboardPage() {
       .get(`${API_URL}/api/recipes`)
       .then((response) => {
         setAllRecipes(response.data);
+        console.log("recipe.author._id", response.data);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -39,14 +40,17 @@ function DashboardPage() {
           isLoading ? (
             <div className="skeleton skeletonRecipes" key={recipe._id}></div>
           ) : (
-            <div key={recipe.Id} className="findTheChild">
+            <div key={recipe._id} className="findTheChild">
               {index % 2 === 0 && <div className="grid-row" />}
-              <div className="grid-item">
-                <Link to={`/recipes/${recipe.Id}`} className="listItem-link">
+              <div className="grid-item" key={recipe._id}>
+                <Link
+                  to={`/user/${recipe.author._id}/recipes/${recipe._id}`}
+                  className="listItem-link"
+                >
                   <List recipe={recipe} className="listItem-container" />
                 </Link>
               </div>
-              {index % 2 === 1 || index === recipes.length - 1 ? (
+              {index % 2 === 1 || index === recipe.length - 1 ? (
                 <div className="grid-row" />
               ) : null}
             </div>

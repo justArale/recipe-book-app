@@ -7,17 +7,17 @@ export default function List({ recipe }) {
       <div className="list-recipe">
         <div className="image-wrapper">
           <img
-            src={recipe.img ? recipe.img : placeholderImage}
-            alt={recipe.Name}
-            className={`${recipe.img ? "image" : ""}`}
+            src={recipe.image ? recipe.image : placeholderImage}
+            alt={recipe.name}
+            className={`${recipe.image ? "image" : ""}`}
           />
         </div>
         <div className="list-content">
           <div className="list-title">
-            <h3 className="headline">{recipe.Name}</h3>
+            <h3 className="headline">{recipe.name}</h3>
           </div>
           <div className="list-description">
-            <p className="body">{recipe.Description}</p>
+            <p className="body">{recipe.description}</p>
           </div>
         </div>
       </div>
