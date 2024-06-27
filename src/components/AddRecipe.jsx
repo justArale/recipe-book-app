@@ -1,59 +1,115 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "./AddRecipe.css";
+import fileUploadService from "../service/file-upload.service";
+import { AuthContext } from "../context/auth.context";
+import axios from "axios";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 // Pass nothing for add recipe or the values of the current recipe based on its ID
 function AddRecipe({ addRecipe, existingRecipe }) {
-  const { recipeId } = useParams();
+  const { user } = useContext(AuthContext);
+  const { authorId, recipeId } = useParams();
+  const [currentUser, setCurrentUser] = useState({});
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  // const { recipeId } = useParams();
   let navigate = useNavigate();
-  const [recipes, setRecipes] = useState(
-    JSON.parse(localStorage.getItem("recipes")) || []
+  // const [recipes, setRecipes] = useState(
+  //   JSON.parse(localStorage.getItem("recipes")) || []
+  // );
+
+  // useEffect(() => {
+  //   const storedRecipes = localStorage.getItem("recipes");
+  //   if (storedRecipes) {
+  //     try {
+  //       setRecipes(JSON.parse(storedRecipes));
+  //     } catch (error) {
+  //       console.error("Error parsing recipes from localStorage:", error);
+  //     }
+  //   } else {
+  //     console.log("No recipes found in localStorage.");
+  //   }
+  // }, []);
+
+  // const fetchUserData = async () => {
+  //   const storedToken = localStorage.getItem("authToken");
+  //   try {
+  //     const response = await axios.get(`${API_URL}/api/user/${user._id}`, {
+  //       headers: { Authorization: `Bearer ${storedToken}` },
+  //     });
+  //     setCurrentUser(response.data);
+  //   } catch (error) {
+  //     const errorDescription =
+  //       error.response?.data?.message || "An error occurred";
+  //     setErrorMessage(errorDescription);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   if (user && user._id) {
+  //     fetchUserData();
+  //   }
+  // }, [user]);
+
+  // const [Name, setName] = useState(existingRecipe?.name || "");
+  // const [Description, setDescription] = useState(
+  //   existingRecipe?.description || ""
+  // );
+  // const [img, setImg] = useState(existingRecipe?.image || "");
+
+  // // Map over Ingredient to get the value of amount and name because there are nested Objects in an Array
+  // const [amount, setAmount] = useState(
+  //   existingRecipe?.ingredients.map((ingre) => ingre.amount) || [""]
+  // );
+
+  // const [ingredient, setIngredient] = useState(
+  //   existingRecipe?.ingredients.map((ingre) => ingre.name) || [""]
+  // );
+  // const [Instruction, setInstruction] = useState(
+  //   existingRecipe?.instruction || [""]
+  // );
+
+  const [Name, setName] = useState(existingRecipe?.name || "");
+  const [Description, setDescription] = useState(
+    existingRecipe?.description || ""
+  );
+  const [img, setImg] = useState(existingRecipe?.image || "");
+  const [amount, setAmount] = useState(
+    existingRecipe?.ingredients?.map((ingre) => ingre.amount) || [""]
+  );
+  const [ingredient, setIngredient] = useState(
+    existingRecipe?.ingredients?.map((ingre) => ingre.name) || [""]
+  );
+  const [Instruction, setInstruction] = useState(
+    existingRecipe?.instruction || [""]
   );
 
   useEffect(() => {
-    const storedRecipes = localStorage.getItem("recipes");
-    if (storedRecipes) {
-      try {
-        setRecipes(JSON.parse(storedRecipes));
-      } catch (error) {
-        console.error("Error parsing recipes from localStorage:", error);
-      }
-    } else {
-      console.log("No recipes found in localStorage.");
+    if (existingRecipe) {
+      setName(existingRecipe.name);
+      setDescription(existingRecipe.description);
+      setImg(existingRecipe.image);
+      setAmount(existingRecipe.ingredients.map((ingre) => ingre.amount));
+      setIngredient(existingRecipe.ingredients.map((ingre) => ingre.name));
+      setInstruction(existingRecipe.instruction);
     }
-  }, []);
-
-  const [Name, setName] = useState(existingRecipe?.Name || "");
-  const [Description, setDescription] = useState(
-    existingRecipe?.Description || ""
-  );
-  const [img, setImg] = useState(existingRecipe?.img || "");
-
-  // Map over Ingredient to get the value of amount and name because there are nested Objects in an Array
-  const [amount, setAmount] = useState(
-    existingRecipe?.Ingredients.map((ingre) => ingre.amount) || [""]
-  );
-
-  const [ingredient, setIngredient] = useState(
-    existingRecipe?.Ingredients.map((ingre) => ingre.name) || [""]
-  );
-  const [Instruction, setInstruction] = useState(
-    existingRecipe?.Instruction || [""]
-  );
+  }, [existingRecipe]);
 
   const handleNameInput = (e) => setName(e.target.value);
   const handleDescriptionInput = (e) => setDescription(e.target.value);
 
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      setImg(reader.result);
-    };
-
-    if (file) {
-      reader.readAsDataURL(file);
+  const handleFileUpload = async (file) => {
+    try {
+      setIsLoading(true);
+      const fileUrl = await fileUploadService.uploadRecipeImage(file);
+      setIsLoading(false);
+      return fileUrl;
+    } catch (error) {
+      console.error("Error uploading option image:", error);
+      setIsLoading(false);
     }
   };
 
@@ -89,29 +145,89 @@ function AddRecipe({ addRecipe, existingRecipe }) {
     localStorage.setItem("recipes", JSON.stringify(updatedRecipeList));
   }
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   const updatedRecipe = {
+  //     Id: recipeId || Date.now().toString(), // Use timestamp if no recipeId provided
+  //     Name,
+  //     Description,
+  //     img,
+  //     Ingredients: ingredient
+  //       .map((name, index) => ({ amount: amount[index], name: name }))
+  //       .filter((ing) => ing.name.trim() !== ""), // Remove empty ingredient row
+  //     Instruction: Instruction.filter((instr) => instr.trim() !== ""), // Remove empty instruction row
+  //   };
+
+  //   if (recipeId) {
+  //     updateRecipe(updatedRecipe);
+  //   } else {
+  //     addNewRecipe(updatedRecipe);
+  //   }
+  //   // back to homepage
+  //   navigate("/");
+  //   // jump to the top
+  //   window.scrollTo(0, 0);
+  // };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const storedToken = localStorage.getItem("authToken");
 
-    const updatedRecipe = {
-      Id: recipeId || Date.now().toString(), // Use timestamp if no recipeId provided
-      Name,
-      Description,
-      img,
-      Ingredients: ingredient
-        .map((name, index) => ({ amount: amount[index], name: name }))
-        .filter((ing) => ing.name.trim() !== ""), // Remove empty ingredient row
-      Instruction: Instruction.filter((instr) => instr.trim() !== ""), // Remove empty instruction row
-    };
-
-    if (recipeId) {
-      updateRecipe(updatedRecipe);
-    } else {
-      addNewRecipe(updatedRecipe);
+    try {
+      if (recipeId) {
+        // Rezept aktualisieren
+        const recipeResponse = await axios.put(
+          `${API_URL}/api/user/${authorId}/recipes/${recipeId}`,
+          {
+            name: Name,
+            image: img,
+            description: Description,
+            ingredients: ingredient
+              .map((name, index) => ({ amount: amount[index], name: name }))
+              .filter((ing) => ing.name.trim() !== ""), // Entfernen Sie leere Zutatenzeilen
+            Instruction: Instruction.filter((instr) => instr.trim() !== ""), // Entfernen Sie leere Anweisungszeilen
+            author: user,
+          },
+          {
+            headers: { Authorization: `Bearer ${storedToken}` },
+          }
+        );
+        console.log("Recipe changed successfully:", recipeResponse.data); // Debugging log
+      } else {
+        // Neues Rezept erstellen
+        const recipeResponse = await axios.post(
+          `${API_URL}/api/user/${currentUser._id}/recipes`,
+          {
+            name: Name,
+            image: img,
+            description: Description,
+            ingredients: ingredient
+              .map((name, index) => ({ amount: amount[index], name: name }))
+              .filter((ing) => ing.name.trim() !== ""), // Entfernen Sie leere Zutatenzeilen
+            Instruction: Instruction.filter((instr) => instr.trim() !== ""), // Entfernen Sie leere Anweisungszeilen
+            author: user,
+          },
+          {
+            headers: { Authorization: `Bearer ${storedToken}` },
+          }
+        );
+        console.log("Recipe created successfully:", recipeResponse.data); // Debugging log
+      }
+      // Zurück zur Startseite navigieren
+      if (recipeId) {
+        navigate(`/user/${authorId}/recipes/${recipeId}`);
+      } else {
+        navigate("/");
+      }
+      // Zum Seitenanfang springen
+      window.scrollTo(0, 0);
+    } catch (error) {
+      console.log("Error creating or updating recipe:", error); // Debugging log
+      const errorDescription =
+        error.response?.data?.message || "An error occurred";
+      setErrorMessage(errorDescription);
     }
-    // back to homepage
-    navigate("/");
-    // jump to the top
-    window.scrollTo(0, 0);
   };
 
   const addNewField = () => {
@@ -123,10 +239,10 @@ function AddRecipe({ addRecipe, existingRecipe }) {
     setIngredient([...ingredient, ""]);
   };
 
-  useEffect(() => {
-    // Update local storage whenever recipes state changes
-    localStorage.setItem("recipes", JSON.stringify(recipes));
-  }, [recipes]);
+  // useEffect(() => {
+  //   // Update local storage whenever recipes state changes
+  //   localStorage.setItem("recipes", JSON.stringify(recipes));
+  // }, [recipes]);
 
   return (
     <div className="addRecipe-page">
@@ -168,17 +284,10 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                   className="image-preview"
                 />
               )}
-              {img ? (
-                <label className="uploadButton">
-                  <input type="file" name="img" onChange={handleFileUpload} />{" "}
-                  🖼️ Change Image
-                </label>
-              ) : (
-                <label className="uploadButton">
-                  <input type="file" name="img" onChange={handleFileUpload} />{" "}
-                  🖼️ Choose Image
-                </label>
-              )}
+              <label className="uploadButton">
+                <input type="file" name="img" onChange={handleFileUpload} />
+                {img ? "🖼️ Change Image" : "🖼️ Choose Image"}
+              </label>
             </div>
           </div>
         </div>
