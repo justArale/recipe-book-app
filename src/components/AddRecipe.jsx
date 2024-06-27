@@ -1,27 +1,57 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "./AddRecipe.css";
+import fileUploadService from "../service/file-upload.service";
+import { AuthContext } from "../context/auth.context";
+import axios from "axios";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 // Pass nothing for add recipe or the values of the current recipe based on its ID
 function AddRecipe({ addRecipe, existingRecipe }) {
+  const { user } = useContext(AuthContext);
+  const [currentUser, setCurrentUser] = useState({});
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const { recipeId } = useParams();
   let navigate = useNavigate();
-  const [recipes, setRecipes] = useState(
-    JSON.parse(localStorage.getItem("recipes")) || []
-  );
+  // const [recipes, setRecipes] = useState(
+  //   JSON.parse(localStorage.getItem("recipes")) || []
+  // );
+
+  // useEffect(() => {
+  //   const storedRecipes = localStorage.getItem("recipes");
+  //   if (storedRecipes) {
+  //     try {
+  //       setRecipes(JSON.parse(storedRecipes));
+  //     } catch (error) {
+  //       console.error("Error parsing recipes from localStorage:", error);
+  //     }
+  //   } else {
+  //     console.log("No recipes found in localStorage.");
+  //   }
+  // }, []);
+
+  const fetchUserData = async () => {
+    const storedToken = localStorage.getItem("authToken");
+    try {
+      const response = await axios.get(`${API_URL}/api/user/${user._id}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      });
+      setCurrentUser(response.data);
+    } catch (error) {
+      const errorDescription =
+        error.response?.data?.message || "An error occurred";
+      setErrorMessage(errorDescription);
+    }
+  };
 
   useEffect(() => {
-    const storedRecipes = localStorage.getItem("recipes");
-    if (storedRecipes) {
-      try {
-        setRecipes(JSON.parse(storedRecipes));
-      } catch (error) {
-        console.error("Error parsing recipes from localStorage:", error);
-      }
-    } else {
-      console.log("No recipes found in localStorage.");
+    if (user && user._id) {
+      fetchUserData();
     }
-  }, []);
+  }, [user]);
 
   const [Name, setName] = useState(existingRecipe?.Name || "");
   const [Description, setDescription] = useState(
@@ -44,16 +74,15 @@ function AddRecipe({ addRecipe, existingRecipe }) {
   const handleNameInput = (e) => setName(e.target.value);
   const handleDescriptionInput = (e) => setDescription(e.target.value);
 
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      setImg(reader.result);
-    };
-
-    if (file) {
-      reader.readAsDataURL(file);
+  const handleFileUpload = async (file) => {
+    try {
+      setLoading(true);
+      const fileUrl = await fileUploadService.uploadRecipeImage(file);
+      setLoading(false);
+      return fileUrl;
+    } catch (error) {
+      console.error("Error uploading option image:", error);
+      setLoading(false);
     }
   };
 
@@ -89,29 +118,71 @@ function AddRecipe({ addRecipe, existingRecipe }) {
     localStorage.setItem("recipes", JSON.stringify(updatedRecipeList));
   }
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   const updatedRecipe = {
+  //     Id: recipeId || Date.now().toString(), // Use timestamp if no recipeId provided
+  //     Name,
+  //     Description,
+  //     img,
+  //     Ingredients: ingredient
+  //       .map((name, index) => ({ amount: amount[index], name: name }))
+  //       .filter((ing) => ing.name.trim() !== ""), // Remove empty ingredient row
+  //     Instruction: Instruction.filter((instr) => instr.trim() !== ""), // Remove empty instruction row
+  //   };
+
+  //   if (recipeId) {
+  //     updateRecipe(updatedRecipe);
+  //   } else {
+  //     addNewRecipe(updatedRecipe);
+  //   }
+  //   // back to homepage
+  //   navigate("/");
+  //   // jump to the top
+  //   window.scrollTo(0, 0);
+  // };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const storedToken = localStorage.getItem("authToken");
 
-    const updatedRecipe = {
-      Id: recipeId || Date.now().toString(), // Use timestamp if no recipeId provided
-      Name,
-      Description,
-      img,
-      Ingredients: ingredient
-        .map((name, index) => ({ amount: amount[index], name: name }))
-        .filter((ing) => ing.name.trim() !== ""), // Remove empty ingredient row
-      Instruction: Instruction.filter((instr) => instr.trim() !== ""), // Remove empty instruction row
-    };
+    try {
+      // Step 1: Create the recipe
+      const recipeResponse = await axios.post(
+        `${API_URL}/api/user/${currentUser._id}/recipes`,
+        {
+          name: Name,
+          image: img,
+          description: Description,
+          ingredients: ingredient
+            .map((name, index) => ({ amount: amount[index], name: name }))
+            .filter((ing) => ing.name.trim() !== ""), // Remove empty ingredient row
+          Instruction: Instruction.filter((instr) => instr.trim() !== ""), // Remove empty instruction row
+          author: user,
+        },
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }
+      );
 
-    if (recipeId) {
-      updateRecipe(updatedRecipe);
-    } else {
-      addNewRecipe(updatedRecipe);
+      console.log("Recipe created successfully:", recipeResponse.data); // Debugging log
+
+      // if (recipeId) {
+      //   updateRecipe(recipeResponse);
+      // } else {
+      //   addNewRecipe(recipeResponse);
+      // }
+      // back to homepage
+      navigate("/");
+      // jump to the top
+      window.scrollTo(0, 0);
+    } catch (error) {
+      console.log("Error creating project or options:", error); // Debugging log
+      const errorDescription =
+        error.response?.data?.message || "An error occurred";
+      setErrorMessage(errorDescription);
     }
-    // back to homepage
-    navigate("/");
-    // jump to the top
-    window.scrollTo(0, 0);
   };
 
   const addNewField = () => {
@@ -123,10 +194,10 @@ function AddRecipe({ addRecipe, existingRecipe }) {
     setIngredient([...ingredient, ""]);
   };
 
-  useEffect(() => {
-    // Update local storage whenever recipes state changes
-    localStorage.setItem("recipes", JSON.stringify(recipes));
-  }, [recipes]);
+  // useEffect(() => {
+  //   // Update local storage whenever recipes state changes
+  //   localStorage.setItem("recipes", JSON.stringify(recipes));
+  // }, [recipes]);
 
   return (
     <div className="addRecipe-page">
@@ -168,17 +239,10 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                   className="image-preview"
                 />
               )}
-              {img ? (
-                <label className="uploadButton">
-                  <input type="file" name="img" onChange={handleFileUpload} />{" "}
-                  🖼️ Change Image
-                </label>
-              ) : (
-                <label className="uploadButton">
-                  <input type="file" name="img" onChange={handleFileUpload} />{" "}
-                  🖼️ Choose Image
-                </label>
-              )}
+              <label className="uploadButton">
+                <input type="file" name="img" onChange={handleFileUpload} />
+                {img ? "🖼️ Change Image" : "🖼️ Choose Image"}
+              </label>
             </div>
           </div>
         </div>

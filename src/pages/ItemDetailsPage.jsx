@@ -20,9 +20,9 @@ function ItemDetailsPage() {
 
   // const { recipeId } = useParams();
   const navigate = useNavigate();
-  const [recipes, setRecipes] = useState(
-    JSON.parse(localStorage.getItem("recipes")) || recipesData
-  );
+  // const [recipes, setRecipes] = useState(
+  //   JSON.parse(localStorage.getItem("recipes")) || recipesData
+  // );
 
   useEffect(() => {
     // Jump to the top
@@ -101,7 +101,7 @@ function ItemDetailsPage() {
       );
       console.log("Deleted:", response.data);
       // notifyDelete();
-      navigate(`/dashboard`);
+      navigate(`/`);
     } catch (error) {
       console.error("Error deleting project:", error);
       setErrorMessage("An error occurred while deleting the project.");
@@ -109,17 +109,21 @@ function ItemDetailsPage() {
   };
 
   return (
-    <div className="itemDetail-page">
+    <div>
       {isLoading ? (
         <div>Loading...</div>
       ) : errorMessage ? (
         <div>{errorMessage}</div>
       ) : (
-        <div>
+        <div className="itemDetail-page">
           <div className="recipe-main">
             <div className="content">
               <h1 className="pageTitle">{currentRecipe.name}</h1>
               <p className="body">{currentRecipe.description}</p>
+              <p className="body">
+                added by:{" "}
+                <span className="boldWeight">{currentRecipe.author.name}</span>
+              </p>
             </div>
 
             <img
@@ -153,7 +157,7 @@ function ItemDetailsPage() {
               ))}
             </div>
           </div>
-          {isLoggedIn && (
+          {isLoggedIn && currentUser._id === currentRecipe.author._id && (
             <div className="action">
               {/* <button>
           <a href="/" className="body noUnderline primaryColor boldWeight">
