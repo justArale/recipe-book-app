@@ -10,11 +10,12 @@ const API_URL = import.meta.env.VITE_API_URL;
 // Pass nothing for add recipe or the values of the current recipe based on its ID
 function AddRecipe({ addRecipe, existingRecipe }) {
   const { user } = useContext(AuthContext);
+  const { authorId, recipeId } = useParams();
   const [currentUser, setCurrentUser] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const { recipeId } = useParams();
+  // const { recipeId } = useParams();
   let navigate = useNavigate();
   // const [recipes, setRecipes] = useState(
   //   JSON.parse(localStorage.getItem("recipes")) || []
@@ -33,56 +34,82 @@ function AddRecipe({ addRecipe, existingRecipe }) {
   //   }
   // }, []);
 
-  const fetchUserData = async () => {
-    const storedToken = localStorage.getItem("authToken");
-    try {
-      const response = await axios.get(`${API_URL}/api/user/${user._id}`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      });
-      setCurrentUser(response.data);
-    } catch (error) {
-      const errorDescription =
-        error.response?.data?.message || "An error occurred";
-      setErrorMessage(errorDescription);
-    }
-  };
+  // const fetchUserData = async () => {
+  //   const storedToken = localStorage.getItem("authToken");
+  //   try {
+  //     const response = await axios.get(`${API_URL}/api/user/${user._id}`, {
+  //       headers: { Authorization: `Bearer ${storedToken}` },
+  //     });
+  //     setCurrentUser(response.data);
+  //   } catch (error) {
+  //     const errorDescription =
+  //       error.response?.data?.message || "An error occurred";
+  //     setErrorMessage(errorDescription);
+  //   }
+  // };
 
-  useEffect(() => {
-    if (user && user._id) {
-      fetchUserData();
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user && user._id) {
+  //     fetchUserData();
+  //   }
+  // }, [user]);
 
-  const [Name, setName] = useState(existingRecipe?.Name || "");
+  // const [Name, setName] = useState(existingRecipe?.name || "");
+  // const [Description, setDescription] = useState(
+  //   existingRecipe?.description || ""
+  // );
+  // const [img, setImg] = useState(existingRecipe?.image || "");
+
+  // // Map over Ingredient to get the value of amount and name because there are nested Objects in an Array
+  // const [amount, setAmount] = useState(
+  //   existingRecipe?.ingredients.map((ingre) => ingre.amount) || [""]
+  // );
+
+  // const [ingredient, setIngredient] = useState(
+  //   existingRecipe?.ingredients.map((ingre) => ingre.name) || [""]
+  // );
+  // const [Instruction, setInstruction] = useState(
+  //   existingRecipe?.instruction || [""]
+  // );
+
+  const [Name, setName] = useState(existingRecipe?.name || "");
   const [Description, setDescription] = useState(
-    existingRecipe?.Description || ""
+    existingRecipe?.description || ""
   );
-  const [img, setImg] = useState(existingRecipe?.img || "");
-
-  // Map over Ingredient to get the value of amount and name because there are nested Objects in an Array
+  const [img, setImg] = useState(existingRecipe?.image || "");
   const [amount, setAmount] = useState(
-    existingRecipe?.Ingredients.map((ingre) => ingre.amount) || [""]
+    existingRecipe?.ingredients?.map((ingre) => ingre.amount) || [""]
   );
-
   const [ingredient, setIngredient] = useState(
-    existingRecipe?.Ingredients.map((ingre) => ingre.name) || [""]
+    existingRecipe?.ingredients?.map((ingre) => ingre.name) || [""]
   );
   const [Instruction, setInstruction] = useState(
-    existingRecipe?.Instruction || [""]
+    existingRecipe?.instruction || [""]
   );
+
+  useEffect(() => {
+    if (existingRecipe) {
+      setName(existingRecipe.name);
+      setDescription(existingRecipe.description);
+      setImg(existingRecipe.image);
+      setAmount(existingRecipe.ingredients.map((ingre) => ingre.amount));
+      setIngredient(existingRecipe.ingredients.map((ingre) => ingre.name));
+      setInstruction(existingRecipe.instruction);
+    }
+  }, [existingRecipe]);
 
   const handleNameInput = (e) => setName(e.target.value);
   const handleDescriptionInput = (e) => setDescription(e.target.value);
 
   const handleFileUpload = async (file) => {
     try {
-      setLoading(true);
+      setIsLoading(true);
       const fileUrl = await fileUploadService.uploadRecipeImage(file);
-      setLoading(false);
+      setIsLoading(false);
       return fileUrl;
     } catch (error) {
       console.error("Error uploading option image:", error);
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -148,37 +175,55 @@ function AddRecipe({ addRecipe, existingRecipe }) {
     const storedToken = localStorage.getItem("authToken");
 
     try {
-      // Step 1: Create the recipe
-      const recipeResponse = await axios.post(
-        `${API_URL}/api/user/${currentUser._id}/recipes`,
-        {
-          name: Name,
-          image: img,
-          description: Description,
-          ingredients: ingredient
-            .map((name, index) => ({ amount: amount[index], name: name }))
-            .filter((ing) => ing.name.trim() !== ""), // Remove empty ingredient row
-          Instruction: Instruction.filter((instr) => instr.trim() !== ""), // Remove empty instruction row
-          author: user,
-        },
-        {
-          headers: { Authorization: `Bearer ${storedToken}` },
-        }
-      );
-
-      console.log("Recipe created successfully:", recipeResponse.data); // Debugging log
-
-      // if (recipeId) {
-      //   updateRecipe(recipeResponse);
-      // } else {
-      //   addNewRecipe(recipeResponse);
-      // }
-      // back to homepage
-      navigate("/");
-      // jump to the top
+      if (recipeId) {
+        // Rezept aktualisieren
+        const recipeResponse = await axios.put(
+          `${API_URL}/api/user/${authorId}/recipes/${recipeId}`,
+          {
+            name: Name,
+            image: img,
+            description: Description,
+            ingredients: ingredient
+              .map((name, index) => ({ amount: amount[index], name: name }))
+              .filter((ing) => ing.name.trim() !== ""), // Entfernen Sie leere Zutatenzeilen
+            Instruction: Instruction.filter((instr) => instr.trim() !== ""), // Entfernen Sie leere Anweisungszeilen
+            author: user,
+          },
+          {
+            headers: { Authorization: `Bearer ${storedToken}` },
+          }
+        );
+        console.log("Recipe changed successfully:", recipeResponse.data); // Debugging log
+      } else {
+        // Neues Rezept erstellen
+        const recipeResponse = await axios.post(
+          `${API_URL}/api/user/${currentUser._id}/recipes`,
+          {
+            name: Name,
+            image: img,
+            description: Description,
+            ingredients: ingredient
+              .map((name, index) => ({ amount: amount[index], name: name }))
+              .filter((ing) => ing.name.trim() !== ""), // Entfernen Sie leere Zutatenzeilen
+            Instruction: Instruction.filter((instr) => instr.trim() !== ""), // Entfernen Sie leere Anweisungszeilen
+            author: user,
+          },
+          {
+            headers: { Authorization: `Bearer ${storedToken}` },
+          }
+        );
+        console.log("Recipe created successfully:", recipeResponse.data); // Debugging log
+      }
+      // Zurück zur Startseite navigieren
+      if (recipeId) {
+        navigate(`/user/${authorId}/recipes/${recipeId}`);
+      } else {
+        navigate("/");
+      }
+      // Zum Seitenanfang springen
       window.scrollTo(0, 0);
     } catch (error) {
-      console.log("Error creating project or options:", error); // Debugging log
+      console.log("Error creating or updating recipe:", error); // Debugging log
       const errorDescription =
         error.response?.data?.message || "An error occurred";
       setErrorMessage(errorDescription);

@@ -46,7 +46,7 @@ function App() {
         />
         <Route path="/about" element={<AboutPage />} />
         <Route
-          path="/user/:authorId/recipes/new"
+          path="/user/recipes/new"
           element={
             <IsPrivate>
               <NewRecipePage />
@@ -54,7 +54,7 @@ function App() {
           }
         />
         <Route
-          path="/user/recipes/edit/:recipeId"
+          path="/user/:authorId/recipes/edit/:recipeId"
           element={
             <IsPrivate>
               <EditPage />

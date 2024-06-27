@@ -59,7 +59,7 @@ function Navbar({
                   Log Out
                 </button>
                 <div className="newRecipeNavigation">
-                  <Link to={`/recipes/new`}>
+                  <Link to={`/user/recipes/new`}>
                     <button className="body noUnderline primaryColor">
                       New recipe
                     </button>

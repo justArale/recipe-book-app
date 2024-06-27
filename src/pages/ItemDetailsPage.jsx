@@ -167,7 +167,7 @@ function ItemDetailsPage() {
 
               <button>
                 <a
-                  href={`/recipes/edit/${recipeId}`}
+                  href={`/user/${authorId}/recipes/edit/${recipeId}`}
                   className="body noUnderline primaryColor boldWeight"
                 >
                   ✏️ Edit
