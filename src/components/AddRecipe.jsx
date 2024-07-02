@@ -1,3 +1,5 @@
+// AddRecipe.jsx
+
 import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "./AddRecipe.css";
@@ -101,14 +103,18 @@ function AddRecipe({ addRecipe, existingRecipe }) {
   const handleNameInput = (e) => setName(e.target.value);
   const handleDescriptionInput = (e) => setDescription(e.target.value);
 
-  const handleFileUpload = async (file) => {
+  const handleFileUpload = async (event) => {
     try {
       setIsLoading(true);
-      const fileUrl = await fileUploadService.uploadRecipeImage(file);
+      const file = event.target.files[0];
+      const fileData = new FormData();
+      fileData.append("file", file);
+
+      const fileUrl = await fileUploadService.uploadRecipeImage(fileData);
+      setImg(fileUrl);
       setIsLoading(false);
-      return fileUrl;
     } catch (error) {
-      console.error("Error uploading option image:", error);
+      console.error("Error uploading image:", error);
       setIsLoading(false);
     }
   };
@@ -145,82 +151,52 @@ function AddRecipe({ addRecipe, existingRecipe }) {
     localStorage.setItem("recipes", JSON.stringify(updatedRecipeList));
   }
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   const updatedRecipe = {
-  //     Id: recipeId || Date.now().toString(), // Use timestamp if no recipeId provided
-  //     Name,
-  //     Description,
-  //     img,
-  //     Ingredients: ingredient
-  //       .map((name, index) => ({ amount: amount[index], name: name }))
-  //       .filter((ing) => ing.name.trim() !== ""), // Remove empty ingredient row
-  //     Instruction: Instruction.filter((instr) => instr.trim() !== ""), // Remove empty instruction row
-  //   };
-
-  //   if (recipeId) {
-  //     updateRecipe(updatedRecipe);
-  //   } else {
-  //     addNewRecipe(updatedRecipe);
-  //   }
-  //   // back to homepage
-  //   navigate("/");
-  //   // jump to the top
-  //   window.scrollTo(0, 0);
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const storedToken = localStorage.getItem("authToken");
 
+    const recipeData = {
+      name: Name,
+      image: img,
+      description: Description,
+      ingredients: ingredient
+        .map((name, index) => ({ amount: amount[index], name: name }))
+        .filter((ing) => ing.name.trim() !== ""), // Get rip of empty lines
+      Instruction: Instruction.filter((instr) => instr.trim() !== ""), // Get rip of empty lines
+      author: user,
+    };
+
     try {
+      let recipeResponse;
       if (recipeId) {
-        // Rezept aktualisieren
-        const recipeResponse = await axios.put(
+        // Update recipe
+        recipeResponse = await axios.put(
           `${API_URL}/api/user/${authorId}/recipes/${recipeId}`,
-          {
-            name: Name,
-            image: img,
-            description: Description,
-            ingredients: ingredient
-              .map((name, index) => ({ amount: amount[index], name: name }))
-              .filter((ing) => ing.name.trim() !== ""), // Entfernen Sie leere Zutatenzeilen
-            Instruction: Instruction.filter((instr) => instr.trim() !== ""), // Entfernen Sie leere Anweisungszeilen
-            author: user,
-          },
+          recipeData,
           {
             headers: { Authorization: `Bearer ${storedToken}` },
           }
         );
         console.log("Recipe changed successfully:", recipeResponse.data); // Debugging log
       } else {
-        // Neues Rezept erstellen
-        const recipeResponse = await axios.post(
-          `${API_URL}/api/user/${currentUser._id}/recipes`,
-          {
-            name: Name,
-            image: img,
-            description: Description,
-            ingredients: ingredient
-              .map((name, index) => ({ amount: amount[index], name: name }))
-              .filter((ing) => ing.name.trim() !== ""), // Entfernen Sie leere Zutatenzeilen
-            Instruction: Instruction.filter((instr) => instr.trim() !== ""), // Entfernen Sie leere Anweisungszeilen
-            author: user,
-          },
+        // Create new recipe
+        recipeResponse = await axios.post(
+          `${API_URL}/api/user/${user._id}/recipes`,
+          recipeData,
           {
             headers: { Authorization: `Bearer ${storedToken}` },
           }
         );
         console.log("Recipe created successfully:", recipeResponse.data); // Debugging log
       }
-      // Zurück zur Startseite navigieren
+
+      // Go back to recipe detail or dashboard
       if (recipeId) {
         navigate(`/user/${authorId}/recipes/${recipeId}`);
       } else {
         navigate("/");
       }
-      // Zum Seitenanfang springen
+      // Jump to the top
       window.scrollTo(0, 0);
     } catch (error) {
       console.log("Error creating or updating recipe:", error); // Debugging log
