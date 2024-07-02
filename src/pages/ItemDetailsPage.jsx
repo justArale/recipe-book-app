@@ -120,7 +120,7 @@ function ItemDetailsPage() {
             <div className="content">
               <h1 className="pageTitle">{currentRecipe.name}</h1>
               <p className="body">{currentRecipe.description}</p>
-              <p className="body">
+              <p className="body" style={{ marginTop: "auto" }}>
                 added by:{" "}
                 <span className="boldWeight">{currentRecipe.author.name}</span>
               </p>
