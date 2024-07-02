@@ -33,7 +33,9 @@ function AuthorRecipes() {
 
   return (
     <div>
-      <h2 className="headline">All recipe of: {currentAuthor.name}</h2>
+      <h2 className="body">
+        All recipe of: <span className="boldWeight">{currentAuthor.name}</span>
+      </h2>
       <DashboardPage />
     </div>
   );
