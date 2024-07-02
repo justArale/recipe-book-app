@@ -17,6 +17,15 @@ function Navbar({
 }) {
   const location = useLocation();
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
+  let navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    if (isLoggedIn) {
+      navigate("/user/recipes/new");
+    } else {
+      handleLoginClick();
+    }
+  };
 
   return (
     <div className="header">
@@ -49,7 +58,15 @@ function Navbar({
             </Link>
           </div>
 
-          <div>
+          <div className="action">
+            <div>
+              <button
+                className="body noUnderline primaryColor"
+                onClick={handleButtonClick}
+              >
+                New recipe
+              </button>
+            </div>
             {isLoggedIn ? (
               <div>
                 <button
@@ -58,13 +75,6 @@ function Navbar({
                 >
                   Log Out
                 </button>
-                <div className="newRecipeNavigation">
-                  <Link to={`/user/recipes/new`}>
-                    <button className="body noUnderline primaryColor">
-                      New recipe
-                    </button>
-                  </Link>
-                </div>
               </div>
             ) : (
               <>
