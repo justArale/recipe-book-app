@@ -1,3 +1,5 @@
+// file-upload.service.js
+
 import axios from "axios";
 
 const api = axios.create({
@@ -6,10 +8,14 @@ const api = axios.create({
 
 // Function to upload avatar
 const uploadAvatar = async (file) => {
+  const token = localStorage.getItem("authToken");
   try {
-    const fileData = new FormData();
-    fileData.append("file", file);
-    const res = await api.post("/api/upload-avatar", fileData);
+    const res = await api.post("/api/upload-avatar", fileData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "multipart/form-data",
+      },
+    });
     return res.data.fileUrl;
   } catch (error) {
     console.error(error);
@@ -18,11 +24,15 @@ const uploadAvatar = async (file) => {
 };
 
 // Function to upload recipe-image
-const uploadRecipeImage = async (file) => {
+const uploadRecipeImage = async (fileData) => {
+  const token = localStorage.getItem("authToken");
   try {
-    const fileData = new FormData();
-    fileData.append("file", file);
-    const res = await api.post("/api/upload-recipe-image", fileData);
+    const res = await api.post("/api/upload-recipe-image", fileData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "multipart/form-data",
+      },
+    });
     return res.data.fileUrl;
   } catch (error) {
     console.error(error);
