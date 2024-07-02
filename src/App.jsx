@@ -14,6 +14,7 @@ import { useState } from "react";
 
 import IsPrivate from "./components/IsPrivate";
 import IsAnon from "./components/IsAnon";
+import AuthorRecipes from "./pages/AuthorRecipes";
 
 function App() {
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
@@ -40,6 +41,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<DashboardPage />} />
+        <Route path="/user/:authorId/recipes" element={<AuthorRecipes />} />
         <Route
           path="/user/:authorId/recipes/:recipeId"
           element={<ItemDetailsPage />}

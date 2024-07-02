@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import recipesData from "../components/recipes.json";
 import { useState, useEffect, useContext } from "react";
 import "../components/ListItem.css";
@@ -122,7 +122,11 @@ function ItemDetailsPage() {
               <p className="body">{currentRecipe.description}</p>
               <p className="body" style={{ marginTop: "auto" }}>
                 added by:{" "}
-                <span className="boldWeight">{currentRecipe.author.name}</span>
+                <Link to={`/user/${authorId}/recipes`} className="noUnderline">
+                  <span className="boldWeight primaryColor">
+                    {currentRecipe.author.name}
+                  </span>
+                </Link>
               </p>
             </div>
 

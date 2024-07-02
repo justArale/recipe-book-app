@@ -1,5 +1,5 @@
 import List from "../components/List";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import recipesData from "../components/recipes.json";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -8,6 +8,7 @@ import "../components/Skeleton.css";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function DashboardPage() {
+  const { authorId } = useParams();
   const [allRecipes, setAllRecipes] = useState([]);
   const [errorMessage, setErrorMessage] = useState(undefined);
   const [isLoading, setIsLoading] = useState(true);
@@ -28,8 +29,28 @@ function DashboardPage() {
       });
   };
 
+  const getAllRecipesOfOneAuthor = () => {
+    axios
+      .get(`${API_URL}/api/user/${authorId}/recipes`)
+      .then((response) => {
+        setAllRecipes(response.data);
+        console.log("recipe._id", response.data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        const errorDescription =
+          error.response?.data?.message || "An error occurred";
+        setErrorMessage(errorDescription);
+        setIsLoading(false);
+      });
+  };
+
   useEffect(() => {
-    getAllRecipes();
+    if (authorId) {
+      getAllRecipesOfOneAuthor();
+    } else {
+      getAllRecipes();
+    }
   }, []);
 
   return (
