@@ -3,6 +3,7 @@ import DashboardPage from "./DashboardPage";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import "../components/AuthorRecipes.css";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -32,7 +33,7 @@ function AuthorRecipes() {
   }, []);
 
   return (
-    <div>
+    <div className="authorRecipesPage">
       <h2 className="body">
         All recipe of: <span className="boldWeight">{currentAuthor.name}</span>
       </h2>
