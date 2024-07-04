@@ -13,10 +13,10 @@ const LogInForm = ({
   return (
     <div className="sign-up">
       <form onSubmit={handleLoginSubmit} className="signup-form">
-        <h3 className="sectionTitle">Log In</h3>
+        <h3 className="bodyLarge">Log In</h3>
 
         <div className="input-group">
-          <label htmlFor="email" className="label secondaryColor">
+          <label htmlFor="email" className="body">
             Email
           </label>
           <input
@@ -32,7 +32,7 @@ const LogInForm = ({
         </div>
 
         <div className="input-group">
-          <label htmlFor="password" className="label secondaryColor">
+          <label htmlFor="password" className="body">
             Password
           </label>
           <input
@@ -47,15 +47,12 @@ const LogInForm = ({
           />
         </div>
 
-        <button
-          type="submit"
-          className="button buttonPrimaryLarge buttonFont buttonFontReverse"
-        >
+        <button type="submit" className="becomePrivateButton">
           Log In
         </button>
       </form>
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      {errorMessage && <p className="body">{errorMessage}</p>}
 
       {/* <p className="bodyLink">
         Don't have an account?{" "}
