@@ -16,63 +16,9 @@ function AddRecipe({ addRecipe, existingRecipe }) {
   const [currentUser, setCurrentUser] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [imageIsLoading, setImageIsLoading] = useState(false);
 
-  // const { recipeId } = useParams();
   let navigate = useNavigate();
-  // const [recipes, setRecipes] = useState(
-  //   JSON.parse(localStorage.getItem("recipes")) || []
-  // );
-
-  // useEffect(() => {
-  //   const storedRecipes = localStorage.getItem("recipes");
-  //   if (storedRecipes) {
-  //     try {
-  //       setRecipes(JSON.parse(storedRecipes));
-  //     } catch (error) {
-  //       console.error("Error parsing recipes from localStorage:", error);
-  //     }
-  //   } else {
-  //     console.log("No recipes found in localStorage.");
-  //   }
-  // }, []);
-
-  // const fetchUserData = async () => {
-  //   const storedToken = localStorage.getItem("authToken");
-  //   try {
-  //     const response = await axios.get(`${API_URL}/api/user/${user._id}`, {
-  //       headers: { Authorization: `Bearer ${storedToken}` },
-  //     });
-  //     setCurrentUser(response.data);
-  //   } catch (error) {
-  //     const errorDescription =
-  //       error.response?.data?.message || "An error occurred";
-  //     setErrorMessage(errorDescription);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   if (user && user._id) {
-  //     fetchUserData();
-  //   }
-  // }, [user]);
-
-  // const [Name, setName] = useState(existingRecipe?.name || "");
-  // const [Description, setDescription] = useState(
-  //   existingRecipe?.description || ""
-  // );
-  // const [img, setImg] = useState(existingRecipe?.image || "");
-
-  // // Map over Ingredient to get the value of amount and name because there are nested Objects in an Array
-  // const [amount, setAmount] = useState(
-  //   existingRecipe?.ingredients.map((ingre) => ingre.amount) || [""]
-  // );
-
-  // const [ingredient, setIngredient] = useState(
-  //   existingRecipe?.ingredients.map((ingre) => ingre.name) || [""]
-  // );
-  // const [Instruction, setInstruction] = useState(
-  //   existingRecipe?.instruction || [""]
-  // );
 
   const [Name, setName] = useState(existingRecipe?.name || "");
   const [Description, setDescription] = useState(
@@ -105,17 +51,17 @@ function AddRecipe({ addRecipe, existingRecipe }) {
 
   const handleFileUpload = async (event) => {
     try {
-      setIsLoading(true);
+      setImageIsLoading(true);
       const file = event.target.files[0];
       const fileData = new FormData();
       fileData.append("file", file);
 
       const fileUrl = await fileUploadService.uploadRecipeImage(fileData);
       setImg(fileUrl);
-      setIsLoading(false);
+      setImageIsLoading(false);
     } catch (error) {
       console.error("Error uploading image:", error);
-      setIsLoading(false);
+      setImageIsLoading(false);
     }
   };
 
@@ -136,20 +82,6 @@ function AddRecipe({ addRecipe, existingRecipe }) {
     updatedInstructions[index] = e.target.value;
     setInstruction(updatedInstructions);
   };
-
-  function updateRecipe(updatedRecipe) {
-    const updatedRecipes = recipes.map((rec) =>
-      rec.Id === updatedRecipe.Id ? updatedRecipe : rec
-    );
-    setRecipes(updatedRecipes);
-    localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
-  }
-
-  function addNewRecipe(newRecipe) {
-    const updatedRecipeList = [...recipes, newRecipe];
-    setRecipes(updatedRecipeList);
-    localStorage.setItem("recipes", JSON.stringify(updatedRecipeList));
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -215,11 +147,6 @@ function AddRecipe({ addRecipe, existingRecipe }) {
     setIngredient([...ingredient, ""]);
   };
 
-  // useEffect(() => {
-  //   // Update local storage whenever recipes state changes
-  //   localStorage.setItem("recipes", JSON.stringify(recipes));
-  // }, [recipes]);
-
   return (
     <div className="addRecipe-page">
       <form className="addRecipe" onSubmit={handleSubmit}>
@@ -262,7 +189,11 @@ function AddRecipe({ addRecipe, existingRecipe }) {
               )}
               <label className="uploadButton">
                 <input type="file" name="img" onChange={handleFileUpload} />
-                {img ? "🖼️ Change Image" : "🖼️ Choose Image"}
+                {imageIsLoading
+                  ? "🔄 loading ..."
+                  : img
+                  ? "🖼️ Change Image"
+                  : "🖼️ Choose Image"}
               </label>
             </div>
           </div>
