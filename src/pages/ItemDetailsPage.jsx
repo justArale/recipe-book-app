@@ -4,6 +4,7 @@ import { useState, useEffect, useContext } from "react";
 import "../components/ListItem.css";
 import placeholderImage from "../assets/placeholder.svg";
 import { AuthContext } from "../context/auth.context";
+import { IndexContext } from "../context/index.context";
 import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -17,6 +18,7 @@ function ItemDetailsPage() {
   const [currentUser, setCurrentUser] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const { indexNumber } = useContext(IndexContext);
 
   const navigate = useNavigate();
 
@@ -93,6 +95,20 @@ function ItemDetailsPage() {
     }
   };
 
+  const getClassNameByIndex = (index) => {
+    const classNames = [
+      "one",
+      "two",
+      "three",
+      "four",
+      "five",
+      "six",
+      "seven",
+      "eight",
+    ];
+    return classNames[(index - 1) % classNames.length];
+  };
+
   return (
     <div>
       {isLoading ? (
@@ -101,7 +117,7 @@ function ItemDetailsPage() {
         <div>{errorMessage}</div>
       ) : (
         <div className="itemDetail-page">
-          <div className="recipe-main">
+          <div className={`recipe-main ${getClassNameByIndex(indexNumber)}`}>
             <div className="content">
               <h1 className="pageTitle">{currentRecipe.name}</h1>
               <p className="body">{currentRecipe.description}</p>

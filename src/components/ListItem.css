@@ -11,13 +11,44 @@
 }
 
 .recipe-main {
-  background-color: var(--main-color);
   padding: 16px;
   display: flex;
   gap: 16px;
   width: 100%;
   border-radius: 16px;
   box-sizing: border-box;
+}
+
+.one {
+  background-color: #eacdad;
+}
+
+.two {
+  background-color: #ebc8cf;
+}
+
+.three {
+  background-color: #bcc4d5;
+}
+
+.four {
+  background-color: #f2d4bf;
+}
+
+.five {
+  background-color: #dfd1dd;
+}
+
+.six {
+  background-color: #b6d2ce;
+}
+
+.seven {
+  background-color: #f4eab4;
+}
+
+.eight {
+  background-color: #c8c9d9;
 }
 
 .content {

@@ -1,9 +1,10 @@
 import List from "../components/List";
 import { Link, useParams } from "react-router-dom";
 import recipesData from "../components/recipes.json";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import "../components/Skeleton.css";
+import { IndexContext } from "../context/index.context";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -12,6 +13,7 @@ function DashboardPage() {
   const [allRecipes, setAllRecipes] = useState([]);
   const [errorMessage, setErrorMessage] = useState(undefined);
   const [isLoading, setIsLoading] = useState(true);
+  const { setIndexNumber } = useContext(IndexContext);
 
   const getAllRecipes = () => {
     axios
@@ -53,6 +55,11 @@ function DashboardPage() {
     }
   }, []);
 
+  const setIndex = (index) => {
+    setIndexNumber(index + 1); // Increment the index by one and set it in the context
+    console.log("Index", index + 1);
+  };
+
   return (
     <div className="grid-container">
       {errorMessage && <p>{errorMessage}</p>}
@@ -67,6 +74,7 @@ function DashboardPage() {
                 <Link
                   to={`/user/${recipe.author._id}/recipes/${recipe._id}`}
                   className="listItem-link"
+                  onClick={() => setIndex(index)}
                 >
                   <List recipe={recipe} className="listItem-container" />
                 </Link>
