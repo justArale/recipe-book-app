@@ -31,7 +31,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
   const [ingredient, setIngredient] = useState(
     existingRecipe?.ingredients?.map((ingre) => ingre.name) || [""]
   );
-  const [Instruction, setInstruction] = useState(
+  const [instruction, setInstruction] = useState(
     existingRecipe?.instruction || [""]
   );
 
@@ -78,7 +78,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
   };
 
   const handleInstructionInput = (e, index) => {
-    const updatedInstructions = [...Instruction];
+    const updatedInstructions = [...instruction];
     updatedInstructions[index] = e.target.value;
     setInstruction(updatedInstructions);
   };
@@ -94,7 +94,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
       ingredients: ingredient
         .map((name, index) => ({ amount: amount[index], name: name }))
         .filter((ing) => ing.name.trim() !== ""), // Get rip of empty lines
-      Instruction: Instruction.filter((instr) => instr.trim() !== ""), // Get rip of empty lines
+      instruction: instruction.filter((instr) => instr.trim() !== ""), // Get rip of empty lines
       author: user,
     };
 
@@ -139,7 +139,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
   };
 
   const addNewField = () => {
-    setInstruction([...Instruction, ""]);
+    setInstruction([...instruction, ""]);
   };
 
   const addNewIngredient = () => {
@@ -188,7 +188,12 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                 />
               )}
               <label className="uploadButton">
-                <input type="file" name="img" onChange={handleFileUpload} />
+                <input
+                  type="file"
+                  name="img"
+                  accept="image/png, image/jpg, image/jpeg, image/gif, image/webm, image/webp, image/heic"
+                  onChange={handleFileUpload}
+                />
                 {imageIsLoading
                   ? "🔄 loading ..."
                   : img
@@ -228,7 +233,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
         </div>
         <div className="addRecipe-instruction">
           <label className="bodyLarge">Instruction</label>
-          {Instruction.map((instructionText, index) => (
+          {instruction.map((instructionText, index) => (
             <textarea
               key={index}
               required
@@ -238,7 +243,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
               placeholder={`${index + 1}. Instruction...`}
               value={instructionText}
               onChange={(e) => handleInstructionInput(e, index)}
-              onClick={index === Instruction.length - 1 ? addNewField : null}
+              onClick={index === instruction.length - 1 ? addNewField : null}
             />
           ))}
         </div>
