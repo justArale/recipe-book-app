@@ -38,23 +38,25 @@ function Navbar({
         </div>
         <div className="navigation">
           <div className="sidebar-path">
-            <Link
-              className={`primaryColor noUnderline home ${
-                location.pathname === "/" ? "active" : ""
-              }`}
-              to={`/`}
-            >
-              <p className="body">Home</p>
+            <Link className="primaryColor noUnderline" to={`/`}>
+              <p
+                className={`body home ${
+                  location.pathname === "/" ? "active" : ""
+                }`}
+              >
+                Home
+              </p>
             </Link>
           </div>
           <div className="sidebar-path">
-            <Link
-              className={`primaryColor noUnderline about ${
-                location.pathname === "/about" ? "active" : ""
-              }`}
-              to={`/about`}
-            >
-              <p className="body">About</p>
+            <Link className="primaryColor noUnderline" to={`/about`}>
+              <p
+                className={`body about ${
+                  location.pathname === "/about" ? "active" : ""
+                }`}
+              >
+                About
+              </p>
             </Link>
           </div>
 
