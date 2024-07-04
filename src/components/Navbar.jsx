@@ -44,7 +44,7 @@ function Navbar({
               }`}
               to={`/`}
             >
-              <p>Home</p>
+              <p className="body">Home</p>
             </Link>
           </div>
           <div className="sidebar-path">
@@ -54,7 +54,7 @@ function Navbar({
               }`}
               to={`/about`}
             >
-              <p>About</p>
+              <p className="body">About</p>
             </Link>
           </div>
 
