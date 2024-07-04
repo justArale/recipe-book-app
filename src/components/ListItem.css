@@ -11,7 +11,7 @@
 }
 
 .recipe-main {
-  background-color: #f2d4bf;
+  background-color: var(--main-color);
   padding: 16px;
   display: flex;
   gap: 16px;

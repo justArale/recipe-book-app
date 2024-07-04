@@ -1,13 +1,13 @@
 .skeleton {
   background-color: #e0e0e0;
   border-radius: 20px;
-  height: 136px;
-  width: calc(33% - 20px);
+  height: 390px;
+  width: 320px;
   overflow: hidden;
 }
 
 .skeletonRecipes {
-  height: 200px;
+  height: 390px;
 }
 
 .skeleton::after {
