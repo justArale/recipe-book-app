@@ -56,8 +56,7 @@ function DashboardPage() {
   }, []);
 
   const setIndex = (index) => {
-    setIndexNumber(index + 1); // Increment the index by one and set it in the context
-    console.log("Index", index + 1);
+    setIndexNumber(index); // Set index in the context
   };
 
   return (

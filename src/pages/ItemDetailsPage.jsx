@@ -106,7 +106,7 @@ function ItemDetailsPage() {
       "seven",
       "eight",
     ];
-    return classNames[(index - 1) % classNames.length];
+    return classNames[index % classNames.length];
   };
 
   return (
