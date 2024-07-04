@@ -1,8 +1,31 @@
 import "./Navbar.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../context/auth.context";
+import axios from "axios";
+import LoginForm from "../components/LogInForm";
+import SignUpForm from "../components/SignUpForm";
 
-function Navbar() {
+const API_URL = import.meta.env.VITE_API_URL;
+
+function Navbar({
+  isOverlayOpen,
+  handleLoginClick,
+  handleCloseOverlay,
+  isLogin,
+  setIsLogin,
+}) {
   const location = useLocation();
+  const { isLoggedIn, logOutUser } = useContext(AuthContext);
+  let navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    if (isLoggedIn) {
+      navigate("/user/recipes/new");
+    } else {
+      handleLoginClick();
+    }
+  };
 
   return (
     <div className="header">
@@ -15,33 +38,169 @@ function Navbar() {
         </div>
         <div className="navigation">
           <div className="sidebar-path">
-            <Link
-              className={`primaryColor noUnderline home ${
-                location.pathname === "/" ? "active" : ""
-              }`}
-              to={`/`}
-            >
-              <p>Home</p>
+            <Link className="primaryColor noUnderline" to={`/`}>
+              <p
+                className={`body home ${
+                  location.pathname === "/" ? "active" : ""
+                }`}
+              >
+                Home
+              </p>
             </Link>
           </div>
           <div className="sidebar-path">
-            <Link
-              className={`primaryColor noUnderline about ${
-                location.pathname === "/about" ? "active" : ""
-              }`}
-              to={`/about`}
-            >
-              <p>About</p>
+            <Link className="primaryColor noUnderline" to={`/about`}>
+              <p
+                className={`body about ${
+                  location.pathname === "/about" ? "active" : ""
+                }`}
+              >
+                About
+              </p>
             </Link>
           </div>
-          <div className="newRecipeNavigation">
-            <Link to={`/newrecipe`}>
-              <button className="body noUnderline primaryColor">
+
+          <div className="action">
+            <div>
+              <button
+                className="body noUnderline primaryColor"
+                onClick={handleButtonClick}
+              >
                 New recipe
               </button>
-            </Link>
+            </div>
+            {isLoggedIn ? (
+              <div>
+                <button
+                  onClick={logOutUser}
+                  className="body noUnderline primaryColor"
+                >
+                  Log Out
+                </button>
+              </div>
+            ) : (
+              <>
+                {location.pathname !== "/login" &&
+                  location.pathname !== "/signup" && (
+                    <>
+                      <button
+                        onClick={handleLoginClick}
+                        className="body noUnderline primaryColor"
+                      >
+                        Log In
+                      </button>
+                    </>
+                  )}
+              </>
+            )}
           </div>
         </div>
+      </div>
+      {isOverlayOpen && (
+        <Overlay
+          isLogin={isLogin}
+          onClose={handleCloseOverlay}
+          onSwitch={() => setIsLogin(!isLogin)}
+        />
+      )}
+    </div>
+  );
+}
+
+function Overlay({ isLogin, onClose, onSwitch }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+
+  const [errorMessage, setErrorMessage] = useState(undefined);
+
+  const { storeToken, authenticateUser } = useContext(AuthContext);
+
+  const handleEmail = (e) => setEmail(e.target.value);
+  const handlePassword = (e) => setPassword(e.target.value);
+  const handleName = (e) => setName(e.target.value);
+
+  const navigate = useNavigate();
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    const requestBody = { email, password };
+
+    axios
+      .post(`${API_URL}/auth/login`, requestBody)
+      .then((response) => {
+        storeToken(response.data.authToken);
+        authenticateUser();
+        onClose();
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
+      });
+  };
+
+  const handleSignupSubmit = (e) => {
+    e.preventDefault();
+
+    const requestBody = {
+      email,
+      password,
+      name,
+    };
+
+    axios
+      .post(`${API_URL}/auth/signup`, requestBody)
+      .then(() => {
+        // After successful signup, log the user in
+        const loginRequestBody = { email, password };
+
+        axios
+          .post(`${API_URL}/auth/login`, loginRequestBody)
+          .then((response) => {
+            storeToken(response.data.authToken);
+            authenticateUser();
+            onClose();
+            navigate("/");
+          })
+          .catch((error) => {
+            const errorDescription = error.response.data.message;
+            setErrorMessage(errorDescription);
+          });
+      })
+      .catch((error) => {
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
+      });
+  };
+
+  return (
+    <div className="overlay">
+      <div className="overlay-background" onClick={onClose}></div>
+      <div className="overlay-content">
+        {isLogin ? (
+          <LoginForm
+            handleLoginSubmit={handleLoginSubmit}
+            handleEmail={handleEmail}
+            handlePassword={handlePassword}
+            email={email}
+            password={password}
+            errorMessage={errorMessage}
+            onSwitch={onSwitch}
+          />
+        ) : (
+          <SignUpForm
+            handleSignupSubmit={handleSignupSubmit}
+            handleEmail={handleEmail}
+            handlePassword={handlePassword}
+            handleName={handleName}
+            email={email}
+            password={password}
+            name={name}
+            errorMessage={errorMessage}
+            onSwitch={onSwitch}
+          />
+        )}
       </div>
     </div>
   );

@@ -42,5 +42,12 @@
 
   .inner {
     flex-direction: column;
+    height: auto;
+    gap: 16px;
+  }
+
+  .navigation {
+    gap: 16px;
+    flex-wrap: wrap;
   }
 }

@@ -8,21 +8,61 @@ import AboutPage from "./pages/AboutPage";
 import ErrorPage from "./pages/ErrorPage";
 import NewRecipePage from "./pages/NewRecipePage";
 import EditPage from "./pages/EditPage";
+
 import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
+
+import IsPrivate from "./components/IsPrivate";
+import IsAnon from "./components/IsAnon";
+import AuthorRecipes from "./pages/AuthorRecipes";
 
 function App() {
+  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
+
+  const handleLoginClick = () => {
+    setIsLogin(true);
+    setIsOverlayOpen(true);
+  };
+
+  const handleCloseOverlay = () => {
+    setIsOverlayOpen(false);
+  };
+
   return (
     <div className="page">
-      <Navbar />
+      <Navbar
+        isOverlayOpen={isOverlayOpen}
+        handleLoginClick={handleLoginClick}
+        handleCloseOverlay={handleCloseOverlay}
+        isLogin={isLogin}
+        setIsLogin={setIsLogin}
+      />
 
       <Routes>
         <Route path="/" element={<DashboardPage />} />
-        <Route path="/recipes/:recipeId" element={<ItemDetailsPage />} />
+        <Route path="/user/:authorId/recipes" element={<AuthorRecipes />} />
+        <Route
+          path="/user/:authorId/recipes/:recipeId"
+          element={<ItemDetailsPage />}
+        />
         <Route path="/about" element={<AboutPage />} />
-        {/* <Route path="/new-recipe" element={<NewRecipePage />} /> */}
-        <Route path="/newrecipe" element={<NewRecipePage />} />
-        {/* <Route path="/edit-recipe/:recipeId" element={<EditPage />} /> */}
-        <Route path="/editrecipe/:recipeId" element={<EditPage />} />
+        <Route
+          path="/user/recipes/new"
+          element={
+            <IsPrivate>
+              <NewRecipePage />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/user/:authorId/recipes/edit/:recipeId"
+          element={
+            <IsPrivate>
+              <EditPage />
+            </IsPrivate>
+          }
+        />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
 
