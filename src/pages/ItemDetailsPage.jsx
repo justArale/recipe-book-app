@@ -18,19 +18,12 @@ function ItemDetailsPage() {
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
-  // const { recipeId } = useParams();
   const navigate = useNavigate();
-  // const [recipes, setRecipes] = useState(
-  //   JSON.parse(localStorage.getItem("recipes")) || recipesData
-  // );
 
   useEffect(() => {
     // Jump to the top
     window.scrollTo(0, 0);
   }, []);
-
-  // // Search for recipe in localStorage
-  // const recipeProfile = recipes.find((recipe) => recipe.Id === recipeId);
 
   const fetchUserData = async () => {
     const storedToken = localStorage.getItem("authToken");
@@ -81,14 +74,6 @@ function ItemDetailsPage() {
 
     fetchData();
   }, [recipeId, user]);
-
-  // const deleteRecipe = (recipeId) => {
-  //   const filteredRecipes = recipes.filter((recipe) => recipe.Id !== recipeId);
-  //   setRecipes(filteredRecipes);
-  //   localStorage.setItem("recipes", JSON.stringify(filteredRecipes));
-  //   navigate("/");
-  //   window.scrollTo(0, 0);
-  // };
 
   const deleteRecipe = async () => {
     try {
