@@ -55,7 +55,7 @@ function ItemDetailsPage() {
       );
       setCurrentRecipe(response.data);
       console.log("Recipe: ", response.data);
-      // setIsLoading(false);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error fetching recipe data:", error);
       const errorDescription =
