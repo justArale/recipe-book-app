@@ -1,5 +1,4 @@
 // AddRecipe.jsx
-
 import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "./AddRecipe.css";
@@ -13,7 +12,6 @@ const API_URL = import.meta.env.VITE_API_URL;
 function AddRecipe({ addRecipe, existingRecipe }) {
   const { user } = useContext(AuthContext);
   const { authorId, recipeId } = useParams();
-  const [currentUser, setCurrentUser] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [imageIsLoading, setImageIsLoading] = useState(false);

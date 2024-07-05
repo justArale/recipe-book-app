@@ -1,6 +1,5 @@
 import List from "../components/List";
 import { Link, useParams } from "react-router-dom";
-import recipesData from "../components/recipes.json";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import "../components/Skeleton.css";

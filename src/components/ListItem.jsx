@@ -1,6 +1,6 @@
 import "./ListItem.css";
 import recipesDB from "./recipes.json";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function ListItem(props) {
   const { recipe } = props;

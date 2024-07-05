@@ -65,10 +65,6 @@
   background-color: var(--main-color);
 }
 
-/* .signUp {
- 
-} */
-
 .hiddenSignUp {
   color: var(--background-color);
   position: relative;

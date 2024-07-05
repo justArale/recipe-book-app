@@ -13,7 +13,6 @@ import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
 import IsPrivate from "./components/IsPrivate";
-import IsAnon from "./components/IsAnon";
 import AuthorRecipes from "./pages/AuthorRecipes";
 
 function App() {
@@ -73,8 +72,3 @@ function App() {
 }
 
 export default App;
-
-// /recipes
-// /recipes/new
-// /recipes/:recipeId
-// /recipes/edit/:recipeId

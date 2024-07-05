@@ -1,5 +1,4 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
-import recipesData from "../components/recipes.json";
 import { useState, useEffect, useContext } from "react";
 import "../components/ListItem.css";
 import placeholderImage from "../assets/placeholder.svg";
@@ -188,12 +187,6 @@ function ItemDetailsPage() {
           </div>
           {isLoggedIn && currentUser._id === currentRecipe.author._id && (
             <div className="action">
-              {/* <button>
-          <a href="/" className="body noUnderline primaryColor boldWeight">
-            ↩️ Back
-          </a>
-        </button> */}
-
               <button>
                 <a
                   href={`/user/${authorId}/recipes/edit/${recipeId}`}

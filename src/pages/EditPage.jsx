@@ -1,6 +1,5 @@
 // EditRecipe.jsx
 import AddRecipe from "../components/AddRecipe";
-import recipesData from "../components/recipes.json";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -34,21 +33,6 @@ function EditPage() {
   useEffect(() => {
     fetchRecipeData();
   }, []);
-
-  // const [recipes, setRecipes] = useState(
-  //   JSON.parse(localStorage.getItem("recipes")) || recipesData
-  // );
-
-  // const localRecipes = JSON.parse(localStorage.getItem("recipes"));
-  // // first spread the localRecipes, because .find takes the first matching id it finds
-  // const allRecipes = [...localRecipes, ...recipesData];
-  // const recipe = allRecipes.find((rec) => rec.Id === recipeId);
-
-  // unnötig, eventuell aber für outsourcen AddRecipe
-  // useEffect(() => {
-  // Update local storage whenever recipes state changes
-  //   localStorage.setItem("recipes", JSON.stringify(recipes));
-  // }, [recipes]);
 
   return (
     <>
