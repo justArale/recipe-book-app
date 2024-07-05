@@ -129,6 +129,23 @@ div.instuction-list div:before {
   gap: 16px;
 }
 
+.deleteModalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.closeIcon {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  height: 20px;
+  width: auto;
+  cursor: pointer;
+}
+
 @media (max-width: 867px) {
   .itemDetail-page {
     width: 100%;
