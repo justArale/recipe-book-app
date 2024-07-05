@@ -17,9 +17,9 @@ const SignUpForm = ({
   return (
     <div className="sign-up">
       <form onSubmit={handleSignupSubmit} className="signup-form">
-        <h3 className="sectionTitle">Sign Up</h3>
+        <h3 className="bodyLarge">Sign Up</h3>
         <div className="input-group">
-          <label htmlFor="name" className="label secondaryColor">
+          <label htmlFor="name" className="body">
             Name
           </label>
           <input
@@ -35,7 +35,7 @@ const SignUpForm = ({
         </div>
 
         <div className="input-group">
-          <label htmlFor="email" className="label secondaryColor">
+          <label htmlFor="email" className="body">
             Email
           </label>
           <input
@@ -51,7 +51,7 @@ const SignUpForm = ({
         </div>
 
         <div className="input-group">
-          <label htmlFor="password" className="label secondaryColor">
+          <label htmlFor="password" className="body">
             Password
           </label>
           <input
@@ -66,22 +66,18 @@ const SignUpForm = ({
           />
         </div>
 
-        <button
-          type="submit"
-          className="button buttonPrimaryLarge buttonFont buttonFontReverse"
-        >
+        <button type="submit" className="becomePrivateButton">
           Create Account
         </button>
+        <p className="body">
+          Already have an account?{" "}
+          <a href="#" onClick={onSwitch}>
+            Log In
+          </a>
+        </p>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      <p className="bodyLink">
-        Already have an account?{" "}
-        <a href="#" onClick={onSwitch}>
-          Log In
-        </a>
-      </p>
     </div>
   );
 };

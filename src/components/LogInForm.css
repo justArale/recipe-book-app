@@ -30,12 +30,16 @@
   width: 100%;
 }
 
-.sign-up {
+.login {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding: 40px;
+  padding: 10px 40px 40px;
   box-sizing: border-box;
+}
+
+.sign-up {
+  padding: 40px;
 }
 
 .signup-form {
@@ -61,6 +65,12 @@
   background-color: var(--main-color);
 }
 
-/* .category-container .input-group {
-    margin-bottom: 0;
-  } */
+/* .signUp {
+ 
+} */
+
+.hiddenSignUp {
+  color: var(--background-color);
+  position: relative;
+  left: 5px;
+}
