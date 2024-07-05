@@ -27,7 +27,7 @@
   border-radius: 20px;
   z-index: 1001;
   max-width: 500px;
-  width: 100%;
+  width: 82vw;
 }
 
 .login {
@@ -69,4 +69,14 @@
   color: var(--background-color);
   position: relative;
   left: 5px;
+}
+
+@media (max-width: 470px) {
+  .login {
+    padding: 10px 28px 28px;
+  }
+
+  .sign-up {
+    padding: 28px;
+  }
 }

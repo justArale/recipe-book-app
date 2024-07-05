@@ -161,3 +161,9 @@ div.instuction-list div:before {
     object-fit: cover;
   }
 }
+
+@media (max-width: 590px) {
+  .deleteModalContent {
+    padding: 28px;
+  }
+}
