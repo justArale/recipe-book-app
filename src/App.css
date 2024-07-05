@@ -38,6 +38,10 @@ button {
   cursor: pointer;
 }
 
+.buttonAware {
+  background-color: var(--color-attention);
+}
+
 button:hover {
   border: 2px solid #a39689;
 }
