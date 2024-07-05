@@ -14,6 +14,7 @@ import { useState } from "react";
 
 import IsPrivate from "./components/IsPrivate";
 import AuthorRecipes from "./pages/AuthorRecipes";
+import UserPage from "./pages/UserPage";
 
 function App() {
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
@@ -46,6 +47,14 @@ function App() {
           element={<ItemDetailsPage />}
         />
         <Route path="/about" element={<AboutPage />} />
+        <Route
+          path="/user/:authorId"
+          element={
+            <IsPrivate>
+              <UserPage />
+            </IsPrivate>
+          }
+        />
         <Route
           path="/user/recipes/new"
           element={

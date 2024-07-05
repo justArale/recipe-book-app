@@ -16,7 +16,7 @@ function Navbar({
   setIsLogin,
 }) {
   const location = useLocation();
-  const { isLoggedIn, logOutUser } = useContext(AuthContext);
+  const { isLoggedIn, logOutUser, user } = useContext(AuthContext);
   let navigate = useNavigate();
 
   const handleButtonClick = () => {
@@ -48,17 +48,34 @@ function Navbar({
               </p>
             </Link>
           </div>
-          <div className="sidebar-path">
-            <Link className="primaryColor noUnderline" to={`/about`}>
-              <p
-                className={`body about ${
-                  location.pathname === "/about" ? "active" : ""
-                }`}
+          {isLoggedIn ? (
+            <div className="sidebar-path">
+              <Link
+                className="primaryColor noUnderline"
+                to={`/user/${user._id}`}
               >
-                About
-              </p>
-            </Link>
-          </div>
+                <p
+                  className={`body profil ${
+                    location.pathname === `/user/${user._id}` ? "active" : ""
+                  }`}
+                >
+                  Profil
+                </p>
+              </Link>
+            </div>
+          ) : (
+            <div className="sidebar-path">
+              <Link className="primaryColor noUnderline" to={`/about`}>
+                <p
+                  className={`body about ${
+                    location.pathname === "/about" ? "active" : ""
+                  }`}
+                >
+                  About
+                </p>
+              </Link>
+            </div>
+          )}
 
           <div className="action">
             <div>

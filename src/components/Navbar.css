@@ -30,7 +30,8 @@
 }
 
 .home.active,
-.about.active {
+.about.active,
+.profil.active {
   font-weight: var(--font-weight-bold);
 }
 
