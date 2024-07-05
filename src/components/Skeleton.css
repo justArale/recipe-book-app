@@ -34,15 +34,16 @@
 
 .skeleton-text {
   background-color: #e0e0e0;
-  height: 1.5em;
+  height: 1.2em;
   width: 70vw;
   max-width: 100%;
-  margin-bottom: 0.1em;
   border-radius: 8px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .skeleton-text.short {
-  width: 50%;
+  width: 10%;
 }
 
 .skeleton-text::after {
