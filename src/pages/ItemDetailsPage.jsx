@@ -4,6 +4,7 @@ import "../components/ListItem.css";
 import placeholderImage from "../assets/placeholder.svg";
 import { AuthContext } from "../context/auth.context";
 import { IndexContext } from "../context/index.context";
+import closeIcon from "../assets/close.svg";
 import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -17,6 +18,7 @@ function ItemDetailsPage() {
   const [currentUser, setCurrentUser] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const { indexNumber } = useContext(IndexContext);
 
   const navigate = useNavigate();
@@ -108,6 +110,14 @@ function ItemDetailsPage() {
     return classNames[index % classNames.length];
   };
 
+  const handleDeleteModel = () => {
+    setIsDeleteModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsDeleteModalOpen(false);
+  };
+
   return (
     <div>
       {isLoading ? (
@@ -197,13 +207,37 @@ function ItemDetailsPage() {
               </button>
 
               <button
-                onClick={() => deleteRecipe(currentRecipe._id)}
+                onClick={handleDeleteModel}
                 className="body noUnderline primaryColor boldWeight"
               >
                 🗑️ Delete
               </button>
             </div>
           )}
+        </div>
+      )}
+
+      {isDeleteModalOpen && (
+        <div className="overlay" onClick={closeModal}>
+          <div className="overlay-content">
+            <img
+              src={closeIcon}
+              alt="close Icon"
+              className="closeIcon"
+              onClick={closeModal}
+            />
+
+            <div className="deleteModalContent">
+              <h3 className="bodyLarge">Delete Recipe</h3>
+              <p className="body">Are you sure to delete your recipe?</p>
+              <button
+                className="button buttonAware primaryColor boldWeight"
+                onClick={() => deleteRecipe(currentRecipe._id)}
+              >
+                Delete now
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>
