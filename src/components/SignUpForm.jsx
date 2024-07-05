@@ -66,7 +66,7 @@ const SignUpForm = ({
           />
         </div>
 
-        <button type="submit" className="becomePrivateButton">
+        <button type="submit" className="primaryColor becomePrivateButton">
           Create Account
         </button>
         <p className="body">

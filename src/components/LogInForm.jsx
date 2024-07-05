@@ -53,7 +53,7 @@ const LogInForm = ({
             />
           </div>
 
-          <button type="submit" className="becomePrivateButton">
+          <button type="submit" className="primaryColor becomePrivateButton">
             Log In
           </button>
         </form>
