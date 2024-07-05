@@ -62,28 +62,37 @@ function DashboardPage() {
   return (
     <div className="grid-container">
       {errorMessage && <p>{errorMessage}</p>}
-      {allRecipes &&
-        allRecipes.map((recipe, index) =>
-          isLoading ? (
-            <div className="skeleton skeletonRecipes" key={recipe._id}></div>
-          ) : (
-            <div key={recipe._id} className="findTheChild">
-              {index % 2 === 0 && <div className="grid-row" />}
-              <div className="grid-item" key={recipe._id}>
-                <Link
-                  to={`/user/${recipe.author._id}/recipes/${recipe._id}`}
-                  className="listItem-link"
-                  onClick={() => setIndex(index)}
-                >
-                  <List recipe={recipe} className="listItem-container" />
-                </Link>
-              </div>
-              {index % 2 === 1 || index === recipe.length - 1 ? (
-                <div className="grid-row" />
-              ) : null}
+      {isLoading ? (
+        <div>
+          <div className="grid-container">
+            <div className="skeleton skeletonRecipeCard"></div>
+            <div className="skeleton skeletonRecipeCard"></div>
+            <div className="skeleton skeletonRecipeCard"></div>
+            <div className="skeleton skeletonRecipeCard"></div>
+            <div className="skeleton skeletonRecipeCard"></div>
+            <div className="skeleton skeletonRecipeCard"></div>
+          </div>
+        </div>
+      ) : (
+        allRecipes &&
+        allRecipes.map((recipe, index) => (
+          <div key={recipe._id} className="findTheChild">
+            {index % 2 === 0 && <div className="grid-row" />}
+            <div className="grid-item" key={recipe._id}>
+              <Link
+                to={`/user/${recipe.author._id}/recipes/${recipe._id}`}
+                className="listItem-link"
+                onClick={() => setIndex(index)}
+              >
+                <List recipe={recipe} className="listItem-container" />
+              </Link>
             </div>
-          )
-        )}
+            {index % 2 === 1 || index === recipe.length - 1 ? (
+              <div className="grid-row" />
+            ) : null}
+          </div>
+        ))
+      )}
     </div>
   );
 }

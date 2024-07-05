@@ -55,7 +55,7 @@ function ItemDetailsPage() {
       );
       setCurrentRecipe(response.data);
       console.log("Recipe: ", response.data);
-      setIsLoading(false);
+      // setIsLoading(false);
     } catch (error) {
       console.error("Error fetching recipe data:", error);
       const errorDescription =
@@ -112,7 +112,31 @@ function ItemDetailsPage() {
   return (
     <div>
       {isLoading ? (
-        <div>Loading...</div>
+        <div className="itemDetail-page">
+          <div className="recipe-main">
+            <div className="skeleton skeletonDetailRecipesMain"></div>
+          </div>
+          <div className="detailPage-ingredients">
+            <h3 className="bodyLarge">Ingredients:</h3>
+
+            <div className="skeleton skeleton-text"></div>
+            <div className="skeleton skeleton-text"></div>
+            <div className="skeleton skeleton-text"></div>
+            <div className="skeleton skeleton-text"></div>
+            <div className="skeleton skeleton-text"></div>
+          </div>
+          <div className="detailPage-instruction">
+            <h3 className="bodyLarge">Instruction:</h3>
+
+            <div className="skeleton skeleton-text"></div>
+            <div className="skeleton skeleton-text"></div>
+            <div className="skeleton skeleton-text"></div>
+            <div className="skeleton skeleton-text"></div>
+            <div className="skeleton skeleton-text"></div>
+            <div className="skeleton skeleton-text"></div>
+            <div className="skeleton skeleton-text"></div>
+          </div>
+        </div>
       ) : errorMessage ? (
         <div>{errorMessage}</div>
       ) : (
