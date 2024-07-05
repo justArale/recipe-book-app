@@ -18,6 +18,7 @@ function AuthorRecipes() {
       const response = await axios.get(`${API_URL}/api/user/${authorId}`);
       setCurrentAuthor(response.data);
       console.log("Author: ", response.data);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error fetching author data:", error);
       const errorDescription =
@@ -34,8 +35,14 @@ function AuthorRecipes() {
 
   return (
     <div className="authorRecipesPage">
+      {errorMessage && <p>{errorMessage}</p>}
       <h2 className="body">
-        All recipe of: <span className="boldWeight">{currentAuthor.name}</span>
+        All recipe of:{" "}
+        {isLoading ? (
+          <div className="skeleton skeleton-text short"></div>
+        ) : (
+          <span className="boldWeight">{currentAuthor.name}</span>
+        )}
       </h2>
       <DashboardPage />
     </div>
