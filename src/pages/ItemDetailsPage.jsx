@@ -156,7 +156,7 @@ function ItemDetailsPage() {
               <p className="body">{currentRecipe.description}</p>
               <p className="body" style={{ marginTop: "auto" }}>
                 added by:{" "}
-                <Link to={`/user/${authorId}/recipes`} className="noUnderline">
+                <Link to={`/user/${authorId}`} className="noUnderline">
                   <span className="boldWeight primaryColor">
                     {currentRecipe.author.name}
                   </span>
