@@ -78,9 +78,9 @@ function UserPage() {
               <div className="action">
                 <Link
                   to={`/user/${authorId}/edit`}
-                  className="noUnderline primaryColor boldWeight"
+                  className="noUnderline primaryColor"
                 >
-                  <button className="body">✏️ Edit</button>
+                  <button className="body boldWeight">✏️ Edit</button>
                 </Link>
 
                 <button
