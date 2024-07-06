@@ -19,12 +19,13 @@ function UserInfoCard({ author, user }) {
           )}
         </div>
       </div>
-
-      <img
-        src={author.image || defaultImage}
-        alt={`${author.name}'s profile`}
-        className="userImageCard"
-      />
+      <div className="avatarImageWrapper">
+        <img
+          src={author.image || defaultImage}
+          alt={`${author.name}'s profile`}
+          className="userAvatarImage"
+        />
+      </div>
     </div>
   );
 }
