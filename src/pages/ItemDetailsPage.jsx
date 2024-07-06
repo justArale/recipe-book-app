@@ -13,7 +13,7 @@ function ItemDetailsPage() {
   const { user } = useContext(AuthContext);
   const { authorId, recipeId } = useParams();
 
-  const { isLoggedIn, logOutUser } = useContext(AuthContext);
+  const { isLoggedIn } = useContext(AuthContext);
   const [currentRecipe, setCurrentRecipe] = useState({});
   const [currentUser, setCurrentUser] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
@@ -91,8 +91,8 @@ function ItemDetailsPage() {
       // notifyDelete();
       navigate(`/`);
     } catch (error) {
-      console.error("Error deleting project:", error);
-      setErrorMessage("An error occurred while deleting the project.");
+      console.error("Error deleting recipe:", error);
+      setErrorMessage("An error occurred while deleting the recipe.");
     }
   };
 
