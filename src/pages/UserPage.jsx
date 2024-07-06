@@ -77,7 +77,7 @@ function UserPage() {
             {user && currentAuthor._id === user._id && (
               <div className="action">
                 <Link
-                  to={"/profile/edit"}
+                  to={`/user/${authorId}/edit`}
                   className="noUnderline primaryColor boldWeight"
                 >
                   <button className="body">✏️ Edit</button>
