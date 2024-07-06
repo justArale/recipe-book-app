@@ -6,6 +6,7 @@ import axios from "axios";
 import DashboardPage from "./DashboardPage";
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
+import "../components/UserPage.css";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -71,8 +72,8 @@ function UserPage() {
   return (
     <div>
       {currentAuthor && (
-        <div>
-          <div className="">
+        <div className="UserPage">
+          <div className="ownerContent">
             <UserInfoCard author={currentAuthor} user={user} />
             {user && currentAuthor._id === user._id && (
               <div className="action">
