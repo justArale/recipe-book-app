@@ -8,12 +8,12 @@ import AboutPage from "./pages/AboutPage";
 import ErrorPage from "./pages/ErrorPage";
 import NewRecipePage from "./pages/NewRecipePage";
 import EditPage from "./pages/EditPage";
+import UserEditPage from "./pages/UserEditPage";
 
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
 import IsPrivate from "./components/IsPrivate";
-import AuthorPage from "./pages/AuthorPage";
 import UserPage from "./pages/UserPage";
 
 function App() {
@@ -42,17 +42,18 @@ function App() {
       <Routes>
         <Route path="/" element={<DashboardPage />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/user/:authorId/recipes" element={<AuthorPage />} />
+        <Route path="/user/:authorId" element={<UserPage />} />
+
         <Route
           path="/user/:authorId/recipes/:recipeId"
           element={<ItemDetailsPage />}
         />
 
         <Route
-          path="/user/:authorId"
+          path="/user/:authorId/edit"
           element={
             <IsPrivate>
-              <UserPage />
+              <UserEditPage />
             </IsPrivate>
           }
         />
