@@ -13,7 +13,7 @@ import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
 import IsPrivate from "./components/IsPrivate";
-import AuthorRecipes from "./pages/AuthorRecipes";
+import AuthorPage from "./pages/AuthorPage";
 import UserPage from "./pages/UserPage";
 
 function App() {
@@ -41,12 +41,13 @@ function App() {
 
       <Routes>
         <Route path="/" element={<DashboardPage />} />
-        <Route path="/user/:authorId/recipes" element={<AuthorRecipes />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/user/:authorId/recipes" element={<AuthorPage />} />
         <Route
           path="/user/:authorId/recipes/:recipeId"
           element={<ItemDetailsPage />}
         />
-        <Route path="/about" element={<AboutPage />} />
+
         <Route
           path="/user/:authorId"
           element={
