@@ -1,0 +1,21 @@
+.passwordBox {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.passwordBox label {
+  width: 120px;
+  flex-shrink: 0;
+}
+
+.passwordBox input {
+  flex: 1;
+}
+
+@media (max-width: 867px) {
+  .passwordBox {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

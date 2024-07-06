@@ -8,12 +8,13 @@ import AboutPage from "./pages/AboutPage";
 import ErrorPage from "./pages/ErrorPage";
 import NewRecipePage from "./pages/NewRecipePage";
 import EditPage from "./pages/EditPage";
+import UserEditPage from "./pages/UserEditPage";
 
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
 import IsPrivate from "./components/IsPrivate";
-import AuthorRecipes from "./pages/AuthorRecipes";
+import UserPage from "./pages/UserPage";
 
 function App() {
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
@@ -40,12 +41,22 @@ function App() {
 
       <Routes>
         <Route path="/" element={<DashboardPage />} />
-        <Route path="/user/:authorId/recipes" element={<AuthorRecipes />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/user/:authorId" element={<UserPage />} />
+
         <Route
           path="/user/:authorId/recipes/:recipeId"
           element={<ItemDetailsPage />}
         />
-        <Route path="/about" element={<AboutPage />} />
+
+        <Route
+          path="/user/:authorId/edit"
+          element={
+            <IsPrivate>
+              <UserEditPage />
+            </IsPrivate>
+          }
+        />
         <Route
           path="/user/recipes/new"
           element={

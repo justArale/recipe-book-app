@@ -7,7 +7,7 @@ const api = axios.create({
 });
 
 // Function to upload avatar
-const uploadAvatar = async (file) => {
+const uploadAvatar = async (fileData) => {
   const token = localStorage.getItem("authToken");
   try {
     const res = await api.post("/api/upload-avatar", fileData, {
