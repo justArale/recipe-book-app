@@ -1,8 +1,9 @@
 import React from "react";
 import defaultImage from "../assets/touch-icon.png";
+
 import "./UserInfoCard.css";
 
-function UserInfoCard({ author }) {
+function UserInfoCard({ author, user }) {
   return (
     <div className="userInfoBox">
       <div className="userInfo">
@@ -12,7 +13,10 @@ function UserInfoCard({ author }) {
             Description:{" "}
             {author.description ? author.description : "I'm a food lover."}
           </p>
-          {/* <p className="body">Email: {author.email}</p> */}
+
+          {user && author._id === user._id && (
+            <p className="body">Email: {author.email}</p>
+          )}
         </div>
       </div>
 
