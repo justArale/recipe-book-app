@@ -1,18 +1,22 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link, useParams, useLocation, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import UserInfoCard from "../components/UserInfoCard";
 import axios from "axios";
 import DashboardPage from "./DashboardPage";
+import { AuthContext } from "../context/auth.context";
+import { useContext } from "react";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 function UserPage() {
+  const { user, logOutUser } = useContext(AuthContext);
   const { authorId } = useParams();
   const [currentAuthor, setCurrentAuthor] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   const fetchAuthorData = async () => {
     try {
@@ -30,8 +34,25 @@ function UserPage() {
     }
   };
 
+  const deleteUser = async () => {
+    try {
+      const storedToken = localStorage.getItem("authToken");
+      const response = await axios.delete(`${API_URL}/api/user/${authorId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      });
+      console.log("Deleted:", response.data);
+      // notifyDelete();
+      logOutUser();
+      navigate(`/`);
+    } catch (error) {
+      console.error("Error deleting user:", error);
+      setErrorMessage("An error occurred while deleting the user.");
+    }
+  };
+
   useEffect(() => {
     // window.location.reload();
+    window.scrollTo(0, 0);
     fetchAuthorData();
   }, []);
 
@@ -52,13 +73,19 @@ function UserPage() {
       {currentAuthor && (
         <div>
           <div className="">
-            <UserInfoCard author={currentAuthor} />
+            <UserInfoCard author={currentAuthor} user={user} />
             <div className="action">
-              <Link to={"/profile/edit"} className="noUnderline primaryColor">
-                <button className="button">✏️ Edit</button>
+              <Link
+                to={"/profile/edit"}
+                className="noUnderline primaryColor boldWeight"
+              >
+                <button className="body">✏️ Edit</button>
               </Link>
 
-              <button className="" onClick={handleDeleteModel}>
+              <button
+                className="body noUnderline primaryColor boldWeight"
+                onClick={handleDeleteModel}
+              >
                 🗑️ Delete
               </button>
             </div>
@@ -70,19 +97,12 @@ function UserPage() {
       {isDeleteModalOpen && (
         <div className="overlay" onClick={closeModal}>
           <div className="overlay-content">
-            <img
-              src={closeIcon}
-              alt="close Icon"
-              className="closeIcon"
-              onClick={closeModal}
-            />
-
             <div className="deleteModalContent">
               <h3 className="bodyLarge">Delete Profil</h3>
               <p className="body">Are you sure to delete your profil?</p>
               <button
                 className="button buttonAware primaryColor boldWeight"
-                onClick={() => deleteProfil(currentAuthor._id)}
+                onClick={() => deleteUser(currentAuthor._id)}
               >
                 Delete now
               </button>
