@@ -30,3 +30,14 @@
   width: 100%;
   border-radius: 8px;
 }
+
+@media (max-width: 867px) {
+  .userInfoBox {
+    flex-direction: column-reverse;
+  }
+
+  .avatarImageWrapper {
+    max-width: 100%;
+    object-fit: cover;
+  }
+}
