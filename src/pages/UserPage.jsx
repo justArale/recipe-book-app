@@ -74,21 +74,23 @@ function UserPage() {
         <div>
           <div className="">
             <UserInfoCard author={currentAuthor} user={user} />
-            <div className="action">
-              <Link
-                to={"/profile/edit"}
-                className="noUnderline primaryColor boldWeight"
-              >
-                <button className="body">✏️ Edit</button>
-              </Link>
+            {user && currentAuthor._id === user._id && (
+              <div className="action">
+                <Link
+                  to={"/profile/edit"}
+                  className="noUnderline primaryColor boldWeight"
+                >
+                  <button className="body">✏️ Edit</button>
+                </Link>
 
-              <button
-                className="body noUnderline primaryColor boldWeight"
-                onClick={handleDeleteModel}
-              >
-                🗑️ Delete
-              </button>
-            </div>
+                <button
+                  className="body noUnderline primaryColor boldWeight"
+                  onClick={handleDeleteModel}
+                >
+                  🗑️ Delete
+                </button>
+              </div>
+            )}
           </div>
           <DashboardPage />
         </div>
