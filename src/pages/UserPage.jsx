@@ -1,8 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useParams, useLocation, useNavigate } from "react-router-dom";
-import defaultImage from "../assets/touch-icon.png";
+import UserInfoCard from "../components/UserInfoCard";
 import axios from "axios";
+import DashboardPage from "./DashboardPage";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -30,6 +31,7 @@ function UserPage() {
   };
 
   useEffect(() => {
+    // window.location.reload();
     fetchAuthorData();
   }, []);
 
@@ -41,38 +43,27 @@ function UserPage() {
     setIsDeleteModalOpen(false);
   };
 
+  //   useEffect(() => {
+  //     window.location.reload();
+  //   }, [authorId]);
+
   return (
     <div>
       {currentAuthor && (
-        <div className="userDetail">
-          <div className="userCard">
-            <img
-              src={currentAuthor.image || defaultImage}
-              alt={`${currentAuthor.name}'s profile`}
-              className="userImageCard"
-            />
-            <div>
-              <h1 className="bodyLarge">{currentAuthor.name}</h1>
-              <p className="body">{currentAuthor.description}</p>
+        <div>
+          <div className="">
+            <UserInfoCard author={currentAuthor} />
+            <div className="action">
+              <Link to={"/profile/edit"} className="noUnderline primaryColor">
+                <button className="button">✏️ Edit</button>
+              </Link>
+
+              <button className="" onClick={handleDeleteModel}>
+                🗑️ Delete
+              </button>
             </div>
           </div>
-
-          <div>
-            <p className="body">Email: {currentAuthor.email}</p>
-          </div>
-
-          <div className="action">
-            <Link to={"/profile/edit"} className="noUnderline primaryColor">
-              <button className="button">✏️ Edit</button>
-            </Link>
-
-            <button
-              className="button awareButtonSmall buttonFont buttonFontReverse"
-              onClick={handleDeleteModel}
-            >
-              🗑️ Delete
-            </button>
-          </div>
+          <DashboardPage />
         </div>
       )}
 
