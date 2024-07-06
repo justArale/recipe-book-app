@@ -56,7 +56,10 @@ function Navbar({
               >
                 <p
                   className={`body profil ${
-                    location.pathname === `/user/${user._id}` ? "active" : ""
+                    location.pathname === `/user/${user._id}` ||
+                    location.pathname === `/user/${user._id}/edit`
+                      ? "active"
+                      : ""
                   }`}
                 >
                   Profil
