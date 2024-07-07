@@ -1,4 +1,5 @@
 import "./Footer.css";
+import heartIcon from "../assets/heart.svg";
 
 function Footer() {
   return (
@@ -12,7 +13,8 @@ function Footer() {
           >
             Recipe Book
           </a>{" "}
-          made with ❤️ by{" "}
+          made with <img src={heartIcon} alt="Icon" className="iconWrapper" />{" "}
+          by{" "}
           <a
             target="_blank"
             href="https://github.com/justArale"
