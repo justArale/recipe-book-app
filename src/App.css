@@ -9,7 +9,7 @@ body {
   height: 100%;
   margin: 0 auto;
   /* padding: 0 48px; */
-  font-family: var(--font-family-arial);
+  font-family: var(--font-family-main);
   line-height: 1.5em;
   box-sizing: border-box;
 }
@@ -36,6 +36,7 @@ button {
   box-sizing: border-box;
   height: 40px;
   cursor: pointer;
+  font-family: var(--font-family-main);
 }
 
 .buttonAware {
