@@ -2,7 +2,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import "../components/ListItem.css";
 import placeholderImage from "../assets/placeholder.svg";
-import defaultAvatar from "../assets/defaultAvatar.png";
+import defaultAvatar from "../assets/defaultAvatar.svg";
 import { AuthContext } from "../context/auth.context";
 import { IndexContext } from "../context/index.context";
 import axios from "axios";

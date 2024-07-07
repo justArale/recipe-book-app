@@ -1,5 +1,5 @@
 import React from "react";
-import defaultAvatar from "../assets/defaultAvatar.png";
+import defaultAvatar from "../assets/defaultAvatar.svg";
 
 import "./UserInfoCard.css";
 
