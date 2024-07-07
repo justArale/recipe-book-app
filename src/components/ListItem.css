@@ -154,15 +154,6 @@ div.instuction-list div:before {
   box-sizing: border-box;
 }
 
-.closeIcon {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  height: 20px;
-  width: auto;
-  cursor: pointer;
-}
-
 @media (max-width: 867px) {
   .itemDetail-page {
     width: 100%;

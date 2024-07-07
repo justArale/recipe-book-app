@@ -4,7 +4,6 @@ import "../components/ListItem.css";
 import placeholderImage from "../assets/placeholder.svg";
 import { AuthContext } from "../context/auth.context";
 import { IndexContext } from "../context/index.context";
-import closeIcon from "../assets/close.svg";
 import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -243,13 +242,6 @@ function ItemDetailsPage() {
       {isDeleteModalOpen && (
         <div className="overlay" onClick={closeModal}>
           <div className="overlay-content">
-            <img
-              src={closeIcon}
-              alt="close Icon"
-              className="closeIcon"
-              onClick={closeModal}
-            />
-
             <div className="deleteModalContent">
               <h3 className="headline">Delete Recipe</h3>
               <p className="mainFont">Are you sure to delete your recipe?</p>
