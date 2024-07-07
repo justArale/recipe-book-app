@@ -23,7 +23,7 @@ function UserInfoCard({ author, user }) {
           {user && author._id === user._id && (
             <p className="body">Email: {author.email}</p>
           )}
-          <p>{author.recipes?.length} recipes</p>
+          <p className="body thirdColor">{author.recipes?.length} recipes</p>
         </div>
       </div>
     </div>
