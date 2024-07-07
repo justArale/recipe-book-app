@@ -32,15 +32,17 @@ function Navbar({
       <div className="inner">
         <div className="nav-title">
           <Link to={`/`} className="noUnderline">
-            <h1 className="headline boldWeight primaryColor">Recipe Book</h1>
+            <h1 className="title primaryColor">Recipe Book</h1>
           </Link>
-          <p className="body">This is my awesome list of recipes.</p>
+          <p className="mainFont thirdColor">
+            This is my awesome list of recipes.
+          </p>
         </div>
         <div className="navigation">
           <div className="sidebar-path">
             <Link className="primaryColor noUnderline" to={`/`}>
               <p
-                className={`body home ${
+                className={`mainFont semiBoldWeigth thirdColor home ${
                   location.pathname === "/" ? "active" : ""
                 }`}
               >
@@ -55,7 +57,7 @@ function Navbar({
                 to={`/user/${user._id}`}
               >
                 <p
-                  className={`body profil ${
+                  className={`mainFont semiBoldWeigth thirdColor profil ${
                     location.pathname === `/user/${user._id}` ||
                     location.pathname === `/user/${user._id}/edit`
                       ? "active"
@@ -70,7 +72,7 @@ function Navbar({
             <div className="sidebar-path">
               <Link className="primaryColor noUnderline" to={`/about`}>
                 <p
-                  className={`body about ${
+                  className={`mainFont semiBoldWeigth thirdColor about ${
                     location.pathname === "/about" ? "active" : ""
                   }`}
                 >
@@ -83,7 +85,7 @@ function Navbar({
           <div className="action">
             <div>
               <button
-                className="body noUnderline primaryColor"
+                className="mainFont noUnderline primaryColor"
                 onClick={handleButtonClick}
               >
                 New recipe
@@ -93,7 +95,7 @@ function Navbar({
               <div>
                 <button
                   onClick={logOutUser}
-                  className="body noUnderline primaryColor"
+                  className="mainFont noUnderline primaryColor"
                 >
                   Log Out
                 </button>
@@ -105,7 +107,7 @@ function Navbar({
                     <>
                       <button
                         onClick={handleLoginClick}
-                        className="body noUnderline primaryColor"
+                        className="mainFont noUnderline primaryColor"
                       >
                         Log In
                       </button>

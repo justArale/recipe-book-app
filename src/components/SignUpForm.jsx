@@ -17,9 +17,9 @@ const SignUpForm = ({
   return (
     <div className="sign-up">
       <form onSubmit={handleSignupSubmit} className="signup-form">
-        <h3 className="bodyLarge">Sign Up</h3>
+        <h3 className="headline">Sign Up</h3>
         <div className="input-group">
-          <label htmlFor="name" className="body">
+          <label htmlFor="name" className="mainFont">
             Name
           </label>
           <input
@@ -35,7 +35,7 @@ const SignUpForm = ({
         </div>
 
         <div className="input-group">
-          <label htmlFor="email" className="body">
+          <label htmlFor="email" className="mainFont">
             Email
           </label>
           <input
@@ -51,7 +51,7 @@ const SignUpForm = ({
         </div>
 
         <div className="input-group">
-          <label htmlFor="password" className="body">
+          <label htmlFor="password" className="mainFont">
             Password
           </label>
           <input
@@ -66,10 +66,13 @@ const SignUpForm = ({
           />
         </div>
 
-        <button type="submit" className="primaryColor becomePrivateButton">
+        <button
+          type="submit"
+          className="buttonFont primaryColor becomePrivateButton"
+        >
           Create Account
         </button>
-        <p className="body">
+        <p className="mainFont">
           Already have an account?{" "}
           <a href="#" onClick={onSwitch}>
             Log In

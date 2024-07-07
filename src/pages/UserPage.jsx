@@ -81,11 +81,11 @@ function UserPage() {
                   to={`/user/${authorId}/edit`}
                   className="noUnderline primaryColor"
                 >
-                  <button className="body boldWeight">✏️ Edit</button>
+                  <button className="buttonFont">✏️ Edit</button>
                 </Link>
 
                 <button
-                  className="body noUnderline primaryColor boldWeight"
+                  className="buttonFont noUnderline primaryColor"
                   onClick={handleDeleteModel}
                 >
                   🗑️ Delete
@@ -101,10 +101,10 @@ function UserPage() {
         <div className="overlay" onClick={closeModal}>
           <div className="overlay-content">
             <div className="deleteModalContent">
-              <h3 className="bodyLarge">Delete Profil</h3>
-              <p className="body">Are you sure to delete your profil?</p>
+              <h3 className="headline">Delete Profil</h3>
+              <p className="mainFont">Are you sure to delete your profil?</p>
               <button
-                className="button buttonAware primaryColor boldWeight"
+                className="button buttonAware primaryColor"
                 onClick={() => deleteUser(currentAuthor._id)}
               >
                 Delete now

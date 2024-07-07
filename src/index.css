@@ -9,6 +9,7 @@
 
   --font-weight-normal: 400;
   --font-weight-semiBold: 600;
+  --font-weight-bold: 700;
 
   --font-size-xsmall: 12px;
   --font-size-small: 16px;
@@ -67,4 +68,18 @@
   font-size: var(--font-size-xsmall);
   font-weight: var(--font-weight-normal);
   margin: 0;
+}
+
+.buttonFont {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semiBold);
+  margin: 0;
+}
+
+.boldWeigth {
+  font-weight: var(--font-weight-bold);
+}
+
+.semiBoldWeigth {
+  font-weight: var(--font-weight-semiBold);
 }

@@ -135,7 +135,7 @@ function ItemDetailsPage() {
             <div className="skeleton skeletonDetailRecipesMain"></div>
           </div>
           <div className="detailPage-ingredients">
-            <h3 className="bodyLarge">Ingredients:</h3>
+            <h3 className="headline">Ingredients:</h3>
 
             <div className="skeleton skeleton-text"></div>
             <div className="skeleton skeleton-text"></div>
@@ -144,7 +144,7 @@ function ItemDetailsPage() {
             <div className="skeleton skeleton-text"></div>
           </div>
           <div className="detailPage-instruction">
-            <h3 className="bodyLarge">Instruction:</h3>
+            <h3 className="headline">Instruction:</h3>
 
             <div className="skeleton skeleton-text"></div>
             <div className="skeleton skeleton-text"></div>
@@ -162,7 +162,7 @@ function ItemDetailsPage() {
           <div className={`recipe-main ${getClassNameByIndex(indexNumber)}`}>
             <div className="content">
               <h1 className="pageTitle">{currentRecipe.name}</h1>
-              <p className="body">{currentRecipe.description}</p>
+              <p className="mainFont">{currentRecipe.description}</p>
               <div className="" style={{ marginTop: "auto" }}>
                 <Link
                   to={`/user/${authorId}`}
@@ -176,10 +176,10 @@ function ItemDetailsPage() {
                   </div>
 
                   <div className="ownerInfoSmall">
-                    <p className="body boldWeight primaryColor">
+                    <p className="mainFont primaryColor">
                       By {currentRecipe.author.name}
                     </p>
-                    <p className="body thirdColor">
+                    <p className="meta thirdColor">
                       On {formatDate(currentRecipe.author.createdAt)}
                     </p>
                   </div>
@@ -195,24 +195,24 @@ function ItemDetailsPage() {
           </div>
           {currentRecipe.ingredients && (
             <div className="detailPage-ingredients">
-              <h3 className="bodyLarge">Ingredients:</h3>
+              <h3 className="headline">Ingredients:</h3>
               <div className="ingredient-list">
                 {currentRecipe.ingredients.map((ingredient, index) => (
                   <div key={index} className="ingredient-item">
-                    <span className="body boldWeight thirdColor">
+                    <span className="mainFont thirdColor">
                       {ingredient.amount}
                     </span>
-                    <span className="body">{ingredient.name}</span>
+                    <span className="mainFont">{ingredient.name}</span>
                   </div>
                 ))}
               </div>
             </div>
           )}
           <div className="detailPage-instruction">
-            <h3 className="bodyLarge">Instruction:</h3>
+            <h3 className="headline">Instruction:</h3>
             <div className="instuction-list">
               {currentRecipe.instruction.map((instruction, index) => (
-                <div key={index} className="body instuction-item">
+                <div key={index} className="mainFont instuction-item">
                   {instruction}
                 </div>
               ))}
@@ -223,7 +223,7 @@ function ItemDetailsPage() {
               <button>
                 <a
                   href={`/user/${authorId}/recipes/edit/${recipeId}`}
-                  className="body noUnderline primaryColor boldWeight"
+                  className="buttonFont noUnderline primaryColor"
                 >
                   ✏️ Edit
                 </a>
@@ -231,7 +231,7 @@ function ItemDetailsPage() {
 
               <button
                 onClick={handleDeleteModel}
-                className="body noUnderline primaryColor boldWeight"
+                className="buttonFont noUnderline primaryColor"
               >
                 🗑️ Delete
               </button>
@@ -251,10 +251,10 @@ function ItemDetailsPage() {
             />
 
             <div className="deleteModalContent">
-              <h3 className="bodyLarge">Delete Recipe</h3>
-              <p className="body">Are you sure to delete your recipe?</p>
+              <h3 className="headline">Delete Recipe</h3>
+              <p className="mainFont">Are you sure to delete your recipe?</p>
               <button
-                className="button buttonAware primaryColor boldWeight"
+                className="button buttonAware primaryColor"
                 onClick={() => deleteRecipe(currentRecipe._id)}
               >
                 Delete now

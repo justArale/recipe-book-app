@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-inner">
-        <h5 className="body">
+        <h5 className="mainFont">
           <a
             target="_blank"
             href="https://github.com/justArale/recipe-book-app"
