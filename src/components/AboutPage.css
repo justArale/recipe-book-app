@@ -1,15 +1,30 @@
-.about-content {
-  padding: 0 16px;
-  margin: 0;
+.aboutPage {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  padding: 0 16px;
   max-width: 800px;
   box-sizing: border-box;
+}
+
+.about-content {
+  padding: 32px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 16px;
+  background-color: var(--secondary-background-color);
 }
 
 .social-pages {
   display: flex;
   align-items: center;
   gap: 16px;
+}
+
+.socialButton {
+  background-color: var(--secondary-background-color);
 }

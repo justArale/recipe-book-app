@@ -2,7 +2,7 @@ import "../components/AboutPage.css";
 
 export default function AboutPage() {
   return (
-    <>
+    <div className="aboutPage">
       <div className="about-content">
         <h1 className="pageTitle">About</h1>
         <p className="mainFont">
@@ -12,7 +12,7 @@ export default function AboutPage() {
         </p>
         <div className="social-pages">
           <a target="_blank" href="https://github.com/justArale">
-            <button className="buttonFont noUnderline primaryColor">
+            <button className="buttonFont noUnderline primaryColor socialButton">
               GitHub
             </button>
           </a>
@@ -20,12 +20,12 @@ export default function AboutPage() {
             target="_blank"
             href="https://www.linkedin.com/in/s-kuechler-jr-fullstack-dev"
           >
-            <button className="buttonFont noUnderline primaryColor">
+            <button className="buttonFont noUnderline primaryColor socialButton">
               LinkedIn
             </button>
           </a>
         </div>
       </div>
-    </>
+    </div>
   );
 }
