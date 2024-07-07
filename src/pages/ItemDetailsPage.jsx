@@ -96,6 +96,15 @@ function ItemDetailsPage() {
     }
   };
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
+
+    return `${day}.${month}.${year}`;
+  };
+
   const getClassNameByIndex = (index) => {
     const classNames = [
       "one",
@@ -154,14 +163,28 @@ function ItemDetailsPage() {
             <div className="content">
               <h1 className="pageTitle">{currentRecipe.name}</h1>
               <p className="body">{currentRecipe.description}</p>
-              <p className="body" style={{ marginTop: "auto" }}>
-                added by:{" "}
-                <Link to={`/user/${authorId}`} className="noUnderline">
-                  <span className="boldWeight primaryColor">
-                    {currentRecipe.author.name}
-                  </span>
+              <div className="" style={{ marginTop: "auto" }}>
+                <Link
+                  to={`/user/${authorId}`}
+                  className="noUnderline authorInfoWrapper"
+                >
+                  <div className="authorImageSmall">
+                    <img
+                      src={currentRecipe.author.image}
+                      className="authorImageSmall"
+                    />
+                  </div>
+
+                  <div className="ownerInfoSmall">
+                    <p className="body boldWeight primaryColor">
+                      By {currentRecipe.author.name}
+                    </p>
+                    <p className="body primaryColor">
+                      On {formatDate(currentRecipe.author.createdAt)}
+                    </p>
+                  </div>
                 </Link>
-              </p>
+              </div>
             </div>
 
             <img
