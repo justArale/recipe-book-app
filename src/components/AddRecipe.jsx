@@ -5,6 +5,11 @@ import "./AddRecipe.css";
 import fileUploadService from "../service/file-upload.service";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
+import imageIcon from "../assets/image.svg";
+import editIcon from "../assets/editWhite.svg";
+import deleteIcon from "../assets/deleteWhite.svg";
+import checkIcon from "../assets/checkWhite.svg";
+import cancelIcon from "../assets/cancel.svg";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -181,18 +186,32 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                   className="image-preview"
                 />
               )}
-              <label className="uploadButton">
+              <label
+                className={`uploadButton ${img ? "buttonReverseHalf" : ""}`}
+              >
                 <input
                   type="file"
                   name="img"
                   accept="image/png, image/jpg, image/jpeg, image/gif, image/webm, image/webp, image/heic"
                   onChange={handleFileUpload}
                 />
-                {imageIsLoading
-                  ? "🔄 loading ..."
-                  : img
-                  ? "🖼️ Change Image"
-                  : "🖼️ Choose Image"}
+                {imageIsLoading ? (
+                  "🔄 loading ..."
+                ) : img ? (
+                  <div className="buttonContentWrapper">
+                    <div>
+                      <img src={editIcon} alt="Icon" className="iconWrapper" />
+                    </div>
+                    <span className="buttonFont">Change Image</span>
+                  </div>
+                ) : (
+                  <div className="buttonContentWrapper">
+                    <div>
+                      <img src={imageIcon} alt="Icon" className="iconWrapper" />
+                    </div>
+                    <span className="buttonFont">Choose Image</span>
+                  </div>
+                )}
               </label>
             </div>
           </div>
@@ -244,16 +263,26 @@ function AddRecipe({ addRecipe, existingRecipe }) {
         <div className="action">
           <button type="delete">
             <a href="/" className="buttonFont noUnderline primaryColor">
-              ❌ Cancel
+              <div className="buttonContentWrapper">
+                <div>
+                  <img src={cancelIcon} alt="Icon" className="iconImage" />
+                </div>
+                <span className="buttonFont">Cancel</span>
+              </div>
             </a>
           </button>
           <Link to={"/"}>
             <button
               type="submit"
               onClick={handleSubmit}
-              className="mainFont primaryColor"
+              className="mainFont buttonReverse"
             >
-              ✅ Save
+              <div className="buttonContentWrapper">
+                <div>
+                  <img src={checkIcon} alt="Icon" className="iconImage" />
+                </div>
+                <span className="buttonFont">Save</span>
+              </div>
             </button>
           </Link>
         </div>

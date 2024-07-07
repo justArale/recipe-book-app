@@ -40,6 +40,12 @@ button {
   font-family: var(--font-family-main);
 }
 
+.buttonReverse {
+  color: var(--color-white);
+  background-color: var(--color-black);
+  border: 1px solid #000;
+}
+
 .buttonAware {
   background-color: var(--color-attention);
 }

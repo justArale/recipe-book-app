@@ -77,6 +77,25 @@ input[type="file"] {
   z-index: 99;
 }
 
+.buttonContentWrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.buttonReverseHalf {
+  display: flex;
+  gap: 16px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: var(--color-white);
+  border: 1px solid #000;
+}
+
+.iconImage {
+  display: inline;
+  vertical-align: middle;
+}
+
 .inputField,
 .description {
   border: 1px solid #a39689;
