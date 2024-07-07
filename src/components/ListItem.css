@@ -85,7 +85,7 @@
 
 .detailPage-ingredients,
 .detailPage-instruction {
-  background-color: #fff;
+  background-color: var(--secondary-background-color);
   display: flex;
   flex-direction: column;
   gap: 16px;
