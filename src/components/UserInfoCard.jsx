@@ -1,5 +1,5 @@
 import React from "react";
-import defaultImage from "../assets/touch-icon.png";
+import defaultAvatar from "../assets/defaultAvatar.png";
 
 import "./UserInfoCard.css";
 
@@ -8,7 +8,7 @@ function UserInfoCard({ author, user }) {
     <div className="userInfoBox">
       <div className="avatarImageWrapper">
         <img
-          src={author.image || defaultImage}
+          src={author.image || defaultAvatar}
           alt={`${author.name}'s profile`}
           className="userAvatarImage"
         />
