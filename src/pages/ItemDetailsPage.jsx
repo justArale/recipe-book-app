@@ -6,6 +6,7 @@ import { AuthContext } from "../context/auth.context";
 import { IndexContext } from "../context/index.context";
 import closeIcon from "../assets/close.svg";
 import axios from "axios";
+import defaultImage from "../assets/touch-icon.png";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -170,7 +171,7 @@ function ItemDetailsPage() {
                 >
                   <div className="authorImageSmall">
                     <img
-                      src={currentRecipe.author.image}
+                      src={currentRecipe.author.image || defaultImage}
                       className="authorImageSmall"
                     />
                   </div>

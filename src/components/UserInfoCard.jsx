@@ -1,6 +1,5 @@
 import React from "react";
 import defaultImage from "../assets/touch-icon.png";
-
 import "./UserInfoCard.css";
 
 function UserInfoCard({ author, user }) {
