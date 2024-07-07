@@ -6,14 +6,15 @@ import "./UserInfoCard.css";
 function UserInfoCard({ author, user }) {
   return (
     <div className="userInfoBox">
+      <div className="avatarImageWrapper">
+        <img
+          src={author.image || defaultImage}
+          alt={`${author.name}'s profile`}
+          className="userAvatarImage"
+        />
+      </div>
+
       <div className="userInfo">
-        <div className="avatarImageWrapper">
-          <img
-            src={author.image || defaultImage}
-            alt={`${author.name}'s profile`}
-            className="userAvatarImage"
-          />
-        </div>
         <h1 className="pageTitle">{author.name}</h1>
         <div className="">
           <p className="body">
@@ -23,7 +24,9 @@ function UserInfoCard({ author, user }) {
           {user && author._id === user._id && (
             <p className="body">Email: {author.email}</p>
           )}
-          <p>{author.recipes.length} recipes</p>
+          <p className="body thirdColor" style={{ marginTop: "auto" }}>
+            {author.recipes?.length} recipes
+          </p>
         </div>
       </div>
     </div>

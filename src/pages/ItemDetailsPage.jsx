@@ -179,7 +179,7 @@ function ItemDetailsPage() {
                     <p className="body boldWeight primaryColor">
                       By {currentRecipe.author.name}
                     </p>
-                    <p className="body primaryColor">
+                    <p className="body thirdColor">
                       On {formatDate(currentRecipe.author.createdAt)}
                     </p>
                   </div>
