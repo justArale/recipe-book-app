@@ -8,7 +8,7 @@ function Footer() {
           <a
             target="_blank"
             href="https://github.com/justArale/recipe-book-app"
-            className="secondaryColor"
+            className="secondaryColor noUnderline"
           >
             Recipe Book
           </a>{" "}
@@ -16,7 +16,7 @@ function Footer() {
           <a
             target="_blank"
             href="https://github.com/justArale"
-            className="secondaryColor"
+            className="secondaryColor noUnderline"
           >
             Arale
           </a>
