@@ -73,26 +73,29 @@ function UserPage() {
     <div>
       {currentAuthor && (
         <div className="UserPage">
-          <div className="ownerContent">
-            <UserInfoCard author={currentAuthor} user={user} />
-            {user && currentAuthor._id === user._id && (
-              <div className="action">
-                <Link
-                  to={`/user/${authorId}/edit`}
-                  className="noUnderline primaryColor"
-                >
-                  <button className="buttonFont">✏️ Edit</button>
-                </Link>
+          <div className="userPageHeaderBox">
+            <div className="ownerContent">
+              <UserInfoCard author={currentAuthor} user={user} />
+              {user && currentAuthor._id === user._id && (
+                <div className="action">
+                  <Link
+                    to={`/user/${authorId}/edit`}
+                    className="noUnderline primaryColor"
+                  >
+                    <button className="buttonFont">✏️ Edit</button>
+                  </Link>
 
-                <button
-                  className="buttonFont noUnderline primaryColor"
-                  onClick={handleDeleteModel}
-                >
-                  🗑️ Delete
-                </button>
-              </div>
-            )}
+                  <button
+                    className="buttonFont noUnderline primaryColor"
+                    onClick={handleDeleteModel}
+                  >
+                    🗑️ Delete
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
+
           <DashboardPage />
         </div>
       )}

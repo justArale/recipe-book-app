@@ -24,6 +24,7 @@ function UserInfoCard({ author, user }) {
           {user && author._id === user._id && (
             <p className="mainFont">Email: {author.email}</p>
           )}
+          <p></p>
           <p className="mainFont thirdColor" style={{ marginTop: "auto" }}>
             {author.recipes?.length} recipes
           </p>
