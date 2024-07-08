@@ -6,6 +6,8 @@ import defaultAvatar from "../assets/defaultAvatar.svg";
 import { AuthContext } from "../context/auth.context";
 import { IndexContext } from "../context/index.context";
 import axios from "axios";
+import editIcon from "../assets/edit.svg";
+import deleteIcon from "../assets/delete.svg";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -225,7 +227,12 @@ function ItemDetailsPage() {
                   href={`/user/${authorId}/recipes/edit/${recipeId}`}
                   className="buttonFont noUnderline primaryColor"
                 >
-                  ✏️ Edit
+                  <div className="buttonContentWrapper">
+                    <div className="iconWrapper">
+                      <img src={editIcon} alt="Icon" className="iconImage" />
+                    </div>
+                    <span className="buttonFont">Edit</span>
+                  </div>
                 </a>
               </button>
 
@@ -233,7 +240,12 @@ function ItemDetailsPage() {
                 onClick={handleDeleteModel}
                 className="buttonFont noUnderline primaryColor"
               >
-                🗑️ Delete
+                <div className="buttonContentWrapper">
+                  <div className="iconWrapper">
+                    <img src={deleteIcon} alt="Icon" className="iconImage" />
+                  </div>
+                  <span className="buttonFont">Delete</span>
+                </div>
               </button>
             </div>
           )}
@@ -250,7 +262,12 @@ function ItemDetailsPage() {
                 className="button buttonAware primaryColor"
                 onClick={() => deleteRecipe(currentRecipe._id)}
               >
-                Delete now
+                <div className="buttonContentWrapper">
+                  <div className="iconWrapper">
+                    <img src={deleteIcon} alt="Icon" className="iconImage" />
+                  </div>
+                  <span className="buttonFont">Delete</span>
+                </div>
               </button>
             </div>
           </div>

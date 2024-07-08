@@ -6,8 +6,6 @@ import axios from "axios";
 import LoginForm from "../components/LogInForm";
 import SignUpForm from "../components/SignUpForm";
 import addIcon from "../assets/addWhite.svg";
-import editIcon from "../assets/edit.svg";
-import deleteIcon from "../assets/delete.svg";
 
 const API_URL = import.meta.env.VITE_API_URL;
 

@@ -48,6 +48,8 @@ button {
 
 .buttonAware {
   background-color: var(--color-attention);
+  display: flex;
+  justify-content: center;
 }
 
 button:hover {
