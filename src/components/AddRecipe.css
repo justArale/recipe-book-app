@@ -96,12 +96,7 @@ input[type="file"] {
 .iconWrapper {
   width: 16px;
   height: 16px;
-  align-self: baseline;
-}
-
-.iconImage {
-  display: inline;
-  vertical-align: middle;
+  align-self: center;
 }
 
 .inputField,

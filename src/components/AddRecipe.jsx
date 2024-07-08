@@ -204,7 +204,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                 ) : img ? (
                   <div className="buttonContentWrapper">
                     <div className="iconWrapper">
-                      <img src={editIcon} alt="Icon" className="iconImage" />
+                      <img src={editIcon} alt="Icon" />
                     </div>
                     <span className="buttonFont">Change Image</span>
                   </div>
@@ -273,7 +273,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
             >
               <div className="buttonContentWrapper">
                 <div className="iconWrapper">
-                  <img src={cancelIcon} alt="Icon" className="iconImage" />
+                  <img src={cancelIcon} alt="Icon" />
                 </div>
                 <span className="buttonFont">Cancel</span>
               </div>
@@ -287,7 +287,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
             >
               <div className="buttonContentWrapper">
                 <div className="iconWrapper">
-                  <img src={checkIcon} alt="Icon" className="iconImage" />
+                  <img src={checkIcon} alt="Icon" />
                 </div>
                 <span className="buttonFont">Save</span>
               </div>

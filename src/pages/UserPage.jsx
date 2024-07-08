@@ -88,11 +88,7 @@ function UserPage() {
                       {" "}
                       <div className="buttonContentWrapper">
                         <div className="iconWrapper">
-                          <img
-                            src={editIcon}
-                            alt="Icon"
-                            className="iconImage"
-                          />
+                          <img src={editIcon} alt="Icon" />
                         </div>
                         <span className="buttonFont">Edit</span>
                       </div>
@@ -105,11 +101,7 @@ function UserPage() {
                   >
                     <div className="buttonContentWrapper">
                       <div className="iconWrapper">
-                        <img
-                          src={deleteIcon}
-                          alt="Icon"
-                          className="iconImage"
-                        />
+                        <img src={deleteIcon} alt="Icon" />
                       </div>
                       <span className="buttonFont">Delete</span>
                     </div>
@@ -135,7 +127,7 @@ function UserPage() {
               >
                 <div className="buttonContentWrapper">
                   <div className="iconWrapper">
-                    <img src={deleteIcon} alt="Icon" className="iconImage" />
+                    <img src={deleteIcon} alt="Icon" />
                   </div>
                   <span className="buttonFont">Delete</span>
                 </div>
