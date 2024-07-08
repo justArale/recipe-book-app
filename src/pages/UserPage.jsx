@@ -7,6 +7,8 @@ import DashboardPage from "./DashboardPage";
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
 import "../components/UserPage.css";
+import editIcon from "../assets/edit.svg";
+import deleteIcon from "../assets/delete.svg";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -82,14 +84,35 @@ function UserPage() {
                     to={`/user/${authorId}/edit`}
                     className="noUnderline primaryColor"
                   >
-                    <button className="buttonFont">✏️ Edit</button>
+                    <button className="buttonFont">
+                      {" "}
+                      <div className="buttonContentWrapper">
+                        <div className="iconWrapper">
+                          <img
+                            src={editIcon}
+                            alt="Icon"
+                            className="iconImage"
+                          />
+                        </div>
+                        <span className="buttonFont">Edit</span>
+                      </div>
+                    </button>
                   </Link>
 
                   <button
                     className="buttonFont noUnderline primaryColor"
                     onClick={handleDeleteModel}
                   >
-                    🗑️ Delete
+                    <div className="buttonContentWrapper">
+                      <div className="iconWrapper">
+                        <img
+                          src={deleteIcon}
+                          alt="Icon"
+                          className="iconImage"
+                        />
+                      </div>
+                      <span className="buttonFont">Delete</span>
+                    </div>
                   </button>
                 </div>
               )}
@@ -110,7 +133,12 @@ function UserPage() {
                 className="button buttonAware primaryColor"
                 onClick={() => deleteUser(currentAuthor._id)}
               >
-                Delete now
+                <div className="buttonContentWrapper">
+                  <div className="iconWrapper">
+                    <img src={deleteIcon} alt="Icon" className="iconImage" />
+                  </div>
+                  <span className="buttonFont">Delete</span>
+                </div>
               </button>
             </div>
           </div>
