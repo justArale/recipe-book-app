@@ -150,6 +150,10 @@ function AddRecipe({ addRecipe, existingRecipe }) {
     setIngredient([...ingredient, ""]);
   };
 
+  const jumpToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className="addRecipe-page">
       <form className="addRecipe" onSubmit={handleSubmit}>
@@ -261,16 +265,20 @@ function AddRecipe({ addRecipe, existingRecipe }) {
           ))}
         </div>
         <div className="action">
-          <button type="delete">
-            <a href="/" className="buttonFont noUnderline primaryColor">
+          <Link to={`/user/${authorId}/recipes/${recipeId}`}>
+            <button
+              type="delete"
+              onClick={jumpToTop}
+              className="buttonFont noUnderline primaryColor"
+            >
               <div className="buttonContentWrapper">
                 <div className="iconWrapper">
                   <img src={cancelIcon} alt="Icon" className="iconImage" />
                 </div>
                 <span className="buttonFont">Cancel</span>
               </div>
-            </a>
-          </button>
+            </button>
+          </Link>
           <Link to={"/"}>
             <button
               type="submit"
