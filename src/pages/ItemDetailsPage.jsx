@@ -133,9 +133,8 @@ function ItemDetailsPage() {
     <div>
       {isLoading ? (
         <div className="itemDetail-page">
-          <div className="recipe-main">
-            <div className="skeleton skeletonDetailRecipesMain"></div>
-          </div>
+          <div className="skeleton skeletonDetailRecipesMain"></div>
+
           <div className="detailPage-ingredients">
             <h3 className="headline">Ingredients:</h3>
 
