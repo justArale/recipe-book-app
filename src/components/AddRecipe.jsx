@@ -5,6 +5,11 @@ import "./AddRecipe.css";
 import fileUploadService from "../service/file-upload.service";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
+import imageIcon from "../assets/image.svg";
+import editIcon from "../assets/editWhite.svg";
+import deleteIcon from "../assets/deleteWhite.svg";
+import checkIcon from "../assets/checkWhite.svg";
+import cancelIcon from "../assets/cancel.svg";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -149,11 +154,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
     <div className="addRecipe-page">
       <form className="addRecipe" onSubmit={handleSubmit}>
         <div className="addRecipe-main">
-          {existingRecipe ? (
-            <h4 className="bodyLarge addRecipe-header">Edit your Recipe</h4>
-          ) : (
-            <h4 className="bodyLarge addRecipe-header">Add your Recipe</h4>
-          )}
+          <h4 className="headline addRecipe-header">Recipe</h4>
 
           <div className="addRecipe-headerRow">
             <div className="addRecipe-headerContent">
@@ -161,7 +162,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                 required
                 type="text"
                 name="Name"
-                className="body title"
+                className="mainFont inputField"
                 placeholder="Title..."
                 value={Name}
                 onChange={handleNameInput}
@@ -171,7 +172,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                 required
                 type="text"
                 name="Description"
-                className="body description"
+                className="mainFont description"
                 placeholder="Description..."
                 value={Description}
                 onChange={handleDescriptionInput}
@@ -185,31 +186,45 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                   className="image-preview"
                 />
               )}
-              <label className="uploadButton">
+              <label
+                className={`uploadButton ${img ? "buttonReverseHalf" : ""}`}
+              >
                 <input
                   type="file"
                   name="img"
                   accept="image/png, image/jpg, image/jpeg, image/gif, image/webm, image/webp, image/heic"
                   onChange={handleFileUpload}
                 />
-                {imageIsLoading
-                  ? "🔄 loading ..."
-                  : img
-                  ? "🖼️ Change Image"
-                  : "🖼️ Choose Image"}
+                {imageIsLoading ? (
+                  "🔄 loading ..."
+                ) : img ? (
+                  <div className="buttonContentWrapper">
+                    <div className="iconWrapper">
+                      <img src={editIcon} alt="Icon" className="iconImage" />
+                    </div>
+                    <span className="buttonFont">Change Image</span>
+                  </div>
+                ) : (
+                  <div className="buttonContentWrapper">
+                    <div className="iconWrapper">
+                      <img src={imageIcon} alt="Icon" className="iconWrapper" />
+                    </div>
+                    <span className="buttonFont">Choose Image</span>
+                  </div>
+                )}
               </label>
             </div>
           </div>
         </div>
         <div className="addRecipe-ingredient">
-          <label className="bodyLarge">Ingredients</label>
+          <label className="headline">Ingredients</label>
           {amount.map((amount, index) => (
             <div className="ingredient-input" key={index}>
               <input
                 required
                 type="text"
                 name="ingredient-amount"
-                className="body"
+                className="mainFont"
                 placeholder="1..."
                 value={amount}
                 onChange={(e) => handleIngredientAmountInput(e, index)}
@@ -218,7 +233,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                 required
                 type="text"
                 name="ingredient"
-                className="body"
+                className="mainFont"
                 placeholder="Ingredient..."
                 value={ingredient[index]}
                 onChange={(e) => handleIngredientInput(e, index)}
@@ -230,12 +245,12 @@ function AddRecipe({ addRecipe, existingRecipe }) {
           ))}
         </div>
         <div className="addRecipe-instruction">
-          <label className="bodyLarge">Instruction</label>
+          <label className="headline">Instruction</label>
           {instruction.map((instructionText, index) => (
             <textarea
               key={index}
               required
-              className="body instuction-input"
+              className="mainFont instuction-input"
               rows="auto"
               name="instruction"
               placeholder={`${index + 1}. Instruction...`}
@@ -247,17 +262,27 @@ function AddRecipe({ addRecipe, existingRecipe }) {
         </div>
         <div className="action">
           <button type="delete">
-            <a href="/" className="body noUnderline primaryColor boldWeight">
-              ❌ Cancel
+            <a href="/" className="buttonFont noUnderline primaryColor">
+              <div className="buttonContentWrapper">
+                <div className="iconWrapper">
+                  <img src={cancelIcon} alt="Icon" className="iconImage" />
+                </div>
+                <span className="buttonFont">Cancel</span>
+              </div>
             </a>
           </button>
           <Link to={"/"}>
             <button
               type="submit"
               onClick={handleSubmit}
-              className="body primaryColor boldWeight"
+              className="mainFont buttonReverse"
             >
-              ✅ Save
+              <div className="buttonContentWrapper">
+                <div className="iconWrapper">
+                  <img src={checkIcon} alt="Icon" className="iconImage" />
+                </div>
+                <span className="buttonFont">Save</span>
+              </div>
             </button>
           </Link>
         </div>

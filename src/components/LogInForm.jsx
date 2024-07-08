@@ -12,17 +12,17 @@ const LogInForm = ({
 }) => {
   return (
     <div>
-      <p className="body">
+      <p className="mainFont">
         <a href="#" onClick={onSwitch} className="noUnderline hiddenSignUp">
           Sign Up
         </a>
       </p>
       <div className="login">
         <form onSubmit={handleLoginSubmit} className="signup-form">
-          <h3 className="bodyLarge">Log In</h3>
+          <h3 className="headline">Log In</h3>
 
           <div className="input-group">
-            <label htmlFor="email" className="body">
+            <label htmlFor="email" className="mainFont">
               Email
             </label>
             <input
@@ -38,7 +38,7 @@ const LogInForm = ({
           </div>
 
           <div className="input-group">
-            <label htmlFor="password" className="body">
+            <label htmlFor="password" className="mainFont">
               Password
             </label>
             <input
@@ -53,12 +53,15 @@ const LogInForm = ({
             />
           </div>
 
-          <button type="submit" className="primaryColor becomePrivateButton">
+          <button
+            type="submit"
+            className="buttonFont primaryColor becomePrivateButton"
+          >
             Log In
           </button>
         </form>
 
-        {errorMessage && <p className="body">{errorMessage}</p>}
+        {errorMessage && <p className="mainFont">{errorMessage}</p>}
       </div>
     </div>
   );

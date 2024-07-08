@@ -33,6 +33,7 @@
 .about.active,
 .profil.active {
   font-weight: var(--font-weight-bold);
+  color: var(--color-black);
 }
 
 @media (max-width: 867px) {

@@ -1,22 +1,24 @@
 import "./Footer.css";
+import heartIcon from "../assets/heart.svg";
 
 function Footer() {
   return (
     <footer className="footer">
       <div className="footer-inner">
-        <h5 className="body">
+        <h5 className="mainFont">
           <a
             target="_blank"
             href="https://github.com/justArale/recipe-book-app"
-            className="secondaryColor"
+            className="secondaryColor noUnderline"
           >
             Recipe Book
           </a>{" "}
-          made with ❤️ by{" "}
+          made with <img src={heartIcon} alt="Icon" className="iconWrapper" />{" "}
+          by{" "}
           <a
             target="_blank"
             href="https://github.com/justArale"
-            className="secondaryColor"
+            className="secondaryColor noUnderline"
           >
             Arale
           </a>
