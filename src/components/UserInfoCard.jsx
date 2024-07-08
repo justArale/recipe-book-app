@@ -1,5 +1,5 @@
 import React from "react";
-import defaultImage from "../assets/touch-icon.png";
+import defaultAvatar from "../assets/defaultAvatar.svg";
 
 import "./UserInfoCard.css";
 
@@ -8,7 +8,7 @@ function UserInfoCard({ author, user }) {
     <div className="userInfoBox">
       <div className="avatarImageWrapper">
         <img
-          src={author.image || defaultImage}
+          src={author.image || defaultAvatar}
           alt={`${author.name}'s profile`}
           className="userAvatarImage"
         />
@@ -17,14 +17,15 @@ function UserInfoCard({ author, user }) {
       <div className="userInfo">
         <h1 className="pageTitle">{author.name}</h1>
         <div className="">
-          <p className="body">
+          <p className="mainFont">
             {author.description ? author.description : "I'm a food lover."}
           </p>
 
           {user && author._id === user._id && (
-            <p className="body">Email: {author.email}</p>
+            <p className="mainFont">Email: {author.email}</p>
           )}
-          <p className="body thirdColor" style={{ marginTop: "auto" }}>
+          <p></p>
+          <p className="mainFont thirdColor" style={{ marginTop: "auto" }}>
             {author.recipes?.length} recipes
           </p>
         </div>

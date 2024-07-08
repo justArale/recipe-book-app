@@ -66,10 +66,14 @@
   align-items: center;
 }
 
-.authorImageSmall {
-  border-radius: 100%;
+.authorImageSmallWrapper {
   height: 40px;
   width: 40px;
+}
+.authorImageSmall {
+  height: 100%;
+  width: 100%;
+  border-radius: 100%;
 }
 
 .ownerInfoSmall {
@@ -85,7 +89,7 @@
 
 .detailPage-ingredients,
 .detailPage-instruction {
-  background-color: #fff;
+  background-color: var(--secondary-background-color);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -152,15 +156,6 @@ div.instuction-list div:before {
   gap: 24px;
   padding: 40px;
   box-sizing: border-box;
-}
-
-.closeIcon {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  height: 20px;
-  width: auto;
-  cursor: pointer;
 }
 
 @media (max-width: 867px) {

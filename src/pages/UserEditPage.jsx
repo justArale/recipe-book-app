@@ -121,7 +121,7 @@ function UserEditPage() {
     <div className="addRecipe-page">
       <form className="addRecipe" onSubmit={handleSubmit}>
         <div className="addRecipe-main">
-          <h4 className="bodyLarge addRecipe-header">Edit your profile</h4>
+          <h4 className="headline addRecipe-header">Profile</h4>
 
           <div className="addRecipe-headerRow">
             <div className="addRecipe-headerContent">
@@ -129,7 +129,7 @@ function UserEditPage() {
                 required
                 type="text"
                 name="name"
-                className="body title"
+                className="mainFont inputField"
                 placeholder="Name..."
                 value={formValues.name}
                 onChange={handleInputChange}
@@ -139,7 +139,7 @@ function UserEditPage() {
                 required
                 type="text"
                 name="description"
-                className="body description"
+                className="mainFont description"
                 placeholder="Description..."
                 value={formValues.description}
                 onChange={handleInputChange}
@@ -172,9 +172,9 @@ function UserEditPage() {
         </div>
 
         <div className="addRecipe-ingredient">
-          <label className="bodyLarge">Change password</label>
+          <label className="headline">Change password</label>
           <div className="passwordBox">
-            <label htmlFor="oldPassword" className="body">
+            <label htmlFor="oldPassword" className="mainFont">
               Old Password:
             </label>
             <input
@@ -183,12 +183,12 @@ function UserEditPage() {
               name="oldPassword"
               value={formValues.oldPassword}
               onChange={handleInputChange}
-              className="body title"
+              className="mainFont inputField"
               placeholder="*****"
             />
           </div>
           <div className="passwordBox">
-            <label htmlFor="newPassword" className="body">
+            <label htmlFor="newPassword" className="mainFont">
               New Password:
             </label>
             <input
@@ -197,7 +197,7 @@ function UserEditPage() {
               name="newPassword"
               value={formValues.newPassword}
               onChange={handleInputChange}
-              className="body title"
+              className="mainFont inputField"
               placeholder="*****"
             />
           </div>
@@ -205,14 +205,11 @@ function UserEditPage() {
 
         <div className="action">
           <Link to={`/user/${authorId}`}>
-            <button
-              type="button"
-              className="body noUnderline primaryColor boldWeight"
-            >
+            <button type="button" className="mainFont noUnderline primaryColor">
               ❌ Cancel
             </button>
           </Link>
-          <button type="submit" className="body primaryColor boldWeight">
+          <button type="submit" className="mainFont primaryColor">
             ✅ Save
           </button>
         </div>

@@ -69,7 +69,9 @@ input[type="file"] {
 .uploadButton {
   font-size: 16px;
   padding: 8px 16px;
-  border-radius: 50px;
+  border-radius: 100px;
+  width: auto;
+  height: auto;
   background-color: var(--background-color);
   font-weight: bold;
   border: 1px solid #a39689;
@@ -77,7 +79,32 @@ input[type="file"] {
   z-index: 99;
 }
 
-.title,
+.buttonContentWrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.buttonReverseHalf {
+  display: flex;
+  gap: 16px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: var(--color-white);
+  border: 1px solid #000;
+}
+
+.iconWrapper {
+  width: 16px;
+  height: 16px;
+  align-self: baseline;
+}
+
+.iconImage {
+  display: inline;
+  vertical-align: middle;
+}
+
+.inputField,
 .description {
   border: 1px solid #a39689;
   border-radius: 8px;
@@ -89,7 +116,7 @@ input[type="file"] {
   height: auto;
 }
 
-.title {
+.inputField {
   height: 40px;
   box-sizing: border-box;
 }
@@ -117,6 +144,8 @@ input[type="file"] {
 }
 
 input[name="ingredient-amount"] {
+  font-family: inherit;
+
   border: none;
   border-right: 1px dashed #a39689;
   border-bottom-left-radius: 8px;
@@ -127,6 +156,8 @@ input[name="ingredient-amount"] {
 }
 
 input[name="ingredient"] {
+  font-family: inherit;
+
   border: none;
   border-bottom-right-radius: 8px;
   border-top-right-radius: 8px;
@@ -136,6 +167,7 @@ input[name="ingredient"] {
 }
 
 textarea[name="instruction"] {
+  font-family: inherit;
   padding: 8px 12px;
   box-sizing: border-box;
   height: 40px;
