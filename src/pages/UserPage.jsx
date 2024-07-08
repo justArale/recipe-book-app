@@ -77,7 +77,12 @@ function UserPage() {
         <div className="UserPage">
           <div className="userPageHeaderBox">
             <div className="ownerContent">
-              <UserInfoCard author={currentAuthor} user={user} />
+              {isLoading ? (
+                <div className="skeleton skeletonUserInfoBox"></div>
+              ) : (
+                <UserInfoCard author={currentAuthor} user={user} />
+              )}
+
               {user && currentAuthor._id === user._id && (
                 <div className="action">
                   <Link
