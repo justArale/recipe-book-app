@@ -133,9 +133,8 @@ function ItemDetailsPage() {
     <div>
       {isLoading ? (
         <div className="itemDetail-page">
-          <div className="recipe-main">
-            <div className="skeleton skeletonDetailRecipesMain"></div>
-          </div>
+          <div className="skeleton skeletonDetailRecipesMain"></div>
+
           <div className="detailPage-ingredients">
             <h3 className="headline">Ingredients:</h3>
 
@@ -229,7 +228,7 @@ function ItemDetailsPage() {
                 >
                   <div className="buttonContentWrapper">
                     <div className="iconWrapper">
-                      <img src={editIcon} alt="Icon" className="iconImage" />
+                      <img src={editIcon} alt="Icon" />
                     </div>
                     <span className="buttonFont">Edit</span>
                   </div>
@@ -242,7 +241,7 @@ function ItemDetailsPage() {
               >
                 <div className="buttonContentWrapper">
                   <div className="iconWrapper">
-                    <img src={deleteIcon} alt="Icon" className="iconImage" />
+                    <img src={deleteIcon} alt="Icon" />
                   </div>
                   <span className="buttonFont">Delete</span>
                 </div>
@@ -264,7 +263,7 @@ function ItemDetailsPage() {
               >
                 <div className="buttonContentWrapper">
                   <div className="iconWrapper">
-                    <img src={deleteIcon} alt="Icon" className="iconImage" />
+                    <img src={deleteIcon} alt="Icon" />
                   </div>
                   <span className="buttonFont">Delete</span>
                 </div>
