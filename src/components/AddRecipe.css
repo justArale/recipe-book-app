@@ -69,7 +69,9 @@ input[type="file"] {
 .uploadButton {
   font-size: 16px;
   padding: 8px 16px;
-  border-radius: 50px;
+  border-radius: 100px;
+  width: auto;
+  height: auto;
   background-color: var(--background-color);
   font-weight: bold;
   border: 1px solid #a39689;
@@ -89,6 +91,11 @@ input[type="file"] {
   background-color: rgba(0, 0, 0, 0.6);
   color: var(--color-white);
   border: 1px solid #000;
+}
+
+.iconWrapper {
+  width: 16px;
+  height: 16px;
 }
 
 .iconImage {

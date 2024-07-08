@@ -199,14 +199,14 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                   "🔄 loading ..."
                 ) : img ? (
                   <div className="buttonContentWrapper">
-                    <div>
-                      <img src={editIcon} alt="Icon" className="iconWrapper" />
+                    <div className="iconWrapper">
+                      <img src={editIcon} alt="Icon" className="iconImage" />
                     </div>
                     <span className="buttonFont">Change Image</span>
                   </div>
                 ) : (
                   <div className="buttonContentWrapper">
-                    <div>
+                    <div className="iconWrapper">
                       <img src={imageIcon} alt="Icon" className="iconWrapper" />
                     </div>
                     <span className="buttonFont">Choose Image</span>
@@ -264,7 +264,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
           <button type="delete">
             <a href="/" className="buttonFont noUnderline primaryColor">
               <div className="buttonContentWrapper">
-                <div>
+                <div className="iconWrapper">
                   <img src={cancelIcon} alt="Icon" className="iconImage" />
                 </div>
                 <span className="buttonFont">Cancel</span>
@@ -278,7 +278,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
               className="mainFont buttonReverse"
             >
               <div className="buttonContentWrapper">
-                <div>
+                <div className="iconWrapper">
                   <img src={checkIcon} alt="Icon" className="iconImage" />
                 </div>
                 <span className="buttonFont">Save</span>
