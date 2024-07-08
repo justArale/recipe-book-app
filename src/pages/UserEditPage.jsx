@@ -5,6 +5,11 @@ import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
 import fileUploadService from "../service/file-upload.service";
 import "../components/UserEditPage.css";
+import imageIcon from "../assets/image.svg";
+import editIcon from "../assets/editWhite.svg";
+import deleteIcon from "../assets/deleteWhite.svg";
+import checkIcon from "../assets/checkWhite.svg";
+import cancelIcon from "../assets/cancel.svg";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -154,18 +159,34 @@ function UserEditPage() {
                   className="image-preview"
                 />
               )}
-              <label className="uploadButton">
+              <label
+                className={`uploadButton ${
+                  formValues.image ? "buttonReverseHalf" : ""
+                }`}
+              >
                 <input
                   type="file"
                   name="img"
                   accept="image/png, image/jpg, image/jpeg, image/gif, image/webm, image/webp, image/heic"
                   onChange={handleAvatarChange}
                 />
-                {imageIsLoading
-                  ? "🔄 Loading..."
-                  : formValues.image
-                  ? "🖼️ Change Image"
-                  : "🖼️ Choose Image"}
+                {imageIsLoading ? (
+                  "🔄 Loading..."
+                ) : formValues.image ? (
+                  <div className="buttonContentWrapper">
+                    <div className="iconWrapper">
+                      <img src={editIcon} alt="Icon" />
+                    </div>
+                    <span className="buttonFont">Change Image</span>
+                  </div>
+                ) : (
+                  <div className="buttonContentWrapper">
+                    <div className="iconWrapper">
+                      <img src={imageIcon} alt="Icon" className="iconWrapper" />
+                    </div>
+                    <span className="buttonFont">Choose Image</span>
+                  </div>
+                )}
               </label>
             </div>
           </div>
@@ -205,12 +226,22 @@ function UserEditPage() {
 
         <div className="action">
           <Link to={`/user/${authorId}`}>
-            <button type="button" className="mainFont noUnderline primaryColor">
-              ❌ Cancel
+            <button type="button" className="noUnderline primaryColor">
+              <div className="buttonContentWrapper">
+                <div className="iconWrapper">
+                  <img src={cancelIcon} alt="Icon" />
+                </div>
+                <span className="buttonFont">Cancel</span>
+              </div>
             </button>
           </Link>
-          <button type="submit" className="mainFont primaryColor">
-            ✅ Save
+          <button type="submit" className=" buttonReverse">
+            <div className="buttonContentWrapper">
+              <div className="iconWrapper">
+                <img src={checkIcon} alt="Icon" />
+              </div>
+              <span className="buttonFont buttonFontReverse">Save</span>
+            </div>
           </button>
         </div>
       </form>

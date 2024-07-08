@@ -91,7 +91,7 @@ function Navbar({
               >
                 <div className="buttonContentWrapper">
                   <div className="iconWrapper">
-                    <img src={addIcon} alt="Icon" className="iconImage" />
+                    <img src={addIcon} alt="Icon" />
                   </div>
                   <span className="buttonFont buttonFontReverse">
                     Add Recipe
