@@ -1,5 +1,6 @@
 :root {
   --background-color: #f5f0eb;
+  --secondary-background-color: #ebe4dd;
   --secondary-color: #a39689;
   --third-color: #665c52;
   --main-color: #f2d4bf;
@@ -8,14 +9,18 @@
   --color-attention: #ff6961;
 
   --font-weight-normal: 400;
+  --font-weight-semiBold: 600;
   --font-weight-bold: 700;
 
+  --font-size-xsmall: 12px;
   --font-size-small: 16px;
   --font-size-medium: 24px;
   --font-size-large: 32px;
   --font-size-xlarge: 40px;
 
-  --font-family-arial: Arial, sans-serif;
+  --font-family-main: "OpenSans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji";
 }
 
 .primaryColor {
@@ -36,29 +41,52 @@
 
 .pageTitle {
   font-size: var(--font-size-xlarge);
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-semiBold);
   line-height: 1.5em;
   margin: 0;
 }
 
-.headline {
+.title {
   font-size: var(--font-size-large);
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-semiBold);
   margin: 0;
 }
 
-.bodyLarge {
+.headline {
   font-size: var(--font-size-medium);
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-semiBold);
   margin: 0;
 }
 
-.body {
+.mainFont {
   font-size: var(--font-size-small);
   font-weight: var(--font-weight-normal);
   margin: 0;
 }
 
-.boldWeight {
+.meta {
+  font-size: var(--font-size-xsmall);
+  font-weight: var(--font-weight-normal);
+  margin: 0;
+}
+
+.buttonFont {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semiBold);
+  margin: 0;
+}
+
+.buttonFontReverse {
+  color: var(--color-white);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semiBold);
+  margin: 0;
+}
+
+.boldWeigth {
   font-weight: var(--font-weight-bold);
+}
+
+.semiBoldWeigth {
+  font-weight: var(--font-weight-semiBold);
 }

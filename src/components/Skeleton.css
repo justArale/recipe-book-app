@@ -1,5 +1,5 @@
 .skeleton {
-  background-color: #e0e0e0;
+  background-color: var(--secondary-background-color);
   border-radius: 20px;
   overflow: hidden;
 }
@@ -33,7 +33,7 @@
 }
 
 .skeleton-text {
-  background-color: #e0e0e0;
+  background-color: var(--secondary-background-color);
   height: 1.2em;
   width: 70vw;
   max-width: 100%;

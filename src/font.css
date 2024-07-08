@@ -1,0 +1,17 @@
+/* Regular */
+@font-face {
+  font-family: "OpenSans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../public/font/OpenSans_Condensed-Regular.ttf") format("ttf");
+}
+
+/* semiBold */
+@font-face {
+  font-family: "OpenSans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../public/font/OpenSans_Condensed-SemiBold.ttf") format("ttf");
+}

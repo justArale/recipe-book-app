@@ -7,6 +7,8 @@ import DashboardPage from "./DashboardPage";
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
 import "../components/UserPage.css";
+import editIcon from "../assets/edit.svg";
+import deleteIcon from "../assets/delete.svg";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -73,26 +75,50 @@ function UserPage() {
     <div>
       {currentAuthor && (
         <div className="UserPage">
-          <div className="ownerContent">
-            <UserInfoCard author={currentAuthor} user={user} />
-            {user && currentAuthor._id === user._id && (
-              <div className="action">
-                <Link
-                  to={`/user/${authorId}/edit`}
-                  className="noUnderline primaryColor"
-                >
-                  <button className="body boldWeight">✏️ Edit</button>
-                </Link>
+          <div className="userPageHeaderBox">
+            <div className="ownerContent">
+              <UserInfoCard author={currentAuthor} user={user} />
+              {user && currentAuthor._id === user._id && (
+                <div className="action">
+                  <Link
+                    to={`/user/${authorId}/edit`}
+                    className="noUnderline primaryColor"
+                  >
+                    <button className="buttonFont">
+                      {" "}
+                      <div className="buttonContentWrapper">
+                        <div className="iconWrapper">
+                          <img
+                            src={editIcon}
+                            alt="Icon"
+                            className="iconImage"
+                          />
+                        </div>
+                        <span className="buttonFont">Edit</span>
+                      </div>
+                    </button>
+                  </Link>
 
-                <button
-                  className="body noUnderline primaryColor boldWeight"
-                  onClick={handleDeleteModel}
-                >
-                  🗑️ Delete
-                </button>
-              </div>
-            )}
+                  <button
+                    className="buttonFont noUnderline primaryColor"
+                    onClick={handleDeleteModel}
+                  >
+                    <div className="buttonContentWrapper">
+                      <div className="iconWrapper">
+                        <img
+                          src={deleteIcon}
+                          alt="Icon"
+                          className="iconImage"
+                        />
+                      </div>
+                      <span className="buttonFont">Delete</span>
+                    </div>
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
+
           <DashboardPage />
         </div>
       )}
@@ -101,13 +127,18 @@ function UserPage() {
         <div className="overlay" onClick={closeModal}>
           <div className="overlay-content">
             <div className="deleteModalContent">
-              <h3 className="bodyLarge">Delete Profil</h3>
-              <p className="body">Are you sure to delete your profil?</p>
+              <h3 className="headline">Delete Profil</h3>
+              <p className="mainFont">Are you sure to delete your profil?</p>
               <button
-                className="button buttonAware primaryColor boldWeight"
+                className="button buttonAware primaryColor"
                 onClick={() => deleteUser(currentAuthor._id)}
               >
-                Delete now
+                <div className="buttonContentWrapper">
+                  <div className="iconWrapper">
+                    <img src={deleteIcon} alt="Icon" className="iconImage" />
+                  </div>
+                  <span className="buttonFont">Delete</span>
+                </div>
               </button>
             </div>
           </div>
