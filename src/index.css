@@ -76,6 +76,13 @@
   margin: 0;
 }
 
+.buttonFontReverse {
+  color: var(--color-white);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semiBold);
+  margin: 0;
+}
+
 .boldWeigth {
   font-weight: var(--font-weight-bold);
 }

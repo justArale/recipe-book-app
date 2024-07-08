@@ -5,6 +5,9 @@ import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 import LoginForm from "../components/LogInForm";
 import SignUpForm from "../components/SignUpForm";
+import addIcon from "../assets/addWhite.svg";
+import editIcon from "../assets/edit.svg";
+import deleteIcon from "../assets/delete.svg";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -85,10 +88,17 @@ function Navbar({
           <div className="action">
             <div>
               <button
-                className="mainFont noUnderline primaryColor"
+                className="mainFont noUnderline primaryColor buttonReverse"
                 onClick={handleButtonClick}
               >
-                New recipe
+                <div className="buttonContentWrapper">
+                  <div className="iconWrapper">
+                    <img src={addIcon} alt="Icon" className="iconImage" />
+                  </div>
+                  <span className="buttonFont buttonFontReverse">
+                    Add Recipe
+                  </span>
+                </div>
               </button>
             </div>
             {isLoggedIn ? (
@@ -97,7 +107,7 @@ function Navbar({
                   onClick={logOutUser}
                   className="mainFont noUnderline primaryColor"
                 >
-                  Log Out
+                  <span className="buttonFont">Log Out</span>
                 </button>
               </div>
             ) : (
@@ -109,7 +119,7 @@ function Navbar({
                         onClick={handleLoginClick}
                         className="mainFont noUnderline primaryColor"
                       >
-                        Log In
+                        <span className="buttonFont">Log In</span>
                       </button>
                     </>
                   )}
