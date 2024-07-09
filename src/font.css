@@ -4,7 +4,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("../public/font/OpenSans_Condensed-Regular.ttf") format("ttf");
+  src: url("../src/assets/font/OpenSans-Regular.ttf") format("truetype");
 }
 
 /* semiBold */
@@ -13,5 +13,23 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url("../public/font/OpenSans_Condensed-SemiBold.ttf") format("ttf");
+  src: url("../src/assets/font/OpenSans-SemiBold.ttf") format("truetype");
+}
+
+/* Regular */
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../src/assets/font/Fraunces_9pt-Regular.ttf") format("truetype");
+}
+
+/* semiBold */
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../src/assets/font/Fraunces_9pt-SemiBold.ttf") format("truetype");
 }
