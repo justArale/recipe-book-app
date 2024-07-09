@@ -33,7 +33,7 @@ function Navbar({
       <div className="inner">
         <div className="nav-title">
           <Link to={`/`} className="noUnderline">
-            <h1 className="title primaryColor">Recipe Book</h1>
+            <h1 className="title primaryColor">Bento Book</h1>
           </Link>
           <p className="mainFont thirdColor">
             This is my awesome list of recipes.
@@ -93,9 +93,7 @@ function Navbar({
                   <div className="iconWrapper">
                     <img src={addIcon} alt="Icon" />
                   </div>
-                  <span className="buttonFont buttonFontReverse">
-                    Add Recipe
-                  </span>
+                  <span className="buttonFont buttonFontReverse">Recipe</span>
                 </div>
               </button>
             </div>

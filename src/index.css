@@ -1,3 +1,5 @@
+@import "font.css";
+
 :root {
   --background-color: #f5f0eb;
   --secondary-background-color: #ebe4dd;
@@ -18,8 +20,11 @@
   --font-size-large: 32px;
   --font-size-xlarge: 40px;
 
-  --font-family-main: "OpenSans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  --font-family-main: "Fraunces", -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji";
+  --font-family-secondary: "OpenSans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji";
 }
 
@@ -40,37 +45,43 @@
 }
 
 .pageTitle {
+  font-family: var(--font-family-main);
   font-size: var(--font-size-xlarge);
   font-weight: var(--font-weight-semiBold);
-  line-height: 1.5em;
+  line-height: 1.2em;
   margin: 0;
 }
 
 .title {
+  font-family: var(--font-family-main);
   font-size: var(--font-size-large);
   font-weight: var(--font-weight-semiBold);
   margin: 0;
 }
 
 .headline {
+  font-family: var(--font-family-main);
   font-size: var(--font-size-medium);
   font-weight: var(--font-weight-semiBold);
   margin: 0;
 }
 
 .mainFont {
+  font-family: var(--font-family-secondary);
   font-size: var(--font-size-small);
   font-weight: var(--font-weight-normal);
   margin: 0;
 }
 
 .meta {
+  font-family: var(--font-family-secondary);
   font-size: var(--font-size-xsmall);
   font-weight: var(--font-weight-normal);
   margin: 0;
 }
 
 .buttonFont {
+  font-family: var(--font-family-secondary);
   font-size: var(--font-size-small);
   font-weight: var(--font-weight-semiBold);
   margin: 0;
