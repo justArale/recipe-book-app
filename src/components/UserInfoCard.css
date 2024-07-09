@@ -42,11 +42,6 @@
 
 @media (max-width: 867px) {
   .userInfoBox {
-    flex-direction: column;
-  }
-
-  .avatarImageWrapper {
-    max-width: 100%;
-    object-fit: cover;
+    flex-direction: column-reverse;
   }
 }
