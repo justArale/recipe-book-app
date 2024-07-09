@@ -12,31 +12,26 @@ export default function AboutPage() {
           collect all my favourites dishes and some other rare finds. Mainly
           asian cousin as you might already figured.
         </p>
-        <div className="social-pages">
+      </div>
+      <div className="social-pages">
+        <button className=" noUnderline socialButton github">
           <a target="_blank" href="https://github.com/justArale">
-            <button className="buttonFont noUnderline primaryColor socialButton">
-              <div className="buttonContentWrapper">
-                <div className="iconWrapper">
-                  <img src={githubIcon} alt="Icon" />
-                </div>
-                <span className="buttonFont">Github</span>
-              </div>
-            </button>
+            <div className=" iconWrapperBig">
+              <img src={githubIcon} alt="Icon" />
+            </div>
           </a>
+        </button>
+
+        <button className=" noUnderline socialButton linkedIn">
           <a
             target="_blank"
             href="https://www.linkedin.com/in/s-kuechler-jr-fullstack-dev"
           >
-            <button className="buttonFont noUnderline primaryColor socialButton">
-              <div className="buttonContentWrapper">
-                <div className="iconWrapper">
-                  <img src={linkedinIcon} alt="Icon" />
-                </div>
-                <span className="buttonFont">LinkedIn</span>
-              </div>
-            </button>
+            <div className=" iconWrapperBig">
+              <img src={linkedinIcon} alt="Icon" />
+            </div>
           </a>
-        </div>
+        </button>
       </div>
     </div>
   );

@@ -1,6 +1,5 @@
 .aboutPage {
   display: flex;
-  flex-direction: column;
   gap: 16px;
   padding: 0 16px;
   max-width: 800px;
@@ -21,10 +20,48 @@
 
 .social-pages {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 16px;
+  width: 174px;
+  height: auto;
+  box-sizing: border-box;
 }
 
 .socialButton {
-  background-color: var(--secondary-background-color);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+}
+
+.iconWrapperBig {
+  width: 32px;
+  height: 32px;
+  align-self: center;
+}
+
+.github {
+  background-color: #cdcdac;
+  border: 1px solid #cdcdac;
+}
+
+.linkedIn {
+  background-color: #bcd3da;
+  border: 1px solid #bcd3da;
+}
+
+@media (max-width: 640px) {
+  .aboutPage {
+    flex-direction: column;
+  }
+  .social-pages {
+    flex-direction: row;
+    width: 100%;
+  }
 }
