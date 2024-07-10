@@ -14,9 +14,6 @@ function UserInfoCard({ author, user }) {
               {author.description ? author.description : "I'm a food lover."}
             </p>
 
-            {user && author._id === user._id && (
-              <p className="mainFont">Email: {author.email}</p>
-            )}
             <p></p>
             <p
               className="mainFont semiBoldWeigth"
