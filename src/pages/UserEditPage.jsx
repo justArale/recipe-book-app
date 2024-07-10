@@ -16,6 +16,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 const DEFAULT_USER_FORM_VALUES = {
   name: "",
   image: "",
+  email: "",
   description: "",
   oldPassword: "",
   newPassword: "",
@@ -43,10 +44,11 @@ function UserEditPage() {
       const response = await axios.get(`${API_URL}/api/user/${authorId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       });
-      const { name, image, description } = response.data;
+      const { name, image, email, description } = response.data;
       setFormValues({
         name: name || "",
         image: image || "",
+        email: email || "",
         description: description || "",
         oldPassword: "",
         newPassword: "",
@@ -137,6 +139,16 @@ function UserEditPage() {
                 className="mainFont inputField"
                 placeholder="Name..."
                 value={formValues.name}
+                onChange={handleInputChange}
+              />
+
+              <input
+                required
+                type="email"
+                name="email"
+                className="mainFont inputField"
+                placeholder="Email..."
+                value={formValues.email}
                 onChange={handleInputChange}
               />
 
