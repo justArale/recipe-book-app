@@ -72,7 +72,7 @@ function UserPage() {
   //   }, [authorId]);
 
   return (
-    <div>
+    <div className="userPageWrapper">
       {currentAuthor && (
         <div className="UserPage">
           <div className="userPageHeaderBox">
