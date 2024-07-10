@@ -74,24 +74,40 @@ function DashboardPage() {
             </div>
           </div>
         ) : (
-          allRecipes &&
-          allRecipes.map((recipe, index) => (
-            <div key={recipe._id} className="findTheChild">
-              {index % 2 === 0 && <div className="grid-row" />}
-              <div className="grid-item" key={recipe._id}>
-                <Link
-                  to={`/user/${recipe.author._id}/recipes/${recipe._id}`}
-                  className="listItem-link"
-                  onClick={() => setIndex(index)}
-                >
-                  <List recipe={recipe} className="listItem-container" />
-                </Link>
+          allRecipes && (
+            <div className="recipe-columns">
+              <div className="left-column">
+                {allRecipes
+                  .filter((_, index) => index % 2 === 0)
+                  .map((recipe, index) => (
+                    <div key={recipe._id} className="findTheChild">
+                      <Link
+                        to={`/user/${recipe.author._id}/recipes/${recipe._id}`}
+                        className="listItem-link"
+                        onClick={() => setIndex(index)}
+                      >
+                        <List recipe={recipe} className="listItem-container" />
+                      </Link>
+                    </div>
+                  ))}
               </div>
-              {index % 2 === 1 || index === recipe.length - 1 ? (
-                <div className="grid-row" />
-              ) : null}
+              <div className="right-column">
+                {allRecipes
+                  .filter((_, index) => index % 2 === 1)
+                  .map((recipe, index) => (
+                    <div key={recipe._id} className="findTheChild">
+                      <Link
+                        to={`/user/${recipe.author._id}/recipes/${recipe._id}`}
+                        className="listItem-link"
+                        onClick={() => setIndex(index)}
+                      >
+                        <List recipe={recipe} className="listItem-container" />
+                      </Link>
+                    </div>
+                  ))}
+              </div>
             </div>
-          ))
+          )
         )}
       </div>
     </div>
