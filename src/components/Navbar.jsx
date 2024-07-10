@@ -6,6 +6,7 @@ import axios from "axios";
 import LoginForm from "../components/LogInForm";
 import SignUpForm from "../components/SignUpForm";
 import addIcon from "../assets/addWhite.svg";
+import logo from "../assets/logo.svg";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -32,12 +33,16 @@ function Navbar({
     <div className="header">
       <div className="inner">
         <div className="nav-title">
+          <div className="logoWrapper">
+            <img src={logo} alt="logo" className="logoImage" />
+          </div>
           <Link to={`/`} className="noUnderline">
             <h1 className="title primaryColor">Bento Book</h1>
+
+            <p className="mainFont semiBoldWeigth thirdColor">
+              All my favorite recipes
+            </p>
           </Link>
-          <p className="mainFont thirdColor">
-            This is my awesome list of recipes.
-          </p>
         </div>
         <div className="navigation">
           <div className="sidebar-path">
