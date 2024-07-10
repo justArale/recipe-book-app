@@ -56,7 +56,7 @@
   font-family: var(--font-family-main);
   font-size: var(--font-size-large);
   font-weight: var(--font-weight-semiBold);
-  line-height: 100%;
+  line-height: 1.5em;
   margin: 0;
 }
 
