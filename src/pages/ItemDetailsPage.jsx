@@ -166,32 +166,8 @@ function ItemDetailsPage() {
                 indexNumber
               )}`}
             >
-              {/* <div className="content"> */}
               <h1 className="pageTitle">{currentRecipe.name}</h1>
               <p className="mainFont">{currentRecipe.description}</p>
-              <div className="" style={{ marginTop: "auto" }}>
-                <Link
-                  to={`/user/${authorId}`}
-                  className="noUnderline authorInfoWrapper"
-                >
-                  <div className="authorImageSmallWrapper">
-                    <img
-                      src={currentRecipe.author.image || defaultAvatar}
-                      className="authorImageSmall"
-                    />
-                  </div>
-
-                  <div className="ownerInfoSmall">
-                    <p className="mainFont primaryColor">
-                      By {currentRecipe.author.name}
-                    </p>
-                    <p className="meta thirdColor">
-                      On {formatDate(currentRecipe.author.createdAt)}
-                    </p>
-                  </div>
-                </Link>
-              </div>
-              {/* </div> */}
             </div>
 
             <div className="recipeImageWrapper">
@@ -203,6 +179,28 @@ function ItemDetailsPage() {
                 className={`${currentRecipe.image ? "recipeImage" : ""}`}
               />
             </div>
+          </div>
+          <div className="metaDetailWrapper">
+            <Link
+              to={`/user/${authorId}`}
+              className="noUnderline authorInfoWrapper"
+            >
+              <div className="authorImageSmallWrapper">
+                <img
+                  src={currentRecipe.author.image || defaultAvatar}
+                  className="authorImageSmall"
+                />
+              </div>
+
+              <div className="ownerInfoSmall">
+                <p className="mainFont primaryColor">
+                  By {currentRecipe.author.name}
+                </p>
+                <p className="meta thirdColor">
+                  On {formatDate(currentRecipe.author.createdAt)}
+                </p>
+              </div>
+            </Link>
           </div>
           {currentRecipe.ingredients && (
             <div className="detailPage-ingredients">

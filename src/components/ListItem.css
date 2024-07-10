@@ -63,15 +63,26 @@
   background-color: #c8c9d9;
 }
 
+.metaDetailWrapper {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  width: 100%;
+}
+
 .authorInfoWrapper {
   display: flex;
   gap: 16px;
   align-items: center;
+  padding: 32px;
+  width: 100%;
+  background-color: #dadecc;
+  border-radius: 16px;
 }
 
 .authorImageSmallWrapper {
-  height: 40px;
-  width: 40px;
+  height: 46px;
+  width: 46px;
 }
 .authorImageSmall {
   height: 100%;
@@ -82,6 +93,8 @@
 .ownerInfoSmall {
   display: flex;
   flex-direction: column;
+  width: auto;
+  height: auto;
 }
 
 .recipeImageWrapper {
