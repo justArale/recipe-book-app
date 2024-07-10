@@ -1,4 +1,9 @@
+.userPageWrapper {
+  width: 100%;
+}
+
 .UserPage {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 32px;
