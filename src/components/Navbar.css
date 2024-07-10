@@ -17,7 +17,7 @@
 
 .nav-title {
   display: flex;
-  gap: 16px;
+  gap: 12px;
   height: auto;
   width: auto;
   margin: 0;
@@ -62,17 +62,3 @@
     flex-wrap: wrap;
   }
 }
-
-/* @media (max-width: 867px) {
-  .inner {
-    flex-direction: column;
-    align-items: flex-start;
-    height: auto;
-    gap: 16px;
-  }
-
-  .navigation {
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-} */
