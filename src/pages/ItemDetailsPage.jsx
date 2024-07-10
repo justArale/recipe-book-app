@@ -130,7 +130,7 @@ function ItemDetailsPage() {
   };
 
   return (
-    <div>
+    <div className="itemDetailPageWrapper">
       {isLoading ? (
         <div className="itemDetail-page">
           <div className="skeleton skeletonDetailRecipesMain"></div>
@@ -200,7 +200,7 @@ function ItemDetailsPage() {
                   currentRecipe.image ? currentRecipe.image : placeholderImage
                 }
                 alt={currentRecipe.name}
-                className={`${currentRecipe.image ? "" : ""}`}
+                className={`${currentRecipe.image ? "recipeImage" : ""}`}
               />
             </div>
           </div>
