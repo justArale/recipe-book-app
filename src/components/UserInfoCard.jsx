@@ -8,7 +8,7 @@ function UserInfoCard({ author, user }) {
     <div className="userInfoBox">
       <div className="userInfoWrapper">
         <div className="userInfo">
-          <h1 className="pageTitle">{author.name}</h1>
+          <h1 className="title">{author.name}</h1>
           <div className="">
             <p className="mainFont">
               {author.description ? author.description : "I'm a food lover."}
