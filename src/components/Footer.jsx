@@ -13,8 +13,8 @@ function Footer() {
           >
             Recipe Book
           </a>{" "}
-          made with <img src={heartIcon} alt="Icon" className="iconWrapper" />{" "}
-          by{" "}
+          made with{" "}
+          <img src={heartIcon} alt="Icon" className="iconWrapper svgAlign" /> by{" "}
           <a
             target="_blank"
             href="https://github.com/justArale"
