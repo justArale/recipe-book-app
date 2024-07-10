@@ -160,8 +160,13 @@ function ItemDetailsPage() {
         <div>{errorMessage}</div>
       ) : (
         <div className="itemDetail-page">
-          <div className={`recipe-main ${getClassNameByIndex(indexNumber)}`}>
-            <div className="content">
+          <div className="recipeHeadWrapper">
+            <div
+              className={`recipeHeaderContent ${getClassNameByIndex(
+                indexNumber
+              )}`}
+            >
+              {/* <div className="content"> */}
               <h1 className="pageTitle">{currentRecipe.name}</h1>
               <p className="mainFont">{currentRecipe.description}</p>
               <div className="" style={{ marginTop: "auto" }}>
@@ -186,13 +191,18 @@ function ItemDetailsPage() {
                   </div>
                 </Link>
               </div>
+              {/* </div> */}
             </div>
 
-            <img
-              src={currentRecipe.image ? currentRecipe.image : placeholderImage}
-              alt={currentRecipe.name}
-              className={`${currentRecipe.image ? "" : ""}`}
-            />
+            <div className="recipeImageWrapper">
+              <img
+                src={
+                  currentRecipe.image ? currentRecipe.image : placeholderImage
+                }
+                alt={currentRecipe.name}
+                className={`${currentRecipe.image ? "" : ""}`}
+              />
+            </div>
           </div>
           {currentRecipe.ingredients && (
             <div className="detailPage-ingredients">
@@ -200,10 +210,11 @@ function ItemDetailsPage() {
               <div className="ingredient-list">
                 {currentRecipe.ingredients.map((ingredient, index) => (
                   <div key={index} className="ingredient-item">
-                    <span className="mainFont thirdColor">
+                    <p className="mainFont mainFontFamily semiBoldWeigth">
                       {ingredient.amount}
-                    </span>
-                    <span className="mainFont">{ingredient.name}</span>
+                    </p>
+                    <p className="ingredientGap"></p>
+                    <p className="mainFont">{ingredient.name}</p>
                   </div>
                 ))}
               </div>
