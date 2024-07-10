@@ -18,6 +18,10 @@ function AddRecipe({ addRecipe, existingRecipe }) {
   const { user } = useContext(AuthContext);
   const { authorId, recipeId } = useParams();
   const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessageMain, setErrorMessageMain] = useState("");
+  const [errorMessageIngredient, setErrorMessageIngredient] = useState("");
+  const [errorMessageInstruction, setErrorMessageInstruction] = useState("");
+
   const [isLoading, setIsLoading] = useState(false);
   const [imageIsLoading, setImageIsLoading] = useState(false);
 
@@ -89,6 +93,21 @@ function AddRecipe({ addRecipe, existingRecipe }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const storedToken = localStorage.getItem("authToken");
+
+    if (!Name.trim() || !Description.trim()) {
+      setErrorMessageMain("Name / Description is required.");
+      return;
+    }
+
+    if (ingredient.filter((ing) => ing.trim() !== "").length === 0) {
+      setErrorMessageIngredient("At least one ingredient is required.");
+      return;
+    }
+
+    if (instruction.filter((instr) => instr.trim() !== "").length === 0) {
+      setErrorMessageInstruction("At least one instruction is required.");
+      return;
+    }
 
     const recipeData = {
       name: Name,
@@ -181,6 +200,9 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                 value={Description}
                 onChange={handleDescriptionInput}
               />
+              {errorMessageMain && (
+                <p className="mainFont">{errorMessageMain}</p>
+              )}
             </div>
             <div className="uploadButtonWrapper">
               {img && (
@@ -247,6 +269,9 @@ function AddRecipe({ addRecipe, existingRecipe }) {
               />
             </div>
           ))}
+          {errorMessageIngredient && (
+            <p className="mainFont">{errorMessageIngredient}</p>
+          )}
         </div>
         <div className="addRecipe-instruction">
           <label className="headline">Instruction</label>
@@ -263,6 +288,9 @@ function AddRecipe({ addRecipe, existingRecipe }) {
               onClick={index === instruction.length - 1 ? addNewField : null}
             />
           ))}
+          {errorMessageInstruction && (
+            <p className="mainFont">{errorMessageInstruction}</p>
+          )}
         </div>
         <div className="action">
           <Link to={`/user/${authorId}/recipes/${recipeId}`}>
