@@ -64,6 +64,7 @@
   font-family: var(--font-family-main);
   font-size: var(--font-size-medium);
   font-weight: var(--font-weight-semiBold);
+  line-height: 1.5em;
   margin: 0;
 }
 
@@ -101,4 +102,8 @@
 
 .semiBoldWeigth {
   font-weight: var(--font-weight-semiBold);
+}
+
+.mainFontFamily {
+  font-family: var(--font-family-main);
 }
