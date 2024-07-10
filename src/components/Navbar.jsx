@@ -37,7 +37,7 @@ function Navbar({
             <img src={logo} alt="logo" className="logoImage" />
           </div>
           <Link to={`/`} className="noUnderline">
-            <h1 className="title boldWeigth primaryColor">Bento Book</h1>
+            <h1 className="headline boldWeigth primaryColor">Bento Book</h1>
 
             <p className="mainFont semiBoldWeigth thirdColor">
               All my favorite recipes
