@@ -93,6 +93,12 @@ function UserEditPage() {
     }
   };
 
+  const handleAvatarDelete = () => {
+    const oldId = getOldImageId(formValues.image);
+    setOldImageId(oldId);
+    formValues.image = "";
+  };
+
   const getOldImageId = (imageURL) => {
     if (!imageURL) {
       return "";
@@ -195,6 +201,19 @@ function UserEditPage() {
                   alt={`Uploaded Avatar`}
                   className="image-preview"
                 />
+              )}
+              {formValues.image && (
+                <button
+                  className="zindex buttonReverseHalf"
+                  onClick={handleAvatarDelete}
+                >
+                  <div className="buttonContentWrapper">
+                    <div className="iconWrapper">
+                      <img src={deleteIcon} alt="Icon" />
+                    </div>
+                    <span className="buttonFont">Remove Image</span>
+                  </div>
+                </button>
               )}
               <label
                 className={`uploadButton ${

@@ -13,6 +13,10 @@
   flex: 1;
 }
 
+.zindex {
+  z-index: 99;
+}
+
 @media (max-width: 867px) {
   .passwordBox {
     flex-direction: column;
