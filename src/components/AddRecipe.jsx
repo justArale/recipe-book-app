@@ -10,6 +10,7 @@ import editIcon from "../assets/editWhite.svg";
 import deleteIcon from "../assets/deleteWhite.svg";
 import checkIcon from "../assets/checkWhite.svg";
 import cancelIcon from "../assets/cancel.svg";
+import { extractPublicId } from "cloudinary-build-url";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -21,7 +22,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
   const [errorMessageMain, setErrorMessageMain] = useState("");
   const [errorMessageIngredient, setErrorMessageIngredient] = useState("");
   const [errorMessageInstruction, setErrorMessageInstruction] = useState("");
-
+  const [oldImageId, setOldImageId] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [imageIsLoading, setImageIsLoading] = useState(false);
 
@@ -59,6 +60,10 @@ function AddRecipe({ addRecipe, existingRecipe }) {
   const handleFileUpload = async (event) => {
     try {
       setImageIsLoading(true);
+      const oldId = getOldImageId(existingRecipe.image);
+      setOldImageId(oldId);
+      console.log("old image id", oldId);
+
       const file = event.target.files[0];
       const fileData = new FormData();
       fileData.append("file", file);
@@ -70,6 +75,18 @@ function AddRecipe({ addRecipe, existingRecipe }) {
       console.error("Error uploading image:", error);
       setImageIsLoading(false);
     }
+  };
+
+  const getOldImageId = (imageURL) => {
+    if (!imageURL) {
+      return "";
+    }
+    console.log("existingRecipe.image", imageURL);
+    const oldPath = extractPublicId(imageURL);
+    console.log("oldPath", oldPath);
+
+    const segments = oldPath.split("/");
+    return segments[segments.length - 1];
   };
 
   const handleIngredientAmountInput = (e, index) => {
@@ -123,6 +140,15 @@ function AddRecipe({ addRecipe, existingRecipe }) {
     try {
       let recipeResponse;
       if (recipeId) {
+        if (oldImageId) {
+          // Delete old image from cloudinary storage
+          await axios.delete(
+            `${API_URL}/api/delete-recipe-image/${oldImageId}/${recipeId}`,
+            {
+              headers: { Authorization: `Bearer ${storedToken}` },
+            }
+          );
+        }
         // Update recipe
         recipeResponse = await axios.put(
           `${API_URL}/api/user/${authorId}/recipes/${recipeId}`,
