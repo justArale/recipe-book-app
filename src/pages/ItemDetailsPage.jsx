@@ -118,7 +118,7 @@ function ItemDetailsPage() {
       "seven",
       "eight",
     ];
-    return classNames[index % classNames.length];
+    return classNames[(index - 1) % classNames.length];
   };
 
   const handleDeleteModel = () => {

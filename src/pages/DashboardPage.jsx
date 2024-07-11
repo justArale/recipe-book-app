@@ -54,8 +54,14 @@ function DashboardPage() {
     }
   }, []);
 
-  const setIndex = (index) => {
-    setIndexNumber(index); // Set index in the context
+  const setNthChildIndex = (index, isLeftColumn) => {
+    if (isLeftColumn) {
+      const sequence = [1, 3, 5, 7];
+      setIndexNumber(sequence[index % 4]);
+    } else {
+      const sequence = [2, 4, 6, 8];
+      setIndexNumber(sequence[index % 4]);
+    }
   };
 
   return (
@@ -84,7 +90,7 @@ function DashboardPage() {
                       <Link
                         to={`/user/${recipe.author._id}/recipes/${recipe._id}`}
                         className="listItem-link"
-                        onClick={() => setIndex(index)}
+                        onClick={() => setNthChildIndex(index, true)}
                       >
                         <List recipe={recipe} className="listItem-container" />
                       </Link>
@@ -99,7 +105,7 @@ function DashboardPage() {
                       <Link
                         to={`/user/${recipe.author._id}/recipes/${recipe._id}`}
                         className="listItem-link"
-                        onClick={() => setIndex(index)}
+                        onClick={() => setNthChildIndex(index, false)}
                       >
                         <List recipe={recipe} className="listItem-container" />
                       </Link>
