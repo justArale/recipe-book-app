@@ -10,6 +10,7 @@ import editIcon from "../assets/editWhite.svg";
 import deleteIcon from "../assets/deleteWhite.svg";
 import checkIcon from "../assets/checkWhite.svg";
 import cancelIcon from "../assets/cancel.svg";
+import { extractPublicId } from "cloudinary-build-url";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -30,6 +31,7 @@ function UserEditPage() {
   const [errorMessage, setErrorMessage] = useState(undefined);
   const [loading, setLoading] = useState(false);
   const [imageIsLoading, setImageIsLoading] = useState(false);
+  const [oldImageId, setOldImageId] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -71,6 +73,10 @@ function UserEditPage() {
   const handleAvatarChange = async (event) => {
     try {
       setImageIsLoading(true);
+      const oldId = getOldImageId(formValues.image);
+      setOldImageId(oldId);
+      console.log("old image id", oldId);
+
       const file = event.target.files[0];
       const fileData = new FormData();
       fileData.append("file", file);
@@ -85,6 +91,18 @@ function UserEditPage() {
       console.error("Error uploading avatar:", error);
       setImageIsLoading(false);
     }
+  };
+
+  const getOldImageId = (imageURL) => {
+    if (!imageURL) {
+      return "";
+    }
+    console.log("formValues.image", imageURL);
+    const oldPath = extractPublicId(imageURL);
+    console.log("oldPath", oldPath);
+
+    const segments = oldPath.split("/");
+    return segments[segments.length - 1];
   };
 
   const handleSubmit = async (e) => {
@@ -112,9 +130,16 @@ function UserEditPage() {
         await fetchUserData();
         navigate(`/user/${authorId}`);
       } else {
+        if (oldImageId) {
+          await axios.delete(`${API_URL}/api/delete-avatar/${oldImageId}`, {
+            headers: { Authorization: `Bearer ${storedToken}` },
+          });
+        }
+
         await axios.put(`${API_URL}/api/user/${user._id}`, formValues, {
           headers: { Authorization: `Bearer ${storedToken}` },
         });
+
         navigate(`/user/${authorId}`);
       }
     } catch (error) {
