@@ -28,6 +28,11 @@ function AddRecipe({ addRecipe, existingRecipe }) {
 
   let navigate = useNavigate();
 
+  const adjustTextareaHeight = (textarea) => {
+    textarea.style.height = "auto";
+    textarea.style.height = textarea.scrollHeight + "px";
+  };
+
   const [Name, setName] = useState(existingRecipe?.name || "");
   const [Description, setDescription] = useState(
     existingRecipe?.description || ""
@@ -51,11 +56,23 @@ function AddRecipe({ addRecipe, existingRecipe }) {
       setAmount(existingRecipe.ingredients.map((ingre) => ingre.amount));
       setIngredient(existingRecipe.ingredients.map((ingre) => ingre.name));
       setInstruction(existingRecipe.instruction);
+
+      document
+        .querySelectorAll(
+          'textarea[name="instruction"], textarea[name="Description"]'
+        )
+        .forEach((textarea) => {
+          adjustTextareaHeight(textarea);
+        });
     }
   }, [existingRecipe]);
 
   const handleNameInput = (e) => setName(e.target.value);
-  const handleDescriptionInput = (e) => setDescription(e.target.value);
+
+  const handleDescriptionInput = (e) => {
+    setDescription(e.target.value);
+    adjustTextareaHeight(e.target);
+  };
 
   const handleFileUpload = async (event) => {
     try {
@@ -108,6 +125,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
     const updatedInstructions = [...instruction];
     updatedInstructions[index] = e.target.value;
     setInstruction(updatedInstructions);
+    adjustTextareaHeight(e.target);
   };
 
   const handleSubmit = async (e) => {
