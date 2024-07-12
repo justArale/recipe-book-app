@@ -19,7 +19,6 @@ function DashboardPage() {
       .get(`${API_URL}/api/recipes`)
       .then((response) => {
         setAllRecipes(response.data);
-        console.log("recipe.author._id", response.data);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -35,7 +34,6 @@ function DashboardPage() {
       .get(`${API_URL}/api/user/${authorId}/recipes`)
       .then((response) => {
         setAllRecipes(response.data);
-        console.log("recipe._id", response.data);
         setIsLoading(false);
       })
       .catch((error) => {

@@ -62,7 +62,6 @@ function AddRecipe({ addRecipe, existingRecipe }) {
       setImageIsLoading(true);
       const oldId = getOldImageId(img);
       setOldImageId(oldId);
-      console.log("old image id", oldId);
 
       const file = event.target.files[0];
       const fileData = new FormData();
@@ -87,9 +86,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
     if (!imageURL) {
       return "";
     }
-    console.log("existingRecipe.image", imageURL);
     const oldPath = extractPublicId(imageURL);
-    console.log("oldPath", oldPath);
 
     const segments = oldPath.split("/");
     return segments[segments.length - 1];
@@ -163,7 +160,6 @@ function AddRecipe({ addRecipe, existingRecipe }) {
             headers: { Authorization: `Bearer ${storedToken}` },
           }
         );
-        console.log("Recipe changed successfully:", recipeResponse.data); // Debugging log
       } else {
         // Create new recipe
         recipeResponse = await axios.post(
@@ -173,7 +169,6 @@ function AddRecipe({ addRecipe, existingRecipe }) {
             headers: { Authorization: `Bearer ${storedToken}` },
           }
         );
-        console.log("Recipe created successfully:", recipeResponse.data); // Debugging log
       }
 
       // Go back to recipe detail or dashboard
@@ -185,7 +180,6 @@ function AddRecipe({ addRecipe, existingRecipe }) {
       // Jump to the top
       window.scrollTo(0, 0);
     } catch (error) {
-      console.log("Error creating or updating recipe:", error); // Debugging log
       const errorDescription =
         error.response?.data?.message || "An error occurred";
       setErrorMessage(errorDescription);

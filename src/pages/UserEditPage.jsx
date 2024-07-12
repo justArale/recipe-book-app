@@ -75,7 +75,6 @@ function UserEditPage() {
       setImageIsLoading(true);
       const oldId = getOldImageId(formValues.image);
       setOldImageId(oldId);
-      console.log("old image id", oldId);
 
       const file = event.target.files[0];
       const fileData = new FormData();
@@ -103,10 +102,7 @@ function UserEditPage() {
     if (!imageURL) {
       return "";
     }
-    console.log("formValues.image", imageURL);
     const oldPath = extractPublicId(imageURL);
-    console.log("oldPath", oldPath);
-
     const segments = oldPath.split("/");
     return segments[segments.length - 1];
   };
