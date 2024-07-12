@@ -202,7 +202,7 @@ function UserEditPage() {
                   className="image-preview"
                 />
               )}
-              {formValues.image && (
+              {formValues.image && !imageIsLoading && (
                 <button
                   className="zindex buttonReverseHalf"
                   onClick={handleAvatarDelete}
