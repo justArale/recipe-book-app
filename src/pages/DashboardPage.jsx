@@ -84,7 +84,10 @@ function DashboardPage() {
                 {allRecipes
                   .filter((_, index) => index % 2 === 0)
                   .map((recipe, index) => (
-                    <div key={recipe._id} className="findTheChild">
+                    <div
+                      key={recipe._id}
+                      className={`findTheChild nth-of-type-${(index % 4) + 1}`}
+                    >
                       <Link
                         to={`/user/${recipe.author._id}/recipes/${recipe._id}`}
                         className="listItem-link"
@@ -99,7 +102,10 @@ function DashboardPage() {
                 {allRecipes
                   .filter((_, index) => index % 2 === 1)
                   .map((recipe, index) => (
-                    <div key={recipe._id} className="findTheChild">
+                    <div
+                      key={recipe._id}
+                      className={`findTheChild nth-of-type-${(index % 4) + 1}`}
+                    >
                       <Link
                         to={`/user/${recipe.author._id}/recipes/${recipe._id}`}
                         className="listItem-link"

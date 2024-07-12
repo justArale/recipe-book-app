@@ -44,32 +44,33 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.left-column > .findTheChild:nth-of-type(1n) .list-recipe {
+.left-column > .findTheChild.nth-of-type-1 .list-recipe {
   background-color: #ebdcc8;
 }
-.left-column > .findTheChild:nth-of-type(2n) .list-recipe {
+
+.left-column > .findTheChild.nth-of-type-2 .list-recipe {
   background-color: #bcc4d5;
 }
-.left-column > .findTheChild:nth-of-type(3n) .list-recipe {
+.left-column > .findTheChild.nth-of-type-3 .list-recipe {
   background-color: #dfd1dd;
 }
-.left-column > .findTheChild:nth-of-type(4n) .list-recipe {
+.left-column > .findTheChild.nth-of-type-4 .list-recipe {
   background-color: #f4eab4;
 }
 
-.right-column > .findTheChild:nth-of-type(1n) .list-recipe {
+.right-column > .findTheChild.nth-of-type-1 .list-recipe {
   background-color: #ebc8cf;
 }
 
-.right-column > .findTheChild:nth-of-type(2n) .list-recipe {
+.right-column > .findTheChild.nth-of-type-2 .list-recipe {
   background-color: #f2d4bf;
 }
 
-.right-column > .findTheChild:nth-of-type(3n) .list-recipe {
+.right-column > .findTheChild.nth-of-type-3 .list-recipe {
   background-color: #b6d2ce;
 }
 
-.right-column > .findTheChild:nth-of-type(4n) .list-recipe {
+.right-column > .findTheChild.nth-of-type-4 .list-recipe {
   background-color: #c8c9d9;
 }
 
