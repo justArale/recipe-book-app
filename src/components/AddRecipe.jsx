@@ -56,16 +56,18 @@ function AddRecipe({ addRecipe, existingRecipe }) {
       setAmount(existingRecipe.ingredients.map((ingre) => ingre.amount));
       setIngredient(existingRecipe.ingredients.map((ingre) => ingre.name));
       setInstruction(existingRecipe.instruction);
-
-      document
-        .querySelectorAll(
-          'textarea[name="instruction"], textarea[name="Description"]'
-        )
-        .forEach((textarea) => {
-          adjustTextareaHeight(textarea);
-        });
     }
   }, [existingRecipe]);
+
+  useEffect(() => {
+    document
+      .querySelectorAll(
+        'textarea[name="instruction"], textarea[name="Description"]'
+      )
+      .forEach((textarea) => {
+        adjustTextareaHeight(textarea);
+      });
+  }, [Description, instruction]);
 
   const handleNameInput = (e) => setName(e.target.value);
 

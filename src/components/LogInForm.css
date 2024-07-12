@@ -69,6 +69,7 @@
   color: var(--background-color);
   position: relative;
   left: 5px;
+  cursor: default;
 }
 
 @media (max-width: 470px) {
