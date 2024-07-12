@@ -87,7 +87,6 @@ function ItemDetailsPage() {
           headers: { Authorization: `Bearer ${storedToken}` },
         }
       );
-      // notifyDelete();
       navigate(`/`);
     } catch (error) {
       console.error("Error deleting recipe:", error);

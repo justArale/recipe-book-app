@@ -19,6 +19,7 @@ function UserPage() {
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
   const navigate = useNavigate();
 
   const fetchAuthorData = async () => {
@@ -42,7 +43,6 @@ function UserPage() {
       const response = await axios.delete(`${API_URL}/api/user/${authorId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       });
-      // notifyDelete();
       logOutUser();
       navigate(`/`);
     } catch (error) {
