@@ -107,3 +107,7 @@
 .mainFontFamily {
   font-family: var(--font-family-main);
 }
+
+.normalLineHeight {
+  line-height: 100%;
+}
