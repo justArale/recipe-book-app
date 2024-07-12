@@ -35,7 +35,8 @@
   margin: 0;
   box-sizing: border-box;
   border-radius: 16px;
-  width: 368px;
+  width: 100%;
+  max-width: 368px;
 }
 
 .list-recipe:hover {
@@ -106,6 +107,7 @@
 @media (max-width: 867px) {
   .grid-container {
     width: 100%;
+    padding: 0;
   }
 
   .recipe-columns {
@@ -113,6 +115,13 @@
   }
   .left-column,
   .right-column {
+    width: 100%;
+    align-items: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .findTheChild {
     width: 100%;
   }
 }

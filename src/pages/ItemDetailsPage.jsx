@@ -40,7 +40,6 @@ function ItemDetailsPage() {
         headers: { Authorization: `Bearer ${storedToken}` },
       });
       setCurrentUser(response.data);
-      console.log("User: ", response.data);
     } catch (error) {
       console.error("Error fetching user data:", error);
       const errorDescription =
@@ -57,7 +56,6 @@ function ItemDetailsPage() {
         `${API_URL}/api/user/${authorId}/recipes/${recipeId}`
       );
       setCurrentRecipe(response.data);
-      console.log("Recipe: ", response.data);
       setIsLoading(false);
     } catch (error) {
       console.error("Error fetching recipe data:", error);
@@ -89,8 +87,6 @@ function ItemDetailsPage() {
           headers: { Authorization: `Bearer ${storedToken}` },
         }
       );
-      console.log("Deleted:", response.data);
-      // notifyDelete();
       navigate(`/`);
     } catch (error) {
       console.error("Error deleting recipe:", error);

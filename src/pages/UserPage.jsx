@@ -19,13 +19,13 @@ function UserPage() {
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
   const navigate = useNavigate();
 
   const fetchAuthorData = async () => {
     try {
       const response = await axios.get(`${API_URL}/api/user/${authorId}`);
       setCurrentAuthor(response.data);
-      console.log("Author: ", response.data);
       setIsLoading(false);
     } catch (error) {
       console.error("Error fetching author data:", error);
@@ -43,8 +43,6 @@ function UserPage() {
       const response = await axios.delete(`${API_URL}/api/user/${authorId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       });
-      console.log("Deleted:", response.data);
-      // notifyDelete();
       logOutUser();
       navigate(`/`);
     } catch (error) {

@@ -18,7 +18,6 @@ function EditPage() {
         `${API_URL}/api/user/${authorId}/recipes/${recipeId}`
       );
       setCurrentRecipe(response.data);
-      console.log("Recipe: ", response.data);
       setIsLoading(false);
     } catch (error) {
       console.error("Error fetching recipe data:", error);
