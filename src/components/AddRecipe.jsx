@@ -60,7 +60,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
   const handleFileUpload = async (event) => {
     try {
       setImageIsLoading(true);
-      const oldId = getOldImageId(existingRecipe.image);
+      const oldId = getOldImageId(img);
       setOldImageId(oldId);
       console.log("old image id", oldId);
 
@@ -75,6 +75,12 @@ function AddRecipe({ addRecipe, existingRecipe }) {
       console.error("Error uploading image:", error);
       setImageIsLoading(false);
     }
+  };
+
+  const handleFileDelete = () => {
+    const oldId = getOldImageId(img);
+    setOldImageId(oldId);
+    setImg("");
   };
 
   const getOldImageId = (imageURL) => {
@@ -132,8 +138,8 @@ function AddRecipe({ addRecipe, existingRecipe }) {
       description: Description,
       ingredients: ingredient
         .map((name, index) => ({ amount: amount[index], name: name }))
-        .filter((ing) => ing.name.trim() !== ""), // Get rip of empty lines
-      instruction: instruction.filter((instr) => instr.trim() !== ""), // Get rip of empty lines
+        .filter((ing) => ing.name.trim() !== ""), // Get rid of empty lines
+      instruction: instruction.filter((instr) => instr.trim() !== ""), // Get rid of empty lines
       author: user,
     };
 
@@ -238,6 +244,20 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                   className="image-preview"
                 />
               )}
+              {img && !imageIsLoading && (
+                <button
+                  type="button"
+                  className="zindex buttonReverseHalf"
+                  onClick={handleFileDelete}
+                >
+                  <div className="buttonContentWrapper">
+                    <div className="iconWrapper">
+                      <img src={deleteIcon} alt="Icon" />
+                    </div>
+                    <span className="buttonFont">Remove</span>
+                  </div>
+                </button>
+              )}
               <label
                 className={`uploadButton ${img ? "buttonReverseHalf" : ""}`}
               >
@@ -254,7 +274,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                     <div className="iconWrapper">
                       <img src={editIcon} alt="Icon" />
                     </div>
-                    <span className="buttonFont">Change Image</span>
+                    <span className="buttonFont">Change</span>
                   </div>
                 ) : (
                   <div className="buttonContentWrapper">
@@ -321,7 +341,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
         <div className="action">
           <Link to={`/user/${authorId}/recipes/${recipeId}`}>
             <button
-              type="delete"
+              type="button"
               onClick={jumpToTop}
               className="buttonFont noUnderline primaryColor"
             >
@@ -333,20 +353,14 @@ function AddRecipe({ addRecipe, existingRecipe }) {
               </div>
             </button>
           </Link>
-          <Link to={"/"}>
-            <button
-              type="submit"
-              onClick={handleSubmit}
-              className="mainFont buttonReverse"
-            >
-              <div className="buttonContentWrapper">
-                <div className="iconWrapper">
-                  <img src={checkIcon} alt="Icon" />
-                </div>
-                <span className="buttonFont">Save</span>
+          <button type="submit" className="mainFont buttonReverse">
+            <div className="buttonContentWrapper">
+              <div className="iconWrapper">
+                <img src={checkIcon} alt="Icon" />
               </div>
-            </button>
-          </Link>
+              <span className="buttonFont">Save</span>
+            </div>
+          </button>
         </div>
       </form>
     </div>

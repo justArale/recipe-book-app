@@ -93,6 +93,12 @@ function UserEditPage() {
     }
   };
 
+  const handleAvatarDelete = () => {
+    const oldId = getOldImageId(formValues.image);
+    setOldImageId(oldId);
+    formValues.image = "";
+  };
+
   const getOldImageId = (imageURL) => {
     if (!imageURL) {
       return "";
@@ -196,6 +202,19 @@ function UserEditPage() {
                   className="image-preview"
                 />
               )}
+              {formValues.image && !imageIsLoading && (
+                <button
+                  className="zindex buttonReverseHalf"
+                  onClick={handleAvatarDelete}
+                >
+                  <div className="buttonContentWrapper">
+                    <div className="iconWrapper">
+                      <img src={deleteIcon} alt="Icon" />
+                    </div>
+                    <span className="buttonFont">Remove</span>
+                  </div>
+                </button>
+              )}
               <label
                 className={`uploadButton ${
                   formValues.image ? "buttonReverseHalf" : ""
@@ -214,7 +233,7 @@ function UserEditPage() {
                     <div className="iconWrapper">
                       <img src={editIcon} alt="Icon" />
                     </div>
-                    <span className="buttonFont">Change Image</span>
+                    <span className="buttonFont">Change</span>
                   </div>
                 ) : (
                   <div className="buttonContentWrapper">

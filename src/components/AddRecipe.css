@@ -35,7 +35,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  height: 168px;
+  min-height: 168px;
+  height: auto;
 }
 
 .addRecipe-headerContent {
@@ -51,6 +52,7 @@ input[type="file"] {
 
 .uploadButtonWrapper {
   display: flex;
+  gap: 16px;
   flex-grow: 1;
   justify-content: center;
   align-items: center;
@@ -105,11 +107,13 @@ input[type="file"] {
   border-radius: 8px;
   padding: 8px 12px;
   font-family: inherit;
+  height: auto;
+  resize: vertical;
 }
 
-.description {
+/* .description {
   height: auto;
-}
+} */
 
 .inputField {
   height: 40px;
@@ -167,6 +171,8 @@ textarea[name="instruction"] {
   box-sizing: border-box;
   height: 40px;
   font-family: inherit;
+  height: auto;
+  resize: vertical;
 }
 
 @media (max-width: 867px) {
