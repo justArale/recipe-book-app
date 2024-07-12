@@ -287,7 +287,6 @@ function AddRecipe({ addRecipe, existingRecipe }) {
           {amount.map((amount, index) => (
             <div className="ingredient-input" key={index}>
               <input
-                required
                 type="text"
                 name="ingredient-amount"
                 className="mainFont"
@@ -296,7 +295,6 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                 onChange={(e) => handleIngredientAmountInput(e, index)}
               />
               <input
-                required
                 type="text"
                 name="ingredient"
                 className="mainFont"
@@ -318,7 +316,6 @@ function AddRecipe({ addRecipe, existingRecipe }) {
           {instruction.map((instructionText, index) => (
             <textarea
               key={index}
-              required
               className="mainFont instuction-input"
               rows="auto"
               name="instruction"
