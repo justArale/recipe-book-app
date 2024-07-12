@@ -254,7 +254,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                     <div className="iconWrapper">
                       <img src={deleteIcon} alt="Icon" />
                     </div>
-                    <span className="buttonFont">Remove Image</span>
+                    <span className="buttonFont">Remove</span>
                   </div>
                 </button>
               )}
@@ -274,7 +274,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                     <div className="iconWrapper">
                       <img src={editIcon} alt="Icon" />
                     </div>
-                    <span className="buttonFont">Change Image</span>
+                    <span className="buttonFont">Change</span>
                   </div>
                 ) : (
                   <div className="buttonContentWrapper">
