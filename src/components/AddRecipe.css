@@ -142,6 +142,11 @@ input[type="file"] {
   justify-content: flex-start;
 }
 
+.ingredient-input {
+  position: relative;
+  width: 100%;
+}
+
 input[name="ingredient-amount"] {
   font-family: inherit;
 
@@ -169,10 +174,27 @@ textarea[name="instruction"] {
   font-family: inherit;
   padding: 8px 12px;
   box-sizing: border-box;
-  height: 40px;
+  width: 100%;
   font-family: inherit;
-  height: auto;
   resize: vertical;
+}
+
+.instructionLine {
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+
+.clearIcon {
+  position: absolute;
+  height: 24px;
+  width: 16px;
+  top: 7px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 @media (max-width: 867px) {
