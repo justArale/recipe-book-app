@@ -10,6 +10,7 @@ import editIcon from "../assets/editWhite.svg";
 import deleteIcon from "../assets/deleteWhite.svg";
 import checkIcon from "../assets/checkWhite.svg";
 import cancelIcon from "../assets/cancel.svg";
+import clearIcon from "../assets/clear.svg";
 import { extractPublicId } from "cloudinary-build-url";
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -128,6 +129,21 @@ function AddRecipe({ addRecipe, existingRecipe }) {
     updatedInstructions[index] = e.target.value;
     setInstruction(updatedInstructions);
     adjustTextareaHeight(e.target);
+  };
+
+  const removeInputField = (type, index) => {
+    if (type === "ingredient") {
+      const updatedAmount = [...amount];
+      const updatedIngredient = [...ingredient];
+      updatedAmount.splice(index, 1);
+      updatedIngredient.splice(index, 1);
+      setAmount(updatedAmount);
+      setIngredient(updatedIngredient);
+    } else if (type === "instruction") {
+      const updatedInstructions = [...instruction];
+      updatedInstructions.splice(index, 1);
+      setInstruction(updatedInstructions);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -325,6 +341,14 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                   index === ingredient.length - 1 ? addNewIngredient : null
                 }
               />
+              {ingredient[index].trim() !== "" && ingredient.length > 1 && (
+                <div
+                  className="clearIcon"
+                  onClick={() => removeInputField("ingredient", index)}
+                >
+                  <img src={clearIcon} alt="Icon" className="" />
+                </div>
+              )}
             </div>
           ))}
           {errorMessageIngredient && (
@@ -334,16 +358,25 @@ function AddRecipe({ addRecipe, existingRecipe }) {
         <div className="addRecipe-instruction">
           <label className="headline">Instruction</label>
           {instruction.map((instructionText, index) => (
-            <textarea
-              key={index}
-              className="mainFont instuction-input"
-              rows="auto"
-              name="instruction"
-              placeholder={`${index + 1}. Instruction...`}
-              value={instructionText}
-              onChange={(e) => handleInstructionInput(e, index)}
-              onClick={index === instruction.length - 1 ? addNewField : null}
-            />
+            <div className="instructionLine" key={index}>
+              <textarea
+                className="mainFont instuction-input"
+                rows="auto"
+                name="instruction"
+                placeholder={`${index + 1}. Instruction...`}
+                value={instructionText}
+                onChange={(e) => handleInstructionInput(e, index)}
+                onClick={index === instruction.length - 1 ? addNewField : null}
+              />
+              {instructionText.trim() !== "" && instruction.length > 1 && (
+                <div
+                  className="clearIcon"
+                  onClick={() => removeInputField("instruction", index)}
+                >
+                  <img src={clearIcon} alt="Icon" className="" />
+                </div>
+              )}
+            </div>
           ))}
           {errorMessageInstruction && (
             <p className="mainFont">{errorMessageInstruction}</p>
