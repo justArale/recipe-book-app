@@ -1,6 +1,8 @@
 import "../components/AboutPage.css";
-import githubIcon from "../assets/github.svg";
-import linkedinIcon from "../assets/linkedin.svg";
+// import githubIcon from "../assets/github.svg";
+// import linkedinIcon from "../assets/linkedin.svg";
+import { GitHub } from "@just1arale/icons";
+import { LinkedIn } from "@just1arale/icons";
 
 export default function AboutPage() {
   return (
@@ -16,9 +18,7 @@ export default function AboutPage() {
       <div className="social-pages">
         <button className=" noUnderline socialButton github">
           <a target="_blank" href="https://github.com/justArale">
-            <div className=" iconWrapperBig">
-              <img src={githubIcon} alt="Icon" />
-            </div>
+            <GitHub width="32" height="32" color="#000" alt="Github Icon" />
           </a>
         </button>
 
@@ -27,9 +27,7 @@ export default function AboutPage() {
             target="_blank"
             href="https://www.linkedin.com/in/s-kuechler-jr-fullstack-dev"
           >
-            <div className=" iconWrapperBig">
-              <img src={linkedinIcon} alt="Icon" />
-            </div>
+            <LinkedIn width="32" height="32" color="#000" alt="Linkedin Icon" />
           </a>
         </button>
       </div>
