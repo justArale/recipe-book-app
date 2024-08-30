@@ -1,13 +1,13 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import "../components/ListItem.css";
-import placeholderImage from "../assets/placeholder.svg";
-import defaultAvatar from "../assets/defaultAvatar.svg";
 import { AuthContext } from "../context/auth.context";
 import { IndexContext } from "../context/index.context";
 import axios from "axios";
-import editIcon from "../assets/edit.svg";
-import deleteIcon from "../assets/delete.svg";
+import placeholderImage from "../assets/placeholder.svg";
+import defaultAvatar from "../assets/defaultAvatar.svg";
+import { Edit } from "@just1arale/icons";
+import { Delete } from "@just1arale/icons";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -233,7 +233,7 @@ function ItemDetailsPage() {
                 >
                   <div className="buttonContentWrapper">
                     <div className="iconWrapper">
-                      <img src={editIcon} alt="Icon" />
+                      <Edit width="16" height="16" alt="Edit Icon" />
                     </div>
                     <span className="buttonFont">Edit</span>
                   </div>
@@ -246,7 +246,7 @@ function ItemDetailsPage() {
               >
                 <div className="buttonContentWrapper">
                   <div className="iconWrapper">
-                    <img src={deleteIcon} alt="Icon" />
+                    <Delete width="16" height="16" alt="Delete Icon" />
                   </div>
                   <span className="buttonFont">Delete</span>
                 </div>

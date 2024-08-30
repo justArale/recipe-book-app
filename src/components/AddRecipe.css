@@ -95,12 +95,6 @@ input[type="file"] {
   border: 1px solid #000;
 }
 
-.iconWrapper {
-  width: 16px;
-  height: 16px;
-  align-self: center;
-}
-
 .inputField,
 .description {
   border: 1px solid #a39689;

@@ -5,12 +5,18 @@ import "./AddRecipe.css";
 import fileUploadService from "../service/file-upload.service";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
-import imageIcon from "../assets/image.svg";
-import editIcon from "../assets/editWhite.svg";
-import deleteIcon from "../assets/deleteWhite.svg";
-import checkIcon from "../assets/checkWhite.svg";
-import cancelIcon from "../assets/cancel.svg";
-import clearIcon from "../assets/clear.svg";
+// import imageIcon from "../assets/image.svg";
+// import editIcon from "../assets/editWhite.svg";
+// import deleteIcon from "../assets/deleteWhite.svg";
+// import checkIcon from "../assets/checkWhite.svg";
+// import cancelIcon from "../assets/cancel.svg";
+// import clearIcon from "../assets/clear.svg";
+import { Image } from "@just1arale/icons";
+import { Edit } from "@just1arale/icons";
+import { Delete } from "@just1arale/icons";
+import { Check } from "@just1arale/icons";
+import { Cancel } from "@just1arale/icons";
+import { Clear } from "@just1arale/icons";
 import { extractPublicId } from "cloudinary-build-url";
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -281,9 +287,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                   onClick={handleFileDelete}
                 >
                   <div className="buttonContentWrapper">
-                    <div className="iconWrapper">
-                      <img src={deleteIcon} alt="Icon" />
-                    </div>
+                    <Delete width="16" height="16" alt="Delete Icon" />
                     <span className="buttonFont">Remove</span>
                   </div>
                 </button>
@@ -301,16 +305,12 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                   "🔄 loading ..."
                 ) : img ? (
                   <div className="buttonContentWrapper">
-                    <div className="iconWrapper">
-                      <img src={editIcon} alt="Icon" />
-                    </div>
+                    <Edit width="16" height="16" alt="Edit Icon" />
                     <span className="buttonFont">Change</span>
                   </div>
                 ) : (
                   <div className="buttonContentWrapper">
-                    <div className="iconWrapper">
-                      <img src={imageIcon} alt="Icon" className="iconWrapper" />
-                    </div>
+                    <Image width="16" height="16" alt="Image Icon" />
                     <span className="buttonFont">Choose Image</span>
                   </div>
                 )}
@@ -346,7 +346,12 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                   className="clearIcon"
                   onClick={() => removeInputField("ingredient", index)}
                 >
-                  <img src={clearIcon} alt="Icon" className="" />
+                  <Clear
+                    width="16"
+                    height="16"
+                    alt="Clear Icon"
+                    color="#a39689"
+                  />
                 </div>
               )}
             </div>
@@ -373,7 +378,12 @@ function AddRecipe({ addRecipe, existingRecipe }) {
                   className="clearIcon"
                   onClick={() => removeInputField("instruction", index)}
                 >
-                  <img src={clearIcon} alt="Icon" className="" />
+                  <Clear
+                    width="16"
+                    height="16"
+                    alt="Clear Icon"
+                    color="#a39689"
+                  />
                 </div>
               )}
             </div>
@@ -390,18 +400,14 @@ function AddRecipe({ addRecipe, existingRecipe }) {
               className="buttonFont noUnderline primaryColor"
             >
               <div className="buttonContentWrapper">
-                <div className="iconWrapper">
-                  <img src={cancelIcon} alt="Icon" />
-                </div>
+                <Cancel width="16" height="16" alt="Cancel Icon" />
                 <span className="buttonFont">Cancel</span>
               </div>
             </button>
           </Link>
           <button type="submit" className="mainFont buttonReverse">
             <div className="buttonContentWrapper">
-              <div className="iconWrapper">
-                <img src={checkIcon} alt="Icon" />
-              </div>
+              <Check width="16" height="16" alt="Check Icon" />
               <span className="buttonFont">Save</span>
             </div>
           </button>

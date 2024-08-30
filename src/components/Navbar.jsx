@@ -5,8 +5,8 @@ import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 import LoginForm from "../components/LogInForm";
 import SignUpForm from "../components/SignUpForm";
-import addIcon from "../assets/addWhite.svg";
 import logo from "../assets/logo.svg";
+import { Add } from "@just1arale/icons";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -97,9 +97,7 @@ function Navbar({
                 onClick={handleButtonClick}
               >
                 <div className="buttonContentWrapper">
-                  <div className="iconWrapper">
-                    <img src={addIcon} alt="Icon" />
-                  </div>
+                  <Add width="16" height="16" color="#FFF" />
                   <span className="buttonFont buttonFontReverse">Recipe</span>
                 </div>
               </button>
