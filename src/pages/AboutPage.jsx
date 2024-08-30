@@ -1,6 +1,4 @@
 import "../components/AboutPage.css";
-// import githubIcon from "../assets/github.svg";
-// import linkedinIcon from "../assets/linkedin.svg";
 import { GitHub } from "@just1arale/icons";
 import { LinkedIn } from "@just1arale/icons";
 
@@ -12,7 +10,7 @@ export default function AboutPage() {
         <p className="mainFont">
           Hey, this is Arale and you just stumbled upon my recipe book. Here I
           collect all my favourites dishes and some other rare finds. Mainly
-          asian cousin as you might already figured.
+          asian cuisine as you might already figured.
         </p>
       </div>
       <div className="social-pages">
