@@ -7,8 +7,10 @@ import DashboardPage from "./DashboardPage";
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
 import "../components/UserPage.css";
-import editIcon from "../assets/edit.svg";
-import deleteIcon from "../assets/delete.svg";
+// import editIcon from "../assets/edit.svg";
+// import deleteIcon from "../assets/delete.svg";
+import { Edit } from "@just1arale/icons";
+import { Delete } from "@just1arale/icons";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -87,12 +89,11 @@ function UserPage() {
                     to={`/user/${authorId}/edit`}
                     className="noUnderline primaryColor"
                   >
-                    <button className="buttonFont">
+                    <button className="buttonFont noUnderline primaryColor">
                       {" "}
                       <div className="buttonContentWrapper">
-                        <div className="iconWrapper">
-                          <img src={editIcon} alt="Icon" />
-                        </div>
+                        <Edit width="16" height="16" alt="Edit Icon" />
+
                         <span className="buttonFont">Edit</span>
                       </div>
                     </button>
@@ -103,9 +104,8 @@ function UserPage() {
                     onClick={handleDeleteModel}
                   >
                     <div className="buttonContentWrapper">
-                      <div className="iconWrapper">
-                        <img src={deleteIcon} alt="Icon" />
-                      </div>
+                      <Delete width="16" height="16" alt="Delete Icon" />
+
                       <span className="buttonFont">Delete</span>
                     </div>
                   </button>
@@ -129,9 +129,8 @@ function UserPage() {
                 onClick={() => deleteUser(currentAuthor._id)}
               >
                 <div className="buttonContentWrapper">
-                  <div className="iconWrapper">
-                    <img src={deleteIcon} alt="Icon" />
-                  </div>
+                  <Delete width="16" height="16" alt="Delete Icon" />
+
                   <span className="buttonFont">Delete</span>
                 </div>
               </button>

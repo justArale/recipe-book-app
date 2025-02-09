@@ -39,12 +39,6 @@
   border-radius: 16px;
 }
 
-.iconWrapperBig {
-  width: 32px;
-  height: 32px;
-  align-self: center;
-}
-
 .github {
   background-color: #cdcdac;
   border: 1px solid #cdcdac;

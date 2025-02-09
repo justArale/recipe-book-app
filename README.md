@@ -23,7 +23,7 @@ This project is a recipe book web application built with React. It allows users 
 - **React**: JavaScript library for building user interfaces.
 - **React Router**: Library for handling routing in React applications.
 - **Axios**: Promise-based HTTP client for making restfull API requests.
-- **CSS Modules**: For styling components.
+- **Icon Library**: Custom SVG icons from a library I developed.
 
 ## License
 

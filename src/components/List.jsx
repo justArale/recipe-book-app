@@ -1,13 +1,12 @@
 import "./List.css";
-import placeholderImage from "../assets/placeholder.svg";
 
 export default function List({ recipe }) {
   return (
     <div className="list-recipe">
       <div className="imageWrapper">
         <img
-          src={recipe.image ? recipe.image : placeholderImage}
-          alt={recipe.name}
+          src={recipe.image ? recipe.image : ""}
+          alt={recipe.image ? recipe.name : ""}
           className={`${recipe.image ? "image" : ""}`}
         />
       </div>
