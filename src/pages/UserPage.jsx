@@ -89,7 +89,7 @@ function UserPage() {
                     to={`/user/${authorId}/edit`}
                     className="noUnderline primaryColor"
                   >
-                    <button className="buttonFont">
+                    <button className="buttonFont noUnderline primaryColor">
                       {" "}
                       <div className="buttonContentWrapper">
                         <Edit width="16" height="16" alt="Edit Icon" />
