@@ -268,7 +268,7 @@ function ItemDetailsPage() {
               >
                 <div className="buttonContentWrapper">
                   <div className="iconWrapper">
-                    <img src={deleteIcon} alt="Icon" />
+                    <Delete width="16" height="16" alt="Delete Icon" />
                   </div>
                   <span className="buttonFont">Delete</span>
                 </div>
