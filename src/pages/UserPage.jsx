@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import UserInfoCard from "../components/UserInfoCard";
-import axios from "axios";
+// import axios from "axios";
 import DashboardPage from "./DashboardPage";
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";

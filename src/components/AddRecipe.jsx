@@ -7,8 +7,9 @@ import {
   uploadRecipeImage,
   deleteRecipeImage,
 } from "../service/api/image.service";
+import { createRecipe, updateRecipe } from "../service/api/recipe.service";
 import { AuthContext } from "../context/auth.context";
-import axios from "axios";
+// import axios from "axios";
 // import imageIcon from "../assets/image.svg";
 // import editIcon from "../assets/editWhite.svg";
 // import deleteIcon from "../assets/deleteWhite.svg";
@@ -23,7 +24,7 @@ import { Cancel } from "@just1arale/icons";
 import { Clear } from "@just1arale/icons";
 import { extractPublicId } from "cloudinary-build-url";
 
-const API_URL = import.meta.env.VITE_API_URL;
+// const API_URL = import.meta.env.VITE_API_URL;
 
 // Pass nothing for add recipe or the values of the current recipe based on its ID
 function AddRecipe({ addRecipe, existingRecipe }) {
@@ -187,29 +188,31 @@ function AddRecipe({ addRecipe, existingRecipe }) {
     };
 
     try {
-      let recipeResponse;
+      // let recipeResponse;
       if (recipeId) {
         if (oldImageId) {
           // Delete image from cloudinary storage
           deleteRecipeImage(oldImageId, recipeId);
         }
         // Update recipe
-        recipeResponse = await axios.put(
-          `${API_URL}/api/user/${authorId}/recipes/${recipeId}`,
-          recipeData,
-          {
-            headers: { Authorization: `Bearer ${storedToken}` },
-          }
-        );
+        updateRecipe(authorId, recipeId, recipeData);
+        // recipeResponse = await axios.put(
+        //   `${API_URL}/api/user/${authorId}/recipes/${recipeId}`,
+        //   recipeData,
+        //   {
+        //     headers: { Authorization: `Bearer ${storedToken}` },
+        //   }
+        // );
       } else {
         // Create new recipe
-        recipeResponse = await axios.post(
-          `${API_URL}/api/user/${user._id}/recipes`,
-          recipeData,
-          {
-            headers: { Authorization: `Bearer ${storedToken}` },
-          }
-        );
+        createRecipe(user._id, recipeData);
+        // recipeResponse = await axios.post(
+        //   `${API_URL}/api/user/${user._id}/recipes`,
+        //   recipeData,
+        //   {
+        //     headers: { Authorization: `Bearer ${storedToken}` },
+        //   }
+        // );
       }
 
       // Go back to recipe detail or dashboard
