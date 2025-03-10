@@ -3,7 +3,11 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
-import fileUploadService from "../service/file-upload.service";
+// import fileUploadService from "../service/file-upload.service";
+import {
+  uploadAvatarImage,
+  deleteAvatarImage,
+} from "../service/api/image.service";
 import "../components/UserEditPage.css";
 import { Image } from "@just1arale/icons";
 import { Edit } from "@just1arale/icons";
@@ -80,7 +84,7 @@ function UserEditPage() {
       const fileData = new FormData();
       fileData.append("file", file);
 
-      const fileUrl = await fileUploadService.uploadAvatar(fileData);
+      const fileUrl = await uploadAvatarImage(fileData);
       setFormValues((prevValues) => ({
         ...prevValues,
         image: fileUrl,
@@ -133,9 +137,7 @@ function UserEditPage() {
         navigate(`/user/${authorId}`);
       } else {
         if (oldImageId) {
-          await axios.delete(`${API_URL}/api/delete-avatar/${oldImageId}`, {
-            headers: { Authorization: `Bearer ${storedToken}` },
-          });
+          deleteAvatarImage(oldImageId);
         }
 
         await axios.put(`${API_URL}/api/user/${user._id}`, formValues, {

@@ -2,7 +2,11 @@
 import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "./AddRecipe.css";
-import fileUploadService from "../service/file-upload.service";
+// import fileUploadService from "../service/file-upload.service";
+import {
+  uploadRecipeImage,
+  deleteRecipeImage,
+} from "../service/api/image.service";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 // import imageIcon from "../assets/image.svg";
@@ -93,7 +97,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
       const fileData = new FormData();
       fileData.append("file", file);
 
-      const fileUrl = await fileUploadService.uploadRecipeImage(fileData);
+      const fileUrl = await uploadRecipeImage(fileData);
       setImg(fileUrl);
       setImageIsLoading(false);
     } catch (error) {
@@ -186,13 +190,8 @@ function AddRecipe({ addRecipe, existingRecipe }) {
       let recipeResponse;
       if (recipeId) {
         if (oldImageId) {
-          // Delete old image from cloudinary storage
-          await axios.delete(
-            `${API_URL}/api/delete-recipe-image/${oldImageId}/${recipeId}`,
-            {
-              headers: { Authorization: `Bearer ${storedToken}` },
-            }
-          );
+          // Delete image from cloudinary storage
+          deleteRecipeImage(oldImageId, recipeId);
         }
         // Update recipe
         recipeResponse = await axios.put(
