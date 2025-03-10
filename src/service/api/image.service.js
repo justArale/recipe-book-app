@@ -5,9 +5,10 @@ const API = axios.create({
   baseURL: import.meta.env.VITE_API_URL || "http://localhost:5005",
 });
 
+const token = localStorage.getItem("authToken");
+
 // Function to upload avatar
 export const uploadAvatarImage = async (fileData) => {
-  const token = localStorage.getItem("authToken");
   try {
     const res = await API.post("/api/upload-avatar", fileData, {
       headers: {
@@ -24,7 +25,6 @@ export const uploadAvatarImage = async (fileData) => {
 
 // Function to upload recipe-image
 export const uploadRecipeImage = async (fileData) => {
-  const token = localStorage.getItem("authToken");
   try {
     const res = await API.post("/api/upload-recipe-image", fileData, {
       headers: {
@@ -41,8 +41,6 @@ export const uploadRecipeImage = async (fileData) => {
 
 // Delete recipe image from cloudinary storage
 export const deleteRecipeImage = async (oldImageId, recipeId) => {
-  const token = localStorage.getItem("authToken");
-
   try {
     await API.delete(`/api/delete-recipe-image/${oldImageId}/${recipeId}`, {
       headers: { Authorization: `Bearer ${token}` },
@@ -54,8 +52,6 @@ export const deleteRecipeImage = async (oldImageId, recipeId) => {
 
 // Delete avatar image from cloudinary storage
 export const deleteAvatarImage = async (oldImageId, userId) => {
-  const token = localStorage.getItem("authToken");
-
   try {
     await API.delete(`/api/delete-avatar/${oldImageId}`, {
       headers: { Authorization: `Bearer ${token}` },
