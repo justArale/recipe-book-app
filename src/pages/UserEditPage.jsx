@@ -8,6 +8,7 @@ import {
   uploadAvatarImage,
   deleteAvatarImage,
 } from "../service/api/image.service";
+import { getSingleUser } from "../service/api/user.service";
 import "../components/UserEditPage.css";
 import { Image } from "@just1arale/icons";
 import { Edit } from "@just1arale/icons";
@@ -40,31 +41,41 @@ function UserEditPage() {
 
   useEffect(() => {
     if (user) {
-      fetchUserData();
+      getSingleUser(authorId).then((userData) => {
+        const { name, image, email, description } = userData;
+        setFormValues({
+          name: name || "",
+          image: image || "",
+          email: email || "",
+          description: description || "",
+          oldPassword: "",
+          newPassword: "",
+        });
+      });
     }
-  }, [user]); // Trigger fetchUserData whenever user changes
+  }, [user, authorId]);
 
-  const fetchUserData = async () => {
-    try {
-      const storedToken = localStorage.getItem("authToken");
-      const response = await axios.get(`${API_URL}/api/user/${authorId}`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      });
-      const { name, image, email, description } = response.data;
-      setFormValues({
-        name: name || "",
-        image: image || "",
-        email: email || "",
-        description: description || "",
-        oldPassword: "",
-        newPassword: "",
-      });
-    } catch (error) {
-      const errorDescription =
-        error.response?.data?.message || "An error occurred";
-      setErrorMessage(errorDescription);
-    }
-  };
+  // const fetchUserData = async () => {
+  //   try {
+  //     const storedToken = localStorage.getItem("authToken");
+  //     const response = await axios.get(`${API_URL}/api/user/${authorId}`, {
+  //       headers: { Authorization: `Bearer ${storedToken}` },
+  //     });
+  //     const { name, image, email, description } = response.data;
+  //     setFormValues({
+  //       name: name || "",
+  //       image: image || "",
+  //       email: email || "",
+  //       description: description || "",
+  //       oldPassword: "",
+  //       newPassword: "",
+  //     });
+  //   } catch (error) {
+  //     const errorDescription =
+  //       error.response?.data?.message || "An error occurred";
+  //     setErrorMessage(errorDescription);
+  //   }
+  // };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

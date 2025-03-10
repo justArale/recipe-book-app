@@ -7,57 +7,68 @@ import DashboardPage from "./DashboardPage";
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
 import "../components/UserPage.css";
+import { getSingleUser, deleteUser } from "../service/api/user.service";
 // import editIcon from "../assets/edit.svg";
 // import deleteIcon from "../assets/delete.svg";
 import { Edit } from "@just1arale/icons";
 import { Delete } from "@just1arale/icons";
 
-const API_URL = import.meta.env.VITE_API_URL;
+// const API_URL = import.meta.env.VITE_API_URL;
 
 function UserPage() {
   const { user, logOutUser } = useContext(AuthContext);
   const { authorId } = useParams();
   const [currentAuthor, setCurrentAuthor] = useState({});
-  const [errorMessage, setErrorMessage] = useState("");
+  // const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const navigate = useNavigate();
 
-  const fetchAuthorData = async () => {
-    try {
-      const response = await axios.get(`${API_URL}/api/user/${authorId}`);
-      setCurrentAuthor(response.data);
-      setIsLoading(false);
-    } catch (error) {
-      console.error("Error fetching author data:", error);
-      const errorDescription =
-        error.response?.data?.message ||
-        "An error occurred while fetching author data";
-      setErrorMessage(errorDescription);
-      setIsLoading(false);
-    }
-  };
+  // const fetchAuthorData = async () => {
+  //   try {
+  //     const response = await axios.get(`${API_URL}/api/user/${authorId}`);
+  //     setCurrentAuthor(response.data);
+  //     setIsLoading(false);
+  //   } catch (error) {
+  //     console.error("Error fetching author data:", error);
+  //     const errorDescription =
+  //       error.response?.data?.message ||
+  //       "An error occurred while fetching author data";
+  //     setErrorMessage(errorDescription);
+  //     setIsLoading(false);
+  //   }
+  // };
 
-  const deleteUser = async () => {
-    try {
-      const storedToken = localStorage.getItem("authToken");
-      const response = await axios.delete(`${API_URL}/api/user/${authorId}`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      });
-      logOutUser();
-      navigate(`/`);
-    } catch (error) {
-      console.error("Error deleting user:", error);
-      setErrorMessage("An error occurred while deleting the user.");
-    }
-  };
+  // const deleteUser = async () => {
+  //   try {
+  //     const storedToken = localStorage.getItem("authToken");
+  //     const response = await axios.delete(`${API_URL}/api/user/${authorId}`, {
+  //       headers: { Authorization: `Bearer ${storedToken}` },
+  //     });
+  //     logOutUser();
+  //     navigate(`/`);
+  //   } catch (error) {
+  //     console.error("Error deleting user:", error);
+  //     setErrorMessage("An error occurred while deleting the user.");
+  //   }
+  // };
 
   useEffect(() => {
     // window.location.reload();
     window.scrollTo(0, 0);
-    fetchAuthorData();
+    getSingleUser(authorId).then((userData) => {
+      setCurrentAuthor(userData);
+      setIsLoading(false);
+    });
   }, []);
+
+  const handleDeleteUser = (userId) => {
+    deleteUser(userId).then(() => {
+      logOutUser();
+      navigate(`/`);
+    });
+  };
 
   const handleDeleteModel = () => {
     setIsDeleteModalOpen(true);
@@ -126,7 +137,7 @@ function UserPage() {
               <p className="mainFont">Are you sure to delete your profil?</p>
               <button
                 className="button buttonAware primaryColor"
-                onClick={() => deleteUser(currentAuthor._id)}
+                onClick={() => handleDeleteUser(currentAuthor._id)}
               >
                 <div className="buttonContentWrapper">
                   <Delete width="16" height="16" alt="Delete Icon" />
