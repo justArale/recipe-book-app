@@ -158,7 +158,7 @@ function UserEditPage() {
         if (oldImageId) {
           deleteAvatarImage(oldImageId);
         }
-        updateUser(user._id, formValues);
+        await updateUser(user._id, formValues);
         // await axios.put(`${API_URL}/api/user/${user._id}`, formValues, {
         //   headers: { Authorization: `Bearer ${storedToken}` },
         // });

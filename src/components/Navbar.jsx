@@ -2,13 +2,14 @@ import "./Navbar.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
-import axios from "axios";
+// import axios from "axios";
 import LoginForm from "../components/LogInForm";
 import SignUpForm from "../components/SignUpForm";
 import logo from "../assets/logo.svg";
 import { Add } from "@just1arale/icons";
+import { createUser, loginUser } from "../service/api/user.service";
 
-const API_URL = import.meta.env.VITE_API_URL;
+// const API_URL = import.meta.env.VITE_API_URL;
 
 function Navbar({
   isOverlayOpen,
@@ -159,18 +160,24 @@ function Overlay({ isLogin, onClose, onSwitch }) {
     e.preventDefault();
     const requestBody = { email, password };
 
-    axios
-      .post(`${API_URL}/auth/login`, requestBody)
-      .then((response) => {
+    // axios
+    //   .post(`${API_URL}/auth/login`, requestBody)
+    loginUser(requestBody).then((response) => {
+      if (response.response) {
+        // If api response an error
+        const errorDescription = response.response.data.message;
+        setErrorMessage(errorDescription);
+      } else {
         storeToken(response.data.authToken);
         authenticateUser();
         onClose();
         navigate("/");
-      })
-      .catch((error) => {
-        const errorDescription = error.response.data.message;
-        setErrorMessage(errorDescription);
-      });
+      }
+    });
+    // .catch((error) => {
+    //   const errorDescription = error.response.data.message;
+    //   setErrorMessage(errorDescription);
+    // });
   };
 
   const handleSignupSubmit = (e) => {
@@ -182,29 +189,36 @@ function Overlay({ isLogin, onClose, onSwitch }) {
       name,
     };
 
-    axios
-      .post(`${API_URL}/auth/signup`, requestBody)
-      .then(() => {
+    // axios
+    //   .post(`${API_URL}/auth/signup`, requestBody)
+    createUser(requestBody).then((response) => {
+      if (response.response) {
+        // If api response an error
+        const errorDescription = response.response.data.message;
+        setErrorMessage(errorDescription);
+      } else {
         // After successful signup, log the user in
         const loginRequestBody = { email, password };
 
-        axios
-          .post(`${API_URL}/auth/login`, loginRequestBody)
-          .then((response) => {
-            storeToken(response.data.authToken);
-            authenticateUser();
-            onClose();
-            navigate("/");
-          })
-          .catch((error) => {
-            const errorDescription = error.response.data.message;
-            setErrorMessage(errorDescription);
-          });
-      })
-      .catch((error) => {
-        const errorDescription = error.response.data.message;
-        setErrorMessage(errorDescription);
-      });
+        // axios
+        //   .post(`${API_URL}/auth/login`, loginRequestBody)
+        loginUser(loginRequestBody).then((response) => {
+          storeToken(response.data.authToken);
+          // authenticateUser();
+          onClose();
+          navigate("/");
+        });
+      }
+
+      // .catch((error) => {
+      //   const errorDescription = error.response.data.message;
+      //   setErrorMessage(errorDescription);
+      // });
+    });
+    // .catch((error) => {
+    //   const errorDescription = error.response.data.message;
+    //   setErrorMessage(errorDescription);
+    // });
   };
 
   return (

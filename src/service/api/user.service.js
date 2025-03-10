@@ -1,3 +1,4 @@
+// user.service.js
 import axios from "axios";
 
 const API = axios.create({
@@ -5,10 +6,38 @@ const API = axios.create({
 });
 
 // Set token each time
-const token = localStorage.getItem("authToken");
-if (token) {
-  API.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-}
+// const token = localStorage.getItem("authToken");
+// if (token) {
+//   API.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+// }
+
+// Get the fresh token each api call
+API.interceptors.request.use((config) => {
+  const token = localStorage.getItem("authToken");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+export const createUser = async (requestBody) => {
+  try {
+    await API.post(`/auth/signup`, requestBody);
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+};
+
+export const loginUser = async (requestBody) => {
+  try {
+    const response = await API.post(`/auth/login`, requestBody);
+    return response;
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+};
 
 export const getAllUsers = async () => {
   try {
@@ -58,6 +87,8 @@ export const deleteUser = async (userId) => {
 };
 
 export default {
+  createUser,
+  loginUser,
   getAllUsers,
   getSingleUser,
   updateUser,
