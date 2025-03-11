@@ -15,7 +15,6 @@ function ItemDetailsPage() {
 
   const { isLoggedIn } = useContext(AuthContext);
   const [currentRecipe, setCurrentRecipe] = useState({});
-  const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const { indexNumber } = useContext(IndexContext);
@@ -93,8 +92,6 @@ function ItemDetailsPage() {
             <div className="skeleton skeleton-text"></div>
           </div>
         </div>
-      ) : errorMessage ? (
-        <div>{errorMessage}</div>
       ) : (
         <div className="itemDetail-page">
           <div className="recipeHeadWrapper">
@@ -167,19 +164,20 @@ function ItemDetailsPage() {
           </div>
           {isLoggedIn && user._id === currentRecipe.author._id && (
             <div className="action">
-              <button>
-                <a
-                  href={`/user/${authorId}/recipes/edit/${recipeId}`}
-                  className="buttonFont noUnderline primaryColor"
-                >
+              <Link
+                to={`/user/${authorId}/recipes/edit/${recipeId}`}
+                className="buttonFont noUnderline primaryColor"
+                state={{ currentRecipe }}
+              >
+                <button>
                   <div className="buttonContentWrapper">
                     <div className="iconWrapper">
                       <Edit width="16" height="16" alt="Edit Icon" />
                     </div>
                     <span className="buttonFont">Edit</span>
                   </div>
-                </a>
-              </button>
+                </button>
+              </Link>
 
               <button
                 onClick={handleDeleteModel}
