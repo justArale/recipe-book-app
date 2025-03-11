@@ -1,6 +1,5 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
-// import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 import DashboardPage from "./pages/DashboardPage";
 import ItemDetailsPage from "./pages/ItemDetailsPage";
@@ -10,8 +9,8 @@ import NewRecipePage from "./pages/NewRecipePage";
 import EditPage from "./pages/EditPage";
 import UserEditPage from "./pages/UserEditPage";
 
-import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 import IsPrivate from "./components/IsPrivate";
 import UserPage from "./pages/UserPage";
@@ -19,6 +18,11 @@ import UserPage from "./pages/UserPage";
 function App() {
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   const handleLoginClick = () => {
     setIsLogin(true);
@@ -48,7 +52,6 @@ function App() {
           path="/user/:authorId/recipes/:recipeId"
           element={<ItemDetailsPage />}
         />
-
         <Route
           path="/user/:authorId/edit"
           element={
@@ -76,7 +79,6 @@ function App() {
         <Route path="*" element={<ErrorPage />} />
       </Routes>
 
-      {/* <Sidebar /> */}
       <Footer />
     </div>
   );

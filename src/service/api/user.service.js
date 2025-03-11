@@ -5,12 +5,6 @@ const API = axios.create({
   baseURL: import.meta.env.VITE_API_URL || "http://localhost:5005",
 });
 
-// Set token each time
-// const token = localStorage.getItem("authToken");
-// if (token) {
-//   API.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-// }
-
 // Get the fresh token each api call
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem("authToken");
@@ -22,10 +16,11 @@ API.interceptors.request.use((config) => {
 
 export const createUser = async (requestBody) => {
   try {
-    await API.post(`/auth/signup`, requestBody);
+    const response = await API.post(`/auth/signup`, requestBody);
+    return response;
   } catch (error) {
     console.error(error);
-    return error;
+    return { response: error.response };
   }
 };
 
@@ -35,7 +30,7 @@ export const loginUser = async (requestBody) => {
     return response;
   } catch (error) {
     console.error(error);
-    return error;
+    return { response: error.response };
   }
 };
 

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-// import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
-// import fileUploadService from "../service/file-upload.service";
 import {
   uploadAvatarImage,
   deleteAvatarImage,
@@ -21,8 +19,6 @@ import { Check } from "@just1arale/icons";
 import { Cancel } from "@just1arale/icons";
 import { extractPublicId } from "cloudinary-build-url";
 
-// const API_URL = import.meta.env.VITE_API_URL;
-
 const DEFAULT_USER_FORM_VALUES = {
   name: "",
   image: "",
@@ -37,8 +33,6 @@ function UserEditPage() {
 
   const [formValues, setFormValues] = useState(DEFAULT_USER_FORM_VALUES);
   const { user } = useContext(AuthContext);
-  const [errorMessage, setErrorMessage] = useState(undefined);
-  const [loading, setLoading] = useState(false);
   const [imageIsLoading, setImageIsLoading] = useState(false);
   const [oldImageId, setOldImageId] = useState();
   const navigate = useNavigate();
@@ -58,28 +52,6 @@ function UserEditPage() {
       });
     }
   }, [user, authorId]);
-
-  // const fetchUserData = async () => {
-  //   try {
-  //     const storedToken = localStorage.getItem("authToken");
-  //     const response = await axios.get(`${API_URL}/api/user/${authorId}`, {
-  //       headers: { Authorization: `Bearer ${storedToken}` },
-  //     });
-  //     const { name, image, email, description } = response.data;
-  //     setFormValues({
-  //       name: name || "",
-  //       image: image || "",
-  //       email: email || "",
-  //       description: description || "",
-  //       oldPassword: "",
-  //       newPassword: "",
-  //     });
-  //   } catch (error) {
-  //     const errorDescription =
-  //       error.response?.data?.message || "An error occurred";
-  //     setErrorMessage(errorDescription);
-  //   }
-  // };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -128,7 +100,6 @@ function UserEditPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const storedToken = localStorage.getItem("authToken");
 
     try {
       if (formValues.oldPassword && formValues.newPassword) {
@@ -137,16 +108,6 @@ function UserEditPage() {
           formValues.oldPassword,
           formValues.newPassword
         );
-        // await axios.put(
-        //   `${API_URL}/api/user/${user._id}/change-password`,
-        //   {
-        //     oldPassword: formValues.oldPassword,
-        //     newPassword: formValues.newPassword,
-        //   },
-        //   {
-        //     headers: { Authorization: `Bearer ${storedToken}` },
-        //   }
-        // );
         setFormValues((prevValues) => ({
           ...prevValues,
           oldPassword: "",
@@ -159,16 +120,10 @@ function UserEditPage() {
           deleteAvatarImage(oldImageId);
         }
         await updateUser(user._id, formValues);
-        // await axios.put(`${API_URL}/api/user/${user._id}`, formValues, {
-        //   headers: { Authorization: `Bearer ${storedToken}` },
-        // });
-
         navigate(`/user/${authorId}`);
       }
     } catch (error) {
-      const errorDescription =
-        error.response?.data?.message || "An error occurred";
-      setErrorMessage(errorDescription);
+      console.error(error.response?.data?.message);
     }
   };
 

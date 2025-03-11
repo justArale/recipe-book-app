@@ -3,14 +3,11 @@ import { useState, useEffect, useContext } from "react";
 import "../components/ListItem.css";
 import { AuthContext } from "../context/auth.context";
 import { IndexContext } from "../context/index.context";
-// import axios from "axios";
 import placeholderImage from "../assets/placeholder.svg";
 import defaultAvatar from "../assets/defaultAvatar.svg";
 import { Edit } from "@just1arale/icons";
 import { Delete } from "@just1arale/icons";
 import { getSingleRecipe, deleteRecipe } from "../service/api/recipe.service";
-
-// const API_URL = import.meta.env.VITE_API_URL;
 
 function ItemDetailsPage() {
   const { user } = useContext(AuthContext);
@@ -18,7 +15,6 @@ function ItemDetailsPage() {
 
   const { isLoggedIn } = useContext(AuthContext);
   const [currentRecipe, setCurrentRecipe] = useState({});
-  // const [currentUser, setCurrentUser] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -27,79 +23,11 @@ function ItemDetailsPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Jump to the top
-    window.scrollTo(0, 0);
-  }, []);
-
-  // const fetchUserData = async () => {
-  //   const storedToken = localStorage.getItem("authToken");
-  //   if (!user || !user._id) {
-  //     return;
-  //   }
-  //   try {
-  //     const response = await axios.get(`${API_URL}/api/user/${user._id}`, {
-  //       headers: { Authorization: `Bearer ${storedToken}` },
-  //     });
-  //     setCurrentUser(response.data);
-  //   } catch (error) {
-  //     console.error("Error fetching user data:", error);
-  //     const errorDescription =
-  //       error.response?.data?.message ||
-  //       "An error occurred while fetching user data";
-  //     setErrorMessage(errorDescription);
-  //     setIsLoading(false);
-  //   }
-  // };
-
-  // const fetchRecipeData = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       `${API_URL}/api/user/${authorId}/recipes/${recipeId}`
-  //     );
-  //     setCurrentRecipe(response.data);
-  //     setIsLoading(false);
-  //   } catch (error) {
-  //     console.error("Error fetching recipe data:", error);
-  //     const errorDescription =
-  //       error.response?.data?.message ||
-  //       "An error occurred while fetching recipe data";
-  //     setErrorMessage(errorDescription);
-  //     setIsLoading(false);
-  //   }
-  // };
-
-  useEffect(() => {
-    // const fetchData = async () => {
-    // if (user) {
-    //   getSingleUser(authorId).then((userData) => {
-    //     setCurrentUser(userData);
-    //     setIsLoading(false);
-    //   });
-    // }
     getSingleRecipe(authorId, recipeId).then((recipeData) => {
       setCurrentRecipe(recipeData);
       setIsLoading(false);
     });
-    // };
-
-    // fetchData();
   }, [recipeId, user]);
-
-  // const deleteRecipe = async () => {
-  //   try {
-  //     const storedToken = localStorage.getItem("authToken");
-  //     const response = await axios.delete(
-  //       `${API_URL}/api/user/${authorId}/recipes/${recipeId}`,
-  //       {
-  //         headers: { Authorization: `Bearer ${storedToken}` },
-  //       }
-  //     );
-  //     navigate(`/`);
-  //   } catch (error) {
-  //     console.error("Error deleting recipe:", error);
-  //     setErrorMessage("An error occurred while deleting the recipe.");
-  //   }
-  // };
 
   const handleDeleteRecipe = (authorId, recipeId) => {
     deleteRecipe(authorId, recipeId).then(() => {

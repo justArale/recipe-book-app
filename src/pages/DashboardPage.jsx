@@ -1,7 +1,6 @@
 import List from "../components/List";
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
-// import axios from "axios";
 import "../components/Skeleton.css";
 import { IndexContext } from "../context/index.context";
 import {
@@ -9,44 +8,11 @@ import {
   getAllRecipesOfOneAuthor,
 } from "../service/api/recipe.service";
 
-// const API_URL = import.meta.env.VITE_API_URL;
-
 function DashboardPage() {
   const { authorId } = useParams();
   const [allRecipes, setAllRecipes] = useState([]);
-  // const [errorMessage, setErrorMessage] = useState(undefined);
   const [isLoading, setIsLoading] = useState(true);
   const { setIndexNumber } = useContext(IndexContext);
-
-  // const getAllRecipes = () => {
-  //   axios
-  //     .get(`${API_URL}/api/recipes`)
-  //     .then((response) => {
-  //       setAllRecipes(response.data);
-  //       setIsLoading(false);
-  //     })
-  //     .catch((error) => {
-  //       const errorDescription =
-  //         error.response?.data?.message || "An error occurred";
-  //       setErrorMessage(errorDescription);
-  //       setIsLoading(false);
-  //     });
-  // };
-
-  // const getAllRecipesOfOneAuthor = () => {
-  //   axios
-  //     .get(`${API_URL}/api/user/${authorId}/recipes`)
-  //     .then((response) => {
-  //       setAllRecipes(response.data);
-  //       setIsLoading(false);
-  //     })
-  //     .catch((error) => {
-  //       const errorDescription =
-  //         error.response?.data?.message || "An error occurred";
-  //       setErrorMessage(errorDescription);
-  //       setIsLoading(false);
-  //     });
-  // };
 
   useEffect(() => {
     if (authorId) {
@@ -75,7 +41,6 @@ function DashboardPage() {
   return (
     <div className="allRecipeWrapper">
       <div className="grid-container">
-        {/* {errorMessage && <p>{errorMessage}</p>} */}
         {isLoading ? (
           <div>
             <div className="grid-container">
