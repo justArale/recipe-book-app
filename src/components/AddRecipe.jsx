@@ -2,15 +2,12 @@
 import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "./AddRecipe.css";
-import fileUploadService from "../service/file-upload.service";
+import {
+  uploadRecipeImage,
+  deleteRecipeImage,
+} from "../service/api/image.service";
+import { createRecipe, updateRecipe } from "../service/api/recipe.service";
 import { AuthContext } from "../context/auth.context";
-import axios from "axios";
-// import imageIcon from "../assets/image.svg";
-// import editIcon from "../assets/editWhite.svg";
-// import deleteIcon from "../assets/deleteWhite.svg";
-// import checkIcon from "../assets/checkWhite.svg";
-// import cancelIcon from "../assets/cancel.svg";
-// import clearIcon from "../assets/clear.svg";
 import { Image } from "@just1arale/icons";
 import { Edit } from "@just1arale/icons";
 import { Delete } from "@just1arale/icons";
@@ -19,18 +16,14 @@ import { Cancel } from "@just1arale/icons";
 import { Clear } from "@just1arale/icons";
 import { extractPublicId } from "cloudinary-build-url";
 
-const API_URL = import.meta.env.VITE_API_URL;
-
 // Pass nothing for add recipe or the values of the current recipe based on its ID
 function AddRecipe({ addRecipe, existingRecipe }) {
   const { user } = useContext(AuthContext);
   const { authorId, recipeId } = useParams();
-  const [errorMessage, setErrorMessage] = useState("");
   const [errorMessageMain, setErrorMessageMain] = useState("");
   const [errorMessageIngredient, setErrorMessageIngredient] = useState("");
   const [errorMessageInstruction, setErrorMessageInstruction] = useState("");
   const [oldImageId, setOldImageId] = useState();
-  const [isLoading, setIsLoading] = useState(false);
   const [imageIsLoading, setImageIsLoading] = useState(false);
 
   let navigate = useNavigate();
@@ -93,7 +86,7 @@ function AddRecipe({ addRecipe, existingRecipe }) {
       const fileData = new FormData();
       fileData.append("file", file);
 
-      const fileUrl = await fileUploadService.uploadRecipeImage(fileData);
+      const fileUrl = await uploadRecipeImage(fileData);
       setImg(fileUrl);
       setImageIsLoading(false);
     } catch (error) {
@@ -183,34 +176,16 @@ function AddRecipe({ addRecipe, existingRecipe }) {
     };
 
     try {
-      let recipeResponse;
       if (recipeId) {
         if (oldImageId) {
-          // Delete old image from cloudinary storage
-          await axios.delete(
-            `${API_URL}/api/delete-recipe-image/${oldImageId}/${recipeId}`,
-            {
-              headers: { Authorization: `Bearer ${storedToken}` },
-            }
-          );
+          // Delete image from cloudinary storage
+          deleteRecipeImage(oldImageId, recipeId);
         }
         // Update recipe
-        recipeResponse = await axios.put(
-          `${API_URL}/api/user/${authorId}/recipes/${recipeId}`,
-          recipeData,
-          {
-            headers: { Authorization: `Bearer ${storedToken}` },
-          }
-        );
+        updateRecipe(authorId, recipeId, recipeData);
       } else {
         // Create new recipe
-        recipeResponse = await axios.post(
-          `${API_URL}/api/user/${user._id}/recipes`,
-          recipeData,
-          {
-            headers: { Authorization: `Bearer ${storedToken}` },
-          }
-        );
+        createRecipe(user._id, recipeData);
       }
 
       // Go back to recipe detail or dashboard
@@ -219,12 +194,8 @@ function AddRecipe({ addRecipe, existingRecipe }) {
       } else {
         navigate("/");
       }
-      // Jump to the top
-      window.scrollTo(0, 0);
     } catch (error) {
-      const errorDescription =
-        error.response?.data?.message || "An error occurred";
-      setErrorMessage(errorDescription);
+      console.error(error.response?.data?.message);
     }
   };
 
@@ -235,10 +206,6 @@ function AddRecipe({ addRecipe, existingRecipe }) {
   const addNewIngredient = () => {
     setAmount([...amount, ""]);
     setIngredient([...ingredient, ""]);
-  };
-
-  const jumpToTop = () => {
-    window.scrollTo(0, 0);
   };
 
   return (
@@ -396,7 +363,6 @@ function AddRecipe({ addRecipe, existingRecipe }) {
           <Link to={`/user/${authorId}/recipes/${recipeId}`}>
             <button
               type="button"
-              onClick={jumpToTop}
               className="buttonFont noUnderline primaryColor"
             >
               <div className="buttonContentWrapper">
