@@ -3,13 +3,11 @@ import { useState, useEffect, useContext } from "react";
 import "../components/ListItem.css";
 import { AuthContext } from "../context/auth.context";
 import { IndexContext } from "../context/index.context";
-import axios from "axios";
 import placeholderImage from "../assets/placeholder.svg";
 import defaultAvatar from "../assets/defaultAvatar.svg";
 import { Edit } from "@just1arale/icons";
 import { Delete } from "@just1arale/icons";
-
-const API_URL = import.meta.env.VITE_API_URL;
+import { getSingleRecipe, deleteRecipe } from "../service/api/recipe.service";
 
 function ItemDetailsPage() {
   const { user } = useContext(AuthContext);
@@ -17,8 +15,6 @@ function ItemDetailsPage() {
 
   const { isLoggedIn } = useContext(AuthContext);
   const [currentRecipe, setCurrentRecipe] = useState({});
-  const [currentUser, setCurrentUser] = useState({});
-  const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const { indexNumber } = useContext(IndexContext);
@@ -26,72 +22,16 @@ function ItemDetailsPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Jump to the top
-    window.scrollTo(0, 0);
-  }, []);
-
-  const fetchUserData = async () => {
-    const storedToken = localStorage.getItem("authToken");
-    if (!user || !user._id) {
-      return;
-    }
-    try {
-      const response = await axios.get(`${API_URL}/api/user/${user._id}`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      });
-      setCurrentUser(response.data);
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-      const errorDescription =
-        error.response?.data?.message ||
-        "An error occurred while fetching user data";
-      setErrorMessage(errorDescription);
+    getSingleRecipe(authorId, recipeId).then((recipeData) => {
+      setCurrentRecipe(recipeData);
       setIsLoading(false);
-    }
-  };
-
-  const fetchRecipeData = async () => {
-    try {
-      const response = await axios.get(
-        `${API_URL}/api/user/${authorId}/recipes/${recipeId}`
-      );
-      setCurrentRecipe(response.data);
-      setIsLoading(false);
-    } catch (error) {
-      console.error("Error fetching recipe data:", error);
-      const errorDescription =
-        error.response?.data?.message ||
-        "An error occurred while fetching recipe data";
-      setErrorMessage(errorDescription);
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      if (user) {
-        await fetchUserData();
-      }
-      await fetchRecipeData();
-    };
-
-    fetchData();
+    });
   }, [recipeId, user]);
 
-  const deleteRecipe = async () => {
-    try {
-      const storedToken = localStorage.getItem("authToken");
-      const response = await axios.delete(
-        `${API_URL}/api/user/${authorId}/recipes/${recipeId}`,
-        {
-          headers: { Authorization: `Bearer ${storedToken}` },
-        }
-      );
+  const handleDeleteRecipe = (authorId, recipeId) => {
+    deleteRecipe(authorId, recipeId).then(() => {
       navigate(`/`);
-    } catch (error) {
-      console.error("Error deleting recipe:", error);
-      setErrorMessage("An error occurred while deleting the recipe.");
-    }
+    });
   };
 
   const formatDate = (dateString) => {
@@ -152,8 +92,6 @@ function ItemDetailsPage() {
             <div className="skeleton skeleton-text"></div>
           </div>
         </div>
-      ) : errorMessage ? (
-        <div>{errorMessage}</div>
       ) : (
         <div className="itemDetail-page">
           <div className="recipeHeadWrapper">
@@ -224,21 +162,22 @@ function ItemDetailsPage() {
               ))}
             </div>
           </div>
-          {isLoggedIn && currentUser._id === currentRecipe.author._id && (
+          {isLoggedIn && user._id === currentRecipe.author._id && (
             <div className="action">
-              <button>
-                <a
-                  href={`/user/${authorId}/recipes/edit/${recipeId}`}
-                  className="buttonFont noUnderline primaryColor"
-                >
+              <Link
+                to={`/user/${authorId}/recipes/edit/${recipeId}`}
+                className="buttonFont noUnderline primaryColor"
+                state={{ currentRecipe }}
+              >
+                <button>
                   <div className="buttonContentWrapper">
                     <div className="iconWrapper">
                       <Edit width="16" height="16" alt="Edit Icon" />
                     </div>
                     <span className="buttonFont">Edit</span>
                   </div>
-                </a>
-              </button>
+                </button>
+              </Link>
 
               <button
                 onClick={handleDeleteModel}
@@ -264,11 +203,11 @@ function ItemDetailsPage() {
               <p className="mainFont">Are you sure to delete your recipe?</p>
               <button
                 className="button buttonAware primaryColor"
-                onClick={() => deleteRecipe(currentRecipe._id)}
+                onClick={() => handleDeleteRecipe(authorId, currentRecipe._id)}
               >
                 <div className="buttonContentWrapper">
                   <div className="iconWrapper">
-                    <img src={deleteIcon} alt="Icon" />
+                    <Delete width="16" height="16" alt="Delete Icon" />
                   </div>
                   <span className="buttonFont">Delete</span>
                 </div>

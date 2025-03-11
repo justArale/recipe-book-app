@@ -2,13 +2,11 @@ import "./Navbar.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
-import axios from "axios";
 import LoginForm from "../components/LogInForm";
 import SignUpForm from "../components/SignUpForm";
 import logo from "../assets/logo.svg";
 import { Add } from "@just1arale/icons";
-
-const API_URL = import.meta.env.VITE_API_URL;
+import { createUser, loginUser } from "../service/api/user.service";
 
 function Navbar({
   isOverlayOpen,
@@ -144,9 +142,7 @@ function Overlay({ isLogin, onClose, onSwitch }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-
   const [errorMessage, setErrorMessage] = useState(undefined);
-
   const { storeToken, authenticateUser } = useContext(AuthContext);
 
   const handleEmail = (e) => setEmail(e.target.value);
@@ -155,22 +151,27 @@ function Overlay({ isLogin, onClose, onSwitch }) {
 
   const navigate = useNavigate();
 
-  const handleLoginSubmit = (e) => {
-    e.preventDefault();
-    const requestBody = { email, password };
+  const handleLoginSubmit = (eOrRequestBody) => {
+    let requestBody;
 
-    axios
-      .post(`${API_URL}/auth/login`, requestBody)
-      .then((response) => {
+    if (eOrRequestBody.preventDefault) {
+      eOrRequestBody.preventDefault(); // If eOrRequestBody is an event - prevent submit by default
+      requestBody = { email, password };
+    } else {
+      requestBody = eOrRequestBody; // If eOrRequestBody contains the request body
+    }
+
+    loginUser(requestBody).then((response) => {
+      if (response.response) {
+        const errorDescription = response.response.data.message;
+        setErrorMessage(errorDescription);
+      } else {
         storeToken(response.data.authToken);
         authenticateUser();
         onClose();
         navigate("/");
-      })
-      .catch((error) => {
-        const errorDescription = error.response.data.message;
-        setErrorMessage(errorDescription);
-      });
+      }
+    });
   };
 
   const handleSignupSubmit = (e) => {
@@ -182,29 +183,19 @@ function Overlay({ isLogin, onClose, onSwitch }) {
       name,
     };
 
-    axios
-      .post(`${API_URL}/auth/signup`, requestBody)
-      .then(() => {
-        // After successful signup, log the user in
-        const loginRequestBody = { email, password };
-
-        axios
-          .post(`${API_URL}/auth/login`, loginRequestBody)
-          .then((response) => {
-            storeToken(response.data.authToken);
-            authenticateUser();
-            onClose();
-            navigate("/");
-          })
-          .catch((error) => {
-            const errorDescription = error.response.data.message;
-            setErrorMessage(errorDescription);
-          });
-      })
-      .catch((error) => {
-        const errorDescription = error.response.data.message;
+    createUser(requestBody).then((response) => {
+      console.log("response: ", response);
+      if (response.response) {
+        console.log("response.response: ", response.response);
+        // If api response an error
+        const errorDescription = response.response.data.message;
+        console.log("errorDescription: ", errorDescription);
         setErrorMessage(errorDescription);
-      });
+      } else {
+        // After successful signup, log the user in
+        handleLoginSubmit({ email, password });
+      }
+    });
   };
 
   return (
@@ -240,9 +231,3 @@ function Overlay({ isLogin, onClose, onSwitch }) {
 }
 
 export default Navbar;
-
-{
-  /* <Link to={`/${to}`}>
-  <button className="my-button">Take me to {to === "" ? "home" : to}</button>
-</Link>; */
-}

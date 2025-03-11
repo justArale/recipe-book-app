@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
-import fileUploadService from "../service/file-upload.service";
+import {
+  uploadAvatarImage,
+  deleteAvatarImage,
+} from "../service/api/image.service";
+import {
+  getSingleUser,
+  updateUser,
+  changeUserPassword,
+} from "../service/api/user.service";
 import "../components/UserEditPage.css";
 import { Image } from "@just1arale/icons";
 import { Edit } from "@just1arale/icons";
@@ -11,8 +18,6 @@ import { Delete } from "@just1arale/icons";
 import { Check } from "@just1arale/icons";
 import { Cancel } from "@just1arale/icons";
 import { extractPublicId } from "cloudinary-build-url";
-
-const API_URL = import.meta.env.VITE_API_URL;
 
 const DEFAULT_USER_FORM_VALUES = {
   name: "",
@@ -27,40 +32,26 @@ function UserEditPage() {
   const { authorId } = useParams();
 
   const [formValues, setFormValues] = useState(DEFAULT_USER_FORM_VALUES);
-  const { user, authenticateUser } = useContext(AuthContext);
-  const [errorMessage, setErrorMessage] = useState(undefined);
-  const [loading, setLoading] = useState(false);
+  const { user } = useContext(AuthContext);
   const [imageIsLoading, setImageIsLoading] = useState(false);
   const [oldImageId, setOldImageId] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (user) {
-      fetchUserData();
-    }
-  }, [user]); // Trigger fetchUserData whenever user changes
-
-  const fetchUserData = async () => {
-    try {
-      const storedToken = localStorage.getItem("authToken");
-      const response = await axios.get(`${API_URL}/api/user/${authorId}`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
+      getSingleUser(authorId).then((userData) => {
+        const { name, image, email, description } = userData;
+        setFormValues({
+          name: name || "",
+          image: image || "",
+          email: email || "",
+          description: description || "",
+          oldPassword: "",
+          newPassword: "",
+        });
       });
-      const { name, image, email, description } = response.data;
-      setFormValues({
-        name: name || "",
-        image: image || "",
-        email: email || "",
-        description: description || "",
-        oldPassword: "",
-        newPassword: "",
-      });
-    } catch (error) {
-      const errorDescription =
-        error.response?.data?.message || "An error occurred";
-      setErrorMessage(errorDescription);
     }
-  };
+  }, [user, authorId]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -80,7 +71,7 @@ function UserEditPage() {
       const fileData = new FormData();
       fileData.append("file", file);
 
-      const fileUrl = await fileUploadService.uploadAvatar(fileData);
+      const fileUrl = await uploadAvatarImage(fileData);
       setFormValues((prevValues) => ({
         ...prevValues,
         image: fileUrl,
@@ -109,45 +100,30 @@ function UserEditPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const storedToken = localStorage.getItem("authToken");
 
     try {
       if (formValues.oldPassword && formValues.newPassword) {
-        await axios.put(
-          `${API_URL}/api/user/${user._id}/change-password`,
-          {
-            oldPassword: formValues.oldPassword,
-            newPassword: formValues.newPassword,
-          },
-          {
-            headers: { Authorization: `Bearer ${storedToken}` },
-          }
+        await changeUserPassword(
+          user._id,
+          formValues.oldPassword,
+          formValues.newPassword
         );
         setFormValues((prevValues) => ({
           ...prevValues,
           oldPassword: "",
           newPassword: "",
         }));
-        await authenticateUser();
         await fetchUserData();
         navigate(`/user/${authorId}`);
       } else {
         if (oldImageId) {
-          await axios.delete(`${API_URL}/api/delete-avatar/${oldImageId}`, {
-            headers: { Authorization: `Bearer ${storedToken}` },
-          });
+          deleteAvatarImage(oldImageId);
         }
-
-        await axios.put(`${API_URL}/api/user/${user._id}`, formValues, {
-          headers: { Authorization: `Bearer ${storedToken}` },
-        });
-
+        await updateUser(user._id, formValues);
         navigate(`/user/${authorId}`);
       }
     } catch (error) {
-      const errorDescription =
-        error.response?.data?.message || "An error occurred";
-      setErrorMessage(errorDescription);
+      console.error(error.response?.data?.message);
     }
   };
 
